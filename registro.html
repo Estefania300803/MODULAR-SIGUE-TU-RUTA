@@ -9,6 +9,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 </head>
 <body>
+   <!-- Bootstrap Icons -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+   <!-- Bootstrap Modal -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+   <!-- Bootstrap Propio -->
+   <script src="script.js"></script>
+
   <div class="row g-0 w-100 h-100">
     <!-- Sección completa -->
     <div class="row w-100 h-100">
@@ -55,27 +62,25 @@
 
             <!-- Checkbox -->
             <div class="form-check mb-3 text-start">
-              <input class="form-check-input" type="checkbox" id="acceptTerms" required>
+              <input class="form-check-input" type="checkbox" id="Checkboxprincipal" required>
               <label class="form-check-label" for="acceptTerms" class="enlaces" class="enlaces2">
-                He leído y acepto la <a href="#" class="register-link" id="openModal">Política de privacidad</a> y los <a href="#" class="register-link">términos de servicio</a> de Sigue tu Ruta
+                He leído y acepto la <a href="#" class="register-link" id="openModal">Política de privacidad</a> y los <a href="#" class="register-link" id="abremodal">términos de servicio</a> de Sigue tu Ruta
               </label>
             </div>
 
             <!-- Botón -->
-            <button type="submit" onclick="window.location.href='login.html';" class="btn btn-success w-100">Continuar</button>
+            <button type="submit" onclick="window.location.href='login.html';" class="btn btn-success w-100" id="botoncontinuar" disabled >Continuar</button>
           </form>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+ 
 
 <!-- Todos los modales-->
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal de Politicas-->
+<div class="modal fade" id="Modalpolitica" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -99,21 +104,30 @@
   </div>
 </div>
 
-<script>
-  // Evita el comportamiento predeterminado del enlace y abre el modal
-  document.getElementById("openModal").addEventListener("click", function(event) {
-    event.preventDefault();
-    var myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
-    myModal.show();
-  });
-
-  // Habilita o deshabilita el botón "Continuar" según el estado del checkbox
-  document.getElementById("termsCheckbox").addEventListener("change", function() {
-    document.getElementById("continueButton").disabled = !this.checked;
-  });
-</script>
-
-  
+<!-- Modal Terminos-->
+<div class="modal fade" id="Modalterminos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Política de Privacidad</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Para continuar, acepta nuestra política de privacidad.</p>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="check">
+          <label class="form-check-label" for="termsCheckbox">
+            Acepto la política de privacidad.
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button> 
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="continua2" disabled>Continuar</button> 
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
 
