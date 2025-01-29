@@ -57,7 +57,7 @@
             <div class="form-check mb-3 text-start">
               <input class="form-check-input" type="checkbox" id="acceptTerms" required>
               <label class="form-check-label" for="acceptTerms" class="enlaces" class="enlaces2">
-                He leído y acepto la <a href="#" class="register-link">Política de privacidad</a> y los <a href="#" class="register-link">términos de servicio</a> de Sigue tu Ruta
+                He leído y acepto la <a href="#" class="register-link" id="openModal">Política de privacidad</a> y los <a href="#" class="register-link">términos de servicio</a> de Sigue tu Ruta
               </label>
             </div>
 
@@ -71,5 +71,53 @@
 
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Todos los modales-->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Política de Privacidad</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Para continuar, acepta nuestra política de privacidad.</p>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="termsCheckbox">
+          <label class="form-check-label" for="termsCheckbox">
+            Acepto la política de privacidad.
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button> 
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="continueButton" disabled>Continuar</button> 
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Evita el comportamiento predeterminado del enlace y abre el modal
+  document.getElementById("openModal").addEventListener("click", function(event) {
+    event.preventDefault();
+    var myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
+    myModal.show();
+  });
+
+  // Habilita o deshabilita el botón "Continuar" según el estado del checkbox
+  document.getElementById("termsCheckbox").addEventListener("change", function() {
+    document.getElementById("continueButton").disabled = !this.checked;
+  });
+</script>
+
+  
 </body>
 </html>
+
+
+
+
+
