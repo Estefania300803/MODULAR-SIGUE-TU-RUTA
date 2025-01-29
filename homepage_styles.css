@@ -1,0 +1,54 @@
+.d-flex {
+    background-color: #8DCE76;
+    border-color: #8DCE76;
+    color: rgb(7, 7, 7);
+}
+
+.navbar-brand {
+    color: white !important;
+    text-align: center;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.custom-navbar{
+    background: #296E03;
+    color: white;
+}
+
+h1{
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: left;
+    color: #296E03 !important;
+    
+}
+
+h3{
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: left;
+    color: #000000 !important;
+}
+
+p{
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    text-align: left;
+    color: #000000 !important;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
