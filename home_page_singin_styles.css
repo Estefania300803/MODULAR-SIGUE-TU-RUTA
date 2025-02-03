@@ -1,16 +1,10 @@
-.custom-button {
-    background-color: #8DCE76 !important;
-    border-color: #8DCE76  !important;
-    color: rgb(7, 7, 7);
-}
-
-#btn-user{
+/*#btn-user{
     border-radius: 50%;
     background-color: #D9D9D9 !important;
     border-color: #D9D9D9 !important;
     color: rgb(7, 7, 7);
     top: 3px;
-}
+}*/
 
 .navbar-brand {
     color: white !important;
@@ -24,6 +18,7 @@
 .custom-navbar{
     background: #296E03;
     color: white;
+    align-items: center;
 }
 
 h1{
