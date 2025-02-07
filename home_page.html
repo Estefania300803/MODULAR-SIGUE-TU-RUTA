@@ -18,6 +18,17 @@
                 </form>
             </div>
         </nav>
+
+        <div class="sidebar" id="sidebar">
+            <ul>
+                <li class="menu-item"><i class="bi bi-list"></i> <span>Menú</span></li>
+                <li class="menu-item"><i class="bi bi-grid"></i> <span>Principal</span></li>
+                <li class="menu-item"><i class="bi bi-map"></i> <span>Mapas</span></li>
+                <li class="menu-item"><i class="bi bi-bus-front"></i> <span>Camiones</span></li>
+                <li class="menu-item"><i class="bi bi-book"></i> <span>Nosotros</span></li>
+            </ul>
+        </div>
+
         <div class="container center-content">
             <div class="row">
                 <div class="col">
@@ -29,6 +40,17 @@
                     <img src="mapa.png" alt="Mapa" width="500" height="500">
                 </div>
             </div>
+        </div>
+<!--Esto es para la am=nimacion del menu-->
+        <script>
+            const sidebar = document.getElementById('sidebar');
+            sidebar.addEventListener('mouseenter', () => {
+                sidebar.classList.add('expanded');
+            });
+            sidebar.addEventListener('mouseleave', () => {
+                sidebar.classList.remove('expanded');
+            });
+        </script>
 
     </body>
 </html>
