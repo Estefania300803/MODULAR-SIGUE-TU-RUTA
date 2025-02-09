@@ -107,15 +107,13 @@
     background-color: #f4f4f4;
     position: fixed;
     left: 0;
-    top: 60px; 
+    top: normal; 
     transition: width 0.3s ease;
     overflow: hidden;
 }
 
 .custom-navbar {
     margin: 0;
-    padding: 10px;
-    height: 60px;
     top: 0;
     width: 100%;
 }

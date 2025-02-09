@@ -1,14 +1,24 @@
-/*#btn-user{
-    border-radius: 50%;
-    background-color: #D9D9D9 !important;
-    border-color: #D9D9D9 !important;
-    color: rgb(7, 7, 7);
-    top: 3px;
-}*/
+#btnllegar{
+    text-align: center !important;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.container-fluid{
+    display: flex;
+    height: normal;
+}
+
+input::placeholder{
+    font-family: Inter, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+}
 
 .form-control{
     text-align: left;
-    font-family: Inter;
+    font-family: Inter, sans-serif;
     font-size: 40px;
     font-style: normal;
     font-weight: 400;
@@ -18,7 +28,7 @@
 .bi-arrow-left-right{
     text-align: right;
     font-family: Inter;
-    font-size: 24px;
+    font-size: 19px;
     font-style: normal; 
     font-weight: 400;
     line-height: normal;
@@ -37,6 +47,11 @@
     background: #296E03;
     color: white;
     align-items: center;
+    position: fixed;
+    top:0;
+    left: 0;
+    width:100%;
+    overflow: hidden;
 }
 
 h1{
