@@ -1,0 +1,35 @@
+.container{
+    display: flex;
+    height: 100vh; /* Ocupar toda la pantalla */
+}
+
+.col1{
+    border-color: #f30909;  
+    border-width: 1px;  
+    border-style: solid; 
+    display: flex;
+    width: 315px;
+    height: 100vh; /* Ajusta la altura al 100% de la pantalla */
+    overflow-y: auto; /* Permite el desplazamiento si el contenido es mayor que la altura */
+    padding: 10px;
+    flex-direction: column;
+    position: fixed;
+    left: 60px;
+    top: normal;
+}
+
+.col2{
+    border-color: #f30909;  
+    border-width: 1px;  
+    border-style: solid; 
+    flex-grow: 1;
+    padding: 10px;
+    left: 315px; /* Empuja col2 para que no se encime con col1 */
+    height: 100vh;
+    display: flex;
+    margin-left: 375px;
+    flex-direction: column;
+}
+
+
+
