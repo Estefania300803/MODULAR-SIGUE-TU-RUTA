@@ -1,4 +1,4 @@
-import { ManageAccount } from './firebaseconect.js';
+import { ManageAccount, IngresarConGoogle } from './firebaseconect.js';
 
 document.getElementById("formulario-sesion").addEventListener("submit", (event) => {
   event.preventDefault();
@@ -12,3 +12,7 @@ document.getElementById("formulario-sesion").addEventListener("submit", (event) 
 });
 
 console.log('Formulario de Inicio de Sesión');
+
+document.getElementById("google-login").addEventListener("click", () => {
+    IngresarConGoogle();
+  });
