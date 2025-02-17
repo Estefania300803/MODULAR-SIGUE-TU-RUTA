@@ -2,6 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebas
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-analytics.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
 import { getFirestore, collection, getDocs, setDoc, doc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+import { sendEmailVerification } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDzxaGnZoN1vN4sGiyXtRQGN9BLYQoMPpA",
@@ -28,6 +29,10 @@ export class ManageAccount {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
+      // Enviar correo de verificación
+      await sendEmailVerification(user);
+      alert("Se ha enviado un correo de verificación. Por favor, revisa tu bandeja de entrada antes de iniciar sesión.");
+
       // Guarda los datos en Firestore
       const usersCollection = collection(firestore, "users");
       const usersSnapshot = await getDocs(usersCollection);
@@ -52,15 +57,22 @@ export class ManageAccount {
   //Esto es lo que hace que revise si esta el correo y la contraseña en firebase para que inicie sesión
   authenticate(email, password) {
     signInWithEmailAndPassword(auth, email, password)
-      .then((_) => {
-        alert("Has iniciado sesión correctamente.");
-        window.location.href = "home_page_singin.html";
-      })
-      .catch((error) => {
-        console.error(error.message);
-        alert("Error al iniciar sesión: " + error.message);
-      });
-  }
+        .then((userCredential) => {
+            const user = userCredential.user;
+
+            if (user.emailVerified) {
+                alert("Has iniciado sesión correctamente.");
+                window.location.href = "home_page_singin.html";
+            } else {
+                alert("Debes verificar tu correo antes de iniciar sesión.");
+                signOut(auth); // Cierra sesión para evitar accesos no verificados
+            }
+        })
+        .catch((error) => {
+            console.error(error.message);
+            alert("Error al iniciar sesión: " + error.message);
+        });
+}
 
 
   //Esto es para cuando el usuario cierre sesión
@@ -86,6 +98,7 @@ export class ManageAccount {
      // Información del usuario autenticado
      const user = result.user;
      console.log("Usuario autenticado:", user);
+     alert("Bienvenido ", user);
      // Redireccionar al usuario después de iniciar sesión
      window.location.href = "home_page_singin.html";
    }).catch((error) => {
