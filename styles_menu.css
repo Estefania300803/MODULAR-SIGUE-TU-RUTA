@@ -103,11 +103,12 @@
   /* Estilos del menú lateral */
 .sidebar {
     width: 60px;
-    height: calc(100vh - 60px); /* Ajusta la altura restando la barra superior porque si no se ve el menú chidp*/
+    top: 70px;
+    height: calc(100vh - 70px); /* Ajusta la altura restando la barra superior porque si no se ve el menú chidp*/
     background-color: #f4f4f4;
     position: fixed;
+    
     left: 0;
-    top: normal; 
     transition: width 0.3s ease;
     overflow: hidden;
 }
