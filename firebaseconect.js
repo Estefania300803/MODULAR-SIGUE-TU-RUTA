@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+import { getAuth, sendPasswordResetEmail,createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
 import { getFirestore, collection, getDocs, setDoc, doc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
 import { sendEmailVerification } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
 
@@ -103,4 +103,20 @@ export class ManageAccount {
      console.error("Error al iniciar sesión con Google:", error.message);
      alert("Error: " + error.message);
    });
+}
+
+export function resetPassword(email) {
+  if (!email) {
+    alert("Por favor, ingresa un correo electrónico válido.");
+    return;
+  }
+
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      alert("Se te ha enviado un correo para restablecer tu contraseña.");
+    })
+    .catch((error) => {
+      console.error("Error al restablecer la contraseña:", error.message);
+      alert("Error al restablecer la contraseña: " + error.message);
+    });
 }
