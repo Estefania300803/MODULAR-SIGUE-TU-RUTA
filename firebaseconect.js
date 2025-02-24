@@ -61,7 +61,6 @@ export class ManageAccount {
             const user = userCredential.user;
 
             if (user.emailVerified) {
-                alert("Has iniciado sesión correctamente.");
                 window.location.href = "home_page_singin.html";
             } else {
                 alert("Debes verificar tu correo antes de iniciar sesión.");
@@ -98,7 +97,6 @@ export class ManageAccount {
      // Información del usuario autenticado
      const user = result.user;
      console.log("Usuario autenticado:", user);
-     alert("Bienvenido ", user);
      // Redireccionar al usuario después de iniciar sesión
      window.location.href = "home_page_singin.html";
    }).catch((error) => {
