@@ -1,8 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-analytics.js";
-import { getAuth, sendPasswordResetEmail,createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
 import { getFirestore, collection, getDocs, setDoc, doc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
-import { sendEmailVerification } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDzxaGnZoN1vN4sGiyXtRQGN9BLYQoMPpA",
@@ -18,20 +17,12 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth();
 const firestore = getFirestore(app);
-const provider = new GoogleAuthProvider();
 
-
-// ESTO ES PARA LA PARTE DEL REGISTRO
 export class ManageAccount {
-    //Esto guarda los datos del registro en la base de datos
   async register(nombre, apellidos, email, password) {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-
-      // Enviar correo de verificación
-      await sendEmailVerification(user);
-      alert("Se ha enviado un correo de verificación. Por favor, revisa tu bandeja de entrada antes de iniciar sesión.");
 
       // Guarda los datos en Firestore
       const usersCollection = collection(firestore, "users");
@@ -44,7 +35,6 @@ export class ManageAccount {
         email: email,
         uid: user.uid
       });
-      //Aqui es cuando revisa que no haya estado registrado y que todo este bien
       console.log("Usuario registrado con ID:", nextId);
       alert("Registro exitoso. Serás redirigido a la página de inicio de sesión.");
       window.location.href = "login.html";
@@ -53,28 +43,19 @@ export class ManageAccount {
       alert("Error al registrar: " + error.message);
     }
   }
-    
-  //Esto es lo que hace que revise si esta el correo y la contraseña en firebase para que inicie sesión
+
   authenticate(email, password) {
     signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            const user = userCredential.user;
+      .then((_) => {
+        alert("Has iniciado sesión correctamente.");
+        window.location.href = "home_page_singin.html";
+      })
+      .catch((error) => {
+        console.error(error.message);
+        alert("Error al iniciar sesión: " + error.message);
+      });
+  }
 
-            if (user.emailVerified) {
-                window.location.href = "home_page_singin.html";
-            } else {
-                alert("Debes verificar tu correo antes de iniciar sesión.");
-                signOut(auth); // Cierra sesión para evitar accesos no verificados
-            }
-        })
-        .catch((error) => {
-            console.error(error.message);
-            alert("Error al iniciar sesión: " + error.message);
-        });
-}
-
-
-  //Esto es para cuando el usuario cierre sesión
   signOut() {
     signOut(auth)
       .then((_) => {
@@ -84,39 +65,4 @@ export class ManageAccount {
         console.error(error.message);
       });
   }
-}
-
-
-//Todo lo de autoenticacion con google
- export function IngresarConGoogle() {
-    signInWithPopup(auth, provider)
-   .then((result) => {
-    // Se obtiene el token de Google para acceder a la API
-     const credential = GoogleAuthProvider.credentialFromResult(result);
-     const token = credential ? credential.accessToken : null;
-     // Información del usuario autenticado
-     const user = result.user;
-     console.log("Usuario autenticado:", user);
-     // Redireccionar al usuario después de iniciar sesión
-     window.location.href = "home_page_singin.html";
-   }).catch((error) => {
-     console.error("Error al iniciar sesión con Google:", error.message);
-     alert("Error: " + error.message);
-   });
-}
-
-export function resetPassword(email) {
-  if (!email) {
-    alert("Por favor, ingresa un correo electrónico válido.");
-    return;
-  }
-
-  sendPasswordResetEmail(auth, email)
-    .then(() => {
-      alert("Se te ha enviado un correo para restablecer tu contraseña.");
-    })
-    .catch((error) => {
-      console.error("Error al restablecer la contraseña:", error.message);
-      alert("Error al restablecer la contraseña: " + error.message);
-    });
 }

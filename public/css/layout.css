@@ -1,0 +1,375 @@
+/* ===================
+   ESTRUCTURA DEL LAYOUT
+   =================== */
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container{
+    display: flex;
+    height: 100vh; /* Ocupar toda la pantalla */
+}
+
+/* Contenedor del formulario */
+.login-container {
+    background: white;
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px;
+    height: 700px; /* Altura fija */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente */
+    
+}
+
+/* Formulario */
+.form-container {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+  
+/* Inputs */
+.input-container {
+    position: relative;
+}
+  
+.input-container i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+}
+
+
+/* ===================
+   Sidebar y Paneles Laterales
+   =================== */
+
+.sidebar {
+    width: 60px;
+    top: 75px;
+    height: calc(100vh - 70px); /* Ajusta la altura restando la barra superior porque si no se ve el menú chidp*/
+    background-color: #f4f4f4;
+    position: fixed;
+    left: 0;
+    transition: width 0.3s ease;
+    overflow: hidden;
+}
+
+.sidebar.expanded {
+    width: 250px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.sidebar ul li i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.sidebar ul li span {
+    display: none;
+}
+
+.sidebar.expanded ul li span {
+    display: inline;
+}
+
+.sidebar ul li:hover {
+    background-color: #ddd;
+}
+
+.aside{
+    height: 100vh;
+    width: 300px;
+    background-color: #DFDFDF;
+    position: fixed;
+    transition: all .4s ease;
+}
+
+.aside{
+    height: 100vh;
+    width: 300px;
+    background-color: #DFDFDF;
+    position: fixed;
+    transition: all .4s ease;
+}
+
+.head{
+    display: flex;
+    align-items: center;
+    justify-self: space-between;
+    height: 50px;
+}
+
+.head i{
+    cursor: pointer;
+    font-size: 1.8rem;
+    margin-right: 10px; 
+    margin-left: 10px;
+}
+
+.profiel{
+    display: flex;
+    align-items: center;
+}
+
+.profile p{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 1.6rem;
+    color: #000000;
+}
+
+.options div{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.options div:hover{
+    background-color: #b3b3b3;
+    transition: all .4s ease-in-out;
+}
+
+.options i{
+    font-size: 1.4rem;
+    margin-right: 10px; 
+}
+
+/*Modificaciones a la hora de cerrar el menu*/
+.aside.active{
+    width: 70px;
+    transition: all .4s ease;
+}
+
+.aside.active .option,
+.aside.active .profile{
+    display: none;
+}
+
+.aside.active .head i,
+.aside.active .options i{
+    margin: auto;
+}
+
+/* ===================
+Paneles laterales
+   =================== */
+
+/* Estilos para el menú deslizante */
+#user-menu {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Oculto por defecto */
+    width: 300px;
+    height: 100vh;
+    background: #f4f4f4; /* Color de fondo */
+    padding: 20px;
+    transition: right 0.3s ease-in-out;
+    box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+}
+  
+/* Clase activa para mostrar el menú */
+#user-menu.active {
+    right: 0;
+}
+  
+/* Superposición de fondo al abrir el menú */
+#menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+  
+/* Activar superposición */
+#menu-overlay.active {
+    display: block;
+}
+  
+/* Estilos del título del usuario */
+#user-menu p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+  
+/* Lista del menú */
+#user-menu ul {
+    list-style: none;
+    padding: 0;
+}
+  
+#user-menu ul li {
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+}
+  
+#user-menu ul li a {
+    text-decoration: none;
+    color: #222;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+  
+/* Hover en los elementos del menú */
+#user-menu ul li a:hover {
+    background: #c5c5c5;
+}
+  
+/* Estilos de los iconos */
+#user-menu ul li i {
+    font-size: 20px; /* Tamaño de los iconos */
+    margin-right: 12px;
+    color: #555;
+}
+  
+/* Botón de cerrar */
+.close-menu {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #555;
+    transition: color 0.3s;
+}
+  
+.close-menu:hover {
+    color: #222;
+}
+
+/* ===================
+   Navbar
+   =================== */
+
+
+input::placeholder{
+    font-family: Inter, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.form-control{
+    text-align: left;
+    font-family: Inter, sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#btn-user {
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #CCD4C9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 43.3px;  /* Ajusta según necesites */
+    height: 43.3px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    position: relative; /* Para alinear la imagen de fondo */
+    overflow: hidden; /* Evita desbordamiento de la imagen */
+}
+
+/* Agrega la imagen de perfil como fondo */
+#btn-user::before {
+    content: "";
+    position: absolute;
+    width: 43.3px;
+    height: 43.3px;
+    background-image: url("../assets/imagenes/perfil2.png"); /* Ruta de la imagen */
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+}
+
+
+.bi-arrow-left-right{
+    text-align: right;
+    font-family: Inter;
+    font-size: 19px;
+    font-style: normal; 
+    font-weight: 400;
+    line-height: normal;
+}
+
+.navbar-brand {
+    color: white !important;
+    text-align: center;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    
+}
+
+header{
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+}
+
+.wrapper {
+    width: 80%;
+    margin: auto;
+    overflow:hidden;
+  }
+
+.custom-navbar{
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #296E03; /* Color sólido para ocultar el contenido */
+    color: white;
+    position: fixed;
+    overflow: hidden;
+}
+

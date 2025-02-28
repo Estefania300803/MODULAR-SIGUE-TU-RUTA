@@ -1,0 +1,36 @@
+/* ===================
+   Home page y Home page singin
+   =================== */
+
+.col h1{
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: center;
+    color: #296E03 !important;
+}
+
+.col h3{
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    padding: 6px;
+    padding-left: 15px;
+    display: flex;
+    line-height: normal;
+    text-align: left;
+    color: #000000 !important;
+}
+
+.col p{
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 200;
+    padding: 6px;
+    padding-left: 15px;
+    display: flex;
+    line-height: normal;
+    text-align: left;
+    color: #000000 !important;
+}

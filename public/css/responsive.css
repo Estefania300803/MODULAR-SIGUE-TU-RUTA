@@ -1,0 +1,35 @@
+/* ===================
+   MEDIA QUERIES PARA MÓVILES Y TABLETS
+   =================== */
+
+/* Ajustes para la imagen de fondo en móviles */
+.bg-image {
+    height: 100vh; /* Asegura que la imagen ocupe toda la pantalla */
+}
+
+/* Ajustes para el botón en móviles */
+.btn-success {
+    font-size: 1rem; /* Reduce el tamaño de la fuente en móviles */
+}
+
+/* Ajustes para los inputs en móviles */
+.form {
+    font-size: 1rem; /* Reduce el tamaño de la fuente en móviles */
+}
+
+/* Media Queries para tablets */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    /* Ajustes para tablets */
+    .form-container {
+        max-width: 500px; /* Aumenta el ancho del formulario en tablets */
+    }
+  }
+
+/* Media Queries para dispositivos móviles */
+@media only screen and (max-width: 768px) {
+/* Ajustes para el formulario en móviles */
+    .form-container {
+        padding: 15px; /* Reduce el padding en móviles */
+        margin: 0 10px; /* Añade un margen lateral para no pegarse a los bordes */
+}
+}
