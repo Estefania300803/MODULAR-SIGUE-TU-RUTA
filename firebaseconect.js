@@ -46,7 +46,7 @@ export class ManageAccount {
       });
       //Aqui es cuando revisa que no haya estado registrado y que todo este bien
       console.log("Usuario registrado con ID:", nextId);
-      alert("Registro exitoso. Serás redirigido a la página de inicio de sesión.");
+      //alert("Registro exitoso. Serás redirigido a la página de inicio de sesión.");
       window.location.href = "login.html";
     } catch (error) {
       console.error("Error al registrar:", error.message);
