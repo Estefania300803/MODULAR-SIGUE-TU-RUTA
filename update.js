@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
-import { getAuth, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+import { getAuth, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
 import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js"; // Importaciones correctas
 
 const firebaseConfig = {
@@ -46,13 +46,29 @@ async function updateUserProfile(user) {
     document.getElementById("userProfilePicture").src = userProfilePicture;
 }
 
+// Agregado: Temporizador para cerrar sesión después de 10 minutos de inactividad
+let sessionTimeout;
+function resetSessionTimer() {
+    clearTimeout(sessionTimeout);
+    sessionTimeout = setTimeout(() => {
+        signOut(auth).then(() => {
+            alert("Tu sesión ha expirado. Por favor, inicia sesión nuevamente.");
+            window.location.href = "login.html";
+        });
+    }, 600000); // 10 minutos (600000 ms)
+}
+
+// Escucha eventos del usuario para reiniciar el temporizador
+document.addEventListener("mousemove", resetSessionTimer);
+document.addEventListener("keydown", resetSessionTimer);
+
 // Detecta cambios en la autenticación
 onAuthStateChanged(auth, (user) => {
     if (user) {
         updateUserProfile(user);
+        resetSessionTimer(); // Inicia el temporizador si el usuario está autenticado
     } else {
         console.log("No hay usuario autenticado.");
-        alert("Crea tu usuario para entrar");
         window.location.href = "login.html";
     }
 });
