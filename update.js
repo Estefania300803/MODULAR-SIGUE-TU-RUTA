@@ -72,3 +72,17 @@ onAuthStateChanged(auth, (user) => {
         window.location.href = "login.html";
     }
 });
+
+// Agregado: Función para cerrar sesión al hacer clic en "Cerrar Sesión"
+document.getElementById("logout-btn").addEventListener("click", (event) => {
+    event.preventDefault(); // Evita la recarga de la página
+    signOut(auth)
+        .then(() => {
+            alert("Has cerrado sesión correctamente.");
+            window.location.href = "login.html"; // Redirige al login
+        })
+        .catch((error) => {
+            console.error("Error al cerrar sesión:", error.message);
+            alert("Hubo un error al cerrar sesión.");
+        });
+});
