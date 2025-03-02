@@ -1,0 +1,160 @@
+#btnllegar{
+    text-align: center !important;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.container-fluid{
+    display: flex;
+    height: normal;
+}
+
+input::placeholder{
+    font-family: Inter, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.form-control{
+    text-align: left;
+    font-family: Inter, sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.bi-arrow-left-right{
+    text-align: right;
+    font-family: Inter;
+    font-size: 19px;
+    font-style: normal; 
+    font-weight: 400;
+    line-height: normal;
+}
+
+.navbar-brand {
+    color: white !important;
+    text-align: center;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.custom-navbar{
+    background: #296E03;
+    color: white;
+    align-items: center;
+    position: fixed;
+    top:0;
+    left: 0;
+    width:100%;
+    overflow: hidden;
+}
+
+h1{
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: left;
+    color: #296E03 !important;
+    
+}
+
+h3{
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: left;
+    color: #000000 !important;
+}
+
+.col p{
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    text-align: left;
+    color: #000000 !important;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.aside{
+    height: 100vh;
+    width: 300px;
+    background-color: #DFDFDF;
+    position: fixed;
+    transition: all .4s ease;
+}
+
+.head{
+    display: flex;
+    align-items: center;
+    justify-self: space-between;
+    height: 50px;
+}
+
+.head i{
+    cursor: pointer;
+    font-size: 1.8rem;
+    margin-right: 10px; 
+    margin-left: 10px;
+}
+
+.profiel{
+    display: flex;
+    align-items: center;
+}
+
+.profile p{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 1.6rem;
+    color: #000000;
+}
+
+.options div{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.options div:hover{
+    background-color: #b3b3b3;
+    transition: all .4s ease-in-out;
+}
+
+.options i{
+    font-size: 1.4rem;
+    margin-right: 10px; 
+}
+
+/*Modificaciones a la hora de cerrar el menu*/
+.aside.active{
+    width: 70px;
+    transition: all .4s ease;
+}
+
+.aside.active .option,
+.aside.active .profile{
+    display: none;
+}
+
+.aside.active .head i,
+.aside.active .options i{
+    margin: auto;
+}

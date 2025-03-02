@@ -1,0 +1,123 @@
+
+
+  /* Elimina márgenes y paddings del cuerpo y html */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  /* Asegúrate de que el contenedor de la fila ocupe todo el espacio */
+  .container-fluid {
+    padding: 0; /* Elimina cualquier espacio interno */
+    margin: 0; /* Elimina cualquier espacio externo */
+  }
+  
+  /* Imagen de fondo */
+  .bg-image {
+    background-image: url('camion.png'); /* Cambia aquí la URL de la imagen */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* Evita que se repita */
+    height: 100vh; /* Asegura que cubra toda la altura de la ventana */
+    width: 100%; /
+  }
+  
+  /* Formulario */
+  .form-container {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Inputs */
+  .input-container {
+    position: relative;
+  }
+  
+
+  .input-container i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+  }
+  
+  /* Logo */
+  .logo img {
+    display: block;
+    margin: 0 auto;
+  }
+  
+  /* Botón */
+  .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    padding: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  
+  .form {
+    font-size: 1.1rem; /* Escala el texto de entrada */
+    padding: 0.8rem;
+  }
+
+  /* Enlaces */
+ .register-link {
+    color: #28a745;
+    text-decoration: none;
+  }
+  
+.register-link:hover {
+    text-decoration: underline;
+  }
+
+   /* Media Queries para dispositivos móviles */
+@media only screen and (max-width: 768px) {
+  /* Ajustes para el formulario en móviles */
+  .form-container {
+      padding: 15px; /* Reduce el padding en móviles */
+      margin: 0 10px; /* Añade un margen lateral para no pegarse a los bordes */
+  }
+  /* Imagen de fondo */
+.bg-image {
+  background-image: url('camion.png'); /* Cambia aquí la URL de la imagen */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; /* Evita que se repita */
+  position: absolute; /* Posiciona la imagen detrás del formulario */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Coloca la imagen detrás del contenido */
+}
+
+  /* Ajustes para la imagen de fondo en móviles */
+  .bg-image {
+      height: 100vh; /* Asegura que la imagen ocupe toda la pantalla */
+  }
+
+  /* Ajustes para el botón en móviles */
+  .btn-success {
+      font-size: 1rem; /* Reduce el tamaño de la fuente en móviles */
+  }
+
+  /* Ajustes para los inputs en móviles */
+  .form {
+      font-size: 1rem; /* Reduce el tamaño de la fuente en móviles */
+  }
+}
+
+/* Media Queries para tablets */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  /* Ajustes para tablets */
+  .form-container {
+      max-width: 500px; /* Aumenta el ancho del formulario en tablets */
+  }
+}

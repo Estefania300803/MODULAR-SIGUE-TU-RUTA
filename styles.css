@@ -1,0 +1,96 @@
+/* Estilo general del fondo */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Fondo con imagen */
+.background {
+  background: url('fondo.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Logo */
+.logo {
+  width: 160px; /* Aumenta el tamaño (ejemplo: de 80px a 120px) */
+  height: auto; /* Mantiene las proporciones automáticamente */
+  margin-bottom: 1rem;
+}
+/* Contenedor del formulario */
+.login-container {
+  background: white;
+  padding: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+  height: 700px; /* Altura fija */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra el contenido verticalmente */
+  
+}
+
+/* Título */
+.title {
+  color: #28a745;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+/* Entrada de texto e íconos */
+.input-group .input-group-text {
+  font-size: 1.2rem; /* Aumenta el tamaño del ícono */
+}
+
+.form-control {
+  font-size: 1.1rem; /* Escala el texto de entrada */
+  padding: 0.8rem;
+}
+
+/* Botón "Iniciar sesión" */
+.btn-success {
+  color: #fff; /* Color del texto */
+  background-color: #28a745; /* Color verde */
+  border-color: #28a745; /* Borde verde */
+  width: 100%; /* Ancho completo del contenedor */
+  max-width: 400px; /* Máximo ancho, ajustable */
+  margin: 0 auto; /* Centrado horizontal */
+  height: 38px; /* Define un largo fijo */
+  display: flex; /* Usa flexbox para alinear contenido */
+  align-items: center; /* Centra el texto verticalmente */
+  justify-content: center; /* Centra el texto horizontalmente */
+}
+
+/* Botón "Continuar con Google" */
+.btn-outline-secondary {
+  width: 100%; /* Ancho completo del contenedor */
+  max-width: 200px; /* Máximo ancho, ajustable */
+  padding: 0.6rem; /* Tamaño interno */
+  font-size: 1.1rem;
+  margin: 0 auto; /* Centrado horizontal */
+  height: 50px; /* Define un largo fijo */
+  line-height: 60px; /* Centra el texto verticalmente si no usas flexbox */
+}
+
+/* Enlaces */
+.forgot-password, .register-link {
+  color: #28a745;
+  text-decoration: none;
+}
+
+.forgot-password:hover, .register-link:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  /* Ajustes para tablets */
+  .form-container {
+      max-width: 500px; /* Aumenta el ancho del formulario en tablets */
+  }
+}
