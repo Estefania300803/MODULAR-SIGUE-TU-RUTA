@@ -16,10 +16,12 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const firestore = getFirestore(app); // Firestore inicializado
 
+// Función para actualizar el perfil del usuario
 async function updateUserProfile(user) {
     if (!user) return;
 
     let userName = user.displayName; // Primero intenta con user.displayName
+    let userProfilePicture = user.photoURL; // Obtiene la foto de perfil de Firebase
 
     if (!userName) { // Si displayName está vacío, busca en Firestore por email
         const usersCollection = collection(firestore, "users");
@@ -34,16 +36,24 @@ async function updateUserProfile(user) {
         }
     }
 
+    if (!userProfilePicture) { 
+        userProfilePicture = "perfil.jpg"; // Si no hay foto en Firebase, usa imagen por defecto
+    }
+
     const userEmail = user.email;
-    const userProfilePicture = user.photoURL || "default-profile.png"; // Usa imagen por defecto si no tiene
 
     console.log("Email:", userEmail);
     console.log("Nombre completo:", userName);
+    console.log("Foto de perfil:", userProfilePicture);
 
-    // Actualizar los elementos HTML
-    document.getElementById("userName").textContent = userName;
-    document.getElementById("userEmail").textContent = userEmail;
-    document.getElementById("userProfilePicture").src = userProfilePicture;
+    // Asegurar que los elementos existen antes de actualizarlos
+    const userNameElement = document.getElementById("userName");
+    const userEmailElement = document.getElementById("userEmail");
+    const userProfilePictureElement = document.getElementById("userProfilePicture");
+
+    if (userNameElement) userNameElement.textContent = userName;
+    if (userEmailElement) userEmailElement.textContent = userEmail;
+    if (userProfilePictureElement) userProfilePictureElement.src = userProfilePicture;
 }
 
 // Agregado: Temporizador para cerrar sesión después de 10 minutos de inactividad
