@@ -302,6 +302,7 @@ input::placeholder{
     line-height: normal;
 }
 
+/*
 #btn-user {
     flex-shrink: 0;
     border-radius: 50%;
@@ -310,26 +311,33 @@ input::placeholder{
     justify-content: center;
     align-items: center;
     width: 43.3px;  /* Ajusta según necesites */
+    /*
     height: 43.3px;
     padding: 0;
     margin: 0;
     border: none;
     position: relative; /* Para alinear la imagen de fondo */
+    /*
     overflow: hidden; /* Evita desbordamiento de la imagen */
+  /*  
 }
+*/
+
 
 /* Agrega la imagen de perfil como fondo */
+/*
 #btn-user::before {
     content: "";
     position: absolute;
     width: 43.3px;
     height: 43.3px;
     background-image: url("../assets/imagenes/perfil2.png"); /* Ruta de la imagen */
+    /*
     background-size: cover;
     background-position: center;
     border-radius: 50%;
 }
-
+*/
 
 .bi-arrow-left-right{
     text-align: right;
@@ -360,7 +368,7 @@ header{
     width: 80%;
     margin: auto;
     overflow:hidden;
-  }
+}
 
 .custom-navbar{
     margin: 0;
