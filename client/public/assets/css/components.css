@@ -118,7 +118,7 @@ input::placeholder{
 
 /* Imagen de fondo */
 .bg-image {
-    background-image: url('../assets/imagenes/camion.png'); /* Cambia aquí la URL de la imagen */
+    background-image: url('../../assets/imagenes/camion.png'); /* Cambia aquí la URL de la imagen */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat; /* Evita que se repita */
