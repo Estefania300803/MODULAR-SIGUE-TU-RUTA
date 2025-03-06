@@ -47,7 +47,7 @@ export class ManageAccount {
       //Aqui es cuando revisa que no haya estado registrado y que todo este bien
       console.log("Usuario registrado con ID:", nextId);
       //alert("Registro exitoso. Serás redirigido a la página de inicio de sesión.");
-      window.location.href = "login.html";
+      window.location.href = "client/public/login.html";
     } catch (error) {
       console.error("Error al registrar:", error.message);
       alert("Error al registrar: " + error.message);
@@ -61,7 +61,7 @@ export class ManageAccount {
             const user = userCredential.user;
 
             if (user.emailVerified) {
-                window.location.href = "home_page_singin.html";
+                window.location.href = "client/public/home_page_singin.html";
             } else {
                 alert("Debes verificar tu correo antes de iniciar sesión.");
                 signOut(auth); // Cierra sesión para evitar accesos no verificados
@@ -78,7 +78,7 @@ export class ManageAccount {
   signOut() {
     signOut(auth)
       .then((_) => {
-        window.location.href = "index.html";
+        window.location.href = "client/public/index.html";
       })
       .catch((error) => {
         console.error(error.message);
@@ -98,7 +98,7 @@ export class ManageAccount {
      const user = result.user;
      console.log("Usuario autenticado:", user);
      // Redireccionar al usuario después de iniciar sesión
-     window.location.href = "home_page_singin.html";
+     window.location.href = "client/public/home_page_singin.html";
    }).catch((error) => {
      console.error("Error al iniciar sesión con Google:", error.message);
      alert("Error: " + error.message);
