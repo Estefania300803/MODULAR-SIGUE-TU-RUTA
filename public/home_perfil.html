@@ -3,32 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <title>Página de Inicio</title>
-    <link rel="stylesheet" href="home_page_singin_styles.css">
-    <link rel="stylesheet" href="styles_menu.css">
-    <link rel="stylesheet" href="mapa_page.css">
+    <link rel="website icon" type="svg" href="assets/iconos/Logo_s-l.svg">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/pages/home_perfil.css"> <!-- Solo si tiene estilos específicos para la página -->
+    <link rel="stylesheet" href="assets/css/themes.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script src="home_page_singin.js"></script>
+    <script src="../src/components/script_home_perfil.js"></script>
+    <script src="../src/components/sidebar.js"></script>
+    
 </head>
 <body>
-    <nav class="navbar custom-navbar">
+    <nav class="navbar custom-navbar position-fixed">
         <div class="container-fluid d-flex align-items-center">
             <a class="navbar-brand" href="#">
-                <img src="Logo_s-l.svg" alt="Bootstrap" width="50" height="44">Sigue Tu Ruta
+                <img src="assets/imagenes/logo.png" alt="Bootstrap" width="50" height="44">Sigue Tu Ruta
             </a>
-            <form class="d-flex" role="search">
+            <form class="d-flex align-items-center" role="search">
                 <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" style="width: 400px; height: normal; flex-shrink: 0; border-radius: 2px; background: #CCD4C9;">                    
                 <button type="button" class="btn custom-button me-2 text-start" id="btnllegar" style="width: 150px; height: normal; flex-shrink: 0; border-radius: 2px; background: #CCD4C9;"><i class="bi bi-arrow-left-right me-2"></i>Como llegar
                 </button>
-                <button class="btn custom-button" type="button" id="btn-user" onclick="toggleMenu()" style="flex-shrink: 0; border-radius: 50%; background: #CCD4C9;">
-                    <!--Imaguen del usuario-->
-                    <img src="perfil.png"
-                    style="width: 112px; height: 112px; object-fit: cover; border-radius: 50%; position: absolute;">
-                </button>
+
+                <button class="btn rounded-circle d-flex justify-content-center align-items-center" type="button"id="btn-user" onclick="toggleMenu()"style="width: 45px; height: 45px; background: #CCD4C9; overflow: hidden; border-radius: 50%;">
+                    <img id="userProfilePicture" src="assets/imagenes/perfil.jpg"  style="width: 45px; height: 45px; object-fit: cover; border-radius: 50%; position: absolute;">
+                
             </form>
         </div>
     </nav>
 
+    <div><!--Div central-->
+
+        <div class="scroll-container">
+            <div class="content">
+                <div class="profile">
+                    <div>
+                        <!--Foto perfil-->
+                        <img src="assets/imagenes/perfil.jpeg" alt="Foto de perfil" class="imagen-circular">
+                    </div>
+                    <!--Nombre del usuario-->
+                    <h2>Emmanuel Hernandez</h2>
+                    <div class="divbotones">
+                        <!--Botones del usuario-->
+                        <button class="botoncorreo" onclick="mostrarFormulario('correo')">
+                            Correo <span class="icono">&#10095;</span>
+                        </button>
+                        <button class="botonseguridad" onclick="mostrarFormulario('seguridad')">
+                            Seguridad <span class="icono">&#10095;</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="formulario-container"></div>
+            </div>
+        </div>
+    </div>
+
+<!--                                      Menu Principal                                 -->
     <div class="sidebar" id="sidebar">
         <ul>
             <li class="menu-item"><i class="bi bi-list"></i> <span>Menú</span></li>
@@ -56,30 +89,7 @@
             <li><i class="bi bi-box-arrow-right"></i> <a href="#cerrar">Cerrar Sesión</a></li>
         </ul>
     </div>
-    <div class="container">
-        <div class="col1" id="simbolo">
-            <div class="simbolos">
-                <ul>
-                    <h1>Simbologia</h1>
-                    <li><img src = "parada_camiones.svg" alt="Parada_camiones"/> </li>
-                    <li><img src = "camion_verde.svg" alt="Camiones"/></li>
-                    <li><img src = "Pin_ubicacion.svg" alt="Pin_ubicacion"/></li>
-                </ul>
-            </div>
-            <div class="adicional">
-                <ul>
-                    <h1>Adicional</h1>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </div>
-        </div>
-        <div class="col2" id="mapa">
-            <h1>Aqui va el mapa</h1>
-        </div>
-    </div>
+
     <!--Esto es para la am=nimacion del menu-->
     <script>
         const sidebar = document.getElementById('sidebar');

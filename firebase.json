@@ -1,10 +1,27 @@
 {
+  "type": "service_account",
+  "project_id": "sigue-tu-ruta-tepatitlan",
+  "private_key_id": "58209da6651cb0d3385951ebeccd213ccc4c3039",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDRcxS/tT8rE7+a\nQP0l1Ds46eEm+1PGzKzE5LREKL+gOZjiq6hV+xiZFI5RJfS068OH54PB225cIz8p\n4QZnwBYHSIv1JWRO6iMQIkydQS9IQyoNRgUVruFoqkSiJbcx4VI8QZkzivgd5mTx\nstfO1H1Xg7owfNckeuZkekR4fuZgpoBv/GlggaU37X3Uu7j/0eaMLI28kcvnomJK\nMlAhPCH2EFp/gdM9ikJSFa6lBJdtkDi2mkRL0R75gcoyWxNa9tBtMfu/EZu3AHIQ\nWBHOs+CIhdGQ2xoXYYONSv8MTvXUNEM+iyy7ua7EGT/wWu5iv6Mla8LjJqKx544+\nVbTu/FdLAgMBAAECggEAQUD7W+bZ8U/LyAErXVfLw6WKEh0HMs6dnRIr33hai06m\nhSg539/FABxZYorSvHMfjf3hHMqCjY4lpaSH3FcKBebiQ9QMdlGX7vTgrbWbR4Y1\nWcFQ4DqF25gAngvmEVJDzqYZVuea+aXIGU1A0x18l4Fgxq5+UM1BblhxcKEIoV9t\nyfl2mtDyHCbWzwtiljROkGYlk9RGbifft9xDKW9MmfNa+dV7RgfgDWPk0uLTFeJA\n1c/Pistl26SjOw5Ur0fGm73RI+6GXMsDCDauwj07PfkKog/KRv3DgRhxJztBLu/k\noJQekWOKk/Pq7J6XgQMf0sAB/939nbgak4c7Nt1zQQKBgQD4nmQRubFsCTAD4iO0\nmtUuD+ebQpxnnqHwHE4jFtQ3qMmojZA3KDemN9khClWcE0Q527N7mwzneSdLvWWb\n3TA+m3tkoVu7cWL94PHT2IOxgxWUCYKBx95eP85PE5PjZwwcV/MB/tCH/6C/3WFR\nqzpRIqy325jIooVVdb0IaNCiEQKBgQDXqvzQdr+ci28Ttu+P0ltsOIFa99EA2pBI\ndM5lsOEOeIHwF+cqC02Rh5fgftQeoCqpHqYFXdqNH2Dz3btE0VkQgj4KETOnNSxQ\nQtY4CD41JlWgkJGWmHuRCwlcMnNMrOLl0qZSCb3yMIqrWTGUfzeswxSkkiYYGf6K\nlfh0YL/HmwKBgANkNb1AKTluDqee6BnImuvb767gg72uHktmN3KnFxIDTWztMXBv\nLgMoc9/Ngkl0wdOAObyP6uclcfHIjaBIriXMfSxsPxIZg94uuV3IcFN1lE/GqW8X\nyOLEQA44GCZb+4BPetMmJLYWOJ0lafRxP4Rn0q9XYYgrH2KBDqkUtPPhAoGAFDBe\ngElNgKMQ3+CVJnqDsmrLuS9PsmvDa/T7SUu4lbk0OLyUGDx8o231Cr/0rXVC6RgE\nZKY3ilRwqAOOv091rfTzR8/6bOGuZ0kKcq5a3HDdPS2rY1Sc5KQK2UWjw36/stH4\nXd+pl11x7b5oxMTv+k08xncj98efK2wEmShha5cCgYAGLOPj3T+aY0lp7TnGEPqi\n7y+nQFLI9sWN2qs5smHhsUsLbwejvKMmUVN8jI+W5XedSdzJkOFWDkSlFG0h0XuI\nnSFKTbdx7BQjjcySih38l38Szlu5QcWWhpH4k38bdfWl+iaTP9SMKZzMTe7ITbjp\n+pZ6GzftAis4SxEYI7NpDg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@sigue-tu-ruta-tepatitlan.iam.gserviceaccount.com",
+  "client_id": "116185133502946138364",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sigue-tu-ruta-tepatitlan.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com",
   "hosting": {
-    "public": ".",
+    "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
   }
 }
