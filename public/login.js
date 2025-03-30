@@ -1,6 +1,18 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
-import { getFirestore, collection, getDocs, setDoc, doc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  sendPasswordResetEmail
+} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  setDoc,
+  doc
+} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
 const backendURL = "https://us-central1-sigue-tu-ruta-tepatitlan.cloudfunctions.net/app";
 
@@ -51,11 +63,13 @@ fetch(`${backendURL}/firebase-config`)
         const usersRef = collection(db, "users");
         const snapshot = await getDocs(usersRef);
 
+        // Verificar si ya existe por UID o email
         const exists = snapshot.docs.some(doc => {
           const data = doc.data();
           return data.uid === user.uid || data.email === user.email;
         });
 
+        // Si no existe, registrar en Firestore
         if (!exists) {
           const nextId = snapshot.size + 1;
           await setDoc(doc(db, "users", nextId.toString()), {
@@ -75,6 +89,26 @@ fetch(`${backendURL}/firebase-config`)
       } catch (error) {
         console.error("Error al iniciar sesión con Google:", error.message);
         alert("Error al iniciar con Google: " + error.message);
+      }
+    });
+
+    // Restablecer contraseña
+    document.getElementById("enlace-reset").addEventListener("click", async (e) => {
+      e.preventDefault();
+
+      const email = prompt("Por favor, ingresa tu correo electrónico para restablecer tu contraseña:");
+
+      if (!email || !email.includes("@")) {
+        alert("Por favor, ingresa un correo válido.");
+        return;
+      }
+
+      try {
+        await sendPasswordResetEmail(auth, email);
+        alert("Se ha enviado un correo para restablecer tu contraseña.");
+      } catch (error) {
+        console.error("Error al restablecer la contraseña:", error.message);
+        alert("No se pudo enviar el correo: " + error.message);
       }
     });
 
