@@ -41,9 +41,11 @@ async function updateUserProfile(user) {
   // Mostrar los datos en el DOM (si los elementos existen)
   const userNameElement = document.getElementById("userName");
   const userProfilePictureElement = document.getElementById("userProfilePicture");
+  const imagenPerfil = document.getElementById("imagenPerfil");
 
   if (userNameElement) userNameElement.textContent = userName;
   if (userProfilePictureElement) userProfilePictureElement.src = userProfilePicture;
+  if(imagenPerfil) imagenPerfil.src = userProfilePicture;
 }
 
 // Temporizador de cierre por inactividad (10 min)
