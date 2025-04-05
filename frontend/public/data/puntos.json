@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "nombre": "Cualtos",
+    "coords": [-102.781528, 20.846978],
+    "icono": "/frontend/src/assets/iconos/parada_camiones.svg"
+  },
+  {
+    "id": 2,
+    "nombre": "Central Camionera",
+    "coords": [-102.764059, 20.801361],
+    "icono": "/frontend/src/assets/iconos/parada_camiones.svg"
+  }
+]

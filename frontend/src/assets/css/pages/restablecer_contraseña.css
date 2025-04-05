@@ -1,0 +1,117 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 2.5rem !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.5rem !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+  color: #000 !important;
+}
+
+.auth-background {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  overflow: hidden;
+}
+
+/* Círculos decorativos */
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+.circle1 {
+  background: #296e03;
+  width: 400px;
+  height: 400px;
+  top: -150px;
+  right: -100px;
+}
+.circle2 {
+  background: #c8ea89;
+  width: 120px;
+  height: 120px;
+  bottom: 40px;
+  right: 100px;
+}
+.circle3 {
+  background: #c8ea89;
+  width: 500px;
+  height: 500px;
+  bottom: -250px;
+  left: -150px;
+}
+.circle4 {
+  background: #296e03;
+  width: 180px;
+  height: 180px;
+  top: 80px;
+  left: 100px;
+}
+
+/* Contenedor del formulario */
+.form-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container-password {
+  background-color: white;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  z-index: 10;
+}
+
+.btn-password {
+  background-color: #157347 !important;
+  border-color: #157347 !important;
+  color: rgb(255, 255, 255) !important;
+  height: normal;
+  text-align: center !important;
+  font-size: 20px;
+  font-weight: 600;
+  height: normal;
+  border-radius: 10px;
+}
+
+.titulo-con-lineas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.titulo-con-lineas h5 {
+  margin: 0;
+  white-space: nowrap;
+  font-weight: normal !important;
+}
+
+.titulo-con-lineas hr {
+  flex-grow: 1;
+  border: none;
+  border-top: 1px solid black;
+}
+
+.form-control {
+  flex: 1 1 auto;
+}

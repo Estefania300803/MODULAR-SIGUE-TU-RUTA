@@ -1,0 +1,154 @@
+/* ===================
+   BOTONES
+   =================== */
+
+/* Botón "Iniciar sesión" */
+.btn-success {
+  color: #fff; /* Color del texto */
+  background-color: #28a745; /* Color verde */
+  border-color: #28a745; /* Borde verde */
+  width: 100%; /* Ancho completo del contenedor */
+  max-width: 400px; /* Máximo ancho, ajustable */
+  margin: 0 auto; /* Centrado horizontal */
+  height: 38px; /* Define un largo fijo */
+  display: flex; /* Usa flexbox para alinear contenido */
+  align-items: center; /* Centra el texto verticalmente */
+  justify-content: center; /* Centra el texto horizontalmente */
+  padding: 10px;
+  font-size: 1.1rem;
+}
+
+/* Botón "Continuar con Google" */
+.btn-outline-secondary {
+  width: 100%; /* Ancho completo del contenedor */
+  max-width: 200px; /* Máximo ancho, ajustable */
+  padding: 0.6rem; /* Tamaño interno */
+  font-size: 1.1rem;
+  margin: 0 auto; /* Centrado horizontal */
+  height: 50px; /* Define un largo fijo */
+  line-height: 60px; /* Centra el texto verticalmente si no usas flexbox */
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+/* Ajustes para el botón en móviles */
+.btn-success {
+  font-size: 1rem; /* Reduce el tamaño de la fuente en móviles */
+}
+
+#btnllegar {
+  text-align: center !important;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.d-flex button {
+  background-color: #8dce76;
+  border-color: #8dce76;
+  color: rgb(7, 7, 7);
+  height: normal;
+  text-align: center !important;
+  font-size: 20px;
+  font-weight: 600;
+  height: normal;
+}
+
+/* ===================
+   FORMULARIOS E INPUTS
+   =================== */
+
+.form-container {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-container i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+}
+
+.form {
+  font-size: 1.1rem;
+  padding: 0.8rem;
+}
+
+input::placeholder {
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.form-control {
+  text-align: left;
+  font-family: Inter, sans-serif;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* Entrada de texto e íconos */
+.input-group .input-group-text {
+  font-size: 1.2rem; /* Aumenta el tamaño del ícono */
+}
+
+.form-control {
+  font-size: 1.1rem; /* Escala el texto de entrada */
+}
+
+/* ===================
+   LOGOS E IMÁGENES
+   =================== */
+
+/* Imagen de fondo */
+.bg-image {
+  background-image: url('@/assets/imagenes/camion.png'); /* Cambia aquí la URL de la imagen */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; /* Evita que se repita */
+  height: 100vh; /* Asegura que cubra toda la altura de la ventana */
+  width: 50%; /* Asegura que cubra todo el ancho de la ventana */
+}
+
+/* Logo */
+.logo {
+  height: auto; /* Mantiene las proporciones automáticamente */
+  margin-bottom: 1rem;
+}
+
+.logo img {
+  display: block;
+  margin: 0 auto;
+}
+
+/*Iconos*/
+
+.bi-arrow-left-right {
+  text-align: right;
+  font-family: Inter;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+/* Estilos de los iconos */
+#user-menu ul li i {
+  font-size: 20px; /* Tamaño de los iconos */
+  margin-right: 12px;
+  color: #555;
+}

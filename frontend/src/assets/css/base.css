@@ -1,0 +1,34 @@
+/* ===================
+   RESET Y TIPOGRAFÍA GLOBAL
+   =================== */
+
+/* Estilo general del fondo */
+body,
+html {
+  height: 100%;
+  margin: 0;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+h1,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* ===================
+   ENLACES GENERALES
+   =================== */
+.register-link {
+  color: #28a745;
+  text-decoration: none;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}

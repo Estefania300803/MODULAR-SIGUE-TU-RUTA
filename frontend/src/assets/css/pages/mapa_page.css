@@ -1,0 +1,130 @@
+/* ===================
+   Mapa page
+   =================== */
+@import 'ol/ol.css';
+/* Mapa */
+#mapa {
+  display: flex;
+  z-index: 1; /* Menor que el fondo gris y la sidebar */
+  height: calc(100vh - 75px); /* Ajusta la altura del mapa */
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  height: 100vh; /* Ocupar toda la pantalla */
+  margin-top: 75px;
+}
+
+/* Simbología y adicional*/
+
+.col1 {
+  display: flex;
+  width: 315px;
+  height: 100vh; /* Ajusta la altura al 100% de la pantalla */
+  overflow: hidden; /* Permite el desplazamiento si el contenido es mayor que la altura */
+  padding: 10px;
+  margin-right: 5px;
+  flex-direction: column;
+}
+
+.simbologia p,
+.adicional p {
+  color: #1a1a1a;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: 700;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  margin-bottom: 20px;
+}
+
+.simbologia ul,
+.adicional ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.simbologia ul li,
+.adicional ul li {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.simbologia ul li img,
+.adicional ul li img {
+  width: 40px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.simbologia ul li span,
+.adicional ul li span {
+  text-align: center;
+  display: inline;
+  font-size: 20px;
+}
+
+.col2 {
+  border-color: #f30909;
+  border-width: 1px;
+  border-style: solid;
+  padding: 10px;
+  margin-left: 5px;
+  left: 315px; /* Empuja col2 para que no se encime con col1 */
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===================
+   Mapa page
+   =================== */
+
+/* Fondo oscuro */
+.modal-overlay {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Mostrar modal cuando está activo */
+.modal-overlay.active {
+  display: flex;
+}
+
+/* Contenido del modal */
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 350px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+/* Botón de cierre */
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Deshabilitar scroll al abrir el modal */
+body.modal-open {
+  overflow: hidden;
+}
