@@ -13,6 +13,7 @@
 .container {
   display: flex;
   height: 100vh; /* Ocupar toda la pantalla */
+  width: 100vw; /* Asegura que ocupe todo el ancho visible */
   margin-top: 75px;
 }
 
@@ -20,16 +21,15 @@
 
 .col1 {
   display: flex;
-  width: 315px;
+  width: 10vw;
   height: 100vh; /* Ajusta la altura al 100% de la pantalla */
-  overflow: hidden; /* Permite el desplazamiento si el contenido es mayor que la altura */
   padding: 10px;
   margin-right: 5px;
   flex-direction: column;
 }
 
-.simbologia p,
-.adicional p {
+.simbologia.card-body p,
+.adicional.card-body p {
   color: #1a1a1a;
   font-size: 30px;
   font-weight: bold;
@@ -37,6 +37,7 @@
   text-decoration-line: underline;
   text-decoration-style: solid;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .simbologia ul,
@@ -48,7 +49,7 @@
 
 .simbologia ul li,
 .adicional ul li {
-  padding: 15px;
+  padding: 10px;
   display: flex;
   align-items: center;
 }
@@ -62,7 +63,6 @@
 
 .simbologia ul li span,
 .adicional ul li span {
-  text-align: center;
   display: inline;
   font-size: 20px;
 }
@@ -78,6 +78,24 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+.menu-adicional {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px; /* Espacio entre botones */
+}
+
+.dropdown-center .btn {
+  text-align: left;
+  width: 150px; /* Mismo ancho para ambos */
+}
+
+.btn.dropdown-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 150px;
 }
 
 /* ===================
