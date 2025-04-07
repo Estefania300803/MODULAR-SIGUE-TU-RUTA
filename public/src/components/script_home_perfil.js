@@ -23,13 +23,13 @@ function mostrarFormulario(tipo) {
         container.innerHTML = `
             <div class="layotseguridad">
                 <label for="Tituloseguridad">Contraseña actual:</label>
-                <input type="password" id="actual" placeholder="Ingrese su contraseña actual">
+                <input type="password" id="actual">
                 
                 <label for="Tituloseguridad">Nueva contraseña:</label>
-                <input type="password" id="nueva" placeholder="Nueva contraseña">
+                <input type="password" id="nueva">
 
                 <label style="left: -18%;" for="Tituloseguridad">Confirmar contraseña:</label>
-                <input type="password" id="confirmar" placeholder="Confirmar contraseña">
+                <input type="password" id="confirmar">
 
                 <div class = "botones-container">
                     <button class="boton-cancelar"  onclick="cerrarFormulario()">Cancelar</button>

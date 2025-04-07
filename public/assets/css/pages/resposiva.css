@@ -1,0 +1,118 @@
+/* Media Query para pantallas más pequeñas (por ejemplo, 1324x950) */
+/*
+@media only screen and (max-width: 1056px) {
+    .sidebar {
+        /* width: 60px; 
+        top: 10%;
+        height: calc(100vh - 70px);
+        background-color: #f4f4f4;
+        position: fixed;
+        left: 0;
+        transition: width 0.3s ease;
+        overflow: hidden;
+    }
+
+    .imaguen_mapa{
+        display: block;
+        margin-top: 10px; /* Espacio opcional entre texto e imagen 
+        max-width: 100%;
+        height: auto;
+    }
+    .col h1 {
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        text-align: center;
+        color: #296E03 !important;
+        text-align: center;
+    }
+}*/
+/*
+@media screen and (max-width: 820px) {
+    .sidebar {
+        top: 11.8%;
+        height: calc(100vh - 70px);
+        background-color: #f4f4f4;
+        position: fixed;
+        left: 0;
+        transition: width 0.3s ease;
+        overflow: hidden;
+    }
+
+    .titulo-oculto {
+        display: none;
+      }
+
+    .custom-navbar .container-fluid {
+      flex-direction: column;
+      align-items: flex-start !important;
+      padding: 10px;
+    }
+  
+    .custom-navbar .navbar-brand {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+    }
+  
+    .custom-navbar form {
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+  
+    .form-control1 {
+        width: 29% !important;
+        margin-top: -13%;
+        margin-left: -37%;
+      }
+      
+      .custom-button2 {
+        width: 35% !important;
+        margin-top: -13%;
+        margin-left: 35%;
+      }
+      
+      #btn-user {
+        width: 5% !important;
+        height: 45px;
+      }
+      
+  
+    .custom-navbar #btn-user img {
+      position: fixed;
+      width: 100%;
+      height: 80%;
+    }
+
+    .btn{
+        margin-top: -14.3%;
+        margin-right: -90%;
+    }
+    
+    .imaguen_mapa{
+        font-size: 14px;
+        margin-top: 60%;
+        margin-left: -45%
+    }
+
+    .Titulo1{
+        font-size: 26px !important;
+        width: 140% !important;
+        margin-top: -60%;
+        margin-left: 45%;
+        text-align: left;
+
+    }
+
+    .subtitulo2{
+        font-size: 20px !important;
+        width: 140% !important;
+        margin-top: -5%;
+        margin-left: 45%;
+    }
+
+  } */
+  

@@ -34,3 +34,43 @@
     text-align: left;
     color: #000000 !important;
 }
+
+/* Estilos para el input de búsqueda */
+.search-input {
+    width: 400px;
+    height: 43.3px;
+    flex-shrink: 0;
+    border-radius: 2px;
+    background: #CCD4C9;
+  }
+  
+  /* Botón "Como llegar" */
+  .llegar-btn {
+    width: 150px;
+    height: 43.3px;
+    flex-shrink: 0;
+    border-radius: 2px;
+    background: #CCD4C9;
+  }
+  
+  /* Botón de perfil de usuario */
+  .user-btn {
+    width: 45px;
+    height: 45px;
+    background: #CCD4C9;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  
+  /* Imagen del perfil dentro del botón */
+  .user-profile-img {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+    position: absolute;
+  }
+  
+  .move-left {
+    margin-left: -20px; /* Puedes ajustar este valor */
+  }

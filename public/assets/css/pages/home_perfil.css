@@ -70,7 +70,7 @@
 /*Tamaño de la imaguen del usuario para que esta sea redonda*/
 .imagen-circular {
     position: relative;
-    top: -60px;   /* Mueve la imagen hacia abajo (usa valores negativos para subir) */
+    top: -40px;   /* Mueve la imagen hacia abajo (usa valores negativos para subir) */
     width: 220px;  /* Ajusta el tamaño de la imagen */
     height: 220px; /* Mantiene la proporción */
     border-radius: 50%; /* Hace la imagen circular */
@@ -180,4 +180,35 @@ input[type="password"] {
     width: 100px; /* Ancho del botón */
     height: 30px; /* Alto del botón */
     border: none; /* Sin borde */
+}
+
+.boton-editar {
+    position: absolute; 
+    top: 47%;
+    left: 37%;
+    transform: translate(-50%, -50%);
+    width: 38px;   /* Ajusta el tamaño */
+    height: 38px;  /* Debe ser igual al ancho */
+    border-radius: 50%; /* Hace el botón redondo */
+    border: none;  /* Quita el borde (opcional) */
+    background-color: #f4f8fa; /* Color de fondo */
+}
+
+/* Media Query para pantallas más pequeñas (por ejemplo, 1324x950) */
+@media only screen and (max-width: 1324px) {
+    .profile {
+        display: flex;
+        background: #FFF;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        height: 70vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}
+
+/* Media Query para pantallas aún más pequeñas (por ejemplo, dispositivos móviles) */
+@media only screen and (max-width: 568px) {
+
 }

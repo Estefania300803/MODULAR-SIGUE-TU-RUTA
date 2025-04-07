@@ -3,7 +3,6 @@ import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/fi
 import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
 const backendURL = "https://us-central1-sigue-tu-ruta-tepatitlan.cloudfunctions.net/app";
-
 // Obtener configuración segura desde el backend
 const config = await fetch(`${backendURL}/firebase-config`).then(res => res.json());
 
@@ -41,9 +40,11 @@ async function updateUserProfile(user) {
   // Mostrar los datos en el DOM (si los elementos existen)
   const userNameElement = document.getElementById("userName");
   const userProfilePictureElement = document.getElementById("userProfilePicture");
+  const imagenPerfil = document.getElementById("imagenPerfil");
 
   if (userNameElement) userNameElement.textContent = userName;
   if (userProfilePictureElement) userProfilePictureElement.src = userProfilePicture;
+  if(imagenPerfil) imagenPerfil.src = userProfilePicture;
 }
 
 // Temporizador de cierre por inactividad (10 min)
