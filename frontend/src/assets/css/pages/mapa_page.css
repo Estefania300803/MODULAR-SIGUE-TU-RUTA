@@ -8,20 +8,23 @@
   z-index: 1; /* Menor que el fondo gris y la sidebar */
   height: calc(100vh - 75px); /* Ajusta la altura del mapa */
   width: 100%;
+  margin-left: 60px;
 }
 
 .container {
+  position: fixed;
   display: flex;
   height: 100vh; /* Ocupar toda la pantalla */
   width: 100vw; /* Asegura que ocupe todo el ancho visible */
   margin-top: 75px;
+  max-width: 1550px; /* Limita el ancho máximo */
 }
 
 /* Simbología y adicional*/
 
 .col1 {
   display: flex;
-  width: 10vw;
+  width: 20vw;
   height: 100vh; /* Ajusta la altura al 100% de la pantalla */
   padding: 10px;
   margin-right: 5px;
@@ -88,14 +91,19 @@
 
 .dropdown-center .btn {
   text-align: left;
-  width: 150px; /* Mismo ancho para ambos */
+  width: 15vw; /* Mismo ancho para ambos */
+  background-color: #296e03;
 }
 
 .btn.dropdown-toggle {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 150px;
+  width: 15vw;
+}
+
+.dropdown-menu {
+  width: 15vw;
 }
 
 /* ===================

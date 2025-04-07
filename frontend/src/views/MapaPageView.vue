@@ -6,8 +6,8 @@
 
     <div class="container">
       <div class="col2" id="mapa"></div>
-      <div class="col1" id="simbolos">
-        <div class="card" style="width: 18rem;">
+      <div class="col1 fullscreen-static" id="simbolos">
+        <div class="card" style="width: 18rem; margin-bottom: 20px;">
           <div class="adicional card-body">
             <p class="card-title">Adicional</p>
             <ul class="card-text">
@@ -22,9 +22,13 @@
                     Camiones
                   </button>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Action two</a></li>
-                    <li><a class="dropdown-item" href="#">Action three</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Centro-Cerrito</a>
+                    </li>
+                    <hr />
+                    <li>
+                      <a class="dropdown-item" href="#">Matamoros-Central</a>
+                    </li>
                   </ul>
                 </div>
               </li>
@@ -39,16 +43,18 @@
                     Rutas
                   </button>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Action two</a></li>
-                    <li><a class="dropdown-item" href="#">Action three</a></li>
+                    <li><a class="dropdown-item" href="#">R01/02</a></li>
+                    <hr />
+                    <li><a class="dropdown-item" href="#">R03/04</a></li>
+                    <hr />
+                    <li><a class="dropdown-item" href="#">R05/06</a></li>
                   </ul>
                 </div>
               </li>
             </ul>
           </div>
         </div>
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 18rem; margin-bottom: 20px;">
           <div class="simbologia card-body">
             <p class="card-title">Simbología</p>
             <ul class="card-text">
