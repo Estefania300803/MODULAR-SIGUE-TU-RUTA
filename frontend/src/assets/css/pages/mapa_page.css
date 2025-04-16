@@ -1,5 +1,5 @@
 /* ===================
-   Mapa page
+  Mapa page
    =================== */
 @import 'ol/ol.css';
 /* Mapa */
@@ -11,20 +11,11 @@
   margin-left: 60px;
 }
 
-.container {
-  position: fixed;
-  display: flex;
-  height: 100vh; /* Ocupar toda la pantalla */
-  width: 100vw; /* Asegura que ocupe todo el ancho visible */
-  margin-top: 75px;
-  max-width: 1550px; /* Limita el ancho máximo */
-}
-
 /* Simbología y adicional*/
 
 .col1 {
   display: flex;
-  width: 20vw;
+  width: 12%;
   height: 100vh; /* Ajusta la altura al 100% de la pantalla */
   padding: 10px;
   margin-right: 5px;
@@ -106,6 +97,15 @@
   width: 15vw;
 }
 
+.dropdown-item + i.bi {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.dropdown-menu i.bi {
+  font-size: 20px;
+}
+
 /* ===================
    Mapa page
    =================== */
@@ -153,4 +153,18 @@
 /* Deshabilitar scroll al abrir el modal */
 body.modal-open {
   overflow: hidden;
+}
+
+/* Pantallas pequeñas (vertical/móvil) */
+@media (max-width: 768px) {
+  #simbolos {
+    background-color: white;
+    overflow-y: auto;
+    max-height: calc(100vh - 75px);
+  }
+
+  #mapa {
+    height: calc(100vh - 75px);
+    width: 100%;
+  }
 }

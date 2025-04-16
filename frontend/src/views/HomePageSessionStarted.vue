@@ -8,13 +8,22 @@
         <p>Únete a la comunidad de 5,000+ usuarios</p>
       </div>
       <div class="col">
-        <img src="@/assets/imagenes/mapa.png" alt="Mapa" width="500" height="500" />
+        <img
+          src="@/assets/imagenes/mapa.png"
+          alt="Mapa"
+          width="500"
+          height="500"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import AppNavbar from '@/components/AppNavbar.vue'
-import AppSidebar from '@/components/AppSidebar.vue'
+import AppNavbar from "@/components/AppNavbar.vue";
+import AppSidebar from "@/components/AppSidebar.vue";
 </script>
+
+<style scoped>
+@import "@/assets/css/pages/home_page.css";
+</style>

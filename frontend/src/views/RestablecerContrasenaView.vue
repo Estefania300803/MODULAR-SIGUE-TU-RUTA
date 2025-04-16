@@ -8,9 +8,8 @@
 
     <!-- Contenido centrado -->
     <div class="form-wrapper d-flex align-items-center justify-content-center">
-      <div class="form-container-password text-center">
+      <div class="form-container-password text-center p-4 p-md-5">
         <h1 class="mb-4">Restablecer Contraseña</h1>
-        <br />
 
         <form @submit.prevent="handleSubmit">
           <div class="mb-3 input-group">
@@ -30,7 +29,7 @@
             <hr />
           </div>
 
-          <button type="submit" class="btn-password btn-success w-100 mt-3">
+          <button type="submit" class="btn-password btn w-100 mt-3">
             Restablecer su contraseña
           </button>
         </form>
@@ -40,15 +39,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 
-const email = ref('')
+const email = ref("");
 
 function handleSubmit() {
-  alert(`Se enviará un correo a: ${email.value}`)
-  // Aquí podrías integrar Firebase, Supabase, etc.
+  alert(`Se enviará un correo a: ${email.value}`);
 }
 </script>
 <style scoped>
-@import '@/assets/css/pages/restablecer_contraseña.css';
+@import "@/assets/css/pages/restablecer_contraseña.css";
 </style>

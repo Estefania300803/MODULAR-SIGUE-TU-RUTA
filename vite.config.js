@@ -11,5 +11,9 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./frontend/src', import.meta.url)),
     },
+    server: {
+      host: '192.168.122.6', // <-- permite conexiones externas
+      port: 5173, // puedes cambiarlo si ya está ocupado
+    },
   },
 })

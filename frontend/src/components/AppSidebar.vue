@@ -1,17 +1,14 @@
-<script setup>
-import { onMounted } from 'vue'
-import initSidebarHover from '@/assets/js/sidebar_animacion.js'
-
-onMounted(() => {
-  initSidebarHover()
-})
-</script>
-
 <template>
-  <!-- Sidebar -->
-  <div class="sidebar" id="sidebar">
-    <ul>
-      <li class="menu-item">
+  <!-- Sidebar siempre visible, se controla con clases -->
+  <div
+    class="sidebar"
+    :class="{ expanded: isExpanded }"
+    id="sidebar"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
+  >
+    <ul class="m-0 p-0 list-unstyled">
+      <li class="menu-item" @click="toggleSidebar">
         <i class="bi bi-list"></i>
         <span>Menú</span>
       </li>
@@ -24,11 +21,16 @@ onMounted(() => {
         </router-link>
       </li>
       <li class="menu-item">
-        <router-link to="/mapa" class="d-flex align-items-center text-decoration-none text-dark">
+        <router-link
+          to="/mapa"
+          class="d-flex align-items-center text-decoration-none text-dark"
+        >
           <i class="bi bi-map"></i> <span>Mapas</span>
         </router-link>
       </li>
-      <li class="menu-item"><i class="bi bi-bus-front"></i> <span>Camiones</span></li>
+      <li class="menu-item">
+        <i class="bi bi-bus-front"></i> <span>Camiones</span>
+      </li>
       <li class="menu-item">
         <router-link
           to="/nosotros-sessionstarted"
@@ -40,3 +42,28 @@ onMounted(() => {
     </ul>
   </div>
 </template>
+<script setup>
+import { ref } from "vue";
+
+// Detecta si estamos en pantalla chica
+const isMobile = ref(window.innerWidth < 768);
+const isExpanded = ref(isMobile.value);
+
+// Escucha el resize para actualizar `isMobile`
+window.addEventListener("resize", () => {
+  isMobile.value = window.innerWidth < 768;
+  if (!isMobile.value) isExpanded.value = false; // Reset en desktop
+});
+
+function toggleSidebar() {
+  isExpanded.value = !isExpanded.value;
+}
+
+function handleMouseEnter() {
+  if (!isMobile.value) isExpanded.value = true;
+}
+
+function handleMouseLeave() {
+  if (!isMobile.value) isExpanded.value = false;
+}
+</script>

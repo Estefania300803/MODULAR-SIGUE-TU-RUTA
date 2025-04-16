@@ -1,213 +1,262 @@
-/* El contenedor de todos los layot de la page perfil*/
+/* ======================
+   ESTRUCTURA GENERAL
+   ====================== */
 .content {
   display: flex;
-  justify-content: center; /* Centra el contenido */
-  align-items: flex-start; /* Alinea los elementos arriba */
-  max-width: 120%;
-  padding: 10vh 13%;
-  gap: 40px; /* Agrega espacio entre perfil y formulario */
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 10vh 5vw;
 }
 
-/*layot de perfil*/
+/* ======================
+   PERFIL DE USUARIO
+   ====================== */
 .profile {
   display: flex;
-  border: 1px solid #ded9d9; /* Dibuja un borde */
-  background: #fff;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  width: 34%;
-  height: 70vh;
-  margin-left: 10%;
-  flex-shrink: 0;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid #ded9d9;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  max-width: 400px;
+  height: auto;
+  padding: 2rem;
   margin-top: 6vh;
-}
-
-/* Contenedor de los botones */
-.divbotones {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5vh; /* Espacio relativo entre botones */
-  align-items: center;
-  width: 100%; /* Se adapta al layout */
-}
-
-/* Estilos de los botones */
-.botoncorreo,
-.botonseguridad {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* Espacio entre texto e icono */
-  border: none; /* Sin borde */
-  padding: 1vh 3vh; /* Ajusta el tamaño dinámicamente */
-  width: 90%; /* Ocupa casi todo el ancho del layout perfil */
-  height: 5vh; /* Se adapta a la altura */
-  background-color: white;
-  flex-shrink: 0;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  font-family: Inter;
-  font-size: 2.5vh; /* Ajusta el tamaño de la fuente */
-  font-weight: 400;
-  line-height: normal;
-}
-
-/* Ajusta la posición de los botones */
-.botoncorreo {
-  margin-top: 4vh;
-}
-
-.botonseguridad {
-  margin-top: 3vh;
-}
-
-/* Tamaño del icono dentro del botón */
-.botoncorreo .icono,
-.botonseguridad .icono {
-  font-size: 2vh; /* Se adapta al tamaño de la pantalla */
-}
-
-/*Tamaño de la imaguen del usuario para que esta sea redonda*/
-.imagen-circular {
-  position: relative;
-  top: -10px; /* Mueve la imagen hacia abajo (usa valores negativos para subir) */
-  width: 220px; /* Ajusta el tamaño de la imagen */
-  height: 220px; /* Mantiene la proporción */
-  border-radius: 50%; /* Hace la imagen circular */
-  object-fit: cover; /* Recorta la imagen si no es cuadrada */
-  border: 2px solid #000; /* Opcional: agrega un borde */
-}
-
-/*Este es el layot donde se colocan los layot correo y seguridad*/
-#formulario-container {
-  flex-grow: 1;
-  max-width: 60%; /* Controla el ancho del formulario */
-  max-height: 5%;
-  margin-top: 6vh;
-}
-
-/*Layot del correo donde el usuario puede modificarlo*/
-.layotcorreo {
-  width: 90%;
-  height: 350px;
-  display: flex;
-  border: none;
-  background: #fff;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.layotcorreo button {
-  width: 100px; /* Ancho del botón */
-  height: 30px; /* Alto del botón */
-  border: none; /* Sin borde */
-  margin: 49px; /* Espaciado entre botones */
-}
-
-/* Botón de Cancelar*/
-.boton-cancelar {
-  background-color: #bfbfbf;
-}
-
-/* Botón de Guardar*/
-.boton-guardar {
-  background-color: #8dce76;
-}
-
-/*el
-  Titulo
-  del
-  correo
-  en
-  el
-  layot
-  de
-  correo
-  los
-  demas
-  comentarios
-  esque
-  se
-  me
-  olvida*/
-label[for='Titulocorreo'] {
-  font-size: 20px; /* Tamaño de fuente */
-  color: #000000; /* Color del texto */
-  text-align: left; /* Centrar texto */
-  display: block; /* Hace que ocupe toda la línea */
-  margin-bottom: 10px; /* Espacio debajo del título */
-  position: relative;
-  left: -120px; /* Mueve a la derecha (usa negativo para la izquierda) */
-  top: -40px; /* Mueve hacia arriba (usa positivo para abajo) */
-}
-
-input[type='email'] {
-  position: relative;
-  width: 80%;
-  left: 20px; /* Mueve a la derecha (usa negativo para mover a la izquierda) porque se me olvida*/
-  top: -30px;
-}
-
-/* Layot de seguridad*/
-.layotseguridad {
-  width: 90%;
-  height: 350px;
-  display: flex;
-  border: none;
-  background: #fff;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-/*el
-  Titulo
-  de
-  seguridad
-  en
-  el
-  layot
-  de
-  seguridad
-  los
-  demas
-  comentarios*/
-label[for='Tituloseguridad'] {
-  font-size: 20px;
-  color: #000000;
-  display: block;
-  margin-bottom: 10px;
-  position: relative;
-  left: -20%; /* Mueve a la derecha (usa negativo para la izquierda) */
-  top: -14px; /* Mueve hacia arriba (usa positivo para abajo) */
-}
-
-input[type='password'] {
-  position: relative;
-  gap: 30px;
-  width: 80%;
-  left: 10px; /* Mueve a la derecha (usa negativo para mover a la izquierda) porque se me olvida*/
-  top: -20px; /* Mueve hacia arriba (usa positivo para abajo) */
-}
-
-.botones-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 0 0vh; /* Espacio a los lados en VH */
-  gap: 13vh; /* Espaciado entre botones en VH */
-  margin-top: 20px;
-}
-
-.layotseguridad button {
-  width: 100px; /* Ancho del botón */
-  height: 30px; /* Alto del botón */
-  border: none; /* Sin borde */
 }
 
 .profile h2 {
   color: #212529;
+}
+
+.imagen-circular {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #000;
+  margin-bottom: 2rem;
+}
+
+/* ======================
+   BOTONES DE PERFIL
+   ====================== */
+.divbotones {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vh;
+  width: 100%;
+  align-items: center;
+}
+
+.botoncorreo,
+.botonseguridad {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  height: 5vh;
+  padding: 1vh 3vh;
+  background-color: #fff;
+  border: none;
+  font-family: Inter;
+  font-size: 2.5vh;
+  font-weight: 400;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.icono {
+  font-size: 2vh;
+}
+
+/* ======================
+   CONTENEDOR DE FORMULARIOS
+   ====================== */
+/* Centrar internamente el contenido en columnas */
+#formulario-container,
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ======================
+   FORMULARIOS: CORREO Y SEGURIDAD
+   ====================== */
+.layotcorreo,
+.layotseguridad {
+  width: 90%;
+  max-width: 600px;
+  height: 350px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  margin-bottom: 2rem;
+}
+
+.layotcorreo button,
+.layotseguridad button {
+  width: 100px;
+  height: 30px;
+  border: none;
+}
+
+.boton-guardar {
+  background-color: #8dce76;
+  color: #000;
+  width: 200px;
+  max-width: 100%;
+}
+
+.boton-cancelar {
+  background-color: #bfbfbf;
+  color: #000;
+  width: 200px;
+  max-width: 100%;
+}
+
+label[for='Titulocorreo'],
+label[for='Tituloseguridad'] {
+  font-size: 20px;
+  color: #000;
+  margin-bottom: 10px;
+  align-self: flex-start;
+  margin-left: 5%;
+}
+
+input[type='email'],
+input[type='password'] {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+/* ======================
+   BOTONERA INTERNA SEGURIDAD
+   ====================== */
+.botones-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 6vh;
+  margin-top: 1.5rem;
+}
+
+/* Asegura que el contenido no se oculte tras la sidebar */
+.main-wrapper {
+  min-height: calc(100vh - 70px);
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 60px; /* ancho de la sidebar en modo colapsado */
+  padding-top: 80px;
+}
+
+.imagen-circular {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #000;
+  margin-bottom: 1.5rem;
+}
+
+.main-wrapper {
+  min-height: calc(100vh - 70px); /* Resta altura del navbar */
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* El div del contenido principal blanco */
+.formulario-contenedor {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagen */
+.imagen-circular {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #000;
+  margin-bottom: 1.5rem;
+}
+
+/* Pantallas pequeñas (vertical/móvil) */
+@media (max-width: 768px) {
+  .main-wrapper {
+    margin-left: 0 !important; /* Quita el espacio de la sidebar en móviles */
+    width: 100vw;
+    padding: 1.5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 75px;
+  }
+
+  .formulario-contenedor {
+    width: 95%;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+  }
+
+  .imagen-circular {
+    width: 130px;
+    height: 130px;
+  }
+
+  h2 {
+    font-size: 1.1rem !important;
+  }
+
+  input.form-control {
+    font-size: 0.9rem !important;
+    padding: 0.5rem 0.75rem !important;
+  }
+
+  button.btn {
+    font-size: 0.9rem !important;
+    padding: 0.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .imagen-circular {
+    width: 120px;
+    height: 120px;
+  }
+
+  h2 {
+    font-size: 1rem !important;
+  }
+
+  input.form-control {
+    font-size: 0.85rem !important;
+  }
+
+  button.btn {
+    font-size: 0.9rem !important;
+  }
+
+  .boton-guardar,
+  .boton-cancelar {
+    width: 100%;
+  }
 }

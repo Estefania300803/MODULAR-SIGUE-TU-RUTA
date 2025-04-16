@@ -3,35 +3,95 @@
 const props = defineProps({
   userName: String,
   modelValue: Boolean,
-})
+});
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(["update:modelValue"]);
 
 const toggleMenu = () => {
-  emit('update:modelValue', !props.modelValue)
-}
+  emit("update:modelValue", !props.modelValue);
+};
 </script>
 
 <template>
-  <div id="menu-overlay" v-if="modelValue" class="active" @click="toggleMenu"></div>
+  <!-- Overlay -->
+  <div
+    id="menu-overlay"
+    v-if="modelValue"
+    class="active"
+    @click="toggleMenu"
+  ></div>
 
-  <div id="user-menu" :class="{ active: modelValue }">
-    <i class="bi bi-x close-menu" @click="toggleMenu"></i>
-    <p id="userName">{{ userName }}</p>
-    <ul>
-      <li>
-        <i class="bi bi-person"> </i>
-        <router-link to="/perfil" class="d-flex align-items-center text-decoration-none text-dark">
-          <a href="#perfil">Tu perfil</a>
-        </router-link>
+  <!-- Menú deslizante -->
+  <div
+    id="user-menu"
+    :class="{ active: modelValue }"
+    class="d-flex flex-column"
+  >
+    <!-- Botón de cierre -->
+    <i class="bi bi-x close-menu align-self-end" @click="toggleMenu"></i>
+
+    <!-- Nombre del usuario -->
+    <p id="userName" class="fw-bold text-dark mb-3">{{ userName }}</p>
+
+    <!-- Lista de opciones -->
+    <ul class="list-unstyled ps-0">
+      <li class="mb-2 d-flex align-items-center">
+        <i class="bi bi-person me-2"></i>
+        <router-link
+          to="/perfil"
+          class="text-dark text-decoration-none flex-grow-1"
+          >Tu perfil</router-link
+        >
       </li>
 
-      <li><i class="bi bi-bookmark"></i> <a href="#guardado">Guardado</a></li>
-      <li><i class="bi bi-bell"></i> <a href="#notificaciones">Notificaciones</a></li>
-      <li><i class="bi bi-map"></i> <a href="#rutas">Tus Rutas</a></li>
-      <li><i class="bi bi-share"></i> <a href="#compartir">Compartir</a></li>
-      <li><i class="bi bi-gear"></i> <a href="#configuracion">Configuración</a></li>
-      <li><i class="bi bi-box-arrow-right"></i> <a href="#" id="logout-btn">Cerrar Sesión</a></li>
+      <li class="mb-2 d-flex align-items-center">
+        <i class="bi bi-bookmark me-2"></i>
+        <a href="#guardado" class="text-dark text-decoration-none flex-grow-1"
+          >Guardado</a
+        >
+      </li>
+
+      <li class="mb-2 d-flex align-items-center">
+        <i class="bi bi-bell me-2"></i>
+        <a
+          href="#notificaciones"
+          class="text-dark text-decoration-none flex-grow-1"
+          >Notificaciones</a
+        >
+      </li>
+
+      <li class="mb-2 d-flex align-items-center">
+        <i class="bi bi-map me-2"></i>
+        <a href="#rutas" class="text-dark text-decoration-none flex-grow-1"
+          >Tus Rutas</a
+        >
+      </li>
+
+      <li class="mb-2 d-flex align-items-center">
+        <i class="bi bi-share me-2"></i>
+        <a href="#compartir" class="text-dark text-decoration-none flex-grow-1"
+          >Compartir</a
+        >
+      </li>
+
+      <li class="mb-2 d-flex align-items-center">
+        <i class="bi bi-gear me-2"></i>
+        <a
+          href="#configuracion"
+          class="text-dark text-decoration-none flex-grow-1"
+          >Configuración</a
+        >
+      </li>
+
+      <li class="d-flex align-items-center">
+        <i class="bi bi-box-arrow-right me-2"></i>
+        <a
+          href="#"
+          class="text-dark text-decoration-none flex-grow-1"
+          id="logout-btn"
+          >Cerrar Sesión</a
+        >
+      </li>
     </ul>
   </div>
 </template>

@@ -1,41 +1,37 @@
+.row.g-0.w-100.h-100 {
+  min-height: 100vh;
+}
 /* ===================
    BOTONES
    =================== */
 
-/* Botón "Iniciar sesión" */
 .btn-success {
-  color: #fff; /* Color del texto */
-  background-color: #28a745; /* Color verde */
-  border-color: #28a745; /* Borde verde */
-  width: 100%; /* Ancho completo del contenedor */
-  max-width: 400px; /* Máximo ancho, ajustable */
-  margin: 0 auto; /* Centrado horizontal */
-  height: 38px; /* Define un largo fijo */
-  display: flex; /* Usa flexbox para alinear contenido */
-  align-items: center; /* Centra el texto verticalmente */
-  justify-content: center; /* Centra el texto horizontalmente */
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px;
   font-size: 1.1rem;
-}
-
-/* Botón "Continuar con Google" */
-.btn-outline-secondary {
-  width: 100%; /* Ancho completo del contenedor */
-  max-width: 200px; /* Máximo ancho, ajustable */
-  padding: 0.6rem; /* Tamaño interno */
-  font-size: 1.1rem;
-  margin: 0 auto; /* Centrado horizontal */
-  height: 50px; /* Define un largo fijo */
-  line-height: 60px; /* Centra el texto verticalmente si no usas flexbox */
 }
 
 .btn-success:hover {
   background-color: #218838;
 }
 
-/* Ajustes para el botón en móviles */
-.btn-success {
-  font-size: 1rem; /* Reduce el tamaño de la fuente en móviles */
+.btn-outline-secondary {
+  width: 100%;
+  max-width: 200px;
+  padding: 0.6rem;
+  font-size: 1.1rem;
+  margin: 0 auto;
+  height: 50px;
+  line-height: 60px;
 }
 
 #btnllegar {
@@ -48,16 +44,14 @@
   background-color: #8dce76;
   border-color: #8dce76;
   color: rgb(7, 7, 7);
-  height: normal;
   text-align: center !important;
   font-size: 20px;
   font-weight: 600;
-  height: normal;
 }
 
 /* ===================
-   FORMULARIOS E INPUTS
-   =================== */
+     FORMULARIOS E INPUTS
+     =================== */
 
 .form-container {
   max-width: 400px;
@@ -90,44 +84,40 @@ input::placeholder {
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
+  color: #b6b6b6 !important; /* Gris claro */
+  opacity: 1; /* Asegura visibilidad en todos los navegadores */
 }
 
 .form-control {
   text-align: left;
   font-family: Inter, sans-serif;
-  font-size: 40px;
+  font-size: 1.1rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
 
-/* Entrada de texto e íconos */
 .input-group .input-group-text {
-  font-size: 1.2rem; /* Aumenta el tamaño del ícono */
-}
-
-.form-control {
-  font-size: 1.1rem; /* Escala el texto de entrada */
+  font-size: 1.2rem;
 }
 
 /* ===================
-   LOGOS E IMÁGENES
-   =================== */
+     LOGOS E IMÁGENES
+     =================== */
 
-/* Imagen de fondo */
 .bg-image {
-  background-image: url('@/assets/imagenes/camion.png'); /* Cambia aquí la URL de la imagen */
+  background-image: url('@/assets/imagenes/camion.png');
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat; /* Evita que se repita */
-  height: 100vh; /* Asegura que cubra toda la altura de la ventana */
-  width: 50%; /* Asegura que cubra todo el ancho de la ventana */
+  background-repeat: no-repeat;
+  height: auto;
+  width: 50%;
 }
 
-/* Logo */
-.logo {
-  height: auto; /* Mantiene las proporciones automáticamente */
-  margin-bottom: 1rem;
+.logoregister {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo img {
@@ -135,7 +125,9 @@ input::placeholder {
   margin: 0 auto;
 }
 
-/*Iconos*/
+/* ===================
+     ICONOS
+     =================== */
 
 .bi-arrow-left-right {
   text-align: right;
@@ -146,9 +138,64 @@ input::placeholder {
   line-height: normal;
 }
 
-/* Estilos de los iconos */
 #user-menu ul li i {
-  font-size: 20px; /* Tamaño de los iconos */
+  font-size: 20px;
   margin-right: 12px;
   color: #555;
+}
+
+/* ===================
+     RESPONSIVE
+     =================== */
+
+@media (max-width: 991.98px) {
+  .bg-image {
+    display: none !important;
+  }
+
+  .row.g-0.w-100.h-100 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    min-height: 100vh;
+  }
+
+  .form-container {
+    margin: 1rem auto;
+    max-width: 100%;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .form-container {
+    margin: 1rem;
+    max-width: 100%;
+    box-shadow: none;
+  }
+
+  .form-control {
+    font-size: 1rem;
+  }
+
+  .btn-success,
+  .btn-outline-secondary {
+    font-size: 1rem;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .bg-image {
+    display: none;
+  }
+
+  .row.g-0.w-100.h-100 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Para asegurar orden vertical */
+    padding: 1rem;
+    min-height: 100vh;
+  }
 }

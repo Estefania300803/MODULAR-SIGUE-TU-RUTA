@@ -48,25 +48,17 @@
 .sidebar {
   width: 60px;
   top: 70px;
-  height: calc(
-    100vh - 70px
-  ); /* Ajusta la altura restando la barra superior porque si no se ve el menú chidp*/
+  height: calc(100vh - 70px);
   background-color: #e7e7e7;
   position: fixed;
   left: 0;
   transition: width 0.3s ease;
   overflow: hidden;
-  z-index: 5; /* Menor que el de la sidebar */
+  z-index: 5;
 }
 
 .sidebar.expanded {
   width: 250px;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 .sidebar ul li {
@@ -75,6 +67,10 @@
   padding: 15px;
   cursor: pointer;
   transition: background 0.3s;
+}
+
+.sidebar ul li:hover {
+  background-color: #ddd;
 }
 
 .sidebar ul li i {
@@ -88,88 +84,6 @@
 
 .sidebar.expanded ul li span {
   display: inline;
-}
-
-.sidebar ul li:hover {
-  background-color: #ddd;
-}
-
-.aside {
-  height: 100vh;
-  width: 300px;
-  background-color: #dfdfdf;
-  position: fixed;
-  transition: all 0.4s ease;
-}
-
-.aside {
-  height: 100vh;
-  width: 300px;
-  background-color: #dfdfdf;
-  position: fixed;
-  transition: all 0.4s ease;
-}
-
-.head {
-  display: flex;
-  align-items: center;
-  justify-self: space-between;
-  height: 50px;
-}
-
-.head i {
-  cursor: pointer;
-  font-size: 1.8rem;
-  margin-right: 10px;
-  margin-left: 10px;
-}
-
-.profiel {
-  display: flex;
-  align-items: center;
-}
-
-.profile p {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  font-size: 1.6rem;
-  color: #000000;
-}
-
-.options div {
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  cursor: pointer;
-  margin-bottom: 5px;
-  font-size: 1.1rem;
-}
-
-.options div:hover {
-  background-color: #b3b3b3;
-  transition: all 0.4s ease-in-out;
-}
-
-.options i {
-  font-size: 1.4rem;
-  margin-right: 10px;
-}
-
-/*Modificaciones a la hora de cerrar el menu*/
-.aside.active {
-  width: 70px;
-  transition: all 0.4s ease;
-}
-
-.aside.active .option,
-.aside.active .profile {
-  display: none;
-}
-
-.aside.active .head i,
-.aside.active .options i {
-  margin: auto;
 }
 
 /* ===================
@@ -189,6 +103,11 @@ Paneles laterales
   box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2);
   font-family: Arial, sans-serif;
   z-index: 10000; /* Más alto que el fondo gris */
+
+  /* Scroll */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch; /* para iOS */
 }
 
 /* Clase activa para mostrar el menú */
@@ -277,95 +196,192 @@ Paneles laterales
    Navbar
    =================== */
 
-input::placeholder {
-  font-family: Inter, sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-}
-
-.form-control {
-  text-align: left;
-  font-family: Inter, sans-serif;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
-/*
-#btn-user {
-    flex-shrink: 0;
-    border-radius: 50%;
-    background: #CCD4C9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 43.3px;  /* Ajusta según necesites */
-/*
-    height: 43.3px;
-    padding: 0;
-    margin: 0;
-    border: none;
-    position: relative; /* Para alinear la imagen de fondo */
-/*
-    overflow: hidden; /* Evita desbordamiento de la imagen */
-/*
-}
-*/
-
-/* Agrega la imagen de perfil como fondo */
-/*
-#btn-user::before {
-    content: "";
-    position: absolute;
-    width: 43.3px;
-    height: 43.3px;
-    background-image: url("../assets/imagenes/perfil2.png"); /* Ruta de la imagen */
-/*
-    background-size: cover;
-    background-position: center;
-    border-radius: 50%;
-}
-*/
-
-.bi-arrow-left-right {
-  text-align: right;
-  font-family: Inter;
-  font-size: 19px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+.custom-navbar {
+  top: 0;
+  left: 0;
+  background: #296e03;
+  color: white;
+  height: 70px; /* ✅ fija altura para alinear elementos verticalmente */
+  z-index: 1000;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .navbar-brand {
   color: white !important;
-  text-align: center;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
+  text-decoration: none;
+  font-size: 1.25rem;
+  white-space: nowrap;
 }
 
-header {
-  width: 100%;
-  position: fixed;
-  z-index: 100;
+.custom-button {
+  background-color: #fff;
+  color: #296e03;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
 }
 
-.wrapper {
-  width: 80%;
-  margin: auto;
-  overflow: hidden;
+.custom-button:hover {
+  background-color: #e0e0e0;
 }
 
-.custom-navbar {
-  margin: 0;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #296e03; /* Color sólido para ocultar el contenido */
-  color: white;
-  position: fixed;
-  overflow: hidden;
-  z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+@media (max-width: 768px) {
+  .navbar-brand span {
+    font-size: 0.85rem;
+  }
+
+  .custom-navbar .form-control {
+    max-width: 140px !important;
+    height: 32px !important;
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .custom-navbar #btnllegar {
+    width: auto !important;
+    height: 32px !important;
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.5rem !important;
+    white-space: nowrap;
+  }
+
+  .custom-navbar #btn-user {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .custom-navbar #btn-user img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  /* Alineación horizontal con espacio y sin desbordamiento */
+  .custom-navbar .d-flex {
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+  }
+
+  .custom-navbar form {
+    flex-wrap: nowrap !important;
+    justify-content: flex-end;
+  }
+
+  #user-menu {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    height: 100vh;
+    padding: 20px 16px 20px 16px;
+  }
+}
+
+@media (max-width: 860px) and (min-width: 576px) {
+  .custom-navbar .container-fluid {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: space-between;
+  }
+
+  .custom-navbar form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .custom-navbar .form-control {
+    flex: 1 1 auto;
+    min-width: 120px;
+    height: 32px !important;
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .custom-navbar #btnllegar {
+    flex: 0 0 auto;
+    height: 32px !important;
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.5rem !important;
+    white-space: nowrap;
+  }
+
+  .custom-navbar #btn-user {
+    flex: 0 0 auto;
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .custom-navbar #btn-user img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  #user-menu {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    height: 100vh;
+    padding: 20px 16px 20px 16px;
+  }
+}
+
+@media (max-width: 870px) {
+  .custom-navbar .container-fluid {
+    flex-wrap: nowrap !important;
+    gap: 0.5rem;
+  }
+
+  .custom-navbar form {
+    flex: 1 1 auto;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.5rem;
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  .custom-navbar .form-control {
+    flex: 1 1 100%;
+    min-width: 80px;
+    height: 32px !important;
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #searchInput {
+    width: 300px !important;
+  }
+
+  .custom-navbar #btnllegar {
+    flex: 0 0 auto;
+    height: 32px !important;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    white-space: nowrap;
+  }
+
+  .custom-navbar #btn-user {
+    flex: 0 0 auto;
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .custom-navbar #btn-user img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  #user-menu {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    height: 100vh;
+    padding: 20px 16px 20px 16px;
+  }
 }
