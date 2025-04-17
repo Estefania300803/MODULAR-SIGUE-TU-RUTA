@@ -23,67 +23,73 @@
   <!-- Bootstrap Propio -->
   <script src="./src/components/modales.js"></script>
 
-  <div class="row g-0 w-100 h-100">
-    <!-- Sección completa -->
-    <div class="row w-100 h-100">
-      <!-- Imagen de fondo -->
-      <div class="col-md-6 bg-image"></div>
+<!-- Sección completa -->
+<div class="row w-100 h-100 g-0 align-items-stretch">
+  <!-- Imagen de fondo -->
+  <div class="col-md-6 bg-image"></div>
+
+  <!-- Formulario -->
+  <div class="col-md-6 d-flex align-items-center justify-content-center">
+    <div class="form-container text-center">
+      <!-- Logo -->
+      <div class="logoregister mb-4">
+        <img
+          src="assets/imagenes/logo.png"
+          alt="Logo"
+          class="img-fluid"
+          style="max-width: 150px;"
+        />
+      </div>
+
+      <!-- Título -->
+      <h2 class="text-success mb-4">Registro</h2>
 
       <!-- Formulario -->
-      <div class="col-md-6 d-flex align-items-center justify-content-center">
-        <div class="form-container text-center">
-          <!-- Logo -->
-          <div class="logo mb-4">
-            <!-- Agrega aquí la URL de tu logo -->
-            <img src="assets/imagenes/logo.png" alt="Logo" class="img-fluid" style="max-width: 150px;">
-          </div>
-
-          <!-- Título -->
-          <h2 class="text-success mb-4">Registro</h2>
-
-          <!-- Campos del formulario -->
-          <form action="/new-Contac" method="POST" id="formulario-crear">
-            <div class="mb-3 input-container">
-              <input type="text" name = "nombre" class="form-control" placeholder="Nombre" required 
-              maxlength="30" oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '').replace(/\s{4,}/g, '   ')">
-              <i class="bi bi-person"></i>
-            </div>
-            <div class="mb-3 input-container">
-              <input type="text" name = "apellidos" class="form-control" placeholder="Apellidos" required
-                maxlength="60" oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '').replace(/\s{4,}/g, '   ')">
-              <i class="bi bi-person"></i>
-            </div>
-            <div class="mb-3 input-container">
-              <input type="email" id="email" name="email" class="form-control" placeholder="Correo electrónico" required>
-              <i class="bi bi-envelope"></i>
-            </div>
-            <div class="mb-3 input-container">
-              <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required>
-            </div>
-            <p id="password-warning" class="small text-start" style="color: red; display: none;">Elija una contraseña de 8 o más caracteres</p>
-            <div class="mb-3 input-container">
-              <input type="password" id="password2" name="password2"  class="form-control" placeholder="Confirma la Contraseña" required>
-            </div>
-            <p id="error-msg" style="color: red; display: none;">Las contraseñas no coinciden.</p>
-
-            <!-- Checkbox -->
-            <div class="form-check mb-3 text-start">
-              <input class="form-check-input" type="checkbox" id="Checkboxprincipal" required>
-              <label class="form-check-label" for="acceptTerms" class="enlaces" class="enlaces2">
-                He leído y acepto la <a href="#" class="register-link" id="openModal">Política de privacidad</a> y los <a href="#" class="register-link" id="abremodal">términos de servicio</a> de Sigue tu Ruta
-              </label>
-            </div>
-
-            <!-- Botón -->
-            <input type="submit" value="Registrarse" class="btn btn-success w-100" id="botoncontinuar">
-        
-          </form>
+      <form action="/new-Contac" method="POST" id="formulario-crear">
+        <div class="mb-3 input-container">
+          <input type="text" name="nombre" class="form-control" placeholder="Nombre" required 
+          maxlength="30" oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '').replace(/\s{4,}/g, '   ')">
+          <i class="bi bi-person"></i>
         </div>
-      </div>
+        <div class="mb-3 input-container">
+          <input type="text" name="apellidos" class="form-control" placeholder="Apellidos" required 
+          maxlength="60" oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '').replace(/\s{4,}/g, '   ')">
+          <i class="bi bi-person"></i>
+        </div>
+        <div class="mb-3 input-container">
+          <input type="email" id="email" name="email" class="form-control" placeholder="Correo electrónico" required>
+          <i class="bi bi-envelope"></i>
+        </div>
+        <div class="mb-3 input-container">
+          <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required>
+        </div>
+        <p id="password-warning" class="small text-start" style="color: red; display: none;">
+          Elija una contraseña de 8 o más caracteres
+        </p>
+        <div class="mb-3 input-container">
+          <input type="password" id="password2" name="password2" class="form-control" placeholder="Confirma la Contraseña" required>
+        </div>
+        <p id="error-msg" style="color: red; display: none;">Las contraseñas no coinciden.</p>
+
+        <!-- Checkbox -->
+        <div class="form-check mb-3 text-start">
+          <input class="form-check-input" type="checkbox" id="Checkboxprincipal" required>
+          <label class="form-check-label" for="Checkboxprincipal">
+            He leído y acepto la 
+            <a href="#" class="register-link" id="openModal">Política de privacidad</a>
+            y los 
+            <a href="#" class="register-link" id="abremodal">términos de servicio</a>
+            de Sigue tu Ruta
+          </label>
+        </div>
+
+        <!-- Botón -->
+        <input type="submit" value="Registrarse" class="btn btn-success w-100" id="botoncontinuar">
+      </form>
     </div>
   </div>
+</div>
 
- 
 
 <!-- Todos los modales-->
 <!-- Modal de Politicas-->
