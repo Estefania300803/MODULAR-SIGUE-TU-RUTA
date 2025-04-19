@@ -145,19 +145,18 @@ input::placeholder {
 }
 
 /* ===================
-     RESPONSIVE
-     =================== */
+    RESPONSIVE
+=================== */
 
 @media (max-width: 991.98px) {
-  .bg-image {
+  /* .bg-image {
     display: none !important;
-  }
+  } */
 
   .row.g-0.w-100.h-100 {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
     min-height: 100vh;
   }
 
@@ -167,7 +166,7 @@ input::placeholder {
     box-shadow: none;
   }
 
-  body {
+  .bg-image {
     background-image: url('../imagenes/camion.png');
     background-size: cover;
     background-position: center;
@@ -194,7 +193,12 @@ input::placeholder {
   }
 
   .bg-image {
-    display: none;
+    background-image: url('../imagenes/camion.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 50%;
   }
 
   .row.g-0.w-100.h-100 {

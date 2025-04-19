@@ -34,70 +34,72 @@
     
     <body>
         
-    <div class="d-flex">
-    <!-- Navbar -->
-    <nav class="navbar custom-navbar position-fixed w-100">
-        <div class="container-fluid d-flex justify-content-between align-items-center">
-        <!-- Logo + texto -->
-        <a class="navbar-brand d-flex align-items-center" href="#">
-            <img src="assets/iconos/Logo_s-l.svg" alt="Logo" width="50" height="44" />
-            <span class="ms-2 brand-text">Sigue Tu Ruta</span>
-        </a>
-    
-        <!-- Botón alineado a la derecha -->
-        <div class="ms-auto">
-            <button
-            type="button"
-            class="btn custom-button"
-            style="width: 150px; border-radius: 2px;"
-            onclick="window.location.href='login.html';"
-            >
-            Iniciar Sesión
-            </button>
-        </div>
-        </div>
-    </nav>
+        <div class="d-flex">
+            <div class="flex-grow-1" style="margin-left: 60px;">
+            <!-- Navbar -->
+            <nav class="navbar custom-navbar position-fixed w-100">
+                <div class="container-fluid d-flex justify-content-between align-items-center">
+                <!-- Logo + texto -->
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <img src="assets/iconos/Logo_s-l.svg" alt="Logo" width="50" height="44" />
+                    <span class="ms-2 brand-text">Sigue Tu Ruta</span>
+                </a>
+            
+                <!-- Botón alineado a la derecha -->
+                <div class="ms-auto">
+                    <button
+                    type="button"
+                    class="btn custom-button"
+                    style="width: 150px; border-radius: 2px;"
+                    onclick="window.location.href='login.html';"
+                    >
+                    Iniciar Sesión
+                    </button>
+                </div>
+                </div>
+            </nav>
 
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <ul class="m-0 p-0 list-unstyled">
-        <li class="menu-item" onclick="toggleSidebar()">
-            <i class="bi bi-list"></i> <span>Menú</span>
-        </li>
-        <li class="menu-item">
-            <a href="index.html" class="d-flex align-items-center text-decoration-none text-dark">
-            <i class="bi bi-grid"></i> <span>Principal</span>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="nosotros.html" class="d-flex align-items-center text-decoration-none text-dark">
-            <i class="bi bi-book"></i> <span>Nosotros</span>
-            </a>
-        </li>
-        </ul>
-    </div>
+            <!-- Sidebar -->
+            <div class="sidebar" id="sidebar">
+                <ul class="m-0 p-0 list-unstyled">
+                <li class="menu-item" onclick="toggleSidebar()">
+                    <i class="bi bi-list"></i> <span>Menú</span>
+                </li>
+                <li class="menu-item">
+                    <a href="index.html" class="d-flex align-items-center text-decoration-none text-dark">
+                    <i class="bi bi-grid"></i> <span>Principal</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="nosotros.html" class="d-flex align-items-center text-decoration-none text-dark">
+                    <i class="bi bi-book"></i> <span>Nosotros</span>
+                    </a>
+                </li>
+                </ul>
+            </div>
 
-        <!-- Contenido principal -->
-        <div class="container center-content">
-        <div class="row align-items-center">
-            <div class="col text-center text-md-start">
-            <h1>¡Bienvenido a Sigue Tu Ruta!</h1>
-            <h3>Rastrea y conoce las rutas de autobuses en Tepatitlán</h3>
-            <p>
-                La mejor aplicación para rastrear tus rutas y compartir tu ubicación en tiempo real.
-            </p>
+                <!-- Contenido principal -->
+                <div class="container center-content">
+                <div class="row">
+                    <div class="col">
+                    <h1>¡Bienvenido a Sigue Tu Ruta!</h1>
+                    <h3>Rastrea y conoce las rutas de autobuses en Tepatitlán</h3>
+                    <p>
+                        La mejor aplicación para rastrear tus rutas y compartir tu ubicación en tiempo real.
+                    </p>
+                    </div>
+                    <div class="col">
+                    <img
+                        src="assets/imagenes/mapa.png"
+                        alt="Mapa"
+                        width="500"
+                        height="500"
+                    />
+                    </div>
+                </div>
+                </div>
             </div>
-            <div class="col text-center">
-            <img
-                src="assets/imagenes/mapa.png"
-                alt="Mapa"
-                width="500"
-                height="500"
-            />
             </div>
-        </div>
-        </div>
-    </div>
-    </div>
+            </div>
     </body>
 </html>
