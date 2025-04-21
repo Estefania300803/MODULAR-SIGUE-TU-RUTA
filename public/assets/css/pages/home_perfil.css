@@ -88,14 +88,15 @@
 
 /*Layot del correo donde el usuario puede modificarlo*/
 .layotcorreo{
-    flex-direction: column;
-    justify-content: center;
-    width: 60%; 
-    height: 240px;
+    width: 90%; 
+    height: 350px;
     display: flex;
+    border: none;
     background: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    border: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .layotcorreo button {
@@ -103,7 +104,6 @@
     height: 30px; /* Alto del botón */
     border: none; /* Sin borde */
     margin: 5px; /* Espaciado entre botones */ 
-    margin-left: 12%;
 }
 
 /* Botón de Cancelar*/
@@ -170,7 +170,7 @@ input[type="password"] {
 .botones-container {
     display: flex; 
     justify-content: center;
-    width: 100%;
+    width: 90%;
     padding: 0 0vh; /* Espacio a los lados en VH */
     gap: 13vh; /* Espaciado entre botones en VH */
     margin-top: 20px;
@@ -212,3 +212,139 @@ input[type="password"] {
 @media only screen and (max-width: 568px) {
 
 }
+
+@media only screen and (max-width: 768px) {
+    .content {
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+  
+    .profile {
+      width: 90%;
+      margin-left: 0;
+      height: auto;
+      padding: 1rem;
+    }
+  
+    .imagen-circular {
+      width: 140px;
+      height: 140px;
+      top: 0;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+  
+    .divbotones {
+      width: 100%;
+      gap: 1rem;
+    }
+  
+    .botoncorreo,
+    .botonseguridad {
+      font-size: 1rem;
+      height: auto;
+      padding: 10px;
+      width: 100%;
+    }
+  
+    #formulario-container {
+      max-width: 100%;
+      width: 100%;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  
+    .layotcorreo,
+    .layotseguridad {
+      width: 100% !important;
+    }
+  
+    .layotcorreo input[type="email"],
+    .layotseguridad input[type="password"] {
+      width: 90% !important;
+      left: 0 !important;
+    }
+  
+    label[for="Tituloseguridad"],
+    label[for="Titulocorreo"] {
+      left: 0 !important;
+      text-align: left;
+    }
+  
+    .botones-container {
+      gap: 1rem;
+      padding: 0;
+    }
+  
+    .botones-container button {
+      width: 90%;
+    }
+  }
+
+  /*Pantallas horizontales*/
+  @media screen and (max-height: 500px) and (max-width: 1024px) {
+    .content {
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: flex-start;
+      padding: 1rem 2rem;
+      flex-wrap: wrap;
+      margin-top: 75px;
+    }
+  
+    .profile {
+      width: 40%;
+      height: auto;
+      padding: 1rem;
+      margin-left: 0;
+      margin-top: 2vh;
+    }
+  
+    .imagen-circular {
+      width: 140px;
+      height: 140px;
+      top: 0;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+  
+    .botoncorreo,
+    .botonseguridad {
+      font-size: 1rem;
+      padding: 10px;
+      height: auto;
+      width: 100%;
+    }
+  
+    #formulario-container {
+      max-width: 50%;
+      width: 100%;
+      margin-top: 2vh;
+    }
+  
+    .layotcorreo,
+    .layotseguridad {
+      width: 100%;
+    }
+  
+    .botones-container {
+      flex-direction: row;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .layotcorreo input[type="email"],
+    .layotseguridad input[type="password"] {
+      width: 90% !important;
+      left: 0 !important;
+    }
+  
+    label[for="Tituloseguridad"],
+    label[for="Titulocorreo"] {
+      left: 0 !important;
+      text-align: left;
+    }
+  }
+  
+  
