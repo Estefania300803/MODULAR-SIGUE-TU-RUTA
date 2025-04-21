@@ -252,10 +252,10 @@
       }
     .navbar-brand span {
       font-size: 0.85rem;
+      display: none;
     }
   
     .custom-navbar .form-control {
-      max-width: 140px !important;
       height: 32px !important;
       font-size: 0.8rem;
       padding: 0.25rem 0.5rem;
@@ -306,7 +306,6 @@
       flex-wrap: nowrap;
       gap: 0.5rem;
       width: 100%;
-      justify-content: space-between;
       align-items: center;
     }
   
