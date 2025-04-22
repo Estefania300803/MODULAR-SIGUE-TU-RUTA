@@ -85,6 +85,12 @@
   .sidebar.expanded ul li span {
     display: inline;
   }
+
+  /* Resalta el elemento activo solo cuando la sidebar NO está expandida */
+.sidebar:not(.expanded) .menu-item.active {
+  background-color: #d3d3d3;  /* Gris claro */
+  border-radius: 5px;
+}
   
   /* ===================
   Paneles laterales
