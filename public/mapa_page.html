@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa</title>
     <link rel="website icon" type="svg" href="assets/iconos/Logo_s-l.svg">
     <link rel="stylesheet" href="assets/css/base.css">
@@ -30,64 +30,123 @@
 </head>
 
 <body>
-    <nav class="navbar custom-navbar position-fixed">
-        <div class="container-fluid d-flex align-items-center">
-            <a class="navbar-brand" href="#">
-                <img src="assets/iconos/Logo_s-l.svg" alt="Bootstrap" width="50" height="44">Sigue Tu Ruta
-            </a>
-            <form class="d-flex align-items-center" role="search">
-                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"
-                    style="width: 400px; height: 43.3px; flex-shrink: 0; border-radius: 2px; background: #CCD4C9;">
-                <button type="button" class="btn custom-button me-2 text-start" id="btnllegar"
-                    style="width: 150px; height: 43.3px; flex-shrink: 0; border-radius: 2px; background: #CCD4C9;"><i
-                        class="bi bi-arrow-left-right me-2"></i>Como llegar</button>
-                <button class="btn rounded-circle d-flex justify-content-center align-items-center" type="button"
-                    id="btn-user" onclick="toggleMenu()"
-                    style="width: 45px; height: 45px; background: #CCD4C9; overflow: hidden; border-radius: 50%;">
-                    <img id="userProfilePicture" src="assets/imagenes/perfil.jpg"
-                        style="width: 45px; height: 45px; object-fit: cover; border-radius: 50%; position: absolute;">
-                </button>
-            </form>
-        </div>
-    </nav>
+    <div class="d-flex">
+        <div class="flex-grow-1" style="margin-left: 60px;">
+            <!-- Navbar -->
+            <nav class="navbar custom-navbar position-fixed w-100">
+                <div class="container-fluid d-flex justify-content-between align-items-center">
+                <!-- Logo + texto -->
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <img src="assets/iconos/Logo_s-l.svg" alt="Logo" width="50" height="44" style="margin-right: 0px;"/>
+                    <span class="ms-2 brand-text">Sigue Tu Ruta</span>
+                </a>
+            
+                <form class="d-flex align-items-center" role="search">
+                    <input class="form-control me-2 form-control1" type="search" placeholder="Buscar" aria-label="Search" style="width: 400px; height: 43.3px; border-radius: 2px; background: #CCD4C9;">                    
+                    <button type="button" class="custom-button2 custom-button me-2 text-start" id="btnllegar" style="width: 150px; height: 43.3px; flex-shrink: 0; border-radius: 2px; background: #CCD4C9;"><i class="bi bi-arrow-left-right me-2"></i>Como llegar
+                    </button>
+                    <button class="btn rounded-circle d-flex justify-content-center align-items-center" type="button" id="btn-user" onclick="toggleMenu()" style="width: 45px; height: 45px; background: #CCD4C9; overflow: hidden; border-radius: 50%;">
+                        <img id="userProfilePicture" src="assets/imagenes/perfil.jpg"  style="width: 45px; height: 45px; object-fit: cover; border-radius: 50%; position: absolute;">
+                </form>
+                </div>
+            </nav>
 
-    <!-- Modal "Cómo llegar" -->
-    <div id="como-llegar-overlay" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-modal" onclick="toggleComoLlegarModal()">&times;</span>
-            <form id="como-llegar-form">
-                <input type="text" id="origen" placeholder="Tu ubicación" required>
-                <input type="text" id="destino" placeholder="Destino" required>
-                <button type="submit">Buscar Ruta</button>
-            </form>
-        </div>
-    </div>
-
-    <div class="sidebar" id="sidebar">
-        <ul>
-            <li class="menu-item"><i class="bi bi-list"></i> <span>Menú</span></li>
-            <li class="menu-item"><i class="bi bi-grid"></i> <span>Principal</span></li>
-            <li class="menu-item"><i class="bi bi-map"></i> <span>Mapas</span></li>
-            <li class="menu-item"><i class="bi bi-bus-front"></i> <span>Camiones</span></li>
-            <li class="menu-item"><i class="bi bi-book"></i> <span>Nosotros</span></li>
-        </ul>
-    </div>
+                <!-- Sidebar -->
+                <div class="sidebar" id="sidebar">
+                    <ul class="m-0 p-0 list-unstyled">
+                    <li class="menu-item" onclick="toggleSidebar()">
+                        <i class="bi bi-list"></i> <span>Menú</span>
+                    </li>
+                    <li class="menu-item">
+                        <a href="home_page_singin.html" class="d-flex align-items-center text-decoration-none text-dark">
+                        <i class="bi bi-grid"></i> <span>Principal</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="mapa_page.html" class="d-flex align-items-center text-decoration-none text-dark">
+                        <i class="bi bi-map"></i> <span>Mapas</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#Camiones" class="d-flex align-items-center text-decoration-none text-dark">
+                        <i class="bi bi-bus-front"></i> <span>Camiones</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="nosotros_singin.html" class="d-flex align-items-center text-decoration-none text-dark">
+                        <i class="bi bi-book"></i> <span>Nosotros</span>
+                        </a>
+                    </li>
+                    </ul>
+                </div>
 
     <div id="menu-overlay" onclick="toggleMenu()"></div>
 
-    <div id="user-menu">
+    <!-- Menú deslizante del usuario para que este entre al menu de configuracion-->
+    <!-- Menú deslizante -->
+    <div id="user-menu" class="d-flex flex-column">
+        <!-- Botón de cierre -->
         <i class="bi bi-x close-menu" onclick="toggleMenu()"></i>
-        <p id="userName"></p>
-        <ul>
-            <li><i class="bi bi-person"></i> <a href="#perfil">Tu perfil</a></li>
-            <li><i class="bi bi-bookmark"></i> <a href="#guardado">Guardado</a></li>
-            <li><i class="bi bi-bell"></i> <a href="#notificaciones">Notificaciones</a></li>
-            <li><i class="bi bi-map"></i> <a href="#rutas">Tus Rutas</a></li>
-            <li><i class="bi bi-share"></i> <a href="#compartir">Compartir</a></li>
-            <li><i class="bi bi-gear"></i> <a href="#configuracion">Configuración</a></li>
-            <li><i class="bi bi-box-arrow-right"></i> <a href="#cerrar">Cerrar Sesión</a></li>
+        <!-- Nombre del usuario -->
+        <p id ="userName"></p>
+        <!-- Lista de opciones -->
+        <ul class="list-unstyled ps-0">
+            <li class="mb-2 d-flex align-items-center">
+            <i class="bi bi-person me-2"></i>
+            <a href="home_perfil.html" class="text-dark text-decoration-none flex-grow-1"
+                >Tu perfil</a>
+            </li>
+
+            <li class="mb-2 d-flex align-items-center">
+            <i class="bi bi-bookmark me-2"></i>
+            <a href="#guardado" class="text-dark text-decoration-none flex-grow-1"
+                >Guardado</a
+            >
+            </li>
+
+            <li class="mb-2 d-flex align-items-center">
+            <i class="bi bi-bell me-2"></i>
+            <a
+                href="#notificaciones"
+                class="text-dark text-decoration-none flex-grow-1"
+                >Notificaciones</a
+            >
+            </li>
+
+            <li class="mb-2 d-flex align-items-center">
+            <i class="bi bi-map me-2"></i>
+            <a href="#rutas" class="text-dark text-decoration-none flex-grow-1"
+                >Tus Rutas</a
+            >
+            </li>
+
+            <li class="mb-2 d-flex align-items-center">
+            <i class="bi bi-share me-2"></i>
+            <a href="#compartir" class="text-dark text-decoration-none flex-grow-1"
+                >Compartir</a
+            >
+            </li>
+
+            <li class="mb-2 d-flex align-items-center">
+            <i class="bi bi-gear me-2"></i>
+            <a
+                href="#configuracion"
+                class="text-dark text-decoration-none flex-grow-1"
+                >Configuración</a
+            >
+            </li>
+
+            <li class="d-flex align-items-center">
+            <i class="bi bi-box-arrow-right me-2"></i>
+            <a
+                href="#"
+                class="text-dark text-decoration-none flex-grow-1"
+                id="logout-btn"
+                >Cerrar Sesión</a
+            >
+            </li>
         </ul>
-    </div>
+        </div>
 
     <div class="container">
         <div class="col1" id="simbolos">
@@ -123,6 +182,8 @@
         <div class="col2" id="mapa">
             <div id="mi_mapa"></div>
         </div>
+    </div>
+    </div>
     </div>
 
     <!-- Script del mapa externo -->

@@ -13,7 +13,7 @@ function mostrarFormulario(tipo) {
             <div class="layotcorreo">
                 <label for="Titulocorreo">Correo:</label>
                 <input type="email" id="email" name="email" value="Emanuel@gmail.com"> 
-                <div>
+                <div class = "botones-container">
                     <button class="boton-cancelar" onclick="cerrarFormulario()">Cancelar</button>
                     <button class = "boton-guardar" onclick="guardarCorreo()">Guardar</button>
                 </div>
@@ -28,7 +28,7 @@ function mostrarFormulario(tipo) {
                 <label for="Tituloseguridad">Nueva contraseña:</label>
                 <input type="password" id="nueva">
 
-                <label style="left: -18%;" for="Tituloseguridad">Confirmar contraseña:</label>
+                <label for="Tituloseguridad">Confirmar contraseña:</label>
                 <input type="password" id="confirmar">
 
                 <div class = "botones-container">
