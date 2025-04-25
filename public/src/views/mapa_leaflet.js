@@ -1,3 +1,6 @@
+// Declarar la variable global
+let polyline;
+let map;
 document.addEventListener("DOMContentLoaded", function () {
   const rutaC02 = [
     [20.84197667, -102.79272667],
@@ -462,7 +465,7 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   // Inicializar el mapa centrado en la primera coordenada de la ruta
-  const map = L.map("mi_mapa").setView(rutaC02[0], 18);
+  map = L.map("mi_mapa").setView(rutaC02[0], 18);
 
   // Capa base de OpenStreetMap
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -470,7 +473,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }).addTo(map);
 
   // Dibujar la ruta con una polilínea
-  const polyline = L.polyline(rutaC02, {
+  polyline = L.polyline(rutaC02, {
     color: "red",
     weight: 5,
     opacity: 0.8,
