@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Leaflet CDN -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
         integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
@@ -25,6 +25,7 @@
             width: 100%;
             height: 100%;
             min-height: 500px;
+            z-index: 1;
         }
     </style>
 </head>
@@ -149,49 +150,97 @@
         </div>
 
     <div class="container">
-        <div class="col1" id="simbolos">
-            <div class="simbologia">
-                <ul>
-                    <p>Simbología</p>
-                    <li class="menu-simbolo"><img src="assets/iconos/camion_verde.svg"
-                            alt="Camiones en circulación"><span>Camiones en circulación</span></li>
-                    <li class="menu-simbolo"><img src="assets/iconos/parada_camiones.svg"
-                            alt="Paradas de Camiones"><span>Paradas de Camiones</span></li>
-                    <li class="menu-simbolo"><img src="assets/iconos/Pin_ubicacion.svg" alt="Tu ubicación"><span>Tu
-                            ubicación</span></li>
-                </ul>
-            </div>
-            <div class="adicional">
-                <ul>
-                    <p>Adicional</p>
-                    <li class="menu-adicional"><img src="assets/iconos/Fav.svg" alt="Favoritos"><span>Favoritos</span>
-                    </li>
-                    <li class="menu-adicional"><img src="assets/iconos/parada_camiones.svg"
-                            alt="Paradas cercanas"><span>Paradas cercanas</span></li>
-                    <li class="menu-adicional"><img src="assets/iconos/camion_verde.svg"
-                            alt="Camiones cercanos"><span>Camiones cercanos</span></li>
-                    <li class="menu-adicional"><img src="assets/iconos/Noti.svg"
-                            alt="Notificaciones"><span>Notificaciones</span>
-                    </li>
-                    <li class="menu-adicional"><img src="assets/iconos/Rutas.svg" alt="Rutas"><span>Rutas</span></li>
-                </ul>
-            </div>
-        </div>
-
         <!-- Contenedor donde se renderiza el mapa -->
         <div class="col2" id="mapa">
             <div id="mi_mapa"></div>
         </div>
+        <div class="col1 fullscreen-static" id="simbolos">
+            <!-- Dropdown Adicional -->
+            <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                <div class="adicional card-body">
+                    <ul class="card-text">
+                        <!-- Dropdown Rutas -->
+                        <li class="menu-adicional">
+                            <div class="dropdown-center">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                    Rutas
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li class="d-flex justify-content-between align-items-center px-2">
+                                        <a class="dropdown-item flex-grow-1" href="#">Centro-Cerrito</a>
+                                        <i class="bi bi-eye toggle-ruta"></i>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-center px-2">
+                                        <a class="dropdown-item flex-grow-1" href="#">C02</a>
+                                        <i class="bi bi-eye toggle-ruta" data-ruta="C02"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+        
+                        <!-- Dropdown Camiones -->
+                        <li class="menu-adicional">
+                            <div class="dropdown-center">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                    Camiones
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li class="d-flex justify-content-between align-items-center px-2">
+                                        <a class="dropdown-item flex-grow-1" href="#">R01/02</a>
+                                        <i class="bi bi-eye toggle-ruta"></i>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-center px-2">
+                                        <a class="dropdown-item flex-grow-1" href="#">R03/04</a>
+                                        <i class="bi bi-eye toggle-ruta"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        
+            <!-- Simbología -->
+            <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                <div class="simbologia card-body">
+                    <p class="card-title">Simbología</p>
+                    <ul class="card-text">
+                        <li class="menu-simbolo">
+                            <img src="assets/iconos/camion_verde.svg" />
+                            <span>Camiones en circulación</span>
+                        </li>
+                        <li class="menu-simbolo">
+                            <img src="assets/iconos/parada_camiones.svg" />
+                            <span>Paradas de Camiones</span>
+                        </li>
+                        <li class="menu-simbolo">
+                            <img src="assets/iconos/Pin_ubicacion.svg" />
+                            <span>Tu ubicación</span>
+                        </li>
+                        <li class="menu-simbolo">
+                            <img src="assets/iconos/coin.svg" />
+                            <span>Tarifa</span>
+                        </li>
+                        <li class="menu-simbolo">
+                            <img src="assets/iconos/clock-history.svg" />
+                            <span>Horario</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>        
     </div>
     </div>
     </div>
 
     <!-- Script del mapa externo -->
     <script src="./src/views/mapa_leaflet.js" defer></script>
+    
 
     <!-- Scripts propios -->
     <script src="./src/components/modales.js"></script>
     <script src="./src/viwes/modal_como_llegar.js"></script>
+    <script src="./src/js/dropdown_mapa.js" defer></script>
     <script src="./src/components/sidebar.js"></script>
     <script src="./src/components/sidebar_animacion.js"></script>
 </body>

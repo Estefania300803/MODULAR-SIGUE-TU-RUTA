@@ -1,73 +1,117 @@
 /* ===================
    Mapa page
    =================== */
+body{
+    overflow: hidden; /* Evitar scroll en el body */
+}
 
 .container{
     display: flex;
     height: 100vh; /* Ocupar toda la pantalla */
     margin-top: 75px;
+    max-width: 1600px !important; /* Aumentado para pantallas grandes */
 }
 
 /* Simbología y adicional*/
 
-.col1{ 
+
+.col1 {
     display: flex;
-    width: 315px;
+    width: auto;
     height: 100vh; /* Ajusta la altura al 100% de la pantalla */
-    overflow: hidden; /* Permite el desplazamiento si el contenido es mayor que la altura */
     padding: 10px;
     margin-right: 5px;
     flex-direction: column;
-}
-
-
-.simbologia p, .adicional p{
-    color:#1a1a1a;
+  }
+  
+  .simbologia.card-body p,
+  .adicional.card-body p {
+    color: #1a1a1a;
     font-size: 30px;
     font-weight: bold;
     text-align: 700;
     text-decoration-line: underline;
     text-decoration-style: solid;
     margin-bottom: 20px;
-}
-
-.simbologia ul, .adicional ul{
+    text-align: center;
+  }
+  
+  .simbologia ul,
+  .adicional ul {
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-.simbologia ul li, .adicional ul li{
-    padding: 15px;
+  }
+  
+  .simbologia ul li,
+  .adicional ul li {
+    padding: 10px;
     display: flex;
     align-items: center;
-}
-
-.simbologia ul li img, .adicional ul li img{
+  }
+  
+  .simbologia ul li img,
+  .adicional ul li img {
     width: 40px;
     height: 25px;
     margin-right: 10px;
-}
-
-.simbologia ul li span, .adicional ul li span{
-    text-align: center;
+  }
+  
+  .simbologia ul li span,
+  .adicional ul li span {
     display: inline;
     font-size: 20px;
-}
+  }
 
-.col2{
-    border-color: #f30909;  
-    border-width: 1px;  
-    border-style: solid; 
+.col2{ 
     flex-grow: 1;
-    padding: 10px;
-    margin-left: 5px;
     left: 315px; /* Empuja col2 para que no se encime con col1 */
-    height: 100vh;
+    height: 91vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
 }
+
+.dropdown-center .btn {
+    text-align: left;
+    width: 13.5vw; /* Mismo ancho para ambos */
+    background-color: #296e03;
+    color: #ffffff;
+  }
+  
+  .btn.dropdown-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 13.5vw;
+  }
+
+    /* Color cuando el dropdown está abierto */
+.btn.dropdown-toggle.show {
+  background-color: #8dce76;
+  border-color: #8dce76;
+  color: #fff;  /* Opcional: cambia el color del texto si es necesario */
+}
+
+  .btn.dropdown-toggle:hover{
+    background-color: #8dce76;
+    border-color: #8dce76;
+  }
+  
+  .dropdown-menu {
+    width: 13.5vw;
+  }
+  
+  .dropdown-item + i.bi {
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .dropdown-menu i.bi {
+    font-size: 20px;
+    cursor: pointer;
+  }
+
 
 /* ===================
    Mapa page
