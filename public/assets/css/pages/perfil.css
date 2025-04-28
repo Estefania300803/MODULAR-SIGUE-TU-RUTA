@@ -1,0 +1,188 @@
+/* Main Section */
+.main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 40px;
+    padding: 20px;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
+}
+
+.main-left {
+    flex: 1;
+    padding: 20px;
+    margin-top: -60px;
+    margin-left: -30px;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center; /* Centra la imagen y el nombre verticalmente */
+    margin-bottom: 20px;
+}
+
+.profile-img-rounded {
+    width: 120px; /* Hacemos la imagen más grande */
+    height: 120px; /* Hacemos la imagen más grande */
+    border-radius: 50%; /* Redondea la imagen */
+    object-fit: cover;
+    margin-right: 20px; /* Espacio entre la imagen y el nombre */
+}
+
+.user-name p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Resto del formulario */
+.user-info label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.user-info input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.password-section {
+    margin-top: 20px;
+}
+
+/* Botones */
+.action-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between; /* Espacio entre los botones */
+}
+
+.btn-cancel,
+.btn-save {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 45%; /* Los botones ocupan 45% del ancho */
+}
+
+.btn-cancel {
+    background-color: #ccc; /* Color para el botón Cancelar */
+}
+
+.btn-save:hover{
+    background-color: #005013;
+}
+.btn-cancel:hover {
+    background-color: #3c3d3c;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    /* En pantallas pequeñas, los elementos se alinearán en columna */
+    .main {
+        flex-direction: column; /* Cambia la dirección a columna para pantallas pequeñas */
+        align-items: center; /* Centra los elementos */
+        height: auto;  /* Permite que el contenido se ajuste en pantallas pequeñas */
+        overflow-y: auto;  /* Habilita el scroll si el contenido es muy largo */
+    }
+
+    .profile-container {
+        display: flex;
+        justify-content: center; /* Centra la imagen horizontalmente */
+        align-items: center; /* Centra verticalmente */
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    /* Ajustar la imagen */
+    .profile-img-rounded {
+        width: 100px;
+        height: 100px;
+    }
+
+    .action-buttons {
+        width: 100%;
+        flex-direction: column; /* Los botones estarán apilados en pantallas pequeñas */
+    }
+
+    .btn-cancel,
+    .btn-save {
+        width: 100%; /* Los botones ocupan el 100% del ancho en pantallas pequeñas */
+        margin-bottom: 10px;
+    }
+
+    .main-right {
+        margin-top: 20px;
+    }
+
+    .user-name {
+        text-align: center; /* Centra el nombre en pantallas pequeñas */
+    }
+
+    .user-name p {
+        font-size: 16px;
+    }
+}
+
+/* Media query for screens with height less than 790px */
+@media (max-height: 790px) {
+
+    .main-left {
+        margin-top: -40px;
+        margin-left: -30px;
+    }
+
+    /* Reduce the height of the main content area */
+    .main {
+        padding: 15px; /* Reduce padding to fit content */
+        height: auto;  /* Permite que el contenido se ajuste y ocupe el espacio necesario */
+    }
+
+    .profile-img{
+        display: flex;
+        justify-content: center; /* Centra la imagen horizontalmente */
+        align-items: center; /* Centra verticalmente */
+        margin-bottom: 20px;
+    }
+
+    .profile-img-rounded {
+        width: 80px; /* Reduce the image size */
+        height: 80px; /* Reduce the image size */
+        justify-content: center; /* Centra la imagen horizontalmente */
+        align-items: center; /* Centra verticalmente */
+    }
+
+    .user-name p {
+        font-size: 10px; /* Reduce the font size of the name */
+    }
+
+    .user-info label {
+        font-size: 10px; /* Reduce the label font size */
+    }
+
+    .user-info input {
+        font-size: 10px; /* Reduce the input font size */
+        padding: 6px; /* Reduce padding in the input fields */
+    }
+
+    .btn-cancel,
+    .btn-save {
+        font-size: 10px; /* Reduce button font size */
+        padding: 5px 12px; /* Reduce button padding */
+    }
+
+    /* Adjust spacing between sections to make it more compact */
+    .password-section {
+        margin-top: 10px; /* Reduce margin between password fields */
+    }
+
+    .action-buttons {
+        margin-top: 15px; /* Reduce margin above buttons */
+    }
+}

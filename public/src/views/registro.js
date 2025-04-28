@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebas
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
 import { getFirestore, collection, getDocs, setDoc, doc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
 
-const backendURL = "https://us-central1-sigue-tu-ruta-tepatitlan.cloudfunctions.net/app";
+const backendURL = "https://us-central1-sigue-tu-ruta-1472.cloudfunctions.net/app";
 
 // Obtener configuración segura
 const config = await fetch(`${backendURL}/firebase-config`).then(res => res.json());
@@ -36,7 +36,7 @@ class ManageAccount {
       });
 
       console.log("Usuario registrado con ID:", nextId);
-      window.location.href = "login.html";
+      window.location.href = "./login.html";
     } catch (error) {
       console.error("Error al registrar:", error.message);
       alert("Error al registrar: " + error.message);

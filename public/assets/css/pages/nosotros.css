@@ -1,0 +1,69 @@
+
+/* Main Section */
+.main {
+    display: flex; /* Usamos Flexbox para dividir el espacio en dos columnas */
+    justify-content: space-between; /* Distribuye el texto y la imagen a los lados */
+    align-items: center;  /* Centra los elementos verticalmente */
+    padding: 20px;
+    margin-top: -20px; /* Espacio para el header fijo */
+}
+
+.main-text {
+    flex: 1;  /* La columna izquierda toma el 50% del espacio disponible */
+    margin-right: 20px; /* Agrega un pequeño margen entre el texto y la imagen */
+}
+
+.main-text h1 {
+    font-size: 32px;
+    color: #28a745;
+    margin-bottom: 10px;
+}
+
+.main-text p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Contenedor de la imagen */
+.map {
+    flex: 1;  /* La columna derecha toma el 50% del espacio disponible */
+    display: flex;
+    justify-content: flex-end;  /* Alinea la imagen al lado derecho */
+}
+
+.map-image {
+    max-width: 100%;  /* Asegura que la imagen ocupe el 100% del ancho del contenedor */
+    height: auto; /* Mantiene la relación de aspecto de la imagen */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    /* En pantallas pequeñas, los elementos se alinearán en columna */
+    .main {
+        flex-direction: column; /* Cambia la dirección a columna para pantallas pequeñas */
+        margin-left: -30px;
+        margin-top: 50px;
+    }
+
+    /* Ajustar el tamaño de la imagen */
+    .map {
+        margin-top: 20px; /* Agrega espacio arriba de la imagen */
+        justify-content: center;  /* Centra la imagen */
+        margin-left: -35px;
+    }
+
+    .map-image {
+        width: 80%;  /* Reduce el tamaño de la imagen */
+        max-width: 400px; /* Limita el tamaño máximo de la imagen */
+    }
+
+    /* Ajustar el tamaño de los títulos y texto en pantallas pequeñas */
+    .main-text h1 {
+        font-size: 20px; /* Reduce el tamaño del título */
+        margin-bottom: 5px;
+    }
+
+    .main-text p {
+        font-size: 12px; /* Reduce el tamaño del párrafo */
+    }
+}

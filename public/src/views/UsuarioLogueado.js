@@ -35,7 +35,7 @@ async function updateUserProfile(user) {
 
   // Si no tiene foto, usar una genérica
   if (!userProfilePicture) {
-    userProfilePicture = "assets/imagenes/perfil.jpg";
+    userProfilePicture = "./assets/imagenes/perfil.jpg";
   }
 
   // Mostrar los datos en el DOM (si los elementos existen)
@@ -55,7 +55,7 @@ function resetSessionTimer() {
   sessionTimeout = setTimeout(() => {
     signOut(auth).then(() => {
       alert("Tu sesión ha expirado por inactividad.");
-      window.location.href = "login.html";
+      window.location.href = "./login.html";
     });
   }, 600000); // 600,000 ms = 10 minutos
 }
@@ -72,7 +72,7 @@ if (logoutBtn) {
     signOut(auth)
       .then(() => {
         alert("Has cerrado sesión correctamente.");
-        window.location.href = "login.html";
+        window.location.href = "./login.html";
       })
       .catch((error) => {
         console.error("Error al cerrar sesión:", error.message);
@@ -88,6 +88,6 @@ onAuthStateChanged(auth, (user) => {
     resetSessionTimer();
   } else {
     console.log("Usuario no autenticado, redirigiendo...");
-    window.location.href = "login.html";
+    window.location.href = "./login.html";
   }
 });

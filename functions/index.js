@@ -30,3 +30,4 @@ app.get("/firebase-config", (req, res) => {
 
 // Exporta app como función HTTP
 exports.app = functions.https.onRequest(app);
+
