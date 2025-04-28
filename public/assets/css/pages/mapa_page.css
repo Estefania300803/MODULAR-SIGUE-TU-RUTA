@@ -74,7 +74,7 @@ body{
 
 .dropdown-center .btn {
     text-align: left;
-    width: 13.5vw; /* Mismo ancho para ambos */
+    width: 13.5rem; /* Mismo ancho para ambos */
     background-color: #296e03;
     color: #ffffff;
   }
@@ -83,7 +83,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 13.5vw;
+    width: 13.5rem;
   }
 
     /* Color cuando el dropdown está abierto */
@@ -99,7 +99,7 @@ body{
   }
   
   .dropdown-menu {
-    width: 13.5vw;
+    width: 13.5rem;
   }
   
   .dropdown-item + i.bi {
@@ -160,4 +160,111 @@ body{
 /* Deshabilitar scroll al abrir el modal */
 body.modal-open {
     overflow: hidden;
+}
+
+.toggle-simbolos-btn {
+  position: fixed;
+  bottom: 0;
+  left: 55%;
+  transform: translateX(-50%);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px 8px 0 0;
+  z-index: 10000;
+  cursor: pointer;
+  background-color: #6cbf3c;
+  transition: bottom 0.3s ease;
+  display: none;   /* Oculto por defecto */
+}
+
+@media (max-width: 768px) {
+  .container {
+    position: relative;
+    flex-direction: column;
+      
+  }
+
+  .col2 {
+      height: 75vh;  /* El mapa ocupa el 75% */
+  }
+
+  .col1 {
+    position: absolute;
+    bottom: -65%;
+    width: 100%;           /* Ocupa TODO el ancho de la ventana */
+    left: 0;                /* Aseguramos que empiece desde la izquierda */
+    height: 55vh;
+    background: white;
+    border: 2px solid #ccc;
+    transition: bottom 0.3s ease;
+    z-index: 9998;
+    overflow-y: auto;
+    padding: 40px 0;
+  }
+
+  .col1.active {
+      bottom: 0;
+  }
+
+  .toggle-simbolos-btn {
+    display: block;
+}
+
+  /* Posición dinámica del botón */
+  .col1.active + .toggle-simbolos-btn {
+      top: auto;
+      bottom: 47vh;  /* Cuando el panel está arriba */
+  }
+
+  .col1:not(.active) + .toggle-simbolos-btn {
+    top: auto;
+      bottom: 0;  /* Solo un poco visible cuando está oculto */
+  }
+
+  /* Centrado de las cards */
+  .col1 .card {
+    width: 90%;             /* Ocupa el 90% del ancho del viewport */
+    margin: 10px auto;      /* Centramos */
+    box-sizing: border-box; /* Incluye padding/border en el tamaño */
+  }
+
+  .dropdown-center .btn {
+      width: 13.5rem;
+      font-size: 14px;
+  }
+
+  .dropdown-menu {
+      width: 100%;
+  }
+
+  .simbologia ul li,
+  .adicional ul li {
+      align-items: center;
+  }
+
+  .simbologia ul li span,
+  .adicional ul li span {
+      font-size: 14px;
+  }
+}
+
+/* Ajuste específico para modo horizontal */
+@media (max-width: 926px) and (orientation: landscape) {
+  .col2 {
+      height: 81vh;  /* El mapa ocupa toda la pantalla */
+  }
+
+  #mi_mapa {
+    width: auto;
+    height: auto;
+  }
+
+  .col1 {
+      height: 85vh;   /* El panel ocupa más en horizontal */
+      overflow-y: auto;
+  }
+
+  .col1.active + .toggle-simbolos-btn {
+      bottom: 40vh;
+  }
 }

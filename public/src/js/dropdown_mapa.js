@@ -29,3 +29,16 @@ function toggleIcon(element) {
         element.classList.add('bi-eye');
     }
 }
+
+//Animacion para menu en pantallas pequeñas
+document.addEventListener("DOMContentLoaded", function () {
+    const btn = document.querySelector('.toggle-simbolos-btn');
+    const col1 = document.querySelector('.col1');
+
+    btn.addEventListener('click', function () {
+        col1.classList.toggle('active');
+        btn.innerHTML = col1.classList.contains('active')
+            ? '<i class="bi bi-caret-down"></i>'
+            : '<i class="bi bi-caret-up"></i>';
+    });
+});
