@@ -2,6 +2,10 @@
    MEDIA QUERIES PARA MÓVILES Y TABLETS
    =================== */
 
+/* Ajustes para la imagen de fondo en móviles */
+.bg-image {
+    height: 100vh; /* Asegura que la imagen ocupe toda la pantalla */
+}
 
 /* Ajustes para el botón en móviles */
 .btn-success {

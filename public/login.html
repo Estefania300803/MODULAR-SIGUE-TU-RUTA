@@ -18,68 +18,38 @@
   <div class="background">
     <div class="login-container">
       <div class="text-center">
-        <img src="assets/imagenes/logo.png" alt="Logo Sigue Tu Ruta" class="logo" />
+        <img src="assets/imagenes/logo.png" alt="Logo Sigue Tu Ruta" class="logo">
         <h2 class="title">Iniciar sesión</h2>
       </div>
-  
       <form id="formulario-sesion">
-        <!-- Correo -->
         <div class="mb-3">
           <label for="email" class="form-label">Correo electrónico</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            class="form-control"
-            required
-          />
+          <div class="input-group">
+            <input type="email" id="email" name="email" class="form-control" required />
+          </div>
         </div>
-  
-        <!-- Contraseña -->
         <div class="mb-3">
           <label for="password" class="form-label">Contraseña</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            class="form-control"
-            required
-          />
+          <div class="input-group">
+            <input type="password" id="password" name="password" class="form-control" required />
+          </div>
         </div>
-  
-        <!-- Olvidaste contraseña -->
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <a href="restablecer-contrasena.html" class="forgot-password">¿Olvidaste tu contraseña?</a>
+          <a href="#" id="enlace-reset" class="forgot-password">¿Olvidaste tu contraseña?</a>
         </div>
-  
-        <!-- Botón iniciar sesión -->
-        <button
-          type="submit"
-          id="btn-login"
-          class="btn btn-success w-100 mb-3 d-flex align-items-center justify-content-center"
-          style="font-size: 21px;"
-        >
-          Iniciar sesión
-        </button>
-  
-        <hr />
-  
-        <!-- Botón Google -->
-        <button
-          id="btn-google"
-          class="btn btn-outline-secondary w-100 mb-3 d-flex align-items-center justify-content-center"
-        >
-          <i class="bi bi-google me-2"></i> Iniciar con Google
-        </button>
-  
-        <!-- Registro -->
-        <p class="text-center">
-          ¿No tienes una cuenta?
-          <a href="registro.html" class="register-link">Regístrate</a>
-        </p>
+        <button type="submit" id="btn-login" class=" btn btn-success w-100 mb-3 d-flex align-items-center justify-content-center;" style="font-size: 21px;">Iniciar sesión</button>
       </form>
+      <hr>
+      <button id="btn-google" class="btn btn-outline-secondary w-100 mb-3 d-flex align-items-center justify-content-center" class="container">
+        <i class="bi bi-google me-2"></i>
+      </button>
+      
+      <p class="text-center">
+        ¿No tienes una cuenta? <a href="registro.html" class="register-link">Regístrate</a>
+      </p>
     </div>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 </body>

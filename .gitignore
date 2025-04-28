@@ -71,9 +71,3 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
-
-# Config de desarrollo local
-/node_modules
-/vite.config.js
-/package-lock.json
-/package.json

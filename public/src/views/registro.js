@@ -36,7 +36,7 @@ class ManageAccount {
       });
 
       console.log("Usuario registrado con ID:", nextId);
-      window.location.href = "login.html";
+      window.location.href = "./login.html";
     } catch (error) {
       console.error("Error al registrar:", error.message);
       alert("Error al registrar: " + error.message);

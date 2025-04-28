@@ -47,7 +47,7 @@ fetch(`${backendURL}/firebase-config`)
         });
 
         alert(`¡Bienvenido, ${user.email}!`);
-        window.location.href = "/home_page_singin.html";
+        window.location.href = "./home_page_singin.html";
       } catch (error) {
         console.error("Error al iniciar sesión:", error);
         alert("Credenciales inválidas o error al autenticar.");
@@ -85,7 +85,7 @@ fetch(`${backendURL}/firebase-config`)
         }
 
         alert(`¡Bienvenido, ${user.displayName || user.email}!`);
-        window.location.href = "/home_page_singin.html";
+        window.location.href = "./home_page_singin.html";
       } catch (error) {
         console.error("Error al iniciar sesión con Google:", error.message);
         alert("Error al iniciar con Google: " + error.message);

@@ -23,73 +23,67 @@
   <!-- Bootstrap Propio -->
   <script src="./src/components/modales.js"></script>
 
-<!-- Sección completa -->
-<div class="row w-100 h-100 g-0 align-items-stretch">
-  <!-- Imagen de fondo -->
-  <div class="col-md-6 bg-image"></div>
-
-  <!-- Formulario -->
-  <div class="col-md-6 d-flex align-items-center justify-content-center">
-    <div class="form-container text-center">
-      <!-- Logo -->
-      <div class="logoregister mb-4">
-        <img
-          src="assets/imagenes/logo.png"
-          alt="Logo"
-          class="img-fluid"
-          style="max-width: 150px;"
-        />
-      </div>
-
-      <!-- Título -->
-      <h2 class="text-success mb-4">Registro</h2>
+  <div class="row g-0 w-100 h-100">
+    <!-- Sección completa -->
+    <div class="row w-100 h-100">
+      <!-- Imagen de fondo -->
+      <div class="col-md-6 bg-image"></div>
 
       <!-- Formulario -->
-      <form action="/new-Contac" method="POST" id="formulario-crear">
-        <div class="mb-3 input-container">
-          <input type="text" name="nombre" class="form-control" placeholder="Nombre" required 
-          maxlength="30" oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '').replace(/\s{4,}/g, '   ')">
-          <i class="bi bi-person"></i>
-        </div>
-        <div class="mb-3 input-container">
-          <input type="text" name="apellidos" class="form-control" placeholder="Apellidos" required 
-          maxlength="60" oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '').replace(/\s{4,}/g, '   ')">
-          <i class="bi bi-person"></i>
-        </div>
-        <div class="mb-3 input-container">
-          <input type="email" id="email" name="email" class="form-control" placeholder="Correo electrónico" required>
-          <i class="bi bi-envelope"></i>
-        </div>
-        <div class="mb-3 input-container">
-          <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required>
-        </div>
-        <p id="password-warning" class="small text-start" style="color: red; display: none;">
-          Elija una contraseña de 8 o más caracteres
-        </p>
-        <div class="mb-3 input-container">
-          <input type="password" id="password2" name="password2" class="form-control" placeholder="Confirma la Contraseña" required>
-        </div>
-        <p id="error-msg" style="color: red; display: none;">Las contraseñas no coinciden.</p>
+      <div class="col-md-6 d-flex align-items-center justify-content-center">
+        <div class="form-container text-center">
+          <!-- Logo -->
+          <div class="logo mb-4">
+            <!-- Agrega aquí la URL de tu logo -->
+            <img src="assets/imagenes/logo.png" alt="Logo" class="img-fluid" style="max-width: 150px;">
+          </div>
 
-        <!-- Checkbox -->
-        <div class="form-check mb-3 text-start">
-          <input class="form-check-input" type="checkbox" id="Checkboxprincipal" required>
-          <label class="form-check-label" for="Checkboxprincipal">
-            He leído y acepto la 
-            <a href="#" class="register-link" id="openModal">Política de privacidad</a>
-            y los 
-            <a href="#" class="register-link" id="abremodal">términos de servicio</a>
-            de Sigue tu Ruta
-          </label>
-        </div>
+          <!-- Título -->
+          <h2 class="text-success mb-4">Registro</h2>
 
-        <!-- Botón -->
-        <input type="submit" value="Registrarse" class="btn btn-success w-100" id="botoncontinuar">
-      </form>
+          <!-- Campos del formulario -->
+          <form action="/new-Contac" method="POST" id="formulario-crear">
+            <div class="mb-3 input-container">
+              <input type="text" name = "nombre" class="form-control" placeholder="Nombre" required 
+              maxlength="30" oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '').replace(/\s{4,}/g, '   ')">
+              <i class="bi bi-person"></i>
+            </div>
+            <div class="mb-3 input-container">
+              <input type="text" name = "apellidos" class="form-control" placeholder="Apellidos" required
+                maxlength="60" oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '').replace(/\s{4,}/g, '   ')">
+              <i class="bi bi-person"></i>
+            </div>
+            <div class="mb-3 input-container">
+              <input type="email" id="email" name="email" class="form-control" placeholder="Correo electrónico" required>
+              <i class="bi bi-envelope"></i>
+            </div>
+            <div class="mb-3 input-container">
+              <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required>
+            </div>
+            <p id="password-warning" class="small text-start" style="color: red; display: none;">Elija una contraseña de 8 o más caracteres</p>
+            <div class="mb-3 input-container">
+              <input type="password" id="password2" name="password2"  class="form-control" placeholder="Confirma la Contraseña" required>
+            </div>
+            <p id="error-msg" style="color: red; display: none;">Las contraseñas no coinciden.</p>
+
+            <!-- Checkbox -->
+            <div class="form-check mb-3 text-start">
+              <input class="form-check-input" type="checkbox" id="Checkboxprincipal" required>
+              <label class="form-check-label" for="acceptTerms" class="enlaces" class="enlaces2">
+                He leído y acepto la <a href="#" class="register-link" id="openModal">Política de privacidad</a> y los <a href="#" class="register-link" id="abremodal">términos de servicio</a> de Sigue tu Ruta
+              </label>
+            </div>
+
+            <!-- Botón -->
+            <input type="submit" value="Registrarse" class="btn btn-success w-100" id="botoncontinuar">
+        
+          </form>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
+ 
 
 <!-- Todos los modales-->
 <!-- Modal de Politicas-->
@@ -101,17 +95,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Para continuar, acepta nuestra política de privacidad.</p>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="termsCheckbox">
-          <label class="form-check-label" for="termsCheckbox">
-            Acepto la política de privacidad.
-          </label>
-        </div>
+        <p>En Sigue Tu Ruta, nos comprometemos a proteger la privacidad de nuestros usuarios. La información recopilada, como datos de ubicación y preferencias de uso, se utiliza exclusivamente para brindar un servicio eficiente, ofrecer información en tiempo real sobre el transporte público y mejorar la experiencia dentro de la aplicación.
+          No compartimos datos personales con terceros sin consentimiento previo, salvo que sea requerido por ley. Toda la información es tratada bajo medidas de seguridad para garantizar su confidencialidad.
+          Al utilizar nuestra plataforma, el usuario acepta estas políticas y autoriza el uso de sus datos conforme a los fines mencionados. Recomendamos revisar periódicamente esta sección, ya que las políticas pueden actualizarse para mejorar la protección y el servicio.
+          Si tienes dudas o deseas ejercer tus derechos de acceso, rectificación o eliminación de datos, puedes contactarnos a través de nuestros medios oficiales.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button> 
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="continueButton" disabled>Continuar</button> 
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="continueButton">Continuar</button> 
       </div>
     </div>
   </div>
@@ -126,17 +116,23 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Para continuar, acepta nuestra política de privacidad.</p>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="check">
-          <label class="form-check-label" for="termsCheckbox">
-            Acepto la política de privacidad.
-          </label>
-        </div>
+        <p>Bienvenido a Sigue Tu Ruta. Al utilizar nuestra aplicación, aceptas los siguientes términos:</p>
+
+          <p>Uso del Servicio:</p>
+          <p>La plataforma proporciona información en tiempo real sobre rutas y tiempos de llegada del transporte público. El usuario se compromete a utilizar esta información solo para fines personales y respetar el buen uso de la aplicación.</p>
+          <p>isponibilidad:</p>
+          <p>Hacemos nuestro mejor esfuerzo para mantener el servicio activo y actualizado, pero no garantizamos que esté libre de errores o interrupciones. La información mostrada depende de datos en tiempo real, por lo que pueden existir variaciones.</p>
+          <p>Cuenta y Datos:</p>
+          <p>Al usar la aplicación, aceptas proporcionar información verídica si es requerida. Eres responsable del uso de tu cuenta y de mantener la confidencialidad de tus accesos, en caso de que existan.</p>
+          <p>Propiedad Intelectual:</p>
+          <p>Todo el contenido de Sigue Tu Ruta (diseño, logotipos, software) es propiedad del equipo desarrollador. No está permitido copiar, distribuir o modificar ningún elemento sin autorización previa.</p>
+          <p>Modificaciones:</p>
+          <p>Podemos actualizar estos términos en cualquier momento. Te notificaremos sobre cambios importantes, y el uso continuo de la aplicación implicará la aceptación de las nuevas condiciones.</p>
+          <p>Limitación de Responsabilidad:</p>
+          <p>Sigue Tu Ruta no se hace responsable por decisiones tomadas por el usuario basadas en la información proporcionada, ni por retrasos o desvíos imprevistos del transporte.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button> 
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="continua2" disabled>Continuar</button> 
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="continua2">Continuar</button> 
       </div>
     </div>
   </div>

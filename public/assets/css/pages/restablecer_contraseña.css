@@ -1,136 +1,81 @@
-body,
-html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden;
+/* ===================
+Restablecer contraseña  
+ =================== */
+
+ 
+ .fondo{
+    background-color: white;
+    display: inline-block;
 }
 
-/* Layout general */
-.auth-background {
-  position: relative;
-  height: 100vh;
-  width: 100vw;
-  background-color: white;
-  overflow: hidden;
+.circulo1{
+    background-color: #296E03;
+    width: 460px;
+    height: 460px;
+    border-radius: 50%;
+    border: 3px;
+    position: absolute;  
+    top: -190px;  
+    left: 1350px;
 }
 
-/* Círculos decorativos */
-.circle {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.8;
-  z-index: 1;
+.circulo2{
+    background-color: #C8EA89;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 3px;
+    position: absolute;  
+    top: 700px;  
+    left: 1450px;
 }
 
-.circle1 {
-  background: #296e03;
-  width: 400px;
-  height: 400px;
-  top: -150px;
-  right: -100px;
-}
-.circle2 {
-  background: #c8ea89;
-  width: 120px;
-  height: 120px;
-  bottom: 40px;
-  right: 100px;
-}
-.circle3 {
-  background: #c8ea89;
-  width: 500px;
-  height: 500px;
-  bottom: -250px;
-  left: -150px;
-}
-.circle4 {
-  background: #296e03;
-  width: 180px;
-  height: 180px;
-  top: 80px;
-  left: 100px;
+.circulo3{
+    background-color: #C8EA89;
+    width: 550px;
+    height: 550px;
+    border-radius: 50%;
+    border: 3px;
+    position: absolute;  
+    top: 500px;  
+    right: 1350px;
 }
 
-/* Formulario */
-.form-wrapper {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
+.circulo4{
+    background-color: #296E03;
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    border: 3px;
+    position: absolute;  
+    top: 80 px;  
+    right: 1350px;
 }
 
-.form-container-password {
-  background-color: white;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 600px;
-  z-index: 10;
+.restablecer{ 
+    text-align: center;
+    position: absolute;  
+    top: 350px;  
+    left: 550px; 
+    width: 600px;
+    height: 700px;
+    flex-shrink: 0;
 }
 
-h1 {
-  font-size: 2.5rem !important;
-  color: #000 !important;
-  font-weight: 500 !important;
-  line-height: 1.2 !important;
+.hr1{
+    height: 0px;
+    width: 250px;
+    background: black;
+    position: absolute;  
+    top: 155px;  
+    left: 400px;
 }
 
-/* Botón */
-.btn-password {
-  background-color: #157347 !important;
-  border-color: #157347 !important;
-  color: white !important;
-  font-size: 20px;
-  font-weight: 600;
-  border-radius: 10px;
-  text-align: center;
-}
-
-/* Línea + título */
-.titulo-con-lineas {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
-
-.titulo-con-lineas h5 {
-  margin: 0;
-  white-space: nowrap;
-  font-weight: normal !important;
-}
-
-.titulo-con-lineas hr {
-  flex-grow: 1;
-  border: none;
-  border-top: 1px solid black;
-}
-
-/* Responsivo para móviles */
-@media (max-width: 576px) {
-  h1 {
-    font-size: 1.8rem !important;
-  }
-
-  .btn-password {
-    font-size: 1rem !important;
-    padding: 0.5rem !important;
-  }
-
-  .form-container-password {
-    padding: 1.5rem 1rem;
-  }
-
-  .circle1,
-  .circle2,
-  .circle3,
-  .circle4 {
-    opacity: 0.4;
-  }
+.hr2{
+    height: 0px;
+    width: 250px;
+    background: black;
+    position: absolute;  
+    top: 155px;  
+    right: 400px;
 }
