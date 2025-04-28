@@ -5,13 +5,11 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa</title>
     <link rel="website icon" type="svg" href="assets/iconos/Logo_s-l.svg">
-    <link rel="stylesheet" href="assets/css/pages/page_laterales.css">
     <link rel="stylesheet" href="assets/css/pages/mapa.css">
+    <link rel="stylesheet" href="assets/css/pages/page_laterales.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./src/components/sidebar.js"></script> 
-    <script src="./src/components/sidebar2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> >
     <!-- Leaflet CDN -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
         integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
@@ -20,7 +18,6 @@
 </head>
 
 <body>
-
     <div class="wrapper">
         <!-- Sidebar -->
         <nav class="sidebar" id="aside">
@@ -44,7 +41,7 @@
                 <div class="header-actions">
                     <input type="text" placeholder="Buscar" class="search">
                     <button class="how-to-btn"><i class="bi bi-arrow-left-right me-2"></i>Cómo Llegar</button>
-                    <button class="profile-btn" type="button" id="btn-user" onclick="toggleMenu()" ><img id="userProfilePicture" src="assets/imagenes/perfil.jpg"></button>
+                    <button class="profile-btn" type="button" id="btn-user" onclick="toggleMenu()" ><img id="imagenPerfil" src="assets/imagenes/perfil.jpg"></button>
                 </div>
             </header>
 
@@ -67,7 +64,59 @@
                                                 <!-- Main Section -->
                         <section class="main">
                             <div class="container">
+                                <!-- Botón para abrir el menú -->
+                                    <button id="open-menu-btn">☰</button>
+                                    <!-- Menú lateral desde la derecha -->
+                                    <div id="side-menu" class="side-menu">
+                                        <span id="close-menu-btn" class="close-btn">&times;</span>
+                                        
+                                        <section class="main2">
 
+                                            <!-- Menú de Rutas -->
+                                            <div class="custom-card2">
+                                              <button class="custom-select-button" id="toggleList">Rutas</button>
+                                          
+                                              <ul class="list-options" id="listContainer">
+                                                <li>Ruta 1</li>
+                                                <li>Ruta 2</li>
+                                                <li>Ruta 3</li>
+                                              </ul>
+                                            </div>
+                                          
+                                            <!-- Simbología -->
+                                            <div class="custom-card">
+                                              <div class="symbol-title">Simbología</div>
+                                          
+                                              <div class="symbol-item">
+                                                <i class="bi bi-bus-front-fill text-success"></i>
+                                                <span>Camiones en circulación</span>
+                                              </div>
+                                          
+                                              <div class="symbol-item">
+                                                <i class="bi bi-geo-alt-fill text-primary"></i>
+                                                <span>Paradas de Camiones</span>
+                                              </div>
+                                          
+                                              <div class="symbol-item">
+                                                <i class="bi bi-geo-alt-fill text-danger"></i>
+                                                <span>Tu ubicación</span>
+                                              </div>
+                                          
+                                              <div class="symbol-item">
+                                                <i class="bi bi-currency-dollar text-warning"></i>
+                                                <span>Tarifa</span>
+                                              </div>
+                                          
+                                              <div class="symbol-item">
+                                                <i class="bi bi-clock-history"></i>
+                                                <span>Horario</span>
+                                              </div>
+                                          
+                                            </div>
+                                          
+                                          </section>
+
+                                    </div>
                                 <!-- Mapa -->
                                 <div class="map-container">
                                     <div id="mi_mapa"></div>
@@ -78,8 +127,9 @@
     </div>
     <!-- Script del mapa externo -->
     <script src="./src/components/mapa_leaflet.js" defer></script>
-    <script src="./src/components/siderbar2.js" defer></script>
-    <script src="./src/views/UsuarioLogueado.js" defer></script> 
+    <script src="./src/components/sidebar.js" defer></script>
+    <script src="./src/components/siderbar_menu_simbologia.js" defer></script>
+    <script src="./src/views/UsuarioLogueado.js" defer type="module"></script>
 </body>
 
 </html>
