@@ -7,7 +7,10 @@
 
 body, html {
     font-family: Arial, sans-serif;
-    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;   /* Ya lo tienes */
+    overflow-y: hidden;   /* Solo si NO quieres scroll vertical */
 }
 
 /* Layout */
