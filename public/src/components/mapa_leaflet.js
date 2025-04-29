@@ -171,12 +171,63 @@ document.addEventListener("DOMContentLoaded", function () {
   L.marker(rutaC02[0]).addTo(map).bindPopup("Inicio");
   L.marker(rutaC02[rutaC02.length - 1]).addTo(map).bindPopup("Fin");
   
-
-  const coordenada = [20.82143500, -102.77834333];
+*/
+  const coordenada = [20.830667, -102.792525];
   // Crear marcador
   L.marker(coordenada)
     .addTo(map)
-    .bindPopup("Marca especial aquí")
-    .openPopup();*/
+    .bindPopup("Cruce San Luis y Carretera Yahualica-Tepa")
+    .openPopup();
     
+
+    // Lista de coordenadas con sus nombres
+const coordenadasConNombres = [
+  { lat: 20.830667, lon: -102.792525, nombre: "Cruce Carretera Yahualica-Tepa y San Luis" },
+  { lat: 20.825306, lon: -102.791397, nombre: "López Mateos y Cruce Carretera Yahualica-Tepa" },
+  { lat: 20.824266, lon: -102.788171, nombre: "López Mateos" },
+  { lat: 20.822490, lon: -102.782244, nombre: "Cruce López Mateos y Las palmas" },
+  { lat: 20.82092667, lon: -102.77747833, nombre: "Glorieta colonias" },
+  { lat: 20.820770, lon: -102.775401, nombre: "Cruce López Mateos y Mayas" },
+  { lat: 20.820493, lon: -102.773704, nombre: "Calle López Mateos" }, 
+  { lat: 20.820088, lon: -102.771649, nombre: "Cruce López Mateos y Aquiles Sérdan" },
+  { lat: 20.819664, lon: -102.769242, nombre: "Cruce López Mateos y Gómez Morin" },
+  { lat: 20.819704, lon: -102.767261, nombre: "Cruce Félix Ramos y González Gallo"},
+  { lat: 20.818199, lon: -102.766898, nombre: "Sagrada Familia"},
+  { lat: 20.816559, lon: -102.766443, nombre: "Cruce Gonzalez Gallo y J. Cruz Ramirez"},
+  { lat: 20.81579167, lon: -102.76473667, nombre: "Cruce Vallarta y San Martín" },
+  { lat: 20.81417333, lon: -102.76472000, nombre: "Colegio Morelos"},
+  { lat: 20.81290833, lon: -102.76473833, nombre: "Parque del beso"},
+  { lat: 20.80997667, lon: -102.76474833, nombre: "Cruce Niños Heroes y Revolución"},
+  { lat: 20.807910, lon: -102.763795, nombre: "Cruce J.Caro Galindo y Matamoros"},
+  { lat: 20.80665833, lon: -102.76375500, nombre: "Calle Matamoros"},
+  { lat: 20.80137167, lon: -102.76398833, nombre: "Central"},
+  { lat: 20.80467167, lon: -102.75863667, nombre: "Oxxo, Calle Hidalgo"},
+  { lat: 20.80800500, lon: -102.75864167, nombre: "IMSS"},
+  { lat: 20.81015000, lon: -102.75963833, nombre: "Cruce 5 de febrero e Independencia"},
+  { lat: 20.81291000, lon: -102.75977167, nombre: "Cruce Independencia y Colón"},
+  { lat: 20.81544167, lon: -102.75977833, nombre: "Cruce Independencia y San Martín"},
+  { lat: 20.82340500, lon: -102.76053167, nombre: "Cruce 16 de sep. y Antonio Rojas"},
+  { lat: 20.82294333, lon: -102.76551667, nombre: "Cruce Antonio Rojas y Alvaro Obregon"},
+  { lat: 20.82093833, lon: -102.76735167, nombre: "Cruce Gral. Anaya y González Gallo"},
+  { lat: 20.82045167, lon: -102.77148500, nombre: "Cruce Gral. Anaya y Aquiles Serdán"},
+  { lat: 20.82043833, lon: -102.77306000, nombre: "Cruce José Gpe y López Mateos"},
+  { lat: 20.82077500, lon: -102.77505667, nombre: "Cruce López Mateos y Mayas"},
+  { lat: 20.82163167, lon: -102.77767000, nombre: "Glorieta Colonias"},
+  { lat: 20.82311000, lon: -102.78362500, nombre: "Cruce Av. López Mateos y Alemania"},
+  { lat: 20.82694833, lon: -102.79018833, nombre: "Cruce Hacienda Mirandilla y Trasquila"},
+  { lat: 20.82548500, lon: -102.79083500, nombre: "Cruce Hacienda Trasquilla y López Mateos"},
+  { lat: 20.83383500, lon: -102.79247500, nombre: "Cruce km 71 y Avila Camacho"},
+  { lat: 20.84169500, lon: -102.79261000, nombre: "Cruce km 71 y Rafael Casillas Aceves"},
+  { lat: 20.847123, lon: -102.781430, nombre: "CUALTOS"},
+  { lat: 20.84104333, lon: -102.79275167}
+
+];
+
+// Ahora creamos un marcador para cada coordenada
+coordenadasConNombres.forEach(punto => {
+  L.marker([punto.lat, punto.lon])
+    .addTo(map)
+    .bindPopup(punto.nombre);
+});
+
 });
