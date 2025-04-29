@@ -1,271 +1,272 @@
 .sidebar {
-    margin-top: 0px !important;
-    }
-  
-  /* Main Section */
-  .main {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    flex-direction: column; /* Stack en móviles */
+  margin-top: 0px !important;
   }
-  
+
+/* Main Section */
+.main {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  flex-direction: column; /* Stack en móviles */
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  flex-wrap: wrap; /* Se acomoda en móviles */
+}
+
+  /* Contenedor del mapa */
+.map-container {
+  width: 100%;
+  height: 100vh; /* Ocupa el 100% de la altura de la pantalla */
+  margin-left: 0; /* Elimina cualquier margen */
+  display: flex;
+  justify-content: flex-start; /* Alinea a la izquierda */
+  position: relative; /* Hace que el mapa ocupe toda la pantalla */
+}
+
+/* Estilo del mapa */
+#mi_mapa {
+  width: 100%;       /* Ancho completo */
+  height: 100%;      /* Alto completo */
+  border-radius: 8px; /* Bordes redondeados opcionales */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Botón flotante */
+#open-menu-btn {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  font-size: 30px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px 10px;
+  border-radius: 50px;
+  z-index: 1001;
+}
+
+/* Menú lateral */
+.side-menu {
+  width: 0;
+  margin-top: 10px;
+  position: fixed;
+  right: 0;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  transition: 0.3s;
+  top: 80px;
+  height: calc(100% - 80px);
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Enlaces del menú */
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.side-menu ul li {
+  padding: 10px 20px;
+}
+
+.side-menu ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.side-menu ul li a:hover {
+  background-color: #575757;
+}
+
+/* Botón de cerrar */
+.close-btn {
+  position: absolute;
+  top: -5px;
+  right: 20px;
+  font-size: 30px;
+  color: rgb(9, 9, 9);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-btn:hover {
+  color: #555353;
+}
+
+.main2 {
+  margin-top: -90px;
+}
+
+.contenedor {
+  margin-top: -80px;
+}
+
+/* Cartas */
+.custom-card,
+.custom-card2 {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.custom-card2 {
+  height: 220px;
+  z-index: 1001;
+}
+
+/* Select simulado */
+.custom-select-button {
+  background-color: #3c7302;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  width: 100%;
+  text-align: left;
+  position: relative;
+  cursor: pointer;
+}
+
+.custom-select-button::after {
+  content: '▼';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+/* Lista desplegable */
+.list-options {
+  margin-top: 10px;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  background-color: #3c7302;
+  border-radius: 8px;
+  list-style: none;
+  padding: 0;
+}
+
+.list-options.show {
+  padding: 10px;
+  max-height: 500px;
+}
+
+.list-options li {
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  border-bottom: 1px solid #ffffff30;
+  cursor: pointer;
+}
+
+.list-options li:last-child {
+  border-bottom: none;
+}
+
+.list-options li:hover {
+  background-color: #336600;
+}
+
+/* Simbología */
+.symbol-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 15px;
+}
+
+.symbol-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.symbol-item i {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+/* --------------- */
+/* 🎯 Media Queries */
+/* --------------- */
+
+/* Menos de 900px */
+@media (max-width: 900px) {
   .container {
-    display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    flex-wrap: wrap; /* Se acomoda en móviles */
   }
-  
-  /* Mapa */
-  .map-container {
-    flex: 1;
-    margin-left: 0; /* Sin margen izquierdo */
-    display: flex;
-    justify-content: flex-start;
+  .content {
+      margin-left: 0px !important;
   }
-  
-  #mi_mapa {
-    width: 100%;          /* 100% del contenedor flexible */
-    max-width: 1000px;      /* Máximo tamaño grande */
-    height: 600px;         /* Altura normal */
-    min-height: 300px;     /* Altura mínima */
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Botón flotante */
+
   #open-menu-btn {
-    position: fixed;
-    top: 100px;
-    right: 20px;
-    font-size: 30px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 10px 10px;
-    border-radius: 50px;
-    z-index: 1001;
+      top: 95px;
+      right: 10px;
+      font-size: 15px;
+      padding: 6px 6px;
   }
-  
-  /* Menú lateral */
-  .side-menu {
-    width: 0;
-    margin-top: 10px;
-    position: fixed;
-    right: 0;
-    background-color: #ffffff;
-    overflow-x: hidden;
-    transition: 0.3s;
-    top: 80px;
-    height: calc(100% - 80px);
-    padding-top: 60px;
-    display: flex;
+
+  .map-container {
+    margin-left: 0;
+    justify-content: flex-start;
+    margin-left: -14px;
+    width: 100%;
+  }
+
+  #mi_mapa {
+      width: 95%;
+      height: 500px;
+    }
+}
+
+/* Menos de 768px */
+@media (max-width: 768px) {
+  .container {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
   }
-  
-  /* Enlaces del menú */
-  .side-menu ul {
-    list-style: none;
-    padding: 0;
+
+  .map-container {
+    width: 100%;
+    margin-left: 12px;
   }
-  
-  .side-menu ul li {
-    padding: 10px 20px;
+
+  #open-menu-btn {
+      top: 95px;
+      right: 10px;
+      font-size: 15px;
+      padding: 6px 6px;
   }
-  
-  .side-menu ul li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .side-menu ul li a:hover {
-    background-color: #575757;
-  }
-  
-  /* Botón de cerrar */
-  .close-btn {
-    position: absolute;
-    top: -5px;
-    right: 20px;
-    font-size: 30px;
-    color: rgb(9, 9, 9);
-    cursor: pointer;
-    transition: color 0.3s;
-  }
-  
-  .close-btn:hover {
-    color: #555353;
-  }
-  
-  .main2 {
-    margin-top: -90px;
-  }
-  
-  .contenedor {
-    margin-top: -80px;
-  }
-  
-  /* Cartas */
+
+  #mi_mapa {
+      width: 95%;
+      height: 500px;
+    }
+
   .custom-card,
   .custom-card2 {
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
+    width: 90%;
   }
-  
-  .custom-card2 {
-    height: 220px;
-    z-index: 1001;
-  }
-  
-  /* Select simulado */
-  .custom-select-button {
-    background-color: #3c7302;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 15px;
-    width: 100%;
-    text-align: left;
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .custom-select-button::after {
-    content: '▼';
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.8rem;
-    transition: transform 0.3s ease;
-  }
-  
-  /* Lista desplegable */
-  .list-options {
-    margin-top: 10px;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.4s ease, padding 0.4s ease;
-    background-color: #3c7302;
-    border-radius: 8px;
-    list-style: none;
-    padding: 0;
-  }
-  
-  .list-options.show {
-    padding: 10px;
-    max-height: 500px;
-  }
-  
-  .list-options li {
-    padding: 10px;
-    color: white;
-    font-weight: bold;
-    border-bottom: 1px solid #ffffff30;
-    cursor: pointer;
-  }
-  
-  .list-options li:last-child {
-    border-bottom: none;
-  }
-  
-  .list-options li:hover {
-    background-color: #336600;
-  }
-  
-  /* Simbología */
-  .symbol-title {
-    font-weight: bold;
-    font-size: 1.5rem;
-    text-align: center;
-    text-decoration: underline;
-    margin-bottom: 15px;
-  }
-  
-  .symbol-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  
-  .symbol-item i {
-    font-size: 1.5rem;
-    margin-right: 10px;
-  }
-  
-  /* --------------- */
-  /* 🎯 Media Queries */
-  /* --------------- */
-  
-  /* Menos de 900px */
-  @media (max-width: 900px) {
-    .container {
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-    }
-    .content {
-        margin-left: 0px !important;
-    }
-
-    #open-menu-btn {
-        top: 95px;
-        right: 10px;
-        font-size: 15px;
-        padding: 6px 6px;
-    }
-  
-    .map-container {
-      margin-left: 0;
-      justify-content: flex-start;
-      margin-left: -14px;
-      width: 100%;
-    }
-
-    #mi_mapa {
-        width: 95%;
-        height: 500px;
-      }
-  }
-  
-  /* Menos de 768px */
-  @media (max-width: 768px) {
-    .container {
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    .map-container {
-      width: 100%;
-      margin-left: 12px;
-    }
-  
-    #open-menu-btn {
-        top: 95px;
-        right: 10px;
-        font-size: 15px;
-        padding: 6px 6px;
-    }
-
-    #mi_mapa {
-        width: 95%;
-        height: 500px;
-      }
-  
-    .custom-card,
-    .custom-card2 {
-      width: 90%;
-    }
-  }
+}
