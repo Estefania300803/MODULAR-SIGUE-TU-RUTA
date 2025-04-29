@@ -18,28 +18,28 @@
   align-items: center;
   width: 100%;
   max-width: 500px;
-  flex-wrap: wrap; /* Se acomoda en móviles */
+  flex-wrap: wrap; 
 }
 
 /* Contenedor del mapa */
 .map-container {
-  width: calc(100% - 60px); /* Resta el ancho del menú lateral */
-  height: calc(100vh - 80px); /* Resta el alto del header */
-  margin-left: 60px; /* Ancho del menú lateral izquierdo */
+  width: calc(100% - 60px); 
+  height: calc(100vh - 80px); 
+  margin-left: 60px; 
   display: flex;
-  justify-content: center; /* Centra el mapa horizontalmente */
-  align-items: center; /* Centra el mapa verticalmente */
-  position: absolute; /* Hace que el mapa ocupe toda la pantalla */
-  top: 80px; /* Comienza después de la barra de navegación (header) */
-  left: 0; /* Se alinea al borde izquierdo */
+  justify-content: center; 
+  align-items: center; 
+  position: absolute; 
+  top: 80px; 
+  left: 0; 
 }
 
 /* Estilo del mapa */
 #mi_mapa {
-  width: 99%; /* El mapa ocupa todo el ancho disponible dentro del contenedor */
-  height: 95%; /* El mapa ocupa toda la altura disponible dentro del contenedor */
-  border-radius: 8px; /* Bordes redondeados opcionales */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  width: 99%; 
+  height: 95%; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
 }
 
   /* Botón para abrir el menú */
@@ -119,8 +119,15 @@
   margin-top: -80px;
 }
 
-/* Cartas */
-.custom-card,
+/* Cartas para menu*/
+.custom-card{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  z-index: 1000;
+}
+
 .custom-card2 {
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -129,11 +136,11 @@
 }
 
 .custom-card2 {
-  height: 220px;
+  height: 100px;
   z-index: 1001;
 }
 
-/* Select simulado */
+/* Select del boton */
 .custom-select-button {
   background-color: #3c7302;
   color: white;
@@ -147,6 +154,7 @@
   cursor: pointer;
 }
 
+/*boton rytas*/
 .custom-select-button::after {
   content: '▼';
   position: absolute;
@@ -167,6 +175,8 @@
   border-radius: 8px;
   list-style: none;
   padding: 0;
+  position: absolute; 
+  z-index: 1001; 
 }
 
 .list-options.show {
@@ -209,13 +219,13 @@
   font-size: 1.5rem;
   margin-right: 10px;
 }
-/* Ocultar los controles de zoom en Leaflet */
+/* Ocultar los controles de zoom en Leaflet + y -*/
 .leaflet-control-zoom {
-  display: none !important; /* Esto ocultará los botones de zoom */
+  display: none !important; 
 }
 
 /* --------------- */
-/* 🎯 Media Queries */
+/*  Media Queries  */
 /* --------------- */
 
 /* Menos de 900px */
@@ -271,7 +281,7 @@
 
   #mi_mapa {
       width: 95%;
-      height: 500px;
+      height: 95%; 
     }
 
   .custom-card,
