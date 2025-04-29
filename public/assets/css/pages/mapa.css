@@ -1,7 +1,7 @@
 .sidebar {
   z-index: 1000 !important;
   height: calc(90% - 10px) !important;
-  margin-top: 66px !important;
+  margin-top: 90px !important;
   }
 
 /* Main Section */
@@ -36,8 +36,8 @@
 
 /* Estilo del mapa */
 #mi_mapa {
-  width: 100%; /* El mapa ocupa todo el ancho disponible dentro del contenedor */
-  height: 100%; /* El mapa ocupa toda la altura disponible dentro del contenedor */
+  width: 99%; /* El mapa ocupa todo el ancho disponible dentro del contenedor */
+  height: 95%; /* El mapa ocupa toda la altura disponible dentro del contenedor */
   border-radius: 8px; /* Bordes redondeados opcionales */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
@@ -208,6 +208,10 @@
 .symbol-item i {
   font-size: 1.5rem;
   margin-right: 10px;
+}
+/* Ocultar los controles de zoom en Leaflet */
+.leaflet-control-zoom {
+  display: none !important; /* Esto ocultará los botones de zoom */
 }
 
 /* --------------- */
