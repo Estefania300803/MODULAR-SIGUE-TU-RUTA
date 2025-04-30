@@ -1,7 +1,7 @@
 .sidebar {
-  z-index: 1000 !important;
+  z-index: 1002 !important;
   height: calc(90% - 10px) !important;
-  margin-top: 90px !important;
+  margin-top: 70px !important;
   }
 
 /* Main Section */
@@ -23,8 +23,8 @@
 
 /* Contenedor del mapa */
 .map-container {
-  width: calc(100% - 70px); 
-  height: calc(100vh - 90px); 
+  width: calc(100% - 60px); 
+  height: calc(100vh - 80px); 
   margin-left: 60px; 
   display: flex;
   justify-content: center; 
@@ -37,26 +37,29 @@
 /* Estilo del mapa */
 #mi_mapa {
   width: 99%; 
-  height: 99%; 
+  height: 95%; 
   border-radius: 8px; 
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
 }
 
-  /* Botón para abrir el menú */
+/* Botón para abrir el menú */
 #open-menu-btn {
   position: fixed;
   top: 100px;
   right: 20px;
   font-size: 30px;
-  background-color: #28a745;
+  background-color: #296E03;
   color: white;
   border: none;
   cursor: pointer;
-  padding: 10px 10px;
-  border-radius: 50px;
+  width: 50px; /* Ancho del botón */
+  height: 50px; /* Alto del botón */
+  border-radius: 50%; /* Hace el botón redondo */
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
   z-index: 1001;
 }
-
 /* Menú lateral */
 .side-menu {
   width: 0;
@@ -212,7 +215,7 @@
 .symbol-item {
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .symbol-item i {
@@ -234,6 +237,12 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+  }
+
+  .sidebar {
+    z-index: 1002 !important;
+    height: none !important; 
+    margin-top: 79px !important;
   }
   .content {
       margin-left: 0px !important;
@@ -267,9 +276,16 @@
     align-items: center;
   }
 
+  .sidebar {
+    z-index: 1002 !important;
+    height: none !important; 
+    margin-top: 67px !important;
+  }
+
   .map-container {
     width: 100%;
     margin-left: 12px;
+    top: 65px ;
   }
 
   #open-menu-btn {
