@@ -311,40 +311,44 @@ document.addEventListener("DOMContentLoaded", function () {
     [20.84197667, -102.79272667] //Entrada Uni
   ]
 
-  // Definir los límites de Tepatitlán
-  const limitesTepa = L.latLngBounds(
-    L.latLng(20.7900, -102.7900), // suroeste
-    L.latLng(20.8600, -102.7200)  // noreste
-  );
+  // Inicializar el mapa centrado en la primera coordenada de la ruta, con límites flexibles
+map = L.map("mi_mapa", {
+  maxBounds: [
+    [20.77, -102.83], // suroeste
+    [20.88, -102.74], // noreste
+  ],
+  maxBoundsViscosity: 0.4, // permite algo de movimiento sin bloquear por completo
+  minZoom: 13,
+  maxZoom: 20
+}).setView(rutaC02[0], 18);
 
-  // Inicializar el mapa con límites y restricciones de zoom
-  map = L.map("mi_mapa", {
-    maxBounds: limitesTepa,
-    maxBoundsViscosity: 1.0, // impide salir de los límites
-    minZoom: 13,
-    maxZoom: 20
-  }).setView(rutaC02[50],18);
+// Capa base de OpenStreetMap
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution: '&copy; OpenStreetMap contributors',
+}).addTo(map);
 
-  // Capa base de OpenStreetMap
-  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: '&copy; OpenStreetMap contributors',
-  }).addTo(map);
+// Dibujar la ruta con una polilínea C02
+const polyC02 = L.polyline(rutaC02, {
+  color: "red",
+  weight: 8,
+  opacity: 0.8,
+}).addTo(map);
 
-  // Dibujar la ruta con una polilínea C02
-  polyline = L.polyline(rutaC02, {
-    color: "red",
-    weight: 8,
-    opacity: 0.8,
-  }).addTo(map);
+// Dibujar la ruta con una polilínea C01
+const polyC01 = L.polyline(rutaC01, {
+  color: "blue",
+  weight: 5,
+  opacity: 0.8,
+}).addTo(map);
 
-  polyline = L.polyline(rutaC01, {
-    color: "blue",
-    weight: 5,
-    opacity: 0.8,
-  }).addTo(map);
+// Ajustar el zoom para mostrar ambas rutas
+const allCoords = rutaC01.concat(rutaC02);
+map.fitBounds(L.latLngBounds(allCoords));
 
-  // Ajustar el zoom al contenido
-  map.fitBounds(limitesTepa);
+
+  /* Marcadores de inicio y fin
+  L.marker(rutaC02[0]).addTo(map).bindPopup("Inicio");
+  L.marker(rutaC02[rutaC02.length - 1]).addTo(map).bindPopup("Fin");  */
 
   /* Marcadores de inicio y fin
   L.marker(rutaC02[0]).addTo(map).bindPopup("Inicio");
