@@ -312,38 +312,55 @@ document.addEventListener("DOMContentLoaded", function () {
   ]
 
   // Inicializar el mapa centrado en la primera coordenada de la ruta, con límites flexibles
-map = L.map("mi_mapa", {
-  maxBounds: [
-    [20.77, -102.83], // suroeste
-    [20.88, -102.74], // noreste
-  ],
-  maxBoundsViscosity: 0.4, // permite algo de movimiento sin bloquear por completo
-  minZoom: 13,
-  maxZoom: 20
-}).setView(rutaC02[0], 18);
+  map = L.map("mi_mapa", {
+    maxBounds: [
+      [20.77, -102.83], // suroeste
+      [20.88, -102.74], // noreste
+    ],
+    maxBoundsViscosity: 0.4, // permite algo de movimiento sin bloquear por completo
+    minZoom: 13,
+    maxZoom: 20
+  }).setView(rutaC02[0], 18);
 
-// Capa base de OpenStreetMap
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution: '&copy; OpenStreetMap contributors',
-}).addTo(map);
+  // Capa base de OpenStreetMap
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: '&copy; OpenStreetMap contributors',
+  }).addTo(map);
 
-// Dibujar la ruta con una polilínea C02
-const polyC02 = L.polyline(rutaC02, {
-  color: "red",
-  weight: 8,
-  opacity: 0.8,
-}).addTo(map);
+  // Crear la ruta C02 con interacciones
+  const polyC02 = L.polyline(rutaC02, {
+    color: "red",
+    weight: 5,
+    opacity: 0.8
+  }).addTo(map);
 
-// Dibujar la ruta con una polilínea C01
-const polyC01 = L.polyline(rutaC01, {
-  color: "blue",
-  weight: 5,
-  opacity: 0.8,
-}).addTo(map);
+  polyC02.on("mouseover", function (e) {
+    this.setStyle({ color: "orange", weight: 6 });
+    this.bringToFront();
+  });
+  polyC02.on("mouseout", function (e) {
+    this.setStyle({ color: "red", weight: 6 });
+  });
 
-// Ajustar el zoom para mostrar ambas rutas
-const allCoords = rutaC01.concat(rutaC02);
-map.fitBounds(L.latLngBounds(allCoords));
+  // Crear la ruta C01 con interacciones
+  const polyC01 = L.polyline(rutaC01, {
+    color: "blue",
+    weight: 5,
+    opacity: 0.8
+  }).addTo(map);
+
+  polyC01.on("mouseover", function (e) {
+    this.setStyle({ color: "deepskyblue", weight: 7 });
+    this.bringToFront();
+  });
+  polyC01.on("mouseout", function (e) {
+    this.setStyle({ color: "blue", weight: 5 });
+  });
+
+
+  // Ajustar el zoom para mostrar ambas rutas
+  const allCoords = rutaC01.concat(rutaC02);
+  map.fitBounds(L.latLngBounds(allCoords));
 
 
   /* Marcadores de inicio y fin
