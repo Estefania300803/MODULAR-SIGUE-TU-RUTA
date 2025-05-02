@@ -1,5 +1,5 @@
 // Declarar la variable global
-let polyline;
+let polyC01, polyC02;
 let map;
 document.addEventListener("DOMContentLoaded", function () {
   const rutaC02 = [
@@ -328,11 +328,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }).addTo(map);
 
   // Crear la ruta C02 con interacciones
-  const polyC02 = L.polyline(rutaC02, {
+  polyC02 = L.polyline(rutaC02, {
     color: "red",
     weight: 5,
     opacity: 0.8
-  }).addTo(map);
+  });
 
   polyC02.on("mouseover", function (e) {
     this.setStyle({ color: "orange", weight: 6 });
@@ -343,11 +343,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Crear la ruta C01 con interacciones
-  const polyC01 = L.polyline(rutaC01, {
+  polyC01 = L.polyline(rutaC01, {
     color: "blue",
     weight: 5,
     opacity: 0.8
-  }).addTo(map);
+  });
 
   polyC01.on("mouseover", function (e) {
     this.setStyle({ color: "deepskyblue", weight: 7 });
