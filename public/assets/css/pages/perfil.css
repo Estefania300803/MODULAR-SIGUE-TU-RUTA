@@ -1,11 +1,17 @@
 /* Main Section */
 .main {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    /* centra el contenido horizontalmente */
     align-items: flex-start;
     margin-top: 40px;
-    padding: 20px;
-    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
+    padding: 20px 60px;
+    /* más espacio a los lados */
+    flex-wrap: wrap;
+    max-width: 1000px;
+    /* ancho máximo para evitar que se extienda de más */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .main-left {
@@ -15,18 +21,27 @@
     margin-left: -30px;
 }
 
+.user-info {
+    margin-left: 15px;
+}
+
 .profile-container {
     display: flex;
-    align-items: center; /* Centra la imagen y el nombre verticalmente */
+    align-items: center;
+    /* Centra la imagen y el nombre verticalmente */
     margin-bottom: 20px;
 }
 
 .profile-img-rounded {
-    width: 120px; /* Hacemos la imagen más grande */
-    height: 120px; /* Hacemos la imagen más grande */
-    border-radius: 50%; /* Redondea la imagen */
+    width: 120px;
+    /* Hacemos la imagen más grande */
+    height: 120px;
+    /* Hacemos la imagen más grande */
+    border-radius: 50%;
+    /* Redondea la imagen */
     object-fit: cover;
-    margin-right: 20px; /* Espacio entre la imagen y el nombre */
+    margin-right: 20px;
+    /* Espacio entre la imagen y el nombre */
 }
 
 .user-name p {
@@ -38,15 +53,31 @@
 /* Resto del formulario */
 .user-info label {
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 18px;
 }
 
 .user-info input {
     width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 13px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 10px;
+}
+
+.CambiarContraseña {
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 10px auto;
+    /* lo centra horizontalmente */
+    width: fit-content;
 }
 
 .password-section {
@@ -57,45 +88,71 @@
 .action-buttons {
     margin-top: 20px;
     display: flex;
-    justify-content: space-between; /* Espacio entre los botones */
+    justify-content: space-between;
+    /* Espacio entre los botones */
 }
 
 .btn-cancel,
 .btn-save {
     padding: 10px 20px;
+    font-size: 14px;
     background-color: #28a745;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 45%; /* Los botones ocupan 45% del ancho */
+    width: 45%;
+    /* Los botones ocupan 45% del ancho */
 }
 
 .btn-cancel {
-    background-color: #ccc; /* Color para el botón Cancelar */
+    background-color: #ccc;
+    /* Color para el botón Cancelar */
 }
 
-.btn-save:hover{
+.btn-save:hover {
     background-color: #005013;
 }
+
 .btn-cancel:hover {
     background-color: #3c3d3c;
 }
 
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 15%;  
+    font-size: 15px;
+    color: #666;
+    cursor: pointer;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
+
     /* En pantallas pequeñas, los elementos se alinearán en columna */
     .main {
-        flex-direction: column; /* Cambia la dirección a columna para pantallas pequeñas */
-        align-items: center; /* Centra los elementos */
-        height: auto;  /* Permite que el contenido se ajuste en pantallas pequeñas */
-        overflow-y: auto;  /* Habilita el scroll si el contenido es muy largo */
+        flex-direction: column;
+        /* Cambia la dirección a columna para pantallas pequeñas */
+        align-items: center;
+        /* Centra los elementos */
+        height: auto;
+        /* Permite que el contenido se ajuste en pantallas pequeñas */
+        overflow-y: auto;
+        /* Habilita el scroll si el contenido es muy largo */
     }
 
     .profile-container {
         display: flex;
-        justify-content: center; /* Centra la imagen horizontalmente */
-        align-items: center; /* Centra verticalmente */
+        justify-content: center;
+        /* Centra la imagen horizontalmente */
+        align-items: center;
+        /* Centra verticalmente */
         margin-bottom: 20px;
         margin-top: 20px;
     }
@@ -108,12 +165,14 @@
 
     .action-buttons {
         width: 100%;
-        flex-direction: column; /* Los botones estarán apilados en pantallas pequeñas */
+        flex-direction: column;
+        /* Los botones estarán apilados en pantallas pequeñas */
     }
 
     .btn-cancel,
     .btn-save {
-        width: 100%; /* Los botones ocupan el 100% del ancho en pantallas pequeñas */
+        width: 100%;
+        /* Los botones ocupan el 100% del ancho en pantallas pequeñas */
         margin-bottom: 10px;
     }
 
@@ -122,7 +181,8 @@
     }
 
     .user-name {
-        text-align: center; /* Centra el nombre en pantallas pequeñas */
+        text-align: center;
+        /* Centra el nombre en pantallas pequeñas */
     }
 
     .user-name p {
@@ -140,49 +200,65 @@
 
     /* Reduce the height of the main content area */
     .main {
-        padding: 15px; /* Reduce padding to fit content */
-        height: auto;  /* Permite que el contenido se ajuste y ocupe el espacio necesario */
+        padding: 15px;
+        /* Reduce padding to fit content */
+        height: auto;
+        /* Permite que el contenido se ajuste y ocupe el espacio necesario */
     }
 
-    .profile-img{
+    .profile-img {
         display: flex;
-        justify-content: center; /* Centra la imagen horizontalmente */
-        align-items: center; /* Centra verticalmente */
+        justify-content: center;
+        /* Centra la imagen horizontalmente */
+        align-items: center;
+        /* Centra verticalmente */
         margin-bottom: 20px;
     }
 
     .profile-img-rounded {
-        width: 80px; /* Reduce the image size */
-        height: 80px; /* Reduce the image size */
-        justify-content: center; /* Centra la imagen horizontalmente */
-        align-items: center; /* Centra verticalmente */
+        width: 80px;
+        /* Reduce the image size */
+        height: 80px;
+        /* Reduce the image size */
+        justify-content: center;
+        /* Centra la imagen horizontalmente */
+        align-items: center;
+        /* Centra verticalmente */
     }
 
     .user-name p {
-        font-size: 10px; /* Reduce the font size of the name */
+        font-size: 15px;
+        /* Reduce the font size of the name */
     }
 
     .user-info label {
-        font-size: 10px; /* Reduce the label font size */
+        font-size: 15px;
+        /* Reduce the label font size */
     }
 
     .user-info input {
-        font-size: 10px; /* Reduce the input font size */
-        padding: 6px; /* Reduce padding in the input fields */
+        font-size: 13px;
+        /* Reduce the input font size */
+        padding: 6px;
+        /* Reduce padding in the input fields */
     }
 
     .btn-cancel,
     .btn-save {
-        font-size: 10px; /* Reduce button font size */
-        padding: 5px 12px; /* Reduce button padding */
+        font-size: 10px;
+        /* Reduce button font size */
+        padding: 5px 12px;
+        /* Reduce button padding */
     }
 
     /* Adjust spacing between sections to make it more compact */
     .password-section {
-        margin-top: 10px; /* Reduce margin between password fields */
+        margin-top: 10px;
+        /* Reduce margin between password fields */
     }
 
     .action-buttons {
-        margin-top: 15px; /* Reduce margin above buttons */
+        margin-top: 15px;
+        /* Reduce margin above buttons */
     }
 }
