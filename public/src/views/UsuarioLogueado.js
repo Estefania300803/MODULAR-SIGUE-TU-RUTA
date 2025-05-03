@@ -42,10 +42,12 @@ async function updateUserProfile(user) {
   const userNameElement = document.getElementById("userName");
   const userProfilePictureElement = document.getElementById("userProfilePicture");
   const imagenPerfil = document.getElementById("imagenPerfil");
+  const emailInput = document.getElementById("email");
 
   if (userNameElement) userNameElement.textContent = userName;
   if (userProfilePictureElement) userProfilePictureElement.src = userProfilePicture;
   if(imagenPerfil) imagenPerfil.src = userProfilePicture;
+  if (emailInput) emailInput.value = user.email;
 }
 
 // Temporizador de cierre por inactividad (10 min)
