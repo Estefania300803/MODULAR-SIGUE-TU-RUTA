@@ -55,6 +55,12 @@ btnGuardar?.addEventListener("click", async () => {
   let errorMsg = document.getElementById("error-msg");
   if (errorMsg) errorMsg.remove();
 
+  //Validar que las contraseñas no esten vacias
+  if (!newPassword || !confirmPassword) {
+    alert("Por favor completa los campos de nueva contraseña y confirmación.");
+    return;
+  }  
+
   // Validar que coincidan las nuevas contraseñas
   if (newPassword !== confirmPassword) {
     errorMsg = document.createElement("p");
