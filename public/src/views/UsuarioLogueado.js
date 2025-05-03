@@ -40,11 +40,13 @@ async function updateUserProfile(user) {
 
   // Mostrar los datos en el DOM (si los elementos existen)
   const userNameElement = document.getElementById("userName");
+  const userNamePerfilElement = document.getElementById("userNamePerfil");
   const userProfilePictureElement = document.getElementById("userProfilePicture");
   const imagenPerfil = document.getElementById("imagenPerfil");
   const emailInput = document.getElementById("email");
 
   if (userNameElement) userNameElement.textContent = userName;
+  if (userNamePerfilElement) userNamePerfilElement.textContent = userName;
   if (userProfilePictureElement) userProfilePictureElement.src = userProfilePicture;
   if(imagenPerfil) imagenPerfil.src = userProfilePicture;
   if (emailInput) emailInput.value = user.email;
