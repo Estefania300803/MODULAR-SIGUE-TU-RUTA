@@ -471,3 +471,43 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+
+// ====== Agregar ubicación del usuario ======
+if ('geolocation' in navigator) {
+  navigator.geolocation.getCurrentPosition(
+    function (position) {
+      var lat = position.coords.latitude;
+      var lon = position.coords.longitude;
+
+      // Crear icono rojo
+      var redIcon = L.icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [10, 16],     // ancho, alto (por defecto es [25, 41], punto medio [15,25])
+        iconAnchor: [5, 16],    // punto del ícono que se alinea con la coordenada
+        popupAnchor: [0, -12],
+        shadowSize: [41, 41]
+      });
+
+      // Mostrar marcador en la ubicación del usuario
+      L.marker([lat, lon], { icon: redIcon })
+        .addTo(map)
+        .bindPopup('Tu ubicación actual')
+        .openPopup();
+
+      // Opcional: centrar el mapa (si quieres quitarlo, comenta la siguiente línea)
+      map.setView([lat, lon], 15);
+    },
+    function (error) {
+      console.error('Error al obtener ubicación:', error.message);
+      alert('No se pudo obtener tu ubicación: ' + error.message);
+    },
+    {
+      enableHighAccuracy: true,
+      timeout: 10000,
+      maximumAge: 0
+    }
+  );
+} else {
+  alert('Tu navegador no soporta geolocalización.');
+}
