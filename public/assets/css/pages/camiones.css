@@ -21,6 +21,10 @@
     overflow: hidden;
 }
 
+.camion_1 h2, .camion_2 h2{
+    color: #296E03;
+}
+
 /* Rutas: Distribuir en dos columnas */
 .routes {
     display: flex;
