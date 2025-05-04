@@ -1,20 +1,24 @@
+.content {
+    overflow-y: auto !important;
+}
+
 /* Main Section */
 .main {
-    display: flex; /* Usamos Flexbox para dividir el espacio en dos columnas */
-    justify-content: space-between; /* Distribuye los divs a los lados */
-    align-items: flex-start;  /* Alinea los elementos al principio (parte superior) */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start;  
     padding: 10px;
-    margin-top: -20px; /* Espacio para el header fijo */
-    flex-wrap: wrap; /* Asegura que los elementos se ajusten en pantallas más pequeñas */
-    height: auto; /* Elimina la altura fija para que el contenedor se ajuste al contenido */
-    overflow-y: auto; /* Permite el desplazamiento vertical */
-    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+    margin-top: -20px; 
+    flex-wrap: wrap; 
+    height: auto; 
+    overflow-y: auto; 
+    width: 100%; 
 }
 
 /* Estilo para camion_1 y camion_2 */
 .camion_1, .camion_2 {
     flex: 1;
-    margin-right: 20px;
+    margin-right: 10px;
     padding: 10px;
     border-radius: 8px;
     text-align: left;
@@ -28,15 +32,15 @@
 /* Rutas: Distribuir en dos columnas */
 .routes {
     display: flex;
-    justify-content: space-between; /* Espacio entre las dos columnas */
-    flex-wrap: wrap;  /* En pantallas pequeñas, ajusta las columnas a una fila */
-    height: auto; /* Ajusta el contenido para que no sobrepase la pantalla */
+    justify-content: space-between; 
+    flex-wrap: wrap;  
+    height: auto; 
     margin-bottom: 20px;
 }
 
 /* Columna de rutas */
 .column {
-    width: 48%;  /* Cada columna ocupa el 48% del ancho */
+    width: 48%;  
     padding: 1px;
     margin-bottom: 10px;
 }
@@ -48,7 +52,7 @@
 }
 
 .column ul li {
-    font-size: 12px; /* Fuente pequeña para más espacio */
+    font-size: 12px; 
     margin-bottom: 6px;
 }
 
@@ -73,32 +77,31 @@
 
 /* Estilos responsivos */
 @media (max-width: 768px) {
-    /* En pantallas pequeñas, los divs se alinearán en columna */
     .main {
         flex-direction: column;
         align-items: center;
-        height: auto; /* Permite que el contenedor principal crezca según el contenido */
+        height: auto; 
         padding: 10px;
-        overflow-y: auto; /* Permite el desplazamiento vertical en pantallas pequeñas */
+        overflow-y: auto; 
     }
 
     .camion_1, .camion_2 {
-        width: 100%; /* Hace que los divs ocupen el 100% del ancho */
+        width: 100%; 
         margin-right: 0;
         margin-bottom: 20px;
     }
 
     .column {
-        width: 100%;  /* Cada columna ocupa el 100% del ancho */
+        width: 100%;  
     }
 
     .column ul li {
-        font-size: 10px; /* Ajusta la fuente en pantallas pequeñas */
+        font-size: 10px; 
         margin-bottom: 4px;
     }
 
     .btn-como-llegar {
-        width: 100%; /* Hace que el botón ocupe todo el ancho */
+        width: 100%; 
         font-size: 16px;
     }
 }
