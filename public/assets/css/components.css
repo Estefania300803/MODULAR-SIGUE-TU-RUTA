@@ -123,7 +123,7 @@ input::placeholder{
     background-position: center;
     background-repeat: no-repeat; /* Evita que se repita */
     height: 100vh; /* Asegura que cubra toda la altura de la ventana */
-    width: 100%; /
+    width: 100%; 
 }
 
 /* Logo */

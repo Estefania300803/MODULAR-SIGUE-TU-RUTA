@@ -4,31 +4,40 @@
 
 /* Main Section */
 .main {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: flex-start;  
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     padding: 10px;
-    margin-top: -20px; 
-    flex-wrap: wrap; 
-    height: auto; 
-    overflow-y: auto; 
-    width: 100%; 
+    margin-top: -20px;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 /* Estilo para camion_1 y camion_2 */
 .camion_1, .camion_2 {
-    flex: 1;
+    flex: 1 1 48%; /* Esto asegura que las tarjetas ocupen el 48% del ancho */
     margin-right: 10px;
     padding: 10px;
     border-radius: 8px;
     text-align: left;
     overflow: hidden;
+    height: auto; /* Asegura que las tarjetas no cambien de tamaño */
 }
 
-.camion_1 h2, .camion_2 h2{
+.camion_1 h2, .camion_2 h2 {
     color: #296E03;
 }
 
+/* Dropdown: Establecer un tamaño fijo */
+.accordion-button {
+    height: 40px; /* Establecer una altura fija para los botones */
+    font-size: 14px;
+}
+
+.accordion-body {
+    max-height: 300px;
+    overflow-y: auto;
+}
 /* Rutas: Distribuir en dos columnas */
 .routes {
     display: flex;
@@ -75,18 +84,40 @@
     background-color: #218838;
 }
 
+.col-md-6 {
+    width: 100%; 
+}
+
+h5 {
+    font-size: 2rem;
+    color: #218838 !important;
+}
+
+
+
+
 /* Estilos responsivos */
 @media (max-width: 768px) {
-    .main {
-        flex-direction: column;
-        align-items: center;
-        height: auto; 
-        padding: 10px;
-        overflow-y: auto; 
+
+    /* Asegura que todo el contenido esté centrado vertical y horizontalmente */
+    .content {
+        min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+        padding: 20px;
+        margin-bottom: 0px;
+        margin-left: 0px;
     }
 
+    .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+
     .camion_1, .camion_2 {
-        width: 100%; 
+        width: 100%;
         margin-right: 0;
         margin-bottom: 20px;
     }
@@ -102,6 +133,43 @@
 
     .btn-como-llegar {
         width: 100%; 
+        font-size: 16px;
+    }
+
+    /* Alinea las tarjetas al centro */
+    .col-12.col-md-6 {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        width: 90%; /* Ajusta el tamaño de la tarjeta */
+        max-width: 400px; /* Limita el ancho de las tarjetas */
+    }
+
+    /* Reduce el tamaño del título en pantallas pequeñas */
+    h5.card-title {
+        font-size: 1rem;
+    }
+
+    /* Reduce el tamaño de los botones del acordeón */
+    .accordion-button {
+        font-size: 0.97rem !important;
+        white-space: nowrap; /* Evita el salto de línea */
+        overflow: hidden;
+        text-overflow: ellipsis; /* Muestra '...' si el texto es demasiado largo */
+    }
+
+    /* Reducir el tamaño del texto de las listas */
+    .accordion-body,
+    .list-group {
+        font-size: 0.90rem !important;
+    }
+
+    /* Ajusta el tamaño de los botones */
+    .btn-ver-graficos {
+        width: 100%;
         font-size: 16px;
     }
 }
