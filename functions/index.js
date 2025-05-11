@@ -30,3 +30,25 @@ app.get("/firebase-config", (req, res) => {
 
 // Exporta app como función HTTP
 exports.app = functions.https.onRequest(app);
+
+//PARA MANDAR LAS COORDENADAS DEL GPS QUE SE MANDARON AL PHP AQUI
+app.post("/recibirGPS", (req, res) => {
+  const data = req.body;
+
+  if (!data.lat || !data.lng) {
+    return res.status(400).send("Faltan datos");
+  }
+
+  // Guarda la coordenada como un nuevo punto en la colección "ubicaciones"
+  admin.database().ref("/ubicaciones").push({
+    lat: data.lat,
+    lng: data.lng,
+    timestamp: Date.now()
+  }).then(() => {
+    res.status(200).send("Ubicación guardada");
+  }).catch((err) => {
+    console.error("Error:", err);
+    res.status(500).send("Error al guardar");
+  });
+});
+
