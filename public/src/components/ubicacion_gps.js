@@ -67,13 +67,14 @@ function iniciarSeguimientoGPS() {
 
     const coordenada = [lat, lng];
 
-    // Crear ícono personalizado de camión (más pequeño, 50%)
+    // Crear ícono personalizado de camión (tamaño moderado)
     const iconoCamion = L.icon({
       iconUrl: 'assets/iconos/iconoCamion.png', // Ruta al ícono
-      iconSize: [16, 16],       // Tamaño
-      iconAnchor: [8, 16],      // Punto de anclaje ajustado
-      popupAnchor: [0, -16]     // Ajuste del popup
+      iconSize: [24, 24],       // Tamaño del ícono (ancho x alto)
+      iconAnchor: [12, 24],     // Punto del ícono que se alinea con la coordenada
+      popupAnchor: [0, -24]     // Posición del popup respecto al ícono
     });
+
 
 
     // Si el marcador ya existe, solo moverlo
