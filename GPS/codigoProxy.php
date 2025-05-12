@@ -14,25 +14,27 @@ $lat = $data["lat"];
 $lng = $data["lng"];
 $timestamp = time();
 
-// === 4. Guardar localmente SOLO las últimas 10 entradas en gps_log.txt (para depuración) ===
+// === 4. Guardar localmente SOLO las últimas 3 entradas en gps_log.txt ===
 $log_file = "gps_log.txt";
-$nueva_linea = date("Y-m-d H:i:s") . " → $lat,$lng\n";
+$nueva_linea = date("Y-m-d H:i:s") . " → $lat,$lng";
 
 // Leer contenido actual del archivo (si existe)
-$lineas = file_exists($log_file) ? file($log_file, FILE_IGNORE_NEW_LINES) : [];
+$lineas = file_exists($log_file)
+  ? file($log_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES)
+  : [];
 
 // Agregar nueva línea
 $lineas[] = $nueva_linea;
 
-// Conservar solo las últimas 10 líneas
-if (count($lineas) > 10) {
-  $lineas = array_slice($lineas, -10);
+// Conservar solo las últimas 3 líneas
+if (count($lineas) > 3) {
+  $lineas = array_slice($lineas, -3);
 }
 
-// Escribir de nuevo al archivo
+// Escribir al archivo
 file_put_contents($log_file, implode("\n", $lineas) . "\n");
 
-// === 5. Obtener las ubicaciones actuales desde Firebase (ubicaciones.json) ===
+// === 5. Obtener las ubicaciones actuales desde Firebase ===
 $firebase_url = "https://sigue-tu-ruta-tepatitlan-default-rtdb.firebaseio.com/ubicaciones.json";
 
 $ch = curl_init($firebase_url);
@@ -51,12 +53,12 @@ $ubicaciones[] = [
   "timestamp" => $timestamp
 ];
 
-// === 7. Limitar a solo las últimas 10 coordenadas ===
-if (count($ubicaciones) > 10) {
-  $ubicaciones = array_slice($ubicaciones, -10); // Conservar últimas 10
+// === 7. Limitar a solo las últimas 3 coordenadas ===
+if (count($ubicaciones) > 3) {
+  $ubicaciones = array_slice($ubicaciones, -3); // Conservar solo 3
 }
 
-// === 8. Reenviar el arreglo completo actualizado a Firebase ===
+// === 8. Reenviar a Firebase ===
 $payload = json_encode($ubicaciones);
 
 $ch = curl_init($firebase_url);
