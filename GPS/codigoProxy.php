@@ -1,49 +1,66 @@
 <?php
-// Leer el cuerpo de la petición y decodificar JSON
+// === 1. Leer el cuerpo de la petición y decodificar JSON ===
 $data = json_decode(file_get_contents("php://input"), true);
 
-// Validar que vengan lat y lng
+// === 2. Validar que vengan lat y lng ===
 if (!isset($data["lat"]) || !isset($data["lng"])) {
   http_response_code(400);
   echo "Faltan datos";
   exit;
 }
 
+// === 3. Guardar valores en variables ===
 $lat = $data["lat"];
 $lng = $data["lng"];
 $timestamp = time();
 
-// Guardar localmente en gps_log.txt (opcional para depuración)
-file_put_contents("gps_log.txt", date("Y-m-d H:i:s") . " → $lat,$lng\n", FILE_APPEND);
+// === 4. Guardar localmente SOLO las últimas 10 entradas en gps_log.txt (para depuración) ===
+$log_file = "gps_log.txt";
+$nueva_linea = date("Y-m-d H:i:s") . " → $lat,$lng\n";
 
-// === 1. Obtener los datos actuales de Firebase ===
-$firebase_url = "https://sigue-tu-ruta-tepatitlan-default-rtdb.firebaseio.com/ubicaciones.json"; // Cambió de /ubicacion a /ubicaciones
+// Leer contenido actual del archivo (si existe)
+$lineas = file_exists($log_file) ? file($log_file, FILE_IGNORE_NEW_LINES) : [];
+
+// Agregar nueva línea
+$lineas[] = $nueva_linea;
+
+// Conservar solo las últimas 10 líneas
+if (count($lineas) > 10) {
+  $lineas = array_slice($lineas, -10);
+}
+
+// Escribir de nuevo al archivo
+file_put_contents($log_file, implode("\n", $lineas) . "\n");
+
+// === 5. Obtener las ubicaciones actuales desde Firebase (ubicaciones.json) ===
+$firebase_url = "https://sigue-tu-ruta-tepatitlan-default-rtdb.firebaseio.com/ubicaciones.json";
 
 $ch = curl_init($firebase_url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $response = curl_exec($ch);
 curl_close($ch);
 
+// Decodificar las ubicaciones actuales
 $ubicaciones = json_decode($response, true);
 if (!$ubicaciones) $ubicaciones = [];
 
-// === 2. Agregar nueva coordenada al final ===
+// === 6. Agregar nueva coordenada al final del arreglo ===
 $ubicaciones[] = [
   "lat" => $lat,
   "lng" => $lng,
   "timestamp" => $timestamp
 ];
 
-// === 3. Mantener solo los últimos 10 ===
+// === 7. Limitar a solo las últimas 10 coordenadas ===
 if (count($ubicaciones) > 10) {
-  $ubicaciones = array_slice($ubicaciones, -10); // Últimos 10
+  $ubicaciones = array_slice($ubicaciones, -10); // Conservar últimas 10
 }
 
-// === 4. Reenviar a Firebase ===
+// === 8. Reenviar el arreglo completo actualizado a Firebase ===
 $payload = json_encode($ubicaciones);
 
 $ch = curl_init($firebase_url);
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT"); // Reemplaza toda la lista con los últimos 10
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT"); // Reemplaza toda la lista
 curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -55,6 +72,7 @@ $result = curl_exec($ch);
 $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 
+// === 9. Confirmar resultado ===
 if ($httpcode === 200) {
   echo "OK";
 } else {
