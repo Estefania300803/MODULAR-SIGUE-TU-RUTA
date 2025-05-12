@@ -67,19 +67,21 @@ function iniciarSeguimientoGPS() {
 
     const coordenada = [lat, lng];
 
-    const iconoVerde = L.icon({
-      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
-      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-      iconSize: [25, 41],
-      iconAnchor: [12, 41],
-      popupAnchor: [1, -34],
-      shadowSize: [41, 41]
+    // Crear ícono personalizado de camión (más pequeño, 50%)
+    const iconoCamion = L.icon({
+      iconUrl: 'assets/iconos/iconoCamion.png', // Ruta al ícono
+      iconSize: [16, 16],       // Tamaño
+      iconAnchor: [8, 16],      // Punto de anclaje ajustado
+      popupAnchor: [0, -16]     // Ajuste del popup
     });
 
+
+    // Si el marcador ya existe, solo moverlo
     if (marcadorCamion) {
       marcadorCamion.setLatLng(coordenada);
     } else {
-      marcadorCamion = L.marker(coordenada, { icon: iconoVerde })
+      // Si no existe, crearlo
+      marcadorCamion = L.marker(coordenada, { icon: iconoCamion })
         .addTo(map)
         .bindPopup("Camión Ruta C02")
         .openPopup();
