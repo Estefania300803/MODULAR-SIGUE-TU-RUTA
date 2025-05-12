@@ -61,8 +61,8 @@ void loop() {
     Serial.println("⚠️ No se obtuvieron coordenadas válidas. No se enviará nada.");
   }
 
-  // Esperar 3 minutos antes de la siguiente lectura/envío
-  delay(180000);
+  // Esperar 1 minutos antes de la siguiente lectura/envío
+  delay(60000);
 }
 
 // === FUNCIONES ===
