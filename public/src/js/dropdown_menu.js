@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.toggle-ruta').forEach(icon => {
         icon.addEventListener('click', function(event) {
