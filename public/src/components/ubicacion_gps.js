@@ -29,10 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
     btnRutaC02.addEventListener("click", async () => {
       mostrarCamion = !mostrarCamion;
 
-      // Alternar ícono del ojo
-      btnRutaC02.classList.toggle("bi-eye");
-      btnRutaC02.classList.toggle("bi-eye-slash");
-
       // Si desactiva la vista, eliminar el marcador
       if (!mostrarCamion && marcadorCamion) {
         map.removeLayer(marcadorCamion);
