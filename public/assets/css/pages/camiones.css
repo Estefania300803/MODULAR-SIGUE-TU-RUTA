@@ -1,16 +1,22 @@
 .content {
     overflow-y: auto !important;
+    position: relative; /* Evita que el contenido se mueva cuando se activa la sidebar */
+    z-index: 1; /* Mantiene el contenido por debajo de la sidebar */
 }
 
 /* Main Section */
 .main {
-    display: flex;
+    display: block;
     justify-content: space-between;
     align-items: flex-start;
     padding: 10px;
     margin-top: -20px;
     flex-wrap: wrap;
     width: 100%;
+    position: relative; /* Mantener la posición relativa para que el contenido no se desplace */
+    z-index: 1; /* Mantener el contenido bajo la sidebar */
+    margin-left: 0 !important; /* Asegura que no haya márgenes adicionales */
+    padding-left: 0; /* No hay margen de izquierda */
 }
 
 /* Estilo para camion_1 y camion_2 */
@@ -93,7 +99,40 @@ h5 {
     color: #218838 !important;
 }
 
+/* Estilo para el contenedor de la imagen con zoom */
+.zoom-container {
+  position: relative;
+  overflow: hidden;
+  touch-action: none; /* Desactiva la acción por defecto del navegador */
+  width: 100%; /* Hace que ocupe todo el ancho disponible */
+  height: 100%; /* Hace que ocupe todo el alto disponible */
+  display: flex;
+  justify-content: center; /* Centra la imagen inicialmente */
+  align-items: center; /* Centra la imagen */
+}
 
+/* Imagen dentro del modal */
+.zoom-container img {
+  transition: transform 0.25s ease;
+  width: 100%; /* Ajusta la imagen al ancho disponible */
+  height: auto;
+  cursor: grab; /* Cambia el cursor para indicar que la imagen es desplazable */
+  position: absolute; /* Hace que la imagen sea desplazable */
+  transform-origin: center center; /* Asegura que el zoom se aplica desde el centro */
+}
+
+/* Cuando se hace zoom, la imagen crece */
+.zoom-container img.zoomed {
+  transform: scale(1.5); /* Ajusta el nivel de zoom */
+    cursor: grabbing; /* Cambia el cursor para indicar que la imagen está en movimiento */
+    overflow-x: auto;
+}
+
+/* Permite desplazamiento horizontal solo cuando la imagen tiene zoom */
+.zoom-container {
+  overflow-x: auto; /* Añade desplazamiento horizontal */
+  overflow-y: hidden; /* Evita el desplazamiento vertical */
+}
 
 
 /* Estilos responsivos */
@@ -104,15 +143,11 @@ h5 {
         min-height: 100vh; /* Ocupa toda la altura de la pantalla */
         padding: 20px;
         margin-bottom: 0px;
-        margin-left: 0px;
+        margin-left: 0 !important; /* Asegura que el contenido no se desplace */
     }
 
     .main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
+        margin-left: 0 !important;
     }
 
 
@@ -171,5 +206,53 @@ h5 {
     .btn-ver-graficos {
         width: 100%;
         font-size: 16px;
+    }
+    .modal-dialog {
+        max-width: 100%;  /* Ajusta el ancho */
+        margin: 0;        /* Elimina los márgenes */
+        height: 100%;     /* Ocupa toda la altura */
+        overflow-x: auto; /* Añade desplazamiento horizontal */
+    }
+
+    .modal-content {
+        height: 100%;      /* Asegura que el contenido del modal ocupe toda la altura */
+        border: none;     /* Elimina el borde del modal */
+        overflow-x: auto; /* Añade desplazamiento horizontal */
+    }
+
+    .zoom-container {
+        height: 100%;   /* La imagen de zoom ocupará toda la altura del modal */
+        overflow: scroll; /* Permite el desplazamiento tanto horizontal como vertical */
+        justify-content: center; /* Centra la imagen inicialmente */
+        align-items: center; /* Centra la imagen */
+        position: relative;
+
+    }
+
+    .zoom-container img {
+        max-height: 100vh; /* Limita la altura de la imagen al 100% de la vista */
+        width: auto;  /* Ajusta la imagen al ancho disponible */
+        cursor: grab; /* Cambia el cursor para indicar que la imagen es desplazable */
+        transition: transform 0.25s ease; /* Suaviza el efecto de zoom */
+        overflow-x: auto; /* Añade desplazamiento horizontal */
+    }
+
+    .zoom-container img.zoomed {
+        transform: scale(1.5); /* Zoom al hacer pellizco */
+        overflow-x: auto; /* Añade desplazamiento horizontal */
+        scroll-behavior: smooth; /* Suaviza el desplazamiento */
+    }
+
+    /* Añadir desplazamiento horizontal cuando haya zoom */
+    .zoom-container {
+        overflow-x: auto; /* Añade desplazamiento horizontal */
+        overflow-y: hidden; /* Evita el desplazamiento vertical */
+    }
+}
+
+/* Evitar mostrar el modal en pantallas grandes */
+@media (min-width: 768px) {
+    #imagenModal {
+        display: none;  /* Oculta el modal en pantallas grandes */
     }
 }
