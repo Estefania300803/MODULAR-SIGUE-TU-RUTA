@@ -43,8 +43,12 @@
                     <div class="logo">Sigue Tu Ruta</div>
                 </div>
                 <div class="header-actions">
-                    <!--<input type="text" placeholder="Buscar" class="search">
-                    <button class="how-to-btn"><i class="bi bi-arrow-left-right me-2"></i>Cómo Llegar</button>-->
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="Buscar parada..." class="search" id="buscador-paradas" autocomplete="on">
+                        <div id="sugerencias-paradas"></div>
+                    </div>
+
+                    <!--<button class="how-to-btn"><i class="bi bi-arrow-left-right me-2"></i>Cómo Llegar</button>-->
                     <button class="profile-btn" type="button" id="btn-user" onclick="toggleMenu()"><img
                             id="imagenPerfil" src="assets/imagenes/perfil.jpg"></button>
                 </div>
@@ -126,7 +130,7 @@
     <script src="./src/components/siderbar_menu_simbologia.js" defer></script>
     <script src="./src/components/dropdown_mapa.js" defer></script>
     <script src="./src/js/dropdown_menu.js" defer></script>
-    <script src="./src/views/UsuarioLogueado.js" defer type="module"></script>
+    <!-- <script src="./src/views/UsuarioLogueado.js" defer type="module"></script> -->
     <script src="./src/components/ubicacion_gps.js" type="module" defer></script>
     <script src="./src/components/compartir.js" defer type="module"></script>
 </body>

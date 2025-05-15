@@ -455,6 +455,56 @@ document.addEventListener("DOMContentLoaded", function () {
     { lat: 20.81079167, lon: -102.76567833, nombre: "Cruce Calle y Privada Manuel Altamirano" }
   ];
 
+    // === Buscador de paradas ===
+  const input = document.getElementById("buscador-paradas");
+  const sugerencias = document.getElementById("sugerencias-paradas");
+
+  input.addEventListener("input", () => {
+    const texto = input.value.toLowerCase();
+    sugerencias.innerHTML = "";
+
+    if (texto.length === 0) {
+      sugerencias.style.display = "none";
+      return;
+    }
+
+    const resultados = coordenadasConNombres.filter(p =>
+      p.nombre && p.nombre.toLowerCase().includes(texto)
+    );
+
+    if (resultados.length === 0) {
+      sugerencias.style.display = "none";
+      return;
+    }
+
+    resultados.forEach(p => {
+      const div = document.createElement("div");
+      div.classList.add("sugerencia-item");
+      div.textContent = p.nombre;
+      div.style.cursor = "pointer";
+      div.style.padding = "5px";
+      div.addEventListener("click", () => {
+        map.setView([p.lat, p.lon], 18);
+        L.popup()
+          .setLatLng([p.lat, p.lon])
+          .setContent(p.nombre)
+          .openOn(map);
+        sugerencias.style.display = "none";
+        input.value = "";
+      });
+      sugerencias.appendChild(div);
+    });
+
+    sugerencias.style.display = "block";
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!sugerencias.contains(e.target) && e.target !== input) {
+      sugerencias.style.display = "none";
+    }
+  });
+
+
   // Crear un ícono más pequeño
   const iconoMini = L.icon({
     iconUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png',
