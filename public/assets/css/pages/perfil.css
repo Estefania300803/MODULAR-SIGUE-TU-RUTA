@@ -193,9 +193,14 @@
 /* Media query for screens with height less than 790px */
 @media (max-height: 790px) {
 
+    .content{
+        align-items: 0 !important; 
+        margin-left: 0 !important;
+    }
+
     .main-left {
-        margin-top: -40px;
-        margin-left: -60px;
+        margin-top: -10px;
+        margin-left: -40px;
     }
 
     /* Reduce the height of the main content area */
