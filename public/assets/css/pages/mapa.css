@@ -1,5 +1,5 @@
 .sidebar {
-  z-index: 1002 !important;
+  z-index: 999 !important;
   height: calc(90% - 10px) !important;
   margin-top: 70px !important;
   }

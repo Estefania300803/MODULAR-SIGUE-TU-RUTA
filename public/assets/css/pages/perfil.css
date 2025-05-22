@@ -13,7 +13,10 @@
     margin-left: auto;
     margin-right: auto;
 }
-
+.nombre{
+    font-size: 37px; 
+    font-weight: bold;
+}
 .main-left {
     flex: 1;
     padding: 20px;
@@ -146,6 +149,11 @@
         overflow-y: auto;
         /* Habilita el scroll si el contenido es muy largo */
     }
+
+    .nombre{
+    font-size: 10px;
+    font-weight: bold;
+    }   
 
     .profile-container {
         display: flex;
