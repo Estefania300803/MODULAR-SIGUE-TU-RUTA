@@ -134,6 +134,22 @@ h5 {
   overflow-y: hidden; /* Evita el desplazamiento vertical */
 }
 
+/* Imagen con zoom en modal o escritorio */
+#zoomContainer img,
+[id^="rutac"]-imagen {
+  touch-action: none;
+  cursor: grab;
+}
+
+[id^="rutac"]-imagen {
+  max-width: none;
+  width: auto;
+  height: auto;
+}
+
+
+
+
 
 /* Estilos responsivos */
 @media (max-width: 768px) {
