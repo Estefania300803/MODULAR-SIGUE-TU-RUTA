@@ -280,6 +280,11 @@
     color: black;
 }
 
+input.search {
+    font-size: 16px !important;
+}
+
+
 /* --------------- */
 /*  Media Queries  */
 /* --------------- */
@@ -323,6 +328,11 @@
 
 /* Menos de 768px */
 @media (max-width: 768px) {
+
+  input.search {
+    font-size: 16px !important;
+}
+
   .container {
     flex-direction: column;
     justify-content: center;
