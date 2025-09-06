@@ -28,6 +28,37 @@ app.get("/firebase-config", (req, res) => {
   res.json(firebaseConfig);
 });
 
+
+app.post("/verify-recaptcha", async (req, res) => {
+  try {
+    const token = req.body?.token;
+    if (!token) return res.status(400).json({ success: false, error: "Missing token" });
+
+    const secret = process.env.RECAPTCHA_SECRET;
+    if (!secret) return res.status(500).json({ success: false, error: "Missing RECAPTCHA_SECRET" });
+
+    const params = new URLSearchParams();
+    params.append("secret", secret);
+    params.append("response", token);
+    // Opcional: params.append("remoteip", req.ip);
+
+    // Node 18 en Cloud Functions ya trae fetch global
+    const resp = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: { "Content-Type":"application/x-www-form-urlencoded" },
+      body: params.toString()
+    });
+
+    const out = await resp.json(); // { success, challenge_ts, hostname, ... }
+    if (!out.success) return res.status(401).json({ success: false, ...out });
+
+    return res.json({ success: true, ...out });
+  } catch (e) {
+    console.error(e);
+    return res.status(500).json({ success: false, error: "Internal error" });
+  }
+});
+
 // Exporta app como función HTTP
 exports.app = functions.https.onRequest(app);
 

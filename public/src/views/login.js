@@ -16,6 +16,25 @@ import {
 
 const backendURL = "https://us-central1-sigue-tu-ruta-tepatitlan.cloudfunctions.net/app";
 
+const VERIFY_RECAPTCHA_URL = `${backendURL}/verify-recaptcha`;
+
+async function verifyRecaptchaOrThrow() {
+  const token = window.grecaptcha?.getResponse();
+  if (!token) {
+    throw new Error('Por favor completa el reCAPTCHA.');
+  }
+  const resp = await fetch(VERIFY_RECAPTCHA_URL, {
+    method: 'POST',
+    headers: { 'Content-Type':'application/json' },
+    body: JSON.stringify({ token })
+  });
+  const data = await resp.json();
+  if (!data?.success) {
+    window.grecaptcha.reset();
+    throw new Error('Verificación reCAPTCHA falló. Intenta nuevamente.');
+  }
+}
+
 // Obtener la configuración de Firebase desde el backend
 fetch(`${backendURL}/firebase-config`)
   .then(response => response.json())
@@ -26,33 +45,48 @@ fetch(`${backendURL}/firebase-config`)
     const provider = new GoogleAuthProvider();
 
     // Inicio de sesión con correo y contraseña
-    document.getElementById("formulario-sesion").addEventListener("submit", async (e) => {
-      e.preventDefault();
+// Inicio de sesión con correo y contraseña
+document.getElementById("formulario-sesion").addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value;
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+  const btn = document.getElementById("btn-login");
+  btn.disabled = true;
 
-      try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        const token = await user.getIdToken();
+  try {
+    
+    await verifyRecaptchaOrThrow();
 
-        await fetch(`${backendURL}/auth`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          },
-          body: JSON.stringify({ email: user.email })
-        });
+    
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    const token = await user.getIdToken();
 
-        alert(`¡Bienvenido, ${user.email}!`);
-        window.location.href = "./home_page_singin.html";
-      } catch (error) {
-        console.error("Error al iniciar sesión:", error);
-        alert("Credenciales inválidas o error al autenticar.");
-      }
+   
+    await fetch(`${backendURL}/auth`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ email: user.email })
     });
+
+    alert(`¡Bienvenido, ${user.email}!`);
+    window.location.href = "./home_page_singin.html";
+  } catch (error) {
+    console.error("Error al iniciar sesión:", error);
+    alert(error?.message || "Credenciales inválidas o error al autenticar.");
+  } finally {
+    // Resetea el checkbox si quieres exigir un reto cada intento
+    try { window.grecaptcha?.reset(); } catch (error) {
+      console.error("Error al resetear reCAPTCHA:", error);
+    }
+    btn.disabled = false;
+  }
+});
+
 
     // Inicio de sesión con Google
     document.getElementById("btn-google").addEventListener("click", async () => {
