@@ -15,7 +15,6 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
 const backendURL = "https://us-central1-sigue-tu-ruta-tepatitlan.cloudfunctions.net/app";
-
 // Obtener la configuración de Firebase desde el backend
 fetch(`${backendURL}/firebase-config`)
   .then(response => response.json())
@@ -46,7 +45,6 @@ fetch(`${backendURL}/firebase-config`)
           body: JSON.stringify({ email: user.email })
         });
 
-        alert(`¡Bienvenido, ${user.email}!`);
         window.location.href = "./home_page_singin.html";
       } catch (error) {
         console.error("Error al iniciar sesión:", error);
@@ -84,7 +82,6 @@ fetch(`${backendURL}/firebase-config`)
           console.log("Usuario ya existe. Solo inicia sesión.");
         }
 
-        alert(`¡Bienvenido, ${user.displayName || user.email}!`);
         window.location.href = "./home_page_singin.html";
       } catch (error) {
         console.error("Error al iniciar sesión con Google:", error.message);
