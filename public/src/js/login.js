@@ -1,78 +1,140 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  sendPasswordResetEmail
+} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  setDoc,
+  doc
+} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
-const RECAPTCHA_SITE_KEY = '6Ldjnb4rAAAAAGfVbbnPl0F2DvjbOvezoDFtTChR'; 
-const VERIFY_URL = '/auth/verify-recaptcha'; 
+const backendURL = "https://us-central1-sigue-tu-ruta-tepatitlan.cloudfunctions.net/app";
 
+// --- reCAPTCHA ---
+const VERIFY_RECAPTCHA_URL = `${backendURL}/verify-recaptcha`;
 
-const form = document.getElementById('formulario-sesion');
-const emailInput = document.getElementById('email');
-const passInput  = document.getElementById('password');
-const btnLogin   = document.getElementById('btn-login');
-
-let recaptchaWidgetId = null;
-
-window.initLoginRecaptcha = () => {
-  if (!window.grecaptcha) return;
-  recaptchaWidgetId = grecaptcha.render('recaptcha-login', {
-    sitekey: RECAPTCHA_SITE_KEY,
-    size: 'invisible',
-    callback: 'onRecaptchaLogin' // nombre global
+async function verifyRecaptchaOrThrow() {
+  // v2 checkbox: se obtiene del widget renderizado en el HTML
+  const token = window.grecaptcha?.getResponse();
+  if (!token) {
+    throw new Error("Por favor completa el reCAPTCHA.");
+  }
+  const resp = await fetch(VERIFY_RECAPTCHA_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ token })
   });
-};
-
-// El callback DEBE ser global para reCAPTCHA v2
-window.onRecaptchaLogin = async (token) => {
-  try {
-    // 1) Verificar el token en tu backend
-    const resp = await fetch(VERIFY_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ token })
-    });
-    const data = await resp.json();
-
-    if (!data?.success) {
-      // Falló validación de captcha
-      alert('Verificación reCAPTCHA falló. Intenta de nuevo.');
-      grecaptcha.reset(recaptchaWidgetId);
-      btnLogin.disabled = false;
-      return;
-    }
-
-    // 2) Si pasó reCAPTCHA, ahora sí intenta el login de Firebase
-    //    (ajusta a tu implementación real con Firebase Auth)
-    await doFirebaseLogin(emailInput.value, passInput.value);
-
-  } catch (err) {
-    console.error(err);
-    alert('Hubo un problema validando el reCAPTCHA.');
-  } finally {
-    grecaptcha.reset(recaptchaWidgetId);
-    btnLogin.disabled = false;
+  const data = await resp.json();
+  if (!data?.success) {
+    try { window.grecaptcha.reset(); } catch (_) {}
+    throw new Error("Verificación reCAPTCHA falló. Intenta nuevamente.");
   }
-};
-
-// Intercepta el submit y ejecuta el captcha
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  if (!emailInput.value || !passInput.value) {
-    alert('Completa tu correo y contraseña.');
-    return;
-  }
-  btnLogin.disabled = true;
-  if (recaptchaWidgetId !== null) {
-    grecaptcha.execute(recaptchaWidgetId);
-  } else {
-    alert('reCAPTCHA no inicializado. Recarga la página.');
-    btnLogin.disabled = false;
-  }
-});
-
-// ===== EJEMPLO: reemplaza con tu lógica real de Firebase Auth =====
-async function doFirebaseLogin(email, password) {
-  // Aquí va tu signInWithEmailAndPassword(firebaseAuth, email, password)
-  // o tu flujo actual. Ejemplo ilustrativo:
-  // const { user } = await signInWithEmailAndPassword(auth, email, password);
-  // window.location.href = '/';
-  console.log('Login OK para:', email);
-  alert('Login exitoso (demo). Integra aquí tu signInWithEmailAndPassword.');
 }
+
+// Obtener la configuración de Firebase desde el backend
+fetch(`${backendURL}/firebase-config`)
+  .then(response => response.json())
+  .then(config => {
+    const app = initializeApp(config);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const provider = new GoogleAuthProvider();
+
+    // ----- Login con email/password -----
+    document.getElementById("formulario-sesion").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const btn = document.getElementById("btn-login");
+      btn.disabled = true;
+
+      try {
+        await verifyRecaptchaOrThrow();
+
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        const token = await user.getIdToken();
+
+        await fetch(`${backendURL}/auth`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ email: user.email })
+        });
+
+        alert(`¡Bienvenido, ${user.email}!`);
+        window.location.href = "./home_page_singin.html";
+      } catch (error) {
+        console.error("Error al iniciar sesión:", error);
+        alert(error?.message || "Credenciales inválidas o error al autenticar.");
+      } finally {
+        try { window.grecaptcha?.reset(); } catch (_) {}
+        btn.disabled = false;
+      }
+    });
+
+    // ----- Login con Google -----
+    document.getElementById("btn-google").addEventListener("click", async () => {
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+
+        const usersRef = collection(db, "users");
+        const snapshot = await getDocs(usersRef);
+
+        const exists = snapshot.docs.some(d => {
+          const data = d.data();
+          return data.uid === user.uid || data.email === user.email;
+        });
+
+        if (!exists) {
+          const nextId = snapshot.size + 1;
+          await setDoc(doc(db, "users", nextId.toString()), {
+            nombre: user.displayName || "",
+            apellidos: "",
+            email: user.email,
+            uid: user.uid,
+            proveedor: "google"
+          });
+          console.log("Usuario nuevo registrado en Firestore.");
+        } else {
+          console.log("Usuario ya existe. Solo inicia sesión.");
+        }
+
+        window.location.href = "./home_page_singin.html";
+      } catch (error) {
+        console.error("Error al iniciar sesión con Google:", error?.message);
+        alert("Error al iniciar con Google: " + error.message);
+      }
+    });
+
+    // ----- Reset password -----
+    document.getElementById("enlace-reset").addEventListener("click", async (e) => {
+      e.preventDefault();
+      const email = prompt("Por favor, ingresa tu correo electrónico para restablecer tu contraseña:");
+      if (!email || !email.includes("@")) {
+        alert("Por favor, ingresa un correo válido.");
+        return;
+      }
+      try {
+        await sendPasswordResetEmail(auth, email);
+        alert("Se ha enviado un correo para restablecer tu contraseña.");
+      } catch (error) {
+        console.error("Error al restablecer la contraseña:", error?.message);
+        alert("No se pudo enviar el correo: " + error.message);
+      }
+    });
+  })
+  .catch(error => {
+    console.error("Error al conectar con Firebase:", error);
+    alert("No se pudo conectar con el servidor.");
+  });
