@@ -453,6 +453,106 @@ document.addEventListener("DOMContentLoaded", function () {
     { lat: 20.80546333, lon: -102.76363500, nombre: "Unidad deportiva Morelos" },
     { lat: 20.80985667, lon: -102.76449500, nombre: "Cruce Revolución y Niños Heroes" },
     { lat: 20.81079167, lon: -102.76567833, nombre: "Cruce Calle y Privada Manuel Altamirano" }
+  //   ('Cruce Carretera Yahualica-Tepa y San Luis', 23 ),
+  //   ('López Mateos y Cruce Carretera Yahualica-Tepa', 24),
+  //   ('López Mateos', 25),
+  //   ('Cruce López Mateos y Las palmas', 26),
+  //   ('Glorieta colonias', 27),
+  //   ('Cruce López Mateos y Mayas', 28),
+  //   ('Calle López Mateos', 29),
+  //   ('Cruce López Mateos y Aquiles Sérdan', 30),
+  //   ('Cruce López Mateos y Gómez Morin', 31),
+  //   ('Cruce Félix Ramos y González Gallo', 32),
+  //   ('Sagrada Familia', 33),
+  //   ('Cruce Gonzalez Gallo y J. Cruz Ramirez', 34),
+  //   ('Cruce Vallarta y San Martín', 35),
+  //   ('Colegio Morelos', 36),
+  //   ('Parque del beso', 37),
+  //   ('Cruce Niños Heroes y Revolución', 38),
+  //   ('Cruce J.Caro Galindo y Matamoros', 39),
+  //   ('Calle Matamoros', 40),
+
+// ( 'CUALTOS', 1 ),
+// ('', 2),
+// ('', 3),
+// ('Cruce Carretera Yahualica-Tepa y San Luis', 4 ),
+// ('López Mateos y Cruce Carretera Yahualica-Tepa', 5),
+// ( 'Cruce Hacienda Trasquilla y López Mateos', 6 ),
+// ('Cruce Hda. la Trasquila y Mirandilla', 7),
+// ('Cruce Hda. Sta. Ana Apacueco y la Mina', 8),
+// ('Cruce Hda. La Mina y de Guadalupe', 9),
+// ('Cruce López Mateos y Las palmas', 10),
+// ('Glorieta colonias', 11),
+// ('Cruce López Mateos y Mayas', 12),
+// ('Calle López Mateos', 13),
+// ('Cruce López Mateos y Aquiles Sérdan', 14),
+// ('Cruce López Mateos y Gómez Morin', 15),
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //   ( 'Central', 1 ),
+  //   ( 'Oxxo, Calle Hidalgo',2 ),
+  //   ( 'IMSS', 3 ),
+  //   ( 'Cruce 5 de febrero e Independencia', 4 ),
+  //   ( 'Cruce Independencia y Colón', 5 ),
+  //   ( 'Casa de la cultura', 6 ),
+  //   ( 'Cruce 16 de septiembre y Moctezuma', 7 ),
+  //   ( 'Cruce 16 de septiembre y Mariano J.', 8 ),
+  //   ( 'Cruce 16 de septiembre y Gral. Anaya', 9 ),
+  //   ( 'Cruce 16 de sep. y Antonio Rojas', 10 ),
+  //   ( 'Cruce Antonio Rojas y Alvaro Obregon', 11 ),
+  //   ( 'Cruce Gral. Anaya y González Gallo', 12 ),
+  //   ( 'Cruce Gral. Anaya y Aquiles Serdán', 13 ),
+  //   ( 'Cruce José Gpe y López Mateos', 14 ),
+  //   ( 'Cruce López Mateos y Mayas', 15 ),
+  //   ( 'Glorieta Colonias', 16 ),
+  //   ( 'Cruce Av. López Mateos y Alemania', 17 ),
+  //   ( 'Cruce Hacienda Mirandilla y Trasquila', 18 ),
+  //   ( 'Cruce Hacienda Trasquilla y López Mateos', 19 ),
+  //   ( 'Cruce km 71 y Avila Camacho', 20 ),
+  //   ( 'Cruce km 71 y Rafael Casillas Aceves', 21 ),
+  //   ( 'CUALTOS', 22 ),
+  //   { lat: 20.84104333, lon: -102.79275167 },
+
+  //   //PARADAS SOLO DE C01
+    
+  //   ('Cruce Manuel Altamirano y Gpe. Victoria',1),
+  //   ('Cruce Manuel doblado y matamoros', 2),
+  //   ('Cruce Matamoros y Morelos', 3),
+  //   ('Cruce H. Garza y Moctezuma', 4),
+  //   ('Cruce Gonzalez Gallo', 5),
+  //   ('Oxxo Gonzalez Gallo', 6),
+  //   ('Escuela 5 de mayo', 7),
+  //   ('Cruce Gral Anaya y González hermosillo', 8),
+  //   ('Gral Anaya y Aquiles serdan', 9),
+  //   ('Cruce Hda. la Trasquila y Mirandilla', 10),
+  //   ('Cruce Hda. Sta. Ana Apacueco y la Mina', 11),
+  //   ('Cruce Hda. La Mina y de Guadalupe', 12),
+  //   ('Cruce Alvaro Obregon y J. Luis Velazco', 13),
+  //   ('Cruce J. Luis Velazco y Allende', 14),
+  //   ('Cruce Madero y Avila Camacho', 15),
+  //   ('Cruce Mapelo y Felix Ramos', 16),
+  //   ('Cruce Josefa Ortiz y Galeana', 17),
+  //   ('Cruce Galeana y Zaragoza', 18),
+  //   ('Cruce Pedro Medina y Colón', 19),
+  //   ('Cruce Pedro Medina y 5 de Febrero', 20),
+  //   ('IMSS familiar', 21),
+  //   ('Policlinica', 22),
+  //   ('Central', 23),
+  //   ('Rio', 24),
+  //   ('Unidad deportiva Morelos', 25),
+  //   ('Cruce Revolución y Niños Heroes', 26),
+  // ('Cruce Calle y Privada Manuel Altamirano', 27)
   ];
 
     // === Buscador de paradas ===
