@@ -13,7 +13,10 @@
     margin-left: auto;
     margin-right: auto;
 }
-
+.nombre{
+    font-size: 37px; 
+    font-weight: bold;
+}
 .main-left {
     flex: 1;
     padding: 20px;
@@ -147,11 +150,17 @@
         /* Habilita el scroll si el contenido es muy largo */
     }
 
+    .nombre{
+    font-size: 10px;
+    font-weight: bold;
+    }   
+
     .profile-container {
         display: flex;
         justify-content: center;
         /* Centra la imagen horizontalmente */
         align-items: center;
+        margin-left: -5px;
         /* Centra verticalmente */
         margin-bottom: 20px;
         margin-top: 20px;
@@ -193,9 +202,14 @@
 /* Media query for screens with height less than 790px */
 @media (max-height: 790px) {
 
+    .content{
+        align-items: 0 !important; 
+        margin-left: 0 !important;
+    }
+
     .main-left {
-        margin-top: -40px;
-        margin-left: -60px;
+        margin-top: -10px;
+        margin-left: -20px;
     }
 
     /* Reduce the height of the main content area */

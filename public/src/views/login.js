@@ -73,7 +73,7 @@ document.getElementById("formulario-sesion").addEventListener("submit", async (e
       body: JSON.stringify({ email: user.email })
     });
 
-    alert(`¡Bienvenido, ${user.email}!`);
+  
     window.location.href = "./home_page_singin.html";
   } catch (error) {
     console.error("Error al iniciar sesión:", error);
@@ -118,7 +118,6 @@ document.getElementById("formulario-sesion").addEventListener("submit", async (e
           console.log("Usuario ya existe. Solo inicia sesión.");
         }
 
-        alert(`¡Bienvenido, ${user.displayName || user.email}!`);
         window.location.href = "./home_page_singin.html";
       } catch (error) {
         console.error("Error al iniciar sesión con Google:", error.message);
