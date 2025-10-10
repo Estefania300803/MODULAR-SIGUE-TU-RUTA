@@ -126,11 +126,7 @@ input::placeholder{
     width: 100%; 
 }
 
-/* Logo */
-.logo {
-    height: auto; /* Mantiene las proporciones automáticamente */
-    margin-bottom: 1rem;
-  }
+
 
 .logo img {
     display: block;
