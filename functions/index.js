@@ -1,5 +1,8 @@
 //ESTE ARCHIVO ES EL QUE AGARRRA LAS CREDENCIALES DE FIREBASE PARA DESPUÉS PODERLAS LLAMAR DESDE EL PUBLIC
 // HACE LA CONEXIÓN ENTRE EL .env (firebase), node.js Y EL PUBLIC
+import express from 'express';
+import cors from 'cors';
+
 const functions = require("firebase-functions");
 const express = require("express");
 const cors = require("cors");
@@ -8,6 +11,7 @@ require("dotenv").config();
 
 const app = express();
 app.use(cors());
+app.use(cors({ origin: true }));
 app.use(express.json());
 
 // Inicializa Firebase Admin con la clave
@@ -29,33 +33,44 @@ app.get("/firebase-config", (req, res) => {
 });
 
 
-app.post("/verify-recaptcha", async (req, res) => {
+app.post('/verify-recaptcha', async (req, res) => {
   try {
-    const token = req.body?.token;
-    if (!token) return res.status(400).json({ success: false, error: "Missing token" });
+    const token = req?.body?.token || req?.query?.token;
+    if (!token) {
+      return res.status(400).json({ success: false, error: 'missing-token' });
+    }
 
     const secret = process.env.RECAPTCHA_SECRET;
-    if (!secret) return res.status(500).json({ success: false, error: "Missing RECAPTCHA_SECRET" });
+    if (!secret) {
+      console.error('RECAPTCHA_SECRET is missing');
+      return res.status(500).json({ success: false, error: 'missing-secret' });
+    }
 
     const params = new URLSearchParams();
-    params.append("secret", secret);
-    params.append("response", token);
-    // Opcional: params.append("remoteip", req.ip);
+    params.append('secret', secret);
+    params.append('response', token);
+    // opcional: params.append('remoteip', req.ip);
 
-    // Node 18 en Cloud Functions ya trae fetch global
-    const resp = await fetch("https://www.google.com/recaptcha/api/siteverify", {
-      method: "POST",
-      headers: { "Content-Type":"application/x-www-form-urlencoded" },
-      body: params.toString()
+    const googleResp = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params
     });
 
-    const out = await resp.json(); // { success, challenge_ts, hostname, ... }
-    if (!out.success) return res.status(401).json({ success: false, ...out });
+    // Maneja respuestas no-200 de Google para evitar que reviente tu función
+    if (!googleResp.ok) {
+      const text = await googleResp.text().catch(() => '');
+      console.error('siteverify not ok:', googleResp.status, text);
+      return res.status(502).json({ success: false, error: 'google-bad-gateway' });
+    }
 
-    return res.json({ success: true, ...out });
+    const result = await googleResp.json();
+
+    // En dev devuelve todo para ver bien los errores (error-codes, hostname, etc.)
+    return res.status(200).json(result);
   } catch (e) {
-    console.error(e);
-    return res.status(500).json({ success: false, error: "Internal error" });
+    console.error('verify-recaptcha error:', e);
+    return res.status(500).json({ success: false, error: 'server-error' });
   }
 });
 
