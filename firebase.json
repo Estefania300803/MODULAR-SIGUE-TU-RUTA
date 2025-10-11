@@ -8,7 +8,8 @@
     ]
   },
   "functions": {
-    "runtime": "nodejs20",
-    "source": "functions"
+    "runtime": "nodejs18",
+    "source": "functions",
+    "platform": "gcfv2"
   }
 }
