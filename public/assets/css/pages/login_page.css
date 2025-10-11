@@ -4,13 +4,50 @@
 
 /* Fondo con imagen */
 .background {
-    background: url('../../imagenes/fondo.jpeg') no-repeat center center fixed;
+    background: url('../../imagenes/Login.jpg') no-repeat center center fixed;
     background-size: cover;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Imagen de fondo */
+.bg-image {
+    background-image: url('../../assets/imagenes/camion.png'); /* Cambia aquí la URL de la imagen */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* Evita que se repita */
+    height: 100vh; /* Asegura que cubra toda la altura de la ventana */
+    width: 100%; 
+}
+
+/* Logo */
+.logo {
+    height: auto; /* Mantiene las proporciones automáticamente */
+    margin-bottom:  0rem;
+    width: 159px; 
+  }
+
+.logo img {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Ajustes para la imagen de fondo en móviles */
+.bg-image {
+    height: 100vh; /* Asegura que la imagen ocupe toda la pantalla */
+}
+
+/* Ajustes para el botón en móviles */
+.btn-success {
+    font-size: 1rem; /* Reduce el tamaño de la fuente en móviles */
+}
+
+/* Ajustes para los inputs en móviles */
+.form {
+    font-size: 1rem; /* Reduce el tamaño de la fuente en móviles */
 }
 
 /* Enlaces */
@@ -25,9 +62,34 @@
 
 /* Título */
 .title {
+    font-size: 29px;
     color: #28a745;
     font-weight: bold;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* centrar el widget y separar del input */
+.recaptcha-wrapper {
+  display: flex;
+  justify-content: center;   /* centra horizontalmente */
+  align-items: center;
+  margin-top: 1.25rem;       /* separación arriba (desde el password) */
+  margin-bottom: 1.25rem;    /* separación abajo */
+  padding: 0 0.5rem;         /* opcional: un pequeño acolchado lateral */
+}
+
+/* ajuste responsive: escala un poco el widget en pantallas muy pequeñas */
+@media (max-width: 420px) {
+  .recaptcha-wrapper .g-recaptcha {
+    transform: scale(0.92);
+    transform-origin: center center;
+  }
+  .logo{
+        width: 120px;   /* ancho deseado */
+    }
+    .title {
+        margin-bottom: 0.5rem;
+    }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {

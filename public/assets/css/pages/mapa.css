@@ -1,89 +1,370 @@
+.sidebar {
+  z-index: 999 !important;
+  height: calc(90% - 10px) !important;
+  margin-top: 70px !important;
+  }
+
 /* Main Section */
 .main {
-    display: flex;
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center; /* Centra el contenido verticalmente */
-    padding: 20px;
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  flex-direction: column; /* Stack en móviles */
 }
 
 .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    flex-wrap: wrap; /* Hace que el contenido se ajuste en pantallas más pequeñas */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  flex-wrap: wrap; 
 }
 
-/* Mapa */
+/* Contenedor del mapa */
 .map-container {
-    flex: 1;
-    padding: 20px;
-    display: flex;
+  width: calc(100% - 60px); 
+  height: calc(100vh - 80px); 
+  margin-left: 60px; 
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  position: absolute; 
+  top: 70px; 
+  left: 0; 
+}
+
+/* Estilo del mapa */
+#mi_mapa {
+  width: 100%; 
+  height: 100%; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+  z-index: 1;
+}
+
+/* Botón para abrir el menú */
+#open-menu-btn {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  font-size: 30px;
+  background-color: #296E03;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 50px; /* Ancho del botón */
+  height: 50px; /* Alto del botón */
+  border-radius: 50%; /* Hace el botón redondo */
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  z-index: 1001;
+}
+/* Menú lateral */
+.side-menu {
+  width: 0;
+  margin-top: 10px;
+  position: fixed;
+  right: 0;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  transition: 0.3s;
+  top: 80px;
+  height: calc(100% - 80px);
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Enlaces del menú */
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.side-menu ul li {
+  padding: 10px 20px;
+}
+
+.side-menu ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.side-menu ul li a:hover {
+  background-color: #575757;
+}
+
+/* Botón de cerrar */
+.close-btn {
+  position: absolute;
+  top: -5px;
+  right: 20px;
+  font-size: 30px;
+  color: rgb(9, 9, 9);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-btn:hover {
+  color: #555353;
+}
+
+.main2 {
+  margin-top: -90px;
+}
+
+.contenedor {
+  margin-top: -80px;
+}
+
+/* Cartas para menu*/
+.custom-card{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  z-index: 1000;
+}
+
+.custom-card2 {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.custom-card2 {
+  height: 100px;
+  z-index: 1001;
+}
+
+/* Select del boton */
+.custom-select-button {
+  background-color: #3c7302;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  width: 100%;
+  text-align: left;
+  position: relative;
+  cursor: pointer;
+}
+
+/*boton rytas*/
+.custom-select-button::after {
+  content: '▼';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+/* Lista desplegable */
+.list-options {
+  margin-top: 10px;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  background-color: #3c7302;
+  border-radius: 8px;
+  list-style: none;
+  padding: 0;
+  position: absolute; 
+  z-index: 1001; 
+}
+
+.list-options.show {
+  padding: 10px;
+  max-height: 500px;
+}
+
+.list-options li {
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  border-bottom: 1px solid #ffffff30;
+  cursor: pointer;
+}
+
+.list-options li:last-child {
+  border-bottom: none;
+}
+
+.list-options li:hover {
+  background-color: #336600;
+}
+
+/* Simbología */
+.symbol-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 15px;
+}
+
+.symbol-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.symbol-item i {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+/* Ocultar los controles de zoom en Leaflet + y -*/
+.leaflet-control-zoom {
+  display: none !important; 
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  position: relative;
+  padding-right: 20px;
+  z-index: 10010; /* Muy alto, encima del mapa */
+}
+
+.input-wrapper {
+  position: relative;
+  width: 300px; /* Ajusta el ancho si lo deseas */
+}
+
+#buscador-paradas {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+#sugerencias-paradas {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+  z-index: 10011; /* Justo encima del mapa */
+  display: none;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+#sugerencias-paradas .sugerencia-item {
+  cursor: pointer;
+  color: black;
+}
+
+#sugerencias-paradas .sugerencia-item:hover {
+  background-color: #f0f0f0;
+}
+
+
+#sugerencias-paradas .sugerencia-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    color: black;
+}
+
+input.search {
+    font-size: 16px !important;
+}
+
+
+/* --------------- */
+/*  Media Queries  */
+/* --------------- */
+
+/* Menos de 900px */
+@media (max-width: 900px) {
+  .container {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sidebar {
+    z-index: 1002 !important;
+    height: none !important; 
+    margin-top: 79px !important;
+  }
+  .content {
+      margin-left: 0px !important;
+  }
+
+  #open-menu-btn {
+      top: 95px;
+      right: 10px;
+      font-size: 15px;
+      padding: 6px 6px;
+  }
+
+  .map-container {
+    margin-left: 0;
+    justify-content: flex-start;
+    margin-left: -14px;
+    width: 100%;
+  }
+
+  #mi_mapa {
+      width: 95%;
+      height: 500px;
+    }
+}
+
+/* Menos de 768px */
+@media (max-width: 768px) {
+
+  input.search {
+    font-size: 16px !important;
+}
+
+  .container {
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #eee;
-    border-radius: 8px;
-}
+  }
 
-#mi_mapa {
+  .sidebar {
+    z-index: 1002 !important;
+    height: none !important; 
+    margin-top: 67px !important;
+  }
+
+  .map-container {
     width: 100%;
-    height: 100%;
-    min-height: 400px;  /* Ajusta la altura mínima del mapa */
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+    margin-left: 12px;
+    top: 65px ;
+  }
 
-/* Sidebar (Simbolología) */
-.symbolology {
-    width: 25%;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-right: 20px;  /* Espacio entre el mapa y el menú */
-}
+  #open-menu-btn {
+      top: 95px;
+      right: 10px;
+      font-size: 15px;
+      padding: 6px 6px;
+  }
 
-.symbolology h4 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.symbolology ul {
-    list-style: none;
-}
-
-.symbolology ul li {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.symbolology ul li i {
-    margin-right: 10px;
-}
-
-/* Estilos responsivos */
-@media (max-width: 768px) {
-    /* En pantallas pequeñas, los elementos se alinearán en columna */
-    .container {
-        flex-direction: column;  /* Apila los elementos verticalmente */
+  #mi_mapa {
+      width: 95%;
+      height: 95%; 
     }
 
-    .symbolology {
-        width: 100%;
-        margin-bottom: 20px;  /* Agrega espacio entre el sidebar y el mapa */
-    }
-
-    .map-container {
-        height: 300px;  /* Ajusta la altura del mapa en pantallas pequeñas */
-    }
-
-    .symbolology ul li {
-        font-size: 14px;  /* Ajusta el tamaño de la fuente para pantallas pequeñas */
-    }
-
-    /* Asegura que el mapa siempre tenga una altura mínima en pantallas pequeñas */
-    #mi_mapa {
-        min-height: 250px;
-    }
+  .custom-card,
+  .custom-card2 {
+    width: 90%;
+  }
 }

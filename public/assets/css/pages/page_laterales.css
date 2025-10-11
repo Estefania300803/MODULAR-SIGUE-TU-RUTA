@@ -7,7 +7,10 @@
 
 body, html {
     font-family: Arial, sans-serif;
-    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;   
+    overflow-y: hidden;   
 }
 
 /* Layout */
@@ -281,6 +284,7 @@ Paneles laterales
 /* Botón de cerrar */
 .close-menu {
     position: absolute;
+    z-index: 1003 !important;
     top: 10px;
     right: 15px;
     font-size: 24px;
@@ -298,7 +302,7 @@ Paneles laterales
 }
 
 #user-menu.active {
-    z-index: 1000; /* Mantén el menú al frente */
+    z-index: 1003; /* Mantén el menú al frente */
 }
 
 body.active-menu {

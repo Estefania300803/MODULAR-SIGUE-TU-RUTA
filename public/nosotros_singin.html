@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,20 +10,25 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./assets/css/pages/page_laterales.css">
     <link rel="stylesheet" href="./assets/css/pages/nosotros.css">
-    <script src="./src/components/sidebar.js"></script> 
+    <script src="./src/components/sidebar.js"></script>
     <script src="./src/views/UsuarioLogueado.js" defer type="module"></script>
 </head>
+
 <body>
-    
+
     <div class="wrapper">
         <!-- Sidebar -->
         <nav class="sidebar" id="aside">
             <ul>
                 <li class="menu-item"><i class="bi bi-list"></i> <span>Menú</span></li>
-                <li class="menu-item" onclick="window.location.href = './home_page_singin.html'"><i class="bi bi-grid" onclick="window.location.href = './home_page_singin.html'"></i> <span>Principal</span></li>
-                <li class="menu-item" onclick="window.location.href = './mapa.html'"><i class="bi bi-map" onclick="window.location.href = './mapa.html'"></i> <span>Mapas</span></li>
-                <li class="menu-item"><i class="bi bi-bus-front"></i> <span>Camiones</span></li>
-                <li class="menu-item" onclick="window.location.href = './nosotros_singin.html'"><i class="bi bi-book" onclick="window.location.href = './nosotros_sigin.html'"></i> <span>Nosotros</span></li>
+                <li class="menu-item" onclick="window.location.href = './home_page_singin.html'"><i class="bi bi-grid"
+                        onclick="window.location.href = './home_page_singin.html'"></i> <span>Principal</span></li>
+                <li class="menu-item" onclick="window.location.href = './mapa.html'"><i class="bi bi-map"
+                        onclick="window.location.href = './mapa.html'"></i> <span>Mapas</span></li>
+                <li class="menu-item" onclick="window.location.href = './camiones.html'"><i class="bi bi-bus-front"
+                        onclick="window.location.href = './camiones.html'"></i> <span>Camiones</span></li>
+                <li class="menu-item" onclick="window.location.href = './nosotros_singin.html'"><i class="bi bi-book"
+                        onclick="window.location.href = './nosotros_sigin.html'"  style="color: black; -webkit-text-stroke: 0.9px black; transform: scale(1.1);"></i> <span>Nosotros</span></li>
             </ul>
         </nav>
 
@@ -35,28 +41,27 @@
                     <div class="logo">Sigue Tu Ruta</div>
                 </div>
                 <div class="header-actions">
-                    <input type="text" placeholder="Buscar" class="search">
-                    <button class="how-to-btn"><i class="bi bi-arrow-left-right me-2"></i>Cómo Llegar</button>
-                    <button class="profile-btn" type="button" id="btn-user" onclick="toggleMenu()" ><img id="userProfilePicture" src="assets/imagenes/perfil.jpg"></button>
+                    <!--<input type="text" placeholder="Buscar" class="search">
+                    <button class="how-to-btn"><i class="bi bi-arrow-left-right me-2"></i>Cómo Llegar</button>-->
+                    <button class="profile-btn" type="button" id="btn-user" onclick="toggleMenu()"><img
+                            id="userProfilePicture" src="assets/imagenes/perfil.jpg"></button>
                 </div>
             </header>
 
-                        <!-- Superposición de fondo -->
-                        <div id="menu-overlay" onclick="toggleMenu()"></div>
-                        <!-- Menú deslizante del usuario para que este entre al menu de configuracion-->
-                        <div id="user-menu">
-                            <i class="bi bi-x close-menu" onclick="toggleMenu()"></i>
-                            <p id ="userName"></p>
-                            <ul>
-                                <li><i class="bi bi-person"></i> <a href="./perfil.html">Tu perfil</a></li>
-                                <li><i class="bi bi-bookmark"></i> <a href="#guardado">Guardado</a></li>
-                                <li><i class="bi bi-bell"></i> <a href="#notificaciones">Notificaciones</a></li>
-                                <li><i class="bi bi-map"></i> <a href="#rutas">Tus Rutas</a></li>
-                                <li><i class="bi bi-share"></i> <a href="#compartir">Compartir</a></li>
-                                <li><i class="bi bi-gear"></i> <a href="#configuracion">Configuración</a></li>
-                                <li><i class="bi bi-box-arrow-right"></i> <a href="#" id="logout-btn">Cerrar Sesión</a></li>        
-                            </ul>
-                        </div>
+            <!-- Superposición de fondo -->
+            <div id="menu-overlay" onclick="toggleMenu()"></div>
+            <!-- Menú deslizante del usuario para que este entre al menu de configuracion-->
+            <div id="user-menu">
+                <i class="bi bi-x close-menu" onclick="toggleMenu()"></i>
+                <p id="userName"></p>
+                <ul>
+                    <li><i class="bi bi-person"></i> <a href="./perfil.html">Perfil</a></li>
+                    <ul id="btn-compartir">
+                    <li><i class="bi bi-share"></i> <a href="#">Compartir</a></li>
+                    </ul>
+                    <li><i class="bi bi-box-arrow-right"></i> <a href="#" id="logout-btn">Cerrar Sesión</a></li>
+                </ul>
+            </div>
 
             <!-- Main Section -->
             <section class="main">
@@ -65,8 +70,10 @@
                     <p>Únete a la comunidad de 5,000+ usuarios</p>
                     <h2>¿Quienes somos?</h2>
                     <p>
-                        En Sigue Tu Ruta mejoramos la movilidad en Tepatitlán con tecnología de rastreo en tiempo real para el transporte público. 
-                        Ofrecemos a los usuarios información precisa sobre ubicaciones y tiempos de llegada, facilitando viajes más seguros, eficientes y sin incertidumbre.
+                        En Sigue Tu Ruta mejoramos la movilidad en Tepatitlán con tecnología de rastreo en tiempo real
+                        para el transporte público.
+                        Ofrecemos a los usuarios información precisa sobre ubicaciones y tiempos de llegada, facilitando
+                        viajes más seguros, eficientes y sin incertidumbre.
                     </p>
                 </div>
                 <!-- Map Image (Simulando el mapa) -->
@@ -76,5 +83,7 @@
             </section>
         </div>
     </div>
+    <script src="./src/components/compartir.js" defer type="module"></script>
 </body>
+
 </html>

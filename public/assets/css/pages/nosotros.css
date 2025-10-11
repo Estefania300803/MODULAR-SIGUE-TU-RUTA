@@ -41,8 +41,8 @@
     /* En pantallas pequeñas, los elementos se alinearán en columna */
     .main {
         flex-direction: column; /* Cambia la dirección a columna para pantallas pequeñas */
-        margin-left: -30px;
-        margin-top: 50px;
+        margin-left: -35px;
+        margin-top: -0px;
     }
 
     /* Ajustar el tamaño de la imagen */

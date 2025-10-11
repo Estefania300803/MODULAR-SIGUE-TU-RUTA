@@ -1,0 +1,23 @@
+{
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": "../Sigue tu ruta"
+        },
+        {
+            "path": "../Curso_node.js"
+        },
+        {
+            "path": "../Proyecto"
+        },
+        {
+            "path": "../Carlos"
+        }
+    ],
+    "settings": {
+        "liveServer.settings.multiRootWorkspaceName": "Curso_node.js",
+        "liveServer.settings.port": 5501
+    }
+}

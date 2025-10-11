@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,19 +10,26 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./assets/css/pages/page_laterales.css">
     <link rel="stylesheet" href="./assets/css/pages/perfil.css">
-    <script src="./src/components/sidebar.js"></script> 
+    <script src="./src/components/sidebar.js"></script>
+    <script src="./src/views/UsuarioLogueado.js" defer type="module"></script>
+    <script type="module" src="./src/views/perfil.js" defer></script>
 </head>
+
 <body>
-    
+
     <div class="wrapper">
         <!-- Sidebar -->
         <nav class="sidebar" id="aside">
             <ul>
                 <li class="menu-item"><i class="bi bi-list"></i> <span>Menú</span></li>
-                <li class="menu-item" onclick="window.location.href = './home_page_singin.html'"><i class="bi bi-grid" onclick="window.location.href = './home_page_singin.html'"></i> <span>Principal</span></li>
-                <li class="menu-item" onclick="window.location.href = './mapa.html'"><i class="bi bi-map" onclick="window.location.href = './mapa.html'"></i> <span>Mapas</span></li>
-                <li class="menu-item"><i class="bi bi-bus-front"></i> <span>Camiones</span></li>
-                <li class="menu-item" onclick="window.location.href = './nosotros_singin.html'"><i class="bi bi-book" onclick="window.location.href = './nosotros_sigin.html'"></i> <span>Nosotros</span></li>
+                <li class="menu-item" onclick="window.location.href = './home_page_singin.html'"><i class="bi bi-grid"
+                        onclick="window.location.href = './home_page_singin.html'"></i> <span>Principal</span></li>
+                <li class="menu-item" onclick="window.location.href = './mapa.html'"><i class="bi bi-map"
+                        onclick="window.location.href = './mapa.html'"></i> <span>Mapas</span></li>
+                <li class="menu-item" onclick="window.location.href = './camiones.html'"><i class="bi bi-bus-front"
+                    onclick="window.location.href = './camiones.html'"></i> <span>Camiones</span></li>
+                <li class="menu-item" onclick="window.location.href = './nosotros_singin.html'"><i class="bi bi-book"
+                        onclick="window.location.href = './nosotros_sigin.html'"></i> <span>Nosotros</span></li>
             </ul>
         </nav>
 
@@ -34,54 +42,66 @@
                     <div class="logo">Sigue Tu Ruta</div>
                 </div>
                 <div class="header-actions">
-                    <input type="text" placeholder="Buscar" class="search">
-                    <button class="how-to-btn"><i class="bi bi-arrow-left-right me-2"></i>Cómo Llegar</button>
-                    <button class="profile-btn" type="button" id="btn-user" onclick="toggleMenu()" ><img id="userProfilePicture" src="assets/imagenes/perfil.jpg"></button>
+                    <!--<input type="text" placeholder="Buscar" class="search">
+                    <button class="how-to-btn"><i class="bi bi-arrow-left-right me-2"></i>Cómo Llegar</button>-->
+                    <button class="profile-btn" type="button" id="btn-user" onclick="toggleMenu()"><img
+                            id="userProfilePicture" src="assets/imagenes/perfil.jpg"></button>
                 </div>
             </header>
 
-                        <!-- Superposición de fondo -->
-                        <div id="menu-overlay" onclick="toggleMenu()"></div>
-                        <!-- Menú deslizante del usuario para que este entre al menu de configuracion-->
-                        <div id="user-menu">
-                            <i class="bi bi-x close-menu" onclick="toggleMenu()"></i>
-                            <p id ="userName"></p>
-                            <ul>
-                                <li><i class="bi bi-person"></i> <a href="./perfil.html">Tu perfil</a></li>
-                                <li><i class="bi bi-bookmark"></i> <a href="#guardado">Guardado</a></li>
-                                <li><i class="bi bi-bell"></i> <a href="#notificaciones">Notificaciones</a></li>
-                                <li><i class="bi bi-map"></i> <a href="#rutas">Tus Rutas</a></li>
-                                <li><i class="bi bi-share"></i> <a href="#compartir">Compartir</a></li>
-                                <li><i class="bi bi-gear"></i> <a href="#configuracion">Configuración</a></li>
-                                <li><i class="bi bi-box-arrow-right"></i> <a href="#" id="logout-btn">Cerrar Sesión</a></li>        
-                            </ul>
-                        </div>
-                                <!-- Main Section -->
+            <!-- Superposición de fondo -->
+            <div id="menu-overlay" onclick="toggleMenu()"></div>
+            <!-- Menú deslizante del usuario para que este entre al menu de configuracion-->
+            <div id="user-menu">
+                <i class="bi bi-x close-menu" onclick="toggleMenu()"></i>
+                <p id="userName"></p>
+                <ul>
+                    <li><i class="bi bi-person"></i> <a href="./perfil.html">Perfil</a></li>
+                    <ul id="btn-compartir">
+                    <li><i class="bi bi-share"></i> <a href="#">Compartir</a></li>
+                    </ul>
+                    <li><i class="bi bi-box-arrow-right"></i> <a href="#" id="logout-btn">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+            <!-- Main Section -->
             <section class="main">
                 <!-- Columna izquierda para los datos -->
                 <div class="main-left">
                     <div class="profile-container">
                         <!-- Imagen del usuario -->
                         <img id="imagenPerfil" src="./assets/imagenes/perfil.jpg" class="profile-img-rounded">
-                        <!-- Nombre junto a la imagen -->  
-                            <p id ="userName"></p>
+                        <!-- Nombre junto a la imagen -->
+                        <p id="userNamePerfil" class="nombre"></p>
                     </div>
                     <div class="user-info">
                         <label for="email">Correo:</label>
-                        <input type="email" id="email" value="Emanuel@gmail.com" disabled>
-
-                        <div class="password-section">
-                            <label for="current-password">Contraseña actual:</label>
-                            <input type="password" id="current-password">
-
-                            <label for="new-password">Nueva contraseña:</label>
-                            <input type="password" id="new-password">
-
-                            <label for="confirm-password">Confirmar contraseña:</label>
-                            <input type="password" id="confirm-password">
+                        <input type="email" id="email" disabled>
+                        <div style="text-align: center;">
+                            <button id="btn-cambiar-pass" class="CambiarContraseña">Cambiar contraseña</button>
                         </div>
+                        
+                        <div class="password-section" style="display: none;">
+                            <label for="current-password">Contraseña actual:</label>
+                            <div class="password-wrapper">
+                                <input type="password" id="current-password" required>
+                                <i class="bi bi-eye-slash toggle-password" data-target="current-password"></i>
+                            </div>
+                        
+                            <label for="new-password">Nueva contraseña:</label>
+                            <div class="password-wrapper">
+                                <input type="password" id="new-password" required>
+                                <i class="bi bi-eye-slash toggle-password" data-target="new-password"></i>
+                            </div>
+                        
+                            <label for="confirm-password">Confirmar contraseña:</label>
+                            <div class="password-wrapper">
+                                <input type="password" id="confirm-password" required>
+                                <i class="bi bi-eye-slash toggle-password" data-target="confirm-password"></i>
+                            </div>
+                        </div>  
+
                         <!-- Botones de acción -->
-                        <div class="action-buttons">
+                        <div class="action-buttons" style="display: none;">
                             <button class="btn-cancel">Cancelar</button>
                             <button class="btn-save">Guardar</button>
                         </div>
@@ -90,7 +110,7 @@
             </section>
         </div>
     </div>
-
-    <script src="./src/views/UsuarioLogueado.js" defer type="module"></script>
+    <script src="./src/components/compartir.js" defer type="module"></script>
 </body>
+
 </html>

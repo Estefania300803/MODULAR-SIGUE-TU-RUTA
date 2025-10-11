@@ -5,14 +5,11 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa</title>
     <link rel="website icon" type="svg" href="assets/iconos/Logo_s-l.svg">
-    <link rel="stylesheet" href="assets/css/pages/page_laterales.css">
     <link rel="stylesheet" href="assets/css/pages/mapa.css">
+    <link rel="stylesheet" href="assets/css/pages/page_laterales.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./src/components/sidebar.js"></script> 
-    <script src="./src/components/sidebar2.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> >
     <!-- Leaflet CDN -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
         integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
@@ -21,16 +18,19 @@
 </head>
 
 <body>
-
     <div class="wrapper">
         <!-- Sidebar -->
         <nav class="sidebar" id="aside">
             <ul>
                 <li class="menu-item"><i class="bi bi-list"></i> <span>Menú</span></li>
-                <li class="menu-item" onclick="window.location.href = './home_page_singin.html'"><i class="bi bi-grid" onclick="window.location.href = './home_page_singin.html'"></i> <span>Principal</span></li>
-                <li class="menu-item" onclick="window.location.href = './mapa.html'"><i class="bi bi-map" onclick="window.location.href = './mapa.html'"></i> <span>Mapas</span></li>
-                <li class="menu-item"><i class="bi bi-bus-front"></i> <span>Camiones</span></li>
-                <li class="menu-item" onclick="window.location.href = './nosotros_singin.html'"><i class="bi bi-book" onclick="window.location.href = './nosotros_sigin.html'"></i> <span>Nosotros</span></li>
+                <li class="menu-item" onclick="window.location.href = './home_page_singin.html'"><i class="bi bi-grid"
+                        onclick="window.location.href = './home_page_singin.html'"></i> <span>Principal</span></li>
+                <li class="menu-item"><i class="bi bi-map" style="color: black; -webkit-text-stroke: 0.6px black; transform: scale(1.1);"
+                        onclick="window.location.href = './mapa.html'"></i> <span>Mapas</span></li>
+                <li class="menu-item" onclick="window.location.href = './camiones.html'"><i class="bi bi-bus-front"
+                        onclick="window.location.href = './camiones.html'"></i> <span>Camiones</span></li>
+                <li class="menu-item" onclick="window.location.href = './nosotros_singin.html'"><i class="bi bi-book"
+                        onclick="window.location.href = './nosotros_sigin.html'"></i> <span>Nosotros</span></li>
             </ul>
         </nav>
 
@@ -43,44 +43,98 @@
                     <div class="logo">Sigue Tu Ruta</div>
                 </div>
                 <div class="header-actions">
-                    <input type="text" placeholder="Buscar" class="search">
-                    <button class="how-to-btn"><i class="bi bi-arrow-left-right me-2"></i>Cómo Llegar</button>
-                    <button class="profile-btn" type="button" id="btn-user" onclick="toggleMenu()" ><img id="userProfilePicture" src="assets/imagenes/perfil.jpg"></button>
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="Buscar parada..." class="search" id="buscador-paradas" autocomplete="on">
+                        <div id="sugerencias-paradas"></div>
+                    </div>
+
+                    <!--<button class="how-to-btn"><i class="bi bi-arrow-left-right me-2"></i>Cómo Llegar</button>-->
+                    <button class="profile-btn" type="button" id="btn-user" onclick="toggleMenu()"><img
+                            id="imagenPerfil" src="assets/imagenes/perfil.jpg"></button>
                 </div>
             </header>
 
-                        <!-- Superposición de fondo -->
-                        <div id="menu-overlay" onclick="toggleMenu()"></div>
-                        <!-- Menú deslizante del usuario para que este entre al menu de configuracion-->
-                        <div id="user-menu">
-                            <i class="bi bi-x close-menu" onclick="toggleMenu()"></i>
-                            <p id ="userName"></p>
-                            <ul>
-                                <li><i class="bi bi-person"></i> <a href="./perfil.html">Tu perfil</a></li>
-                                <li><i class="bi bi-bookmark"></i> <a href="#guardado">Guardado</a></li>
-                                <li><i class="bi bi-bell"></i> <a href="#notificaciones">Notificaciones</a></li>
-                                <li><i class="bi bi-map"></i> <a href="#rutas">Tus Rutas</a></li>
-                                <li><i class="bi bi-share"></i> <a href="#compartir">Compartir</a></li>
-                                <li><i class="bi bi-gear"></i> <a href="#configuracion">Configuración</a></li>
-                                <li><i class="bi bi-box-arrow-right"></i> <a href="#" id="logout-btn">Cerrar Sesión</a></li>        
-                            </ul>
-                        </div>
-                                                <!-- Main Section -->
-                        <section class="main">
-                            <div class="container">
+            <!-- Superposición de fondo -->
+            <div id="menu-overlay" onclick="toggleMenu()"></div>
+            <!-- Menú deslizante del usuario para que este entre al menu de configuracion-->
+            <div id="user-menu">
+                <i class="bi bi-x close-menu" onclick="toggleMenu()"></i>
+                <p id="userName"></p>
+                <ul>
+                    <li><i class="bi bi-person"></i> <a href="./perfil.html">Perfil</a></li>
+                    <ul id="btn-compartir">
+                    <li><i class="bi bi-share"></i> <a href="#">Compartir</a></li>
+                    </ul>
+                    <li><i class="bi bi-box-arrow-right"></i> <a href="#" id="logout-btn">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+            <!-- Main Section -->
+            <section class="main">
+                <div class="container">
+                    <!-- Botón para abrir el menú -->
+                    <button id="open-menu-btn">☰</button>
+                    <!-- Menú lateral desde la derecha -->
+                    <div id="side-menu" class="side-menu">
+                        <span id="close-menu-btn" class="close-btn">&times;</span>
 
-                                <!-- Mapa -->
-                                <div class="map-container">
-                                    <div id="mi_mapa"></div>
-                                </div>
+                        <section class="main2">
+
+                            <!-- Menú de Rutas -->
+                            <div class="custom-card2">
+                                <button class="custom-select-button" id="toggleList">Rutas</button>
+
+                                <ul class="list-options" id="listContainer">
+                                    <li>Ruta C01 <i class="bi bi-eye-slash toggle-ruta" data-ruta="C01"></i></li>
+                                    <li>Ruta C02 <i class="bi bi-eye-slash toggle-ruta" data-ruta="C02"></i></li>
+                                </ul>
                             </div>
+
+                            <!-- Simbología -->
+                            <div class="custom-card">
+                                <div class="symbol-title">Simbología</div>
+
+                                <div class="symbol-item">
+                                    <i class="bi bi-bus-front-fill text-success"></i>
+                                    <span>Camiones en circulación</span>
+                                </div>
+
+                                <div class="symbol-item">
+                                    <i class="bi bi-geo-alt-fill text-primary"></i>
+                                    <span>Paradas de Camiones</span>
+                                </div>
+
+                                <div class="symbol-item">
+                                    <i class="bi bi-geo-alt-fill text-danger"></i>
+                                    <span>Tu ubicación</span>
+                                </div>
+
+                                <div class="symbol-item">
+                                    <i class="bi bi-currency-dollar text-warning"></i>
+                                    <span>Tarifa: $9.50</span>
+                                </div>
+
+                            </div>
+
                         </section>
+
+                    </div>
+                    <!-- Mapa -->
+                    <div class="map-container">
+                        <div id="mi_mapa"></div>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
     <!-- Script del mapa externo -->
     <script src="./src/components/mapa_leaflet.js" defer></script>
-    <script src="./src/components/siderbar2.js" defer></script>
-    <script src="./src/views/UsuarioLogueado.js" defer></script> 
+    <script src="./src/components/sidebar.js" defer></script>
+    <script src="./src/components/siderbar_menu_simbologia.js" defer></script>
+    <script src="./src/components/dropdown_mapa.js" defer></script>
+    <script src="./src/js/dropdown_menu.js" defer></script>
+    <script src="./src/views/UsuarioLogueado.js" defer type="module"></script>
+    <script src="./src/components/ubicacion_gps.js" type="module" defer></script>
+    <script src="./src/components/compartir.js" defer type="module"></script>
 </body>
 
 </html>
