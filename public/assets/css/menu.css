@@ -1,0 +1,56 @@
+/* 1) La sidebar debe estar fija y por encima del contenido */
+.sidebar {
+  position: fixed; /* antes: relative */
+  top: 15px; /* debajo del header fijo */
+  left: 0;
+  height: calc(100vh - 80px);
+  z-index: 1040; /* por encima de tarjetas/accordions */
+  width: 60px; /* ancho colapsado */
+  background: #f4f4f4;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
+}
+
+/* 2) El contenido NUNCA cambia su margen; la sidebar se superpone */
+.content {
+  margin-left: 100px; /* igual al ancho colapsado de la sidebar */
+  margin-top: 80px; /* altura del header */
+  padding-left: 100px;
+  position: relative;
+  z-index: 1; /* por debajo de .sidebar (1040) */
+  overflow: visible; /* permite que los dropdowns “asomen” por detrás */
+}
+
+/* 3) Expandir sidebar al pasar el mouse, SIN empujar el contenido */
+.sidebar:hover {
+  width: 220px; /* antes ponías 200px y en mobile 1000px —> excesivo */
+}
+
+/* 4) Mostrar los textos sólo al expandir */
+.sidebar:hover ul li span {
+  display: inline;
+}
+
+/* 5) No bloquees el scroll global: permitimos scroll vertical */
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: auto; /* antes: hidden; eso te cortaba contenido en móviles */
+}
+
+/* 6) Prioridades de capas de paneles laterales del usuario */
+#menu-overlay {
+  z-index: 1020;
+} /* debajo de sidebar (1040) y del modal bootstrap (1050+) */
+#user-menu {
+  z-index: 1030;
+} /* debajo de sidebar (1040), encima del contenido */
+
+/* 7) Mobile: NO hagas la sidebar de 1000px; sólo 220px */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 60px;
+  }
+  .sidebar:hover {
+    width: 220px;
+  } /* quita el 1000px */
+}

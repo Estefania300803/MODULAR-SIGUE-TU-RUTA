@@ -1,199 +1,202 @@
 /* General styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body, html {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;   
-    overflow-y: hidden;   
+body,
+html {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 /* Layout */
 .wrapper {
-    display: flex;
-    height: 100vh;
-    flex-direction: row;
-    position: relative;
+  display: flex;
+  height: 100vh;
+  flex-direction: row;
+  position: relative;
 }
 
 /* Sidebar */
 .sidebar {
-    width: 60px; /* Inicialmente solo mostramos los iconos */
-    background-color: #f4f4f4;
-    position: relative;
-    margin-top: 80px;
-    left: 0;
-    height: calc(100% - 80px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;  /* Alinea los íconos verticalmente */
-    padding-top: 20px;
-    transition: width 0.3s ease; /* Transición suave para expandir */
-    overflow: hidden; /* Evitar que el contenido se desborde cuando el sidebar está expandido */
+  width: 60px; /* Inicialmente solo mostramos los iconos */
+  background-color: #f4f4f4;
+  position: relative;
+  margin-top: 80px;
+  left: 0;
+  height: calc(100% - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Alinea los íconos verticalmente */
+  padding-top: 20px;
+  transition: width 0.3s ease; /* Transición suave para expandir */
+  overflow: hidden; /* Evitar que el contenido se desborde cuando el sidebar está expandido */
+  z-index: 1040;
 }
 
 .sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Alinea los íconos en el centro */
-    width: 100%;  /* Asegura que el contenedor ocupe todo el ancho */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Alinea los íconos en el centro */
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
 }
 
 .sidebar ul li {
-    display: flex;
-    justify-content: flex-start;  /* Alinea los íconos y el texto a la izquierda */
-    align-items: center;      /* Alinea los íconos verticalmente */
-    padding: 15px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;  /* Asegura que el contenedor ocupe todo el ancho */
+  display: flex;
+  justify-content: flex-start; /* Alinea los íconos y el texto a la izquierda */
+  align-items: center; /* Alinea los íconos verticalmente */
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
 }
 
 /* Alineación de los íconos */
 .sidebar ul li i {
-    font-size: 24px;
-    margin-right: 10px; /* Espacio entre el ícono y el texto */
-    transition: none; /* Evita que el ícono se mueva cuando el sidebar se expande */
+  font-size: 24px;
+  margin-right: 10px; /* Espacio entre el ícono y el texto */
+  transition: none; /* Evita que el ícono se mueva cuando el sidebar se expande */
 }
 
 /* Por defecto, los textos están ocultos */
 .sidebar ul li span {
-    display: none;
+  display: none;
 }
 
 /* Mostrar texto cuando el sidebar se expanda */
 .sidebar:hover {
-    width: 200px; /* Expande el sidebar */
+  width: 200px; /* Expande el sidebar */
 }
 
 .sidebar:hover ul li span {
-    display: inline; /* Muestra el texto junto al ícono */
+  display: inline; /* Muestra el texto junto al ícono */
 }
 
 /* Header */
 .header {
-    background-color: #296E03;
-    color: white;
-    padding: 20px 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    flex-wrap: wrap;
+  background-color: #296e03;
+  color: white;
+  padding: 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  flex-wrap: wrap;
 }
 
 .logo-container {
-    display: flex;
-    align-items: center;
-    flex: 1;
+  display: flex;
+  align-items: center;
+  flex: 1;
 }
 
 .logo-icon {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: bold;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 /* Reducir el tamaño en pantallas pequeñas */
 .header-actions {
-    display: flex;
-    align-items: center;
-    flex: 2;
-    justify-content: flex-end;
-    width: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
+  display: flex;
+  align-items: center;
+  flex: 2;
+  justify-content: flex-end;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .search {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    margin-right: 10px;
-    border: none;
-    width: 200px; /* Ajuste para no ocupar todo el espacio */
-    background: #CCD4C9;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-right: 10px;
+  border: none;
+  width: 200px; /* Ajuste para no ocupar todo el espacio */
+  background: #ccd4c9;
 }
 
 .how-to-btn {
-    background-color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    margin-right: 10px;
-    font-size: 14px;
-    color: #000000;
-    cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  font-size: 14px;
+  color: #000000;
+  cursor: pointer;
 }
 
 .how-to-btn:hover {
-    background-color: #f1f1f1;
+  background-color: #f1f1f1;
 }
 
 /* Estilo para el botón de perfil */
 .profile-btn {
-    background-color: #fff;
-    border: none;
-    border-radius: 50%; /* Hace el botón circular */
-    padding: 10px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px; /* Tamaño del botón */
-    height: 50px; /* Tamaño del botón */
+  background-color: #fff;
+  border: none;
+  border-radius: 50%; /* Hace el botón circular */
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px; /* Tamaño del botón */
+  height: 50px; /* Tamaño del botón */
 }
 
 /* Estilo para la imagen dentro del botón */
 .profile-btn img {
-    width: 50px;  /* Asegura que la imagen ocupe todo el espacio disponible */
-    height: 50px; /* Hace que la imagen tenga la misma altura que el botón */
-    border-radius: 50%; /* Hace que la imagen sea redonda */
-    object-fit: cover; /* Asegura que la imagen mantenga la relación de aspecto sin deformarse */
-    position: absolute;
+  width: 50px; /* Asegura que la imagen ocupe todo el espacio disponible */
+  height: 50px; /* Hace que la imagen tenga la misma altura que el botón */
+  border-radius: 50%; /* Hace que la imagen sea redonda */
+  object-fit: cover; /* Asegura que la imagen mantenga la relación de aspecto sin deformarse */
+  position: absolute;
 }
 
 .profile-btn i {
-    font-size: 24px;
-    color: #296E03;
+  font-size: 24px;
+  color: #296e03;
 }
 
 /* Main Section */
 .content {
-    align-items: center;
-    margin-left: 60px; /* Sidebar width */
-    margin-top: 80px; /* Header height */
-    padding: 20px;
-    width: 100%;
+  align-items: center;
+  margin-left: 60px; /* Sidebar width */
+  margin-top: 80px; /* Header height */
+  padding: 20px;
+  width: 100%;
+  z-index: 1;
 }
 
 .map {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
 }
 
 .map-image {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 /* ===================
@@ -202,171 +205,175 @@ Paneles laterales
 
 /* Estilos para el menú deslizante */
 #user-menu {
-    position: fixed;
-    top: 0;
-    right: -300px; /* Oculto por defecto */
-    width: 300px;
-    height: 100vh;
-    background: #f4f4f4; /* Color de fondo */
-    padding: 20px;
-    transition: right 0.3s ease-in-out;
-    box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2);
-    font-family: Arial, sans-serif;
+  position: fixed;
+  top: 0;
+  right: -300px; /* Oculto por defecto */
+  width: 300px;
+  height: 100vh;
+  background: #f4f4f4; /* Color de fondo */
+  padding: 20px;
+  transition: right 0.3s ease-in-out;
+  box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
 }
-  
+
 /* Clase activa para mostrar el menú */
 #user-menu.active {
-    right: 0;
+  right: 0;
 }
-  
+
 /* Superposición de fondo al abrir el menú */
 #menu-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
 }
-  
+
 /* Activar superposición */
 #menu-overlay.active {
-    display: block;
-}
-  
-/* Estilos del título del usuario */
-#user-menu p {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
-}
-  
-/* Lista del menú */
-#user-menu ul {
-    list-style: none;
-    padding: 0;
-}
-  
-#user-menu ul li {
-    padding: 12px 0;
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    font-weight: 500;
-}
-  
-#user-menu ul li a {
-    text-decoration: none;
-    color: #222;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background 0.3s;
+  display: block;
+  z-index: 1020;
 }
 
-  
+/* Estilos del título del usuario */
+#user-menu p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  z-index: 1030;
+}
+
+/* Lista del menú */
+#user-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+#user-menu ul li {
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+#user-menu ul li a {
+  text-decoration: none;
+  color: #222;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
 /* Hover en los elementos del menú */
 #user-menu ul li a:hover {
-    background: #c5c5c5;
+  background: #c5c5c5;
 }
-  
+
 /* Estilos de los iconos */
 #user-menu ul li i {
-    font-size: 20px; /* Tamaño de los iconos */
-    margin-right: 12px;
-    color: #555;
+  font-size: 20px; /* Tamaño de los iconos */
+  margin-right: 12px;
+  color: #555;
 }
-  
+
 /* Botón de cerrar */
 .close-menu {
-    position: absolute;
-    z-index: 1003 !important;
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #555;
-    transition: color 0.3s;
+  position: absolute;
+  z-index: 1003 !important;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.3s;
 }
-  
+
 .close-menu:hover {
-    color: #222;
+  color: #222;
 }
 
 #menu-overlay.active {
-    z-index: 999; /* Establece el índice de capa para superponer sobre el contenido */
+  z-index: 999; /* Establece el índice de capa para superponer sobre el contenido */
 }
 
 #user-menu.active {
-    z-index: 1003; /* Mantén el menú al frente */
+  z-index: 1003; /* Mantén el menú al frente */
 }
 
 body.active-menu {
-    opacity: 0.5;
-    pointer-events: none; /* Desactiva interacciones con el fondo */
+  opacity: 0.5;
+  pointer-events: none; /* Desactiva interacciones con el fondo */
 }
 
 body {
-    transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 /* Responsive Styles */
 @media (max-width: 768px) {
+  .sidebar.active {
+    width: 220px;
+  }
 
-    .sidebar:hover {
-        width: 1000px; /* Expande el sidebar */
-    }
-    /* Ocultar el texto "Sigue Tu Ruta" en pantallas pequeñas */
-    .logo {
-        display: none; /* Elimina el texto cuando la pantalla sea pequeña */
-    }
+  .sidebar:hover {
+    width: 1000px; /* Expande el sidebar */
+  }
+  /* Ocultar el texto "Sigue Tu Ruta" en pantallas pequeñas */
+  .logo {
+    display: none; /* Elimina el texto cuando la pantalla sea pequeña */
+  }
 
-    .header-actions {
-        justify-content: flex-start;  /* Mueve los elementos a la izquierda */
-        width: 80%;  /* Asegura que el contenedor ocupe el 100% de su ancho */
-    }
+  .header-actions {
+    justify-content: flex-start; /* Mueve los elementos a la izquierda */
+    width: 80%; /* Asegura que el contenedor ocupe el 100% de su ancho */
+  }
 
-    /* Hacer más pequeño el input y el botón "Cómo Llegar" */
-    .search {
-        width: 80px; /* Reducir el tamaño del input */
-        font-size: 12px;
-    }
+  /* Hacer más pequeño el input y el botón "Cómo Llegar" */
+  .search {
+    width: 80px; /* Reducir el tamaño del input */
+    font-size: 12px;
+  }
 
-    .how-to-btn {
-        width: 30%;
-        padding: 12px 8px; /* Hace el botón más pequeño */
-        font-size: 10px; /* Reduce el tamaño del texto */
-    }
+  .how-to-btn {
+    width: 30%;
+    padding: 12px 8px; /* Hace el botón más pequeño */
+    font-size: 10px; /* Reduce el tamaño del texto */
+  }
 
-    .sidebar {
-        width: 60px; /* Reduce el ancho del sidebar */
-        height: calc(100% - 80px);
-    }
+  .sidebar {
+    width: 60px; /* Reduce el ancho del sidebar */
+    height: calc(100% - 80px);
+  }
 
-    .sidebar ul li {
-        padding: 10px;
-    }
+  .sidebar ul li {
+    padding: 10px;
+  }
 
-    .header-actions {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;  /* Mueve los elementos a la izquierda en pantallas pequeñas */
-    }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Mueve los elementos a la izquierda en pantallas pequeñas */
+  }
 
-    .search {
-        margin-bottom: 10px;
-        width: 35%;
-    }
+  .search {
+    margin-bottom: 10px;
+    width: 35%;
+  }
 
-    .how-to-btn {
-        margin-right: 10px;
-        margin-top: -6px;
-    }
+  .how-to-btn {
+    margin-right: 10px;
+    margin-top: -6px;
+  }
 
-    .profile-btn {
-        margin-top: 1px;
-    }
+  .profile-btn {
+    margin-top: 1px;
+  }
 }
