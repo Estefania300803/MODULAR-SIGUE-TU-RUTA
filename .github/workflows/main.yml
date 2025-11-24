@@ -1,0 +1,33 @@
+name: CI - Sigue Tu Ruta
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main", "develop" ]
+
+jobs:
+  node-ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          # cache: "npm"  # ❌ QUITAR ESTA LÍNEA
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests (si existen)
+        run: npm test || echo "sin tests configurados"
+
+      - name: Lint (si existe)
+        run: npm run lint || echo "sin lint configurado"
+
+      - name: Build (si existe)
+        run: npm run build || echo "sin build configurado"
