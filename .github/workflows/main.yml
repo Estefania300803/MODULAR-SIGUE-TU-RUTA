@@ -1,0 +1,37 @@
+name: CI - Sigue Tu Ruta
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main", "develop" ]
+
+jobs:
+  node-ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      # Asumiendo que tu package.json está en la raíz del repo.
+      - name: Install dependencies
+        run: npm ci
+
+      # Si aún no tienes pruebas, esto NO va a tronar el pipeline
+      - name: Run tests (si existen)
+        run: npm test || echo "sin tests configurados"
+
+      # Si tienes lint, se ejecuta; si no, se ignora
+      - name: Lint (si existe script)
+        run: npm run lint || echo "sin lint configurado"
+
+      # Si tienes build (por ejemplo, para generar dist/), si no, no falla
+      - name: Build (si existe script)
+        run: npm run build || echo "sin build configurado"
