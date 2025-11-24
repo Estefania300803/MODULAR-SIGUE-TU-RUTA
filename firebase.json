@@ -5,11 +5,22 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      { "source": "/firebase-config", "function": "app" },
+      { "source": "/recibirGPS",      "function": "app" },
+      { "source": "/app{,/**}",       "function": "app" },
+      { "source": "**", "destination": "/index.html" }
     ]
   },
-  "functions": {
-    "runtime": "nodejs18",
-    "source": "functions",
-    "platform": "gcfv2"
-  }
+  "functionDefaults": {
+    "platform": "gcfv1",           
+    "runtime": "nodejs18"         
+  },
+  "functions": [
+    {
+      "codebase": "default",
+      "source": "functions"
+    }
+  ]
 }

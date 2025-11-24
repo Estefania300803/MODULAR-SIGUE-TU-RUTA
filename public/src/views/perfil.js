@@ -3,7 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/fireba
 import { getAuth, onAuthStateChanged, reauthenticateWithCredential, EmailAuthProvider, updatePassword } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 import { getFirestore, collection, query, where, getDocs, updateDoc, doc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
-const backendURL = "https://us-central1-sigue-tu-ruta-1472.cloudfunctions.net/app";
+const backendURL = "https://us-central1-sigue-tu-ruta-tepatitlan.cloudfunctions.net/app";
 const config = await fetch(`${backendURL}/firebase-config`).then(res => res.json());
 const app = initializeApp(config);
 const auth = getAuth(app);

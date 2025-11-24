@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/fireba
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
-const backendURL = "https://us-central1-sigue-tu-ruta-1472.cloudfunctions.net/app";
+const backendURL = "https://us-central1-sigue-tu-ruta-tepatitlan.cloudfunctions.net/app";
 
 // Obtener configuración segura desde el backend
 const config = await fetch(`${backendURL}/firebase-config`).then(res => res.json());

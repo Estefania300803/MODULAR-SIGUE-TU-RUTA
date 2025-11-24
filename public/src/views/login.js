@@ -14,71 +14,7 @@ import {
   doc
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
-const backendURL = "https://us-central1-sigue-tu-ruta-1472.cloudfunctions.net/app";
-// ---- Configuración ----
-const SITE_KEY = "6LfNAuYrAAAAABsojTY52hYShFwpPaDIk76Eq9XG"; // reCAPTCHA v3 Site Key
-const ACTION = "login_submit";
-const VERIFY_RECAPTCHA_URL = `${backendURL}/verify-recaptcha`;
-
-// ---- Utilidades de UI mínimas ----
-const $ = (sel) => document.querySelector(sel);
-const estado = $("#estado");
-function setEstado(msg, ok = false) {
-  estado.textContent = msg || "";
-  estado.className = ok ? "text-success" : "text-danger";
-}
-
-// ---- Verificación reCAPTCHA v3 ----
-async function getRecaptchaToken() {
-  // Espera a que el cliente esté listo
-  await new Promise((r) => grecaptcha.ready(r));
-  // Ejecuta y devuelve token
-  return await grecaptcha.execute(SITE_KEY, { action: ACTION });
-}
-
-async function verifyRecaptchaOrThrow(token) {
-  // Llama a TU backend (NO a Google directo desde el cliente)
-  const resp = await fetch(VERIFY_RECAPTCHA_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ recaptcha_token: token, recaptcha_action: ACTION }),
-  });
-
-  const data = await resp.json();
-
-  if (!resp.ok || !data.success) {
-    const msg = data?.message || "No se pudo verificar reCAPTCHA (servidor). Intenta nuevamente.";
-    throw new Error(msg);
-  }
-  // Puedes exigir un score mínimo en backend; aquí solo informativo:
-  return data; // { success, score, action, ... }
-}
-
-// ---- Flujo del formulario ----
-const form = $("#formulario-sesion");
-const tokenInput = $("#recaptcha_token");
-
-form?.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  setEstado("Verificando reCAPTCHA…", false);
-
-  try {
-    // 1) Obtener token del cliente
-    const token = await getRecaptchaToken();
-    tokenInput.value = token;
-
-    // 2) Verificar en el backend
-    const result = await verifyRecaptchaOrThrow(token);
-
-  } catch (err) {
-    console.error(err);
-  }
-});
-
-// Opcional: precarga cliente
-grecaptcha.ready(() => {
-  // Puedes hacer una ejecución ligera si quieres “calentar” el score
-});
+const backendURL = "https://us-central1-sigue-tu-ruta-tepatitlan.cloudfunctions.net/app";
 
 // Obtener la configuración de Firebase desde el backend
 fetch(`${backendURL}/firebase-config`)
@@ -99,6 +35,12 @@ fetch(`${backendURL}/firebase-config`)
       try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
+
+        if (!user.emailVerified) {
+          alert("Debes verificar tu correo electrónico antes de iniciar sesión. Revisa tu bandeja de entrada.");
+          return;
+        }
+        
         const token = await user.getIdToken();
 
         await fetch(`${backendURL}/auth`, {
@@ -109,7 +51,6 @@ fetch(`${backendURL}/firebase-config`)
           },
           body: JSON.stringify({ email: user.email })
         });
-
         window.location.href = "./home_page_singin.html";
       } catch (error) {
         console.error("Error al iniciar sesión:", error);
@@ -146,7 +87,6 @@ fetch(`${backendURL}/firebase-config`)
         } else {
           console.log("Usuario ya existe. Solo inicia sesión.");
         }
-
         window.location.href = "./home_page_singin.html";
       } catch (error) {
         console.error("Error al iniciar sesión con Google:", error.message);

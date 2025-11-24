@@ -1,7 +1,9 @@
 {
   "projects": {
-    "default": "sigue-tu-ruta-1472"
+    "default": "sigue-tu-ruta-1472",
+    "estefania": "sigue-tu-ruta-1472",
+    "Angela": "sigue-tu-ruta-tepatitlan"
   },
   "targets": {},
   "etags": {}
-} 
+}

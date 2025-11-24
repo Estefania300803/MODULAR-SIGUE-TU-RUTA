@@ -14,10 +14,17 @@
         },
         {
             "path": "../Carlos"
+        },
+        {
+            "path": "../pipePy"
+        },
+        {
+            "path": "../licencias firebase"
         }
     ],
     "settings": {
         "liveServer.settings.multiRootWorkspaceName": "Curso_node.js",
-        "liveServer.settings.port": 5501
+        "liveServer.settings.port": 5501,
+        "postman.settings.dotenv-detection-notification-visibility": false
     }
 }
