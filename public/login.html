@@ -1,29 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+  <!-- Configuración básica del documento -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Título de la pestaña -->
   <title>Iniciar sesión</title>
+
+  <!-- Icono del sitio -->
   <link rel="website icon" type="svg" href="assets/iconos/Logo_s-l.svg">
+
+  <!-- Hojas de estilo propias del proyecto -->
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/pages/login_page.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/themes.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/modales.css">
+
+  <!-- Bootstrap para maquetar y estilos generales -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
 
+  <!-- Lógica de login (Firebase + JavaScript) -->
   <script type="module" src="./src/views/login.js"></script>
 </head>
+
 <body>
+  <!-- Fondo general de la pantalla de login -->
   <div class="background">
+    <!-- Contenedor principal del formulario de inicio de sesión -->
     <div class="login-container">
+
+      <!-- Encabezado con logo y título -->
       <div class="text-center">
         <img src="assets/imagenes/logo.png" alt="Logo Sigue Tu Ruta" class="logo">
         <h2 class="title">Iniciar sesión</h2>
       </div>
 
+      <!-- Formulario principal de inicio de sesión -->
       <form id="formulario-sesion">
+        <!-- Campo de correo electrónico -->
         <div class="mb-3">
           <label for="email" class="form-label">Correo electrónico</label>
           <div class="input-group">
@@ -31,6 +50,7 @@
           </div>
         </div>
 
+        <!-- Campo de contraseña -->
         <div class="mb-3">
           <label for="password" class="form-label">Contraseña</label>
           <div class="input-group">
@@ -38,29 +58,69 @@
           </div>
         </div>
 
+        <!-- Enlace para recuperar contraseña -->
         <div class="d-flex justify-content-between align-items-center mb-3">
           <a href="#" id="enlace-reset" class="forgot-password">¿Olvidaste tu contraseña?</a>
         </div>
 
-        <button type="submit" id="btn-login" class=" btn btn-success w-100 mb-3 d-flex align-items-center justify-content-center;" style="font-size: 21px;">Iniciar sesión</button>
+        <!-- Botón para enviar el formulario de inicio de sesión -->
+        <button type="submit" id="btn-login"
+          class="btn btn-success w-100 mb-3 d-flex align-items-center justify-content-center" style="font-size: 21px;">
+          Iniciar sesión
+        </button>
       </form>
 
-      <!-- estado/errores -->
+      <!-- Zona para mostrar mensajes de estado o errores desde JavaScript -->
       <p id="estado" class="mt-2 text-center"></p>
 
       <hr>
 
-      <button id="btn-google" class="btn btn-outline-secondary w-100 mb-3 d-flex align-items-center justify-content-center" class="container">
+      <!-- Botón para iniciar sesión con Google -->
+      <button id="btn-google"
+        class="btn btn-outline-secondary w-100 mb-3 d-flex align-items-center justify-content-center"
+        aria-label="Iniciar sesión con Google">
         <i class="bi bi-google me-2"></i>
       </button>
 
+      <!-- Enlace hacia la pantalla de registro -->
       <p class="text-center">
-        ¿No tienes una cuenta? <a href="registro.html" class="register-link">Regístrate</a>
+        ¿No tienes una cuenta?
+        <a href="registro.html" class="register-link">Regístrate</a>
       </p>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+  <!-- Modal reutilizable para mensajes de inicio de sesión -->
+  <div class="modal" id="modal1">
+    <div class="modal-inner">
+      <h2>Mensaje</h2>
+      <p>Animación de zoom y fondo translúcido.</p>
+      <button class="close-modal" data-close="modal1">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- Modal para restablecer la contraseña -->
+  <div class="modal" id="modal-reset">
+    <div class="modal-inner">
+      <h2>Restablecer contraseña</h2>
+      <p>Ingresa el correo con el que te registraste para enviarte un enlace de recuperación.</p>
+
+      <!-- Campo de correo para restablecer la contraseña -->
+      <div class="mb-3">
+        <input type="email" id="reset-email" class="form-control" placeholder="correo@ejemplo.com" />
+      </div>
+
+      <!-- Botón para enviar el enlace de restablecimiento -->
+      <button id="btn-enviar-reset" class="close-modal"> Enviar enlace</button>
+
+      <!-- Botón para cerrar el modal sin hacer nada --> <button class="close-modal" data-close="modal-reset">
+        Cerrar
+      </button>
+    </div>
+  </div>
+  
+  <!-- Estilos de los iconos de Bootstrap (necesarios para el icono de Google) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 </body>
+
 </html>
