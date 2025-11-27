@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/pages/page_laterales.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./assets/css/modales.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> >
     <!-- Leaflet CDN -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
@@ -25,7 +26,8 @@
                 <li class="menu-item"><i class="bi bi-list"></i> <span>Menú</span></li>
                 <li class="menu-item" onclick="window.location.href = './home_page_singin.html'"><i class="bi bi-grid"
                         onclick="window.location.href = './home_page_singin.html'"></i> <span>Principal</span></li>
-                <li class="menu-item"><i class="bi bi-map" style="color: black; -webkit-text-stroke: 0.6px black; transform: scale(1.1);"
+                <li class="menu-item"><i class="bi bi-map"
+                        style="color: black; -webkit-text-stroke: 0.6px black; transform: scale(1.1);"
                         onclick="window.location.href = './mapa.html'"></i> <span>Mapas</span></li>
                 <li class="menu-item" onclick="window.location.href = './camiones.html'"><i class="bi bi-bus-front"
                         onclick="window.location.href = './camiones.html'"></i> <span>Camiones</span></li>
@@ -44,7 +46,8 @@
                 </div>
                 <div class="header-actions">
                     <div class="input-wrapper">
-                        <input type="text" placeholder="Buscar parada..." class="search" id="buscador-paradas" autocomplete="on">
+                        <input type="text" placeholder="Buscar parada..." class="search" id="buscador-paradas"
+                            autocomplete="on">
                         <div id="sugerencias-paradas"></div>
                     </div>
 
@@ -63,7 +66,7 @@
                 <ul>
                     <li><i class="bi bi-person"></i> <a href="./perfil.html">Perfil</a></li>
                     <ul id="btn-compartir">
-                    <li><i class="bi bi-share"></i> <a href="#">Compartir</a></li>
+                        <li><i class="bi bi-share"></i> <a href="#">Compartir</a></li>
                     </ul>
                     <li><i class="bi bi-box-arrow-right"></i> <a href="#" id="logout-btn">Cerrar Sesión</a></li>
                 </ul>
@@ -124,6 +127,20 @@
                     </div>
                 </div>
             </section>
+        </div>
+    </div>
+
+    <!-- Modal para avisar sobre el cierre de sesión -->
+    <div class="modal" id="modal-sesion">
+        <div class="modal-inner">
+            <h2 id="modal-sesion-titulo">Sesión cerrada</h2>
+            <p id="modal-sesion-mensaje">
+                Tu sesión ha finalizado.
+            </p>
+
+            <button id="modal-sesion-cerrar" class="close-modal">
+                Cerrar
+            </button>
         </div>
     </div>
     <!-- Script del mapa externo -->
