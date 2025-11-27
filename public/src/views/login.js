@@ -35,6 +35,12 @@ fetch(`${backendURL}/firebase-config`)
       try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
+
+        if (!user.emailVerified) {
+          alert("Debes verificar tu correo electrónico antes de iniciar sesión. Revisa tu bandeja de entrada.");
+          return;
+        }
+        
         const token = await user.getIdToken();
 
         await fetch(`${backendURL}/auth`, {
