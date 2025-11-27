@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./assets/css/pages/page_laterales.css">
     <link rel="stylesheet" href="./assets/css/pages/nosotros.css">
+    <link rel="stylesheet" href="./assets/css/modales.css">
     <script src="./src/components/sidebar.js"></script>
     <script src="./src/views/UsuarioLogueado.js" defer type="module"></script>
 </head>
@@ -28,7 +29,9 @@
                 <li class="menu-item" onclick="window.location.href = './camiones.html'"><i class="bi bi-bus-front"
                         onclick="window.location.href = './camiones.html'"></i> <span>Camiones</span></li>
                 <li class="menu-item" onclick="window.location.href = './nosotros_singin.html'"><i class="bi bi-book"
-                        onclick="window.location.href = './nosotros_sigin.html'"></i> <span>Nosotros</span></li>
+                        onclick="window.location.href = './nosotros_sigin.html'"
+                        style="color: black; -webkit-text-stroke: 0.9px black; transform: scale(1.1);"></i>
+                    <span>Nosotros</span></li>
             </ul>
         </nav>
 
@@ -54,9 +57,11 @@
             <div id="user-menu">
                 <i class="bi bi-x close-menu" onclick="toggleMenu()"></i>
                 <p id="userName"></p>
-                <ul id="btn-compartir">
-                    <li><i class="bi bi-person"></i> <a href="./perfil.html">Tu perfil</a></li>
-                    <li><i class="bi bi-share"></i> <a href="#">Compartir</a></li>
+                <ul>
+                    <li><i class="bi bi-person"></i> <a href="./perfil.html">Perfil</a></li>
+                    <ul id="btn-compartir">
+                        <li><i class="bi bi-share"></i> <a href="#">Compartir</a></li>
+                    </ul>
                     <li><i class="bi bi-box-arrow-right"></i> <a href="#" id="logout-btn">Cerrar Sesión</a></li>
                 </ul>
             </div>
@@ -81,6 +86,21 @@
             </section>
         </div>
     </div>
+
+    <!-- Modal para avisar sobre el cierre de sesión -->
+    <div class="modal" id="modal-sesion">
+        <div class="modal-inner">
+            <h2 id="modal-sesion-titulo">Sesión cerrada</h2>
+            <p id="modal-sesion-mensaje">
+                Tu sesión ha finalizado.
+            </p>
+
+            <button id="modal-sesion-cerrar" class="close-modal">
+                Cerrar
+            </button>
+        </div>
+    </div>
+
     <script src="./src/components/compartir.js" defer type="module"></script>
 </body>
 

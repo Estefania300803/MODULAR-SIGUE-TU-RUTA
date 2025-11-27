@@ -13,7 +13,10 @@
     margin-left: auto;
     margin-right: auto;
 }
-
+.nombre{
+    font-size: 37px; 
+    font-weight: bold;
+}
 .main-left {
     flex: 1;
     padding: 20px;
@@ -147,6 +150,11 @@
         /* Habilita el scroll si el contenido es muy largo */
     }
 
+    .nombre{
+    font-size: 10px;
+    font-weight: bold;
+    }   
+
     .profile-container {
         display: flex;
         justify-content: center;
@@ -201,7 +209,7 @@
 
     .main-left {
         margin-top: -10px;
-        margin-left: -40px;
+        margin-left: -20px;
     }
 
     /* Reduce the height of the main content area */

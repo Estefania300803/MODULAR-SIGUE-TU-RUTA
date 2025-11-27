@@ -1,5 +1,5 @@
 .sidebar {
-  z-index: 1002 !important;
+  z-index: 999 !important;
   height: calc(90% - 10px) !important;
   margin-top: 70px !important;
   }
@@ -280,6 +280,11 @@
     color: black;
 }
 
+input.search {
+    font-size: 16px !important;
+}
+
+
 /* --------------- */
 /*  Media Queries  */
 /* --------------- */
@@ -323,6 +328,11 @@
 
 /* Menos de 768px */
 @media (max-width: 768px) {
+
+  input.search {
+    font-size: 16px !important;
+}
+
   .container {
     flex-direction: column;
     justify-content: center;
