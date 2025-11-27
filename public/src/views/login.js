@@ -103,13 +103,6 @@ fetch(`${backendURL}/firebase-config`)
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
 
-<<<<<<< HEAD
-        if (!user.emailVerified) {
-          alert("Debes verificar tu correo electrónico antes de iniciar sesión. Revisa tu bandeja de entrada.");
-          return;
-        }
-        
-=======
         //  Validación extra: el correo debe estar verificado
         if (!user.emailVerified) {
           abrirModalMensaje(
@@ -120,7 +113,6 @@ fetch(`${backendURL}/firebase-config`)
         }
 
         //  Obtener el ID Token JWT del usuario autenticado
->>>>>>> a29f881e1083ce327d9eb192b52800627eda4d28
         const token = await user.getIdToken();
 
         //  Enviar token al backend para crear/validar la sesión del lado del servidor
