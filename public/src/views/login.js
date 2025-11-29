@@ -94,28 +94,52 @@ fetch(`${backendURL}/firebase-config`)
       //  Evita que el formulario recargue la página de forma tradicional
       e.preventDefault();
 
-      //  Obtenemos los valores del formulario de login
+      // antes de usar grecaptcha.getResponse()
+      if (typeof grecaptcha === "undefined") {
+        abrirModalMensaje(
+          "Error de reCAPTCHA",
+          "No se pudo cargar el servicio de reCAPTCHA. Revisa tu conexión e intenta de nuevo."
+        );
+        return;
+      }
+
+      // 🔐 1. Validar reCAPTCHA antes de hacer cualquier cosa
+      // grecaptcha es global, lo expone el script de reCAPTCHA que pusiste en el HTML
+      const captchaResponse = grecaptcha.getResponse();
+
+      if (!captchaResponse) {
+        // Si no ha marcado "No soy un robot", no seguimos con el login
+        abrirModalMensaje(
+          "Verificación requerida",
+          "Por favor marca 'No soy un robot' antes de iniciar sesión."
+        );
+        return;
+      }
+
+      // 2. Obtenemos los valores del formulario de login
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value;
 
       try {
-        //  Intentamos autenticar al usuario en Firebase Auth
+        // 3. Intentamos autenticar al usuario en Firebase Auth
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
 
-        //  Validación extra: el correo debe estar verificado
+        // 4. Validación extra: el correo debe estar verificado
         if (!user.emailVerified) {
           abrirModalMensaje(
             "Verifica tu correo electrónico",
             "Debes verificar tu correo electrónico antes de iniciar sesión. Revisa tu bandeja de entrada."
           );
-          return; // Cortamos aquí si el correo no está verificado
+          // (Opcional) Resetear el captcha para que lo marque de nuevo:
+          grecaptcha.reset();
+          return;
         }
 
-        //  Obtener el ID Token JWT del usuario autenticado
+        // 5. Obtener el ID Token JWT del usuario autenticado
         const token = await user.getIdToken();
 
-        //  Enviar token al backend para crear/validar la sesión del lado del servidor
+        // 6. Enviar token al backend para crear/validar la sesión del lado del servidor
         await fetch(`${backendURL}/auth`, {
           method: "POST",
           headers: {
@@ -125,7 +149,10 @@ fetch(`${backendURL}/firebase-config`)
           body: JSON.stringify({ email: user.email }) // Se puede usar como referencia en el backend
         });
 
-        //  Si todo sale bien, redirigimos a la página de inicio logueado
+        // (Opcional) Resetear captcha después de login correcto
+        grecaptcha.reset();
+
+        // 7. Si todo sale bien, redirigimos a la página de inicio logueado
         window.location.href = "./home_page_singin.html";
       } catch (error) {
         //  Cualquier error (credenciales, red, etc.) termina aquí
@@ -134,6 +161,8 @@ fetch(`${backendURL}/firebase-config`)
           "Error al iniciar sesión",
           "Credenciales inválidas o error al autenticar."
         );
+        // (Opcional) que vuelva a marcar el captcha:
+        grecaptcha.reset();
       }
     });
 
