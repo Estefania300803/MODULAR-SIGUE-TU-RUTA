@@ -94,8 +94,11 @@ fetch(`${backendURL}/firebase-config`)
       //  Evita que el formulario recargue la página de forma tradicional
       e.preventDefault();
 
-      // antes de usar grecaptcha.getResponse()
-      if (typeof grecaptcha === "undefined") {
+      // 1) Asegurarnos de que reCAPTCHA está cargado correctamente
+      const captchaObj = window.grecaptcha;
+
+      if (!captchaObj) {
+        console.error("grecaptcha no está disponible en window");
         abrirModalMensaje(
           "Error de reCAPTCHA",
           "No se pudo cargar el servicio de reCAPTCHA. Revisa tu conexión e intenta de nuevo."
@@ -103,9 +106,9 @@ fetch(`${backendURL}/firebase-config`)
         return;
       }
 
-      // 🔐 1. Validar reCAPTCHA antes de hacer cualquier cosa
-      // grecaptcha es global, lo expone el script de reCAPTCHA que pusiste en el HTML
-      const captchaResponse = grecaptcha.getResponse();
+      // 2) Obtener la respuesta del captcha
+      const captchaResponse = captchaObj.getResponse();
+      console.log("Captcha response:", captchaResponse); // 👀 Para depurar
 
       if (!captchaResponse) {
         // Si no ha marcado "No soy un robot", no seguimos con el login
@@ -116,53 +119,50 @@ fetch(`${backendURL}/firebase-config`)
         return;
       }
 
-      // 2. Obtenemos los valores del formulario de login
+      // 3) Obtenemos los valores del formulario de login
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value;
 
       try {
-        // 3. Intentamos autenticar al usuario en Firebase Auth
+        // 4) Intentamos autenticar al usuario en Firebase Auth
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
 
-        // 4. Validación extra: el correo debe estar verificado
+        // 5) Validación extra: el correo debe estar verificado
         if (!user.emailVerified) {
           abrirModalMensaje(
             "Verifica tu correo electrónico",
             "Debes verificar tu correo electrónico antes de iniciar sesión. Revisa tu bandeja de entrada."
           );
-          // (Opcional) Resetear el captcha para que lo marque de nuevo:
-          grecaptcha.reset();
+          captchaObj.reset(); // Reiniciamos el captcha
           return;
         }
 
-        // 5. Obtener el ID Token JWT del usuario autenticado
+        // 6) Obtener el ID Token JWT del usuario autenticado
         const token = await user.getIdToken();
 
-        // 6. Enviar token al backend para crear/validar la sesión del lado del servidor
+        // 7) Enviar token al backend para crear/validar la sesión del lado del servidor
         await fetch(`${backendURL}/auth`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}` // Mandamos el token como Bearer en los headers
           },
-          body: JSON.stringify({ email: user.email }) // Se puede usar como referencia en el backend
+          body: JSON.stringify({ email: user.email })
         });
 
-        // (Opcional) Resetear captcha después de login correcto
-        grecaptcha.reset();
+        // Reiniciamos el captcha (opcional)
+        captchaObj.reset();
 
-        // 7. Si todo sale bien, redirigimos a la página de inicio logueado
+        // 8) Si todo sale bien, redirigimos a la página de inicio logueado
         window.location.href = "./home_page_singin.html";
       } catch (error) {
-        //  Cualquier error (credenciales, red, etc.) termina aquí
         console.error("Error al iniciar sesión:", error);
         abrirModalMensaje(
           "Error al iniciar sesión",
           "Credenciales inválidas o error al autenticar."
         );
-        // (Opcional) que vuelva a marcar el captcha:
-        grecaptcha.reset();
+        captchaObj.reset();
       }
     });
 
