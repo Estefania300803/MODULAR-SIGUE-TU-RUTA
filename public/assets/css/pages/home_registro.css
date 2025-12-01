@@ -1,43 +1,59 @@
-   /* Media Queries para dispositivos móviles */
-   @media only screen and (max-width: 768px) {
-    /* Ajustes para el formulario en móviles */
+/* ============================================================
+   MEDIA QUERIES PARA DISPOSITIVOS MÓVILES (<= 768px)
+   ============================================================ */
+
+/* Ajustes específicos para pantallas pequeñas (celulares) */
+@media only screen and (max-width: 768px) {
+
+    /* Contenedor del formulario en móviles:
+       - Menos padding
+       - Un poco de margen lateral
+       - Se “sube” ligeramente con margin-top negativo */
     .form-container {
         padding: 15px; /* Reduce el padding en móviles */
         margin: 0 10px; /* Añade un margen lateral para no pegarse a los bordes */
         margin-top: -12px;
     }
-    /* Imagen de fondo */
-  .bg-image {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat; /* Evita que se repita */
-    position: absolute; /* Posiciona la imagen detrás del formulario */
-    top: 0;
-    left: 0;
-    z-index: -1; /* Coloca la imagen detrás del contenido */
-  }
-  
-    /* Ajustes para la imagen de fondo en móviles */
+
+    /* Imagen de fondo en móviles:
+       - Ocupa toda la pantalla
+       - Se coloca detrás del formulario con position:absolute y z-index:-1 */
     .bg-image {
-        height: 100vh; /* Asegura que la imagen ocupe toda la pantalla */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat; /* Evita que se repita */
+        position: absolute;           /* Posiciona la imagen detrás del formulario */
+        top: 0;
+        left: 0;
+        z-index: -1;                  /* Coloca la imagen detrás del contenido */
+        height: 100vh;                /* Asegura que la imagen ocupe toda la pantalla */
     }
   
-    /* Ajustes para el botón en móviles */
+    /* Botón principal en móviles:
+       - Se reduce un poco el tamaño de letra para que se vea mejor en pantallas chicas */
     .btn-success {
         font-size: 1rem; /* Reduce el tamaño de la fuente en móviles */
     }
   
-    /* Ajustes para los inputs en móviles */
+    /* Inputs / texto de formularios en móviles:
+       - También se ajusta el tamaño de letra */
     .form {
         font-size: 1rem; /* Reduce el tamaño de la fuente en móviles */
     }
-  }
-  
-  /* Media Queries para tablets */
-  @media only screen and (min-width: 769px) and (max-width: 1024px) {
-    /* Ajustes para tablets */
+}
+
+/* ============================================================
+   MEDIA QUERIES PARA TABLETS (769px – 1024px)
+   ============================================================ */
+
+/* Ajustes para pantallas intermedias (tablets) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+
+    /* Contenedor del formulario en tablets:
+       - Se aumenta el ancho máximo
+       - Se mantiene el pequeño ajuste hacia arriba */
     .form-container {
         max-width: 400px; /* Aumenta el ancho del formulario en tablets */
         margin-top: -12px;
     }
-  }
+}

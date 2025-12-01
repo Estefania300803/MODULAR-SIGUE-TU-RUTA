@@ -1,31 +1,47 @@
 /* ===================
    RESET Y TIPOGRAFÍA GLOBAL
    =================== */
-
-/* Estilo general del fondo */
+/* 
+   Se aplican estilos base al <html> y <body>:
+   - Se quitan márgenes y padding por defecto.
+   - Se define la fuente global.
+   - Se asegura que ocupen el 100% de la altura.
+   - Se permite scroll vertical (overflow-y: auto).
+*/
 body, html {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow-y: auto;
-  }
-  
+    margin: 0;                    /* Elimina el margen por defecto */
+    font-family: Arial, sans-serif; /* Fuente global del sitio */
+    margin: 0;                    /* Repetido, pero no afecta */
+    padding: 0;                   /* Elimina padding por defecto */
+    height: 100%;                 /* Ocupa toda la altura de la ventana */
+    overflow-y: auto;             /* Habilita scroll vertical si el contenido crece */
+}
 
+/* 
+   Títulos globales: se fuerza negrita y se añade
+   un margen inferior uniforme para separar secciones.
+*/
 h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;
-    margin-bottom: 1rem;
+    font-weight: bold;            /* Todos los títulos en negrita */
+    margin-bottom: 1rem;          /* Espacio inferior para respiración visual */
 }
 
 /* ===================
    ENLACES GENERALES
    =================== */
+/* 
+   Clase para enlaces tipo "Política de privacidad",
+   "Términos de servicio", etc. (estilo de registro).
+*/
 .register-link {
-    color: #28a745;
-    text-decoration: none;
+    color: #28a745;               /* Verde principal para destacar */
+    text-decoration: none;        /* Sin subrayado por defecto */
 }
 
+/* 
+   Al pasar el mouse sobre el enlace se subraya
+   para indicar que es interactivo.
+*/
 .register-link:hover {
-    text-decoration: underline;
+    text-decoration: underline;   /* Subrayado en hover */
 }

@@ -1,7 +1,9 @@
-/* ===================
-   ESTRUCTURA DEL LAYOUT
-   =================== */
+/* ============================================================
+   LAYOUT GENERAL: CENTRADO DE CONTENIDO / CONTENEDORES
+   ============================================================ */
 
+/* Centra cualquier contenido hijo tanto horizontal como verticalmente
+   ocupando el 100% de la altura de la ventana */
 .center-content {
     display: flex;
     justify-content: center;
@@ -9,12 +11,13 @@
     height: 100vh;
 }
 
+/* Contenedor principal de pantalla completa para layouts tipo split */
 .container{
     display: flex;
     height: 100vh; /* Ocupar toda la pantalla */
 }
 
-/* Contenedor del formulario */
+/* Contenedor del formulario de login / tarjetas principales */
 .login-container {
     background: white;
     padding: 3rem;
@@ -26,10 +29,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center; /* Centra el contenido verticalmente */
-    
 }
 
-/* Formulario */
+/* Caja genérica para formularios (login, registro, etc.) */
 .form-container {
     max-width: 400px;
     width: 100%;
@@ -38,12 +40,16 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-  
-/* Inputs */
+
+/* ============================================================
+   INPUTS CON ICONO (FORM FIELDS)
+   ============================================================ */
+
 .input-container {
-    position: relative;
+    position: relative; /* Permite posicionar el ícono dentro */
 }
-  
+
+/* Ícono alineado a la derecha dentro del input */
 .input-container i {
     position: absolute;
     right: 10px;
@@ -53,14 +59,15 @@
 }
 
 
-/* ===================
-   Sidebar y Paneles Laterales
-   =================== */
+/* ============================================================
+   SIDEBAR LATERAL Y ASIDE DESPLEGABLE
+   ============================================================ */
 
+/* Sidebar compacta (solo iconos) con opción a expandirse */
 .sidebar {
     width: 60px;
     top: 75px;
-    height: calc(100vh - 70px); /* Ajusta la altura restando la barra superior porque si no se ve el menú chidp*/
+    height: calc(100vh - 70px); /* Ajusta la altura restando la barra superior porque si no se ve el menú chido */
     background-color: #f4f4f4;
     position: fixed;
     left: 0;
@@ -68,16 +75,19 @@
     overflow: hidden;
 }
 
+/* Estado expandido (muestra texto) */
 .sidebar.expanded {
     width: 250px;
 }
 
+/* Lista del menú del sidebar */
 .sidebar ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
+/* Cada elemento del menú lateral */
 .sidebar ul li {
     display: flex;
     align-items: center;
@@ -86,23 +96,32 @@
     transition: background 0.3s;
 }
 
+/* Iconos en el sidebar */
 .sidebar ul li i {
     font-size: 24px;
     margin-right: 10px;
 }
 
+/* Texto de las opciones, oculto por defecto (solo iconos visibles) */
 .sidebar ul li span {
     display: none;
 }
 
+/* Cuando el sidebar está expandido, se muestra el texto */
 .sidebar.expanded ul li span {
     display: inline;
 }
 
+/* Hover sobre las opciones del sidebar */
 .sidebar ul li:hover {
     background-color: #ddd;
 }
 
+/* ============================================================
+   ASIDE: OTRO TIPO DE PANEL LATERAL (ANCHO FIJO)
+   ============================================================ */
+
+/* Panel lateral estático (otra variante de menú) */
 .aside{
     height: 100vh;
     width: 300px;
@@ -111,6 +130,7 @@
     transition: all .4s ease;
 }
 
+/* (Repetido, mismo estilo; se mantiene igual) */
 .aside{
     height: 100vh;
     width: 300px;
@@ -119,6 +139,7 @@
     transition: all .4s ease;
 }
 
+/* Encabezado superior dentro del aside */
 .head{
     display: flex;
     align-items: center;
@@ -126,6 +147,7 @@
     height: 50px;
 }
 
+/* Ícono del encabezado (e.g. botón de menú) */
 .head i{
     cursor: pointer;
     font-size: 1.8rem;
@@ -133,11 +155,13 @@
     margin-left: 10px;
 }
 
+/* Contenedor de perfil dentro del aside */
 .profiel{
     display: flex;
     align-items: center;
 }
 
+/* Texto de perfil (nombre, etc.) */
 .profile p{
     display: flex;
     align-items: center;
@@ -146,6 +170,7 @@
     color: #000000;
 }
 
+/* Opciones/celdas de menú dentro del aside */
 .options div{
     display: flex;
     align-items: center;
@@ -155,41 +180,45 @@
     font-size: 1.1rem;
 }
 
+/* Hover sobre las opciones del aside */
 .options div:hover{
     background-color: #b3b3b3;
     transition: all .4s ease-in-out;
 }
 
+/* Iconos dentro de las opciones del aside */
 .options i{
     font-size: 1.4rem;
     margin-right: 10px; 
 }
 
-/*Modificaciones a la hora de cerrar el menu*/
+/* Cuando se cierra/colapsa el aside (modo compacto) */
 .aside.active{
     width: 70px;
     transition: all .4s ease;
 }
 
+/* Oculta texto y perfil en aside compacto */
 .aside.active .option,
 .aside.active .profile{
     display: none;
 }
 
+/* Centra los iconos cuando el aside está compacto */
 .aside.active .head i,
 .aside.active .options i{
     margin: auto;
 }
 
-/* ===================
-Paneles laterales
-   =================== */
+/* ============================================================
+   PANEL LATERAL DESLIZANTE (#user-menu) + OVERLAY
+   ============================================================ */
 
-/* Estilos para el menú deslizante */
+/* Menú de usuario deslizante desde la derecha */
 #user-menu {
     position: fixed;
     top: 0;
-    right: -300px; /* Oculto por defecto */
+    right: -300px; /* Oculto por defecto, fuera de la pantalla */
     width: 300px;
     height: 100vh;
     background: #f4f4f4; /* Color de fondo */
@@ -199,12 +228,12 @@ Paneles laterales
     font-family: Arial, sans-serif;
 }
   
-/* Clase activa para mostrar el menú */
+/* Cuando está activo se muestra el panel a la vista */
 #user-menu.active {
     right: 0;
 }
   
-/* Superposición de fondo al abrir el menú */
+/* Superposición oscura detrás del panel de usuario */
 #menu-overlay {
     display: none;
     position: fixed;
@@ -215,12 +244,12 @@ Paneles laterales
     background: rgba(0, 0, 0, 0.5);
 }
   
-/* Activar superposición */
+/* Overlay visible cuando el menú está abierto */
 #menu-overlay.active {
     display: block;
 }
   
-/* Estilos del título del usuario */
+/* Título/nombre del usuario dentro del panel */
 #user-menu p {
     font-size: 18px;
     font-weight: bold;
@@ -228,12 +257,13 @@ Paneles laterales
     margin-bottom: 20px;
 }
   
-/* Lista del menú */
+/* Lista principal del menú del usuario */
 #user-menu ul {
     list-style: none;
     padding: 0;
 }
   
+/* Elementos de la lista (línea de opción) */
 #user-menu ul li {
     padding: 12px 0;
     display: flex;
@@ -242,6 +272,7 @@ Paneles laterales
     font-weight: 500;
 }
   
+/* Enlaces de las opciones del user-menu */
 #user-menu ul li a {
     text-decoration: none;
     color: #222;
@@ -252,21 +283,20 @@ Paneles laterales
     border-radius: 5px;
     transition: background 0.3s;
 }
-
   
-/* Hover en los elementos del menú */
+/* Hover en las opciones del user-menu */
 #user-menu ul li a:hover {
     background: #c5c5c5;
 }
   
-/* Estilos de los iconos */
+/* Estilos de los iconos del user-menu */
 #user-menu ul li i {
     font-size: 20px; /* Tamaño de los iconos */
     margin-right: 12px;
     color: #555;
 }
   
-/* Botón de cerrar */
+/* Botón "X" para cerrar el panel de usuario */
 .close-menu {
     position: absolute;
     top: 10px;
@@ -281,11 +311,11 @@ Paneles laterales
     color: #222;
 }
 
-/* ===================
-   Navbar
-   =================== */
+/* ============================================================
+   NAVBAR / CAMPOS DE BÚSQUEDA
+   ============================================================ */
 
-
+/* Placeholder de inputs (e.g. buscadores) */
 input::placeholder{
     font-family: Inter, sans-serif;
     font-size: 20px;
@@ -293,6 +323,7 @@ input::placeholder{
     font-weight: 400;
 }
 
+/* Estilo general de .form-control grande (tipo buscador principal) */
 .form-control{
     text-align: left;
     font-family: Inter, sans-serif;
@@ -301,6 +332,11 @@ input::placeholder{
     font-weight: 400;
     line-height: normal;
 }
+
+/* ============================================================
+   BLOQUE COMENTADO: ESTILO ALTERNATIVO PARA #btn-user
+   (Se deja tal cual, solo sirve como referencia para futuro)
+   ============================================================ */
 
 /*
 #btn-user {
@@ -323,7 +359,6 @@ input::placeholder{
 }
 */
 
-
 /* Agrega la imagen de perfil como fondo */
 /*
 #btn-user::before {
@@ -339,6 +374,7 @@ input::placeholder{
 }
 */
 
+/* Texto del icono bi-arrow-left-right (por ejemplo en "Cómo llegar") */
 .bi-arrow-left-right{
     text-align: right;
     font-family: Inter;
@@ -348,6 +384,7 @@ input::placeholder{
     line-height: normal;
 }
 
+/* Marca / título de la navbar */
 .navbar-brand {
     color: white !important;
     text-align: center;
@@ -355,21 +392,23 @@ input::placeholder{
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-    
 }
 
+/* Header fijo en la parte superior */
 header{
     width: 100%;
     position: fixed;
     z-index: 100;
 }
 
+/* Wrapper general para contenido (no confundir con el .wrapper de otras páginas) */
 .wrapper {
     width: 80%;
     margin: auto;
     overflow:hidden;
 }
 
+/* Navbar personalizada fija arriba (color principal) */
 .custom-navbar{
     margin: 0;
     top: 0;
@@ -380,4 +419,3 @@ header{
     position: fixed;
     overflow: hidden;
 }
-

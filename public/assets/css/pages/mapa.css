@@ -1,49 +1,69 @@
+/* ============================================================
+   AJUSTES GENERALES DE LA SIDEBAR EN LA PÁGINA DE MAPA
+   ============================================================ */
 .sidebar {
-  z-index: 999 !important;
-  height: calc(90% - 10px) !important;
-  margin-top: 70px !important;
-  }
-
-/* Main Section */
-.main {
-  display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  flex-direction: column; /* Stack en móviles */
+  z-index: 999 !important;              /* Asegura que la sidebar quede por encima del mapa */
+  height: calc(90% - 10px) !important;  /* Altura ajustada para no tapar por completo la pantalla */
+  margin-top: 70px !important;          /* Deja espacio para el header fijo */
 }
 
+/* ============================================================
+   SECCIÓN PRINCIPAL Y CONTENEDOR
+   ============================================================ */
+
+/* Sección main del mapa:
+   - Centra el contenido
+   - Columna para que en móvil se apilen */
+.main {
+  display: flex;
+  justify-content: center;              /* Centra horizontalmente */
+  align-items: center;                  /* Centra verticalmente */
+  flex-direction: column;               /* Apila elementos en columna (útil en móviles) */
+}
+
+/* Contenedor interno (botón + menú lateral)
+   - Usa flex para distribuir el contenido */
 .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   max-width: 500px;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;                      /* Permite que los elementos salten de línea si no caben */
 }
 
-/* Contenedor del mapa */
+/* ============================================================
+   MAPA (CONTENEDOR PRINCIPAL Y DIV DE LEAFLET)
+   ============================================================ */
+
+/* Contenedor del mapa:
+   - Deja espacio para la sidebar (60px)
+   - Ocupa casi toda la altura de la pantalla
+   - Se posiciona absoluto debajo del header */
 .map-container {
-  width: calc(100% - 60px); 
-  height: calc(100vh - 80px); 
-  margin-left: 60px; 
+  width: calc(100% - 60px);             /* Resta el ancho de la sidebar para que no se empalme */
+  height: calc(100vh - 80px);           /* 100% de alto menos el alto del header */
+  margin-left: 60px;                    /* Desplaza el mapa a la derecha de la sidebar */
   display: flex;
-  justify-content: center; 
-  align-items: center; 
-  position: absolute; 
-  top: 70px; 
-  left: 0; 
+  justify-content: center;              /* Centra el contenido del mapa */
+  align-items: center;
+  position: absolute;
+  top: 70px;                            /* Comienza debajo del header */
+  left: 0;
 }
 
-/* Estilo del mapa */
+/* Div donde Leaflet dibuja el mapa */
 #mi_mapa {
-  width: 100%; 
-  height: 100%; 
-  border-radius: 8px; 
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
-  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;                   /* Esquinas redondeadas del mapa */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombrita suave alrededor */
+  z-index: 1;                           /* Por debajo de overlays (menú, buscador) */
 }
 
-/* Botón para abrir el menú */
+/* ============================================================
+   BOTÓN FLOTANTE PARA ABRIR EL MENÚ LATERAL
+   ============================================================ */
 #open-menu-btn {
   position: fixed;
   top: 100px;
@@ -53,23 +73,28 @@
   color: white;
   border: none;
   cursor: pointer;
-  width: 50px; /* Ancho del botón */
-  height: 50px; /* Alto del botón */
-  border-radius: 50%; /* Hace el botón redondo */
-  display: flex; 
-  justify-content: center; 
+  width: 50px;                          /* Botón circular: ancho */
+  height: 50px;                         /* Botón circular: alto */
+  border-radius: 50%;                   /* Lo hace redondo */
+  display: flex;
+  justify-content: center;
   align-items: center;
-  z-index: 1001;
+  z-index: 1001;                        /* Encima del mapa y de casi todo */
 }
-/* Menú lateral */
+
+/* ============================================================
+   MENÚ LATERAL DERECHO (RUTAS + SIMBOLOGÍA)
+   ============================================================ */
+
+/* Panel lateral que se abre desde la derecha */
 .side-menu {
-  width: 0;
+  width: 0;                             /* Oculto por defecto (width cero) */
   margin-top: 10px;
   position: fixed;
   right: 0;
   background-color: #ffffff;
   overflow-x: hidden;
-  transition: 0.3s;
+  transition: 0.3s;                     /* Animación suave de apertura/cierre */
   top: 80px;
   height: calc(100% - 80px);
   padding-top: 60px;
@@ -77,10 +102,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 1000;                        /* Por encima del mapa, pero debajo de algunos elementos */
 }
 
-/* Enlaces del menú */
+/* Lista de opciones dentro del side-menu */
 .side-menu ul {
   list-style: none;
   padding: 0;
@@ -90,17 +115,20 @@
   padding: 10px 20px;
 }
 
+/* Enlaces dentro del menú lateral
+   (actualmente el texto se plantea blanco sobre fondo blanco, pero se respeta tal cual) */
 .side-menu ul li a {
   color: white;
   text-decoration: none;
   display: block;
 }
 
+/* Hover de enlaces en el menú lateral */
 .side-menu ul li a:hover {
   background-color: #575757;
 }
 
-/* Botón de cerrar */
+/* Botón (X) para cerrar el menú lateral */
 .close-btn {
   position: absolute;
   top: -5px;
@@ -115,6 +143,7 @@
   color: #555353;
 }
 
+/* Ajuste extra para el contenido del menú (se “sube” un poco) */
 .main2 {
   margin-top: -90px;
 }
@@ -123,7 +152,11 @@
   margin-top: -80px;
 }
 
-/* Cartas para menu*/
+/* ============================================================
+   TARJETAS DEL MENÚ (RUTAS + SIMBOLOGÍA)
+   ============================================================ */
+
+/* Tarjeta de simbología */
 .custom-card{
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -132,6 +165,7 @@
   z-index: 1000;
 }
 
+/* Tarjeta de rutas (select de rutas) */
 .custom-card2 {
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -139,12 +173,17 @@
   margin-bottom: 20px;
 }
 
+/* Altura y z-index extra para la tarjeta de rutas */
 .custom-card2 {
   height: 100px;
   z-index: 1001;
 }
 
-/* Select del boton */
+/* ============================================================
+   BOTÓN DE RUTAS PERSONALIZADO (SELECT SIMULADO)
+   ============================================================ */
+
+/* Botón que simula el select de rutas (C01, C02, etc.) */
 .custom-select-button {
   background-color: #3c7302;
   color: white;
@@ -158,7 +197,7 @@
   cursor: pointer;
 }
 
-/*boton rytas*/
+/* Flechita ▼ del “select” de rutas */
 .custom-select-button::after {
   content: '▼';
   position: absolute;
@@ -169,7 +208,11 @@
   transition: transform 0.3s ease;
 }
 
-/* Lista desplegable */
+/* ============================================================
+   LISTA DESPLEGABLE DE RUTAS
+   ============================================================ */
+
+/* Lista de rutas (oculta por defecto, con max-height 0) */
 .list-options {
   margin-top: 10px;
   overflow: hidden;
@@ -179,10 +222,11 @@
   border-radius: 8px;
   list-style: none;
   padding: 0;
-  position: absolute; 
-  z-index: 1001; 
+  position: absolute;
+  z-index: 1001;
 }
 
+/* Cuando se abre la lista, se añade padding y aumenta el max-height */
 .list-options.show {
   padding: 10px;
   max-height: 500px;
@@ -204,7 +248,11 @@
   background-color: #336600;
 }
 
-/* Simbología */
+/* ============================================================
+   SIMBOLOGÍA DEL MAPA
+   ============================================================ */
+
+/* Título “Simbología” */
 .symbol-title {
   font-weight: bold;
   font-size: 1.5rem;
@@ -213,21 +261,33 @@
   margin-bottom: 15px;
 }
 
+/* Cada renglón de simbología (icono + texto) */
 .symbol-item {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 
+/* Icono dentro del item de simbología */
 .symbol-item i {
   font-size: 1.5rem;
   margin-right: 10px;
 }
-/* Ocultar los controles de zoom en Leaflet + y -*/
+
+/* ============================================================
+   CONTROL DE ZOOM DE LEAFLET
+   ============================================================ */
+
+/* Oculta los botones + y - de zoom del mapa de Leaflet */
 .leaflet-control-zoom {
-  display: none !important; 
+  display: none !important;
 }
 
+/* ============================================================
+   HEADER: BUSCADOR + BOTÓN DE PERFIL
+   ============================================================ */
+
+/* Contenedor de acciones en el header (buscador + botón de usuario) */
 .header-actions {
   display: flex;
   align-items: center;
@@ -235,20 +295,23 @@
   gap: 10px;
   position: relative;
   padding-right: 20px;
-  z-index: 10010; /* Muy alto, encima del mapa */
+  z-index: 10010;                      /* Muy alto para quedar por encima del mapa y del menú */
 }
 
+/* Wrapper del input de búsqueda de paradas */
 .input-wrapper {
   position: relative;
-  width: 300px; /* Ajusta el ancho si lo deseas */
+  width: 300px;                         /* Ancho del buscador */
 }
 
+/* Input de búsqueda de paradas */
 #buscador-paradas {
   width: 100%;
   border-radius: 6px;
   border: 1px solid #ccc;
 }
 
+/* Contenedor de sugerencias del buscador */
 #sugerencias-paradas {
   position: absolute;
   top: 100%;
@@ -258,38 +321,42 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
-  z-index: 10011; /* Justo encima del mapa */
-  display: none;
+  z-index: 10011;                       /* Encima del mapa y también encima del buscador */
+  display: none;                        /* Oculto hasta que haya resultados */
   max-height: 200px;
   overflow-y: auto;
 }
 
+/* Cada elemento de sugerencia */
 #sugerencias-paradas .sugerencia-item {
   cursor: pointer;
   color: black;
 }
 
+/* Hover para sugerencias del buscador */
 #sugerencias-paradas .sugerencia-item:hover {
   background-color: #f0f0f0;
 }
 
-
+/* Padding para cada sugerencia (segunda definición, se mantiene tal cual) */
 #sugerencias-paradas .sugerencia-item {
     padding: 8px 12px;
     cursor: pointer;
     color: black;
 }
 
+/* Fuente del input de búsqueda (clase .search) */
 input.search {
     font-size: 16px !important;
 }
 
+/* ============================================================
+   MEDIA QUERIES: RESPONSIVE
+   ============================================================ */
 
-/* --------------- */
-/*  Media Queries  */
-/* --------------- */
-
-/* Menos de 900px */
+/* -------------------------
+   Menos de 900px de ancho
+   ------------------------- */
 @media (max-width: 900px) {
   .container {
     justify-content: center;
@@ -299,13 +366,15 @@ input.search {
 
   .sidebar {
     z-index: 1002 !important;
-    height: none !important; 
+    height: none !important;             /* Valor no estándar, pero se respeta tu configuración */
     margin-top: 79px !important;
   }
+
   .content {
       margin-left: 0px !important;
   }
 
+  /* Botón flotante más pequeño y más cercano al borde en móviles */
   #open-menu-btn {
       top: 95px;
       right: 10px;
@@ -313,6 +382,7 @@ input.search {
       padding: 6px 6px;
   }
 
+  /* Ajustes del mapa para móviles/tamaños medianos */
   .map-container {
     margin-left: 0;
     justify-content: flex-start;
@@ -323,15 +393,17 @@ input.search {
   #mi_mapa {
       width: 95%;
       height: 500px;
-    }
+  }
 }
 
-/* Menos de 768px */
+/* -------------------------
+   Menos de 768px de ancho
+   ------------------------- */
 @media (max-width: 768px) {
 
   input.search {
     font-size: 16px !important;
-}
+  }
 
   .container {
     flex-direction: column;
@@ -341,10 +413,11 @@ input.search {
 
   .sidebar {
     z-index: 1002 !important;
-    height: none !important; 
+    height: none !important;
     margin-top: 67px !important;
   }
 
+  /* El mapa se ajusta debajo del header con márgenes distintos */
   .map-container {
     width: 100%;
     margin-left: 12px;
@@ -360,9 +433,10 @@ input.search {
 
   #mi_mapa {
       width: 95%;
-      height: 95%; 
-    }
+      height: 95%;
+  }
 
+  /* Tarjetas del menú lateral se vuelven más angostas para caber en móviles */
   .custom-card,
   .custom-card2 {
     width: 90%;

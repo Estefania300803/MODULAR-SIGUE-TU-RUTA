@@ -10,7 +10,7 @@ let mostrandoRuta = {};
 // Objeto para saber si ya se inició el listener de Firebase para cada ruta
 let listenerIniciado = {};
 
-// ⭐ NUEVO: guardar la última coordenada de cada ruta
+// NUEVO: guardar la última coordenada de cada ruta
 let ultimasCoordenadas = {};
 
 // Variable que indica si Firebase ya está inicializado
@@ -38,7 +38,7 @@ async function configurarFirebase() {
     database = getDatabase(app);
     initialized = true;
   } catch (error) {
-    console.error("❌ Error al inicializar Firebase:", error);
+    console.error(" Error al inicializar Firebase:", error);
   }
 }
 
@@ -58,16 +58,16 @@ document.addEventListener("DOMContentLoaded", () => {
       // Alterna el estado de mostrar/ocultar para esta ruta
       mostrandoRuta[ruta] = !mostrandoRuta[ruta];
 
-      // 🔴 Si la ruta se desactiva y hay marcador, lo quitamos del mapa
+      // Si la ruta se desactiva y hay marcador, lo quitamos del mapa
       if (!mostrandoRuta[ruta]) {
         if (marcadores[ruta]) {
           map.removeLayer(marcadores[ruta]);
-          // 👀 IMPORTANTE: NO lo ponemos a null, solo lo quitamos del mapa
+          // IMPORTANTE: NO lo ponemos a null, solo lo quitamos del mapa
         }
         return;
       }
 
-      // 🟢 Si llegamos aquí es porque la ruta se acaba de ACTIVAR
+      // Si llegamos aquí es porque la ruta se acaba de ACTIVAR
 
       // Si Firebase aún no está inicializado, lo inicializamos
       if (!initialized) {
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
         iniciarSeguimientoGPS(ruta);
       }
 
-      // ⭐ SIEMPRE que se enciende el ojito:
+      // SIEMPRE que se enciende el ojito:
       // si ya tenemos una última coordenada, mostramos el camión allí
       if (ultimasCoordenadas[ruta]) {
         const iconoCamion = crearIconoCamion();
@@ -122,7 +122,7 @@ function iniciarSeguimientoGPS(ruta) {
 
     const coordenada = [lat, lng];
 
-    // ⭐ SIEMPRE actualizamos la última coordenada de la ruta
+    // SIEMPRE actualizamos la última coordenada de la ruta
     ultimasCoordenadas[ruta] = coordenada;
 
     // Si la ruta no está activa en la vista, NO tocamos el mapa,

@@ -1,73 +1,85 @@
+/* ============================================================
+   ESTILOS GENERALES DEL MODAL (CAPA OSCURA / OVERLAY)
+   ============================================================ */
 /* Capa oscura del modal que cubre toda la pantalla */
 .modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.55);        /* Fondo oscuro translúcido */
-  backdrop-filter: blur(4px);                /* Desenfoque suave del fondo */
-  z-index: 1001;
+  display: none;                               /* Oculto por defecto */
+  position: fixed;                             /* Fijo sobre la ventana */
+  inset: 0;                                    /* Ocupa todo el viewport (top, right, bottom, left = 0) */
+  background: rgba(15, 23, 42, 0.55);          /* Fondo oscuro translúcido */
+  backdrop-filter: blur(4px);                  /* Desenfoque suave del fondo */
+  z-index: 1001;                               /* Por encima del contenido normal */
 }
 
 /* Cuando el modal está activo se centra el contenido */
 .modal.active {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
+  display: flex;                               /* Se muestra como contenedor flexible */
+  align-items: center;                         /* Centra verticalmente el contenido interno */
+  justify-content: center;                     /* Centra horizontalmente el contenido interno */
+  padding: 1.5rem;                             /* Separación interna para que no pegue a los bordes */
 }
 
+/* ============================================================
+   CONTENEDOR INTERNO DEL MODAL (TARJETA)
+   ============================================================ */
 /* Contenedor interno del modal (la tarjeta) */
 .modal .modal-inner {
-  background: linear-gradient(135deg, #ffffff, #f3f4f6);
-  padding: 2rem 2.5rem;
-  border-radius: 16px;
-  min-width: min(420px, 100%);
-  max-width: 480px;
-  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.25);
-  opacity: 0;
-  transform: translateY(10px) scale(0.96);
-  animation: anim-modal 0.35s ease-out forwards;
-  text-align: center;                         /* Centra título, texto y botón */
+  background: linear-gradient(135deg, #ffffff, #f3f4f6);  /* Fondo degradado claro */
+  padding: 2rem 2.5rem;                                   /* Espacio interno alrededor del contenido */
+  border-radius: 16px;                                    /* Esquinas redondeadas */
+  min-width: min(420px, 100%);                            /* Ancho mínimo, ajustado a pantallas pequeñas */
+  max-width: 480px;                                       /* Ancho máximo de la tarjeta */
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.25);         /* Sombra para efecto de elevación */
+  opacity: 0;                                             /* Inicia transparente para animación */
+  transform: translateY(10px) scale(0.96);                /* Inicia ligeramente abajo y más pequeño */
+  animation: anim-modal 0.35s ease-out forwards;          /* Aplica la animación de aparición */
+  text-align: center;                                     /* Centra título, texto y botón */
 }
 
+/* ============================================================
+   ANIMACIÓN DE APARICIÓN DEL MODAL
+   ============================================================ */
 /* Animación de aparición del modal (suave y moderna) */
 @keyframes anim-modal {
   to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    opacity: 1;                                           /* Termina totalmente visible */
+    transform: translateY(0) scale(1);                    /* Vuelve a su posición y tamaño normal */
   }
 }
 
+/* ============================================================
+   BOTÓN DE CERRAR DENTRO DEL MODAL
+   ============================================================ */
 /* Estilo para el botón de cerrar dentro del modal */
 .modal .modal-inner .close-modal {
-  margin: 1.5rem auto 0;                      /* Centrado horizontal dentro del modal */
-  padding: 0.6rem 1.8rem;
-  border-radius: 999px;
-  border: none;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  background: #16a34a;                        /* Verde principal */
-  color: #ffffff;
-  display: inline-flex;
+  margin: 1.5rem auto 0;                                  /* Deja espacio arriba y lo centra horizontalmente */
+  padding: 0.6rem 1.8rem;                                 /* Tamaño del botón */
+  border-radius: 999px;                                   /* Botón completamente redondo (pill) */
+  border: none;                                           /* Sin borde por defecto */
+  font-size: 0.95rem;                                     /* Tamaño de letra del botón */
+  font-weight: 600;                                       /* Texto semi-negrita */
+  cursor: pointer;                                        /* Manita al pasar encima */
+  background: #16a34a;                                    /* Verde principal */
+  color: #ffffff;                                         /* Texto en blanco */
+  display: inline-flex;                                   /* Para centrar bien el contenido */
   align-items: center;
   justify-content: center;
-  min-width: 150px;
+  min-width: 150px;                                       /* Ancho mínimo del botón */
   transition:
-    background 0.18s ease,
-    box-shadow 0.18s ease,
-    transform 0.18s ease;
+    background 0.18s ease,                                /* Transición suave del fondo */
+    box-shadow 0.18s ease,                                /* Transición suave de la sombra */
+    transform 0.18s ease;                                 /* Transición suave de movimientos */
 }
 
 /* Efecto hover del botón de cerrar */
 .modal .modal-inner .close-modal:hover {
-  background: #15803d;                        /* Verde un poco más oscuro */
-  box-shadow: 0 8px 20px rgba(21, 128, 61, 0.45);
-  transform: translateY(-1px);
+  background: #15803d;                                    /* Verde un poco más oscuro al pasar el mouse */
+  box-shadow: 0 8px 20px rgba(21, 128, 61, 0.45);         /* Sombra más intensa */
+  transform: translateY(-1px);                            /* Se eleva ligeramente */
 }
 
 /* Efecto al hacer clic en el botón de cerrar */
 .modal .modal-inner .close-modal:active {
-  transform: translateY(0);
-  box-shadow: 0 4px 10px rgba(21, 128, 61, 0.35);
+  transform: translateY(0);                               /* Vuelve a su posición original al hacer clic */
+  box-shadow: 0 4px 10px rgba(21, 128, 61, 0.35);         /* Sombra más pequeña al presionar */
 }

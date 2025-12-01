@@ -1,20 +1,39 @@
-/* ===================
-   COLORES GLOBALES
-   =================== */
-
-   :root {
-    --primary-color: #28a745;
-    --secondary-color: #8DCE76;
-    --text-color: #333;
-    --background-color: #f4f4f4;
-    --white-color: #FFFFFF;
+/* ============================
+   VARIABLES DE COLOR GLOBALES
+   ============================ */
+/* 
+   Se definen variables CSS en :root para reutilizar
+   los mismos colores en todo el proyecto.
+*/
+:root {
+    --primary-color: #28a745;        /* Color principal (verde) para títulos, acentos, botones, etc. */
+    --secondary-color: #8DCE76;      /* Color secundario (verde más claro) para detalles y fondos suaves */
+    --text-color: #333;              /* Color base del texto (gris oscuro, buena legibilidad) */
+    --background-color: #f4f4f4;     /* Color de fondo general de la página (gris muy claro) */
+    --white-color: #FFFFFF;          /* Blanco puro, útil para tarjetas, contenedores, etc. */
 }
 
+/* ============================
+   ESTILOS BASE DEL BODY
+   ============================ */
+/* 
+   Aplica el color de fondo y de texto global
+   utilizando las variables definidas.
+*/
 body {
-    background-color: var(--background-color);
-    color: var(--text-color);
+    background-color: var(--background-color); /* Fondo general del sitio */
+    color: var(--text-color);                  /* Color por defecto de todo el texto */
 }
 
-h1, h2, h3 {
-    color: var(--primary-color);
+/* ============================
+   ESTILOS PARA TÍTULOS
+   ============================ */
+/* 
+   Todos los títulos h1, h2 y h3 usarán
+   el color primario para mantener consistencia.
+*/
+h1,
+h2,
+h3 {
+    color: var(--primary-color); /* Títulos en verde principal */
 }

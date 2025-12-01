@@ -1,84 +1,109 @@
+/* ============================================================
+   AJUSTES GENERALES DEL CONTENIDO EN LA PÁGINA DE CAMIONES
+   ============================================================ */
+
+/* Contenedor principal del contenido (lado derecho de la sidebar) */
 .content {
-    overflow-y: auto !important;
-    position: relative; /* Evita que el contenido se mueva cuando se activa la sidebar */
-    z-index: 1; /* Mantiene el contenido por debajo de la sidebar */
+    overflow-y: auto !important;          /* Permite scroll vertical si el contenido es largo */
+    position: relative;                   /* Base para posicionamiento interno sin que afecte al layout global */
+    z-index: 1;                           /* Se mantiene por debajo de elementos con mayor z-index (como sidebar / overlays) */
 }
 
-/* Main Section */
+/* Sección principal de la página de camiones (tarjetas C01 / C02) */
 .main {
-    display: block;
-    justify-content: space-between;
-    align-items: flex-start;
+    display: block;                       /* Se muestra como bloque (aunque mezcla props de flex, pero display es block) */
+    justify-content: space-between;       /* No hace efecto porque no es flex, pero se deja tal cual */
+    align-items: flex-start;              /* Igual que arriba, sería útil si fuera flex */
     padding: 10px;
-    margin-top: -20px;
-    flex-wrap: wrap;
+    margin-top: -20px;                    /* Sube ligeramente el contenido (lo aproxima al header) */
+    flex-wrap: wrap;                      /* Solo tendría efecto con display:flex */
     width: 100%;
-    position: relative; /* Mantener la posición relativa para que el contenido no se desplace */
-    z-index: 1; /* Mantener el contenido bajo la sidebar */
-    margin-left: 0 !important; /* Asegura que no haya márgenes adicionales */
-    padding-left: 0; /* No hay margen de izquierda */
+    position: relative;                   /* Evita desplazamientos raros frente a otros elementos posicionados */
+    z-index: 1;                           /* Se mantiene debajo de overlays o menús flotantes */
+    margin-left: 0 !important;           /* Asegura que no se desplace hacia la derecha (por ejemplo, por la sidebar) */
+    padding-left: 0;                      /* Sin padding izquierdo extra */
 }
 
-/* Estilo para camion_1 y camion_2 */
+/* ============================================================
+   TARJETAS DE CAMIONES: C01 Y C02
+   ============================================================ */
+
+/* Estilo básico para las dos tarjetas de camiones */
 .camion_1, .camion_2 {
-    flex: 1 1 48%; /* Esto asegura que las tarjetas ocupen el 48% del ancho */
+    flex: 1 1 48%;                        /* (Si fueran flex-items) ocuparían ~48% para ir 2 por fila */
     margin-right: 10px;
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 8px;                   /* Esquinas redondeadas */
     text-align: left;
-    overflow: hidden;
-    height: auto; /* Asegura que las tarjetas no cambien de tamaño */
+    overflow: hidden;                     /* Oculta contenido que se salga del contenedor */
+    height: auto;                         /* Altura automática según contenido */
 }
 
+/* Títulos dentro de las tarjetas C01 / C02 */
 .camion_1 h2, .camion_2 h2 {
-    color: #296E03;
+    color: #296E03;                       /* Verde principal de la marca */
 }
 
-/* Dropdown: Establecer un tamaño fijo */
+/* ============================================================
+   ESTILOS DE ACORDEÓN (LISTA DE PARADAS)
+   ============================================================ */
+
+/* Botones del acordeón (cabeceras de "Ruta 1", "Ruta 2", etc.) */
 .accordion-button {
-    height: 40px; /* Establecer una altura fija para los botones */
-    font-size: 14px;
+    height: 40px;                         /* Altura fija para que todos se vean uniformes */
+    font-size: 14px;                      /* Tamaño de letra ligeramente reducido */
 }
 
+/* Cuerpo del acordeón: lista de paradas con scroll si crece demasiado */
 .accordion-body {
-    max-height: 300px;
-    overflow-y: auto;
+    max-height: 300px;                    /* Altura máxima de la sección expandida */
+    overflow-y: auto;                     /* Scroll vertical cuando el contenido excede 300px */
 }
-/* Rutas: Distribuir en dos columnas */
+
+/* ============================================================
+   DISTRIBUCIÓN DE RUTAS EN DOS COLUMNAS
+   ============================================================ */
+
+/* Contenedor general para rutas (cuando se usan columnas) */
 .routes {
     display: flex;
-    justify-content: space-between; 
-    flex-wrap: wrap;  
-    height: auto; 
+    justify-content: space-between;       /* Deja espacio entre columnas */
+    flex-wrap: wrap;                      /* Permite que las columnas salten de línea si no caben */
+    height: auto;
     margin-bottom: 20px;
 }
 
-/* Columna de rutas */
+/* Cada columna de rutas (izquierda / derecha) */
 .column {
-    width: 48%;  
+    width: 48%;                           /* Aproximadamente la mitad del ancho con un pequeño espacio */
     padding: 1px;
     margin-bottom: 10px;
 }
 
-/* Lista de rutas */
+/* Listas dentro de cada columna */
 .column ul {
-    list-style: none;
-    padding-left: 20px;
+    list-style: none;                     /* Quita viñetas */
+    padding-left: 20px;                   /* Sangría manual para simular lista */
 }
 
+/* Elementos de la lista de paradas */
 .column ul li {
-    font-size: 12px; 
+    font-size: 12px;
     margin-bottom: 6px;
 }
 
-/* Botón Cómo Llegar */
+/* ============================================================
+   BOTÓN "VER GRÁFICO DE LA RUTA"
+   ============================================================ */
+
+/* Botón que alterna entre la lista y el gráfico de la ruta */
 .ver-graficos {
     display: inline-block;
     padding: 8px 15px;
     margin-top: 5px;
     height: 35px;
-    background-color: #296E03;
-    color: #fff;
+    background-color: #296E03;           /* Verde principal */
+    color: #fff;                         /* Texto blanco */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -86,108 +111,124 @@
     transition: background-color 0.3s ease;
 }
 
+/* Hover del botón: verde ligeramente más oscuro */
 .ver-graficos:hover {
     background-color: #218838;
 }
 
+/* ============================================================
+   AJUSTES DE GRID / CARDS
+   ============================================================ */
+
+/* Override de Bootstrap col-md-6 para ocupar todo el ancho (si se usa) */
 .col-md-6 {
     width: 100%; 
 }
 
+/* Títulos h5 generales dentro de cards (por ejemplo "Camión C01") */
 h5 {
     font-size: 2rem;
-    color: #218838 !important;
+    color: #218838 !important;           /* Verde más intenso; !important para sobreescribir otros estilos */
 }
 
-/* Estilo para el contenedor de la imagen con zoom */
+/* ============================================================
+   ZOOM Y PAN DE LAS IMÁGENES DE LAS RUTAS
+   ============================================================ */
+
+/* Contenedor para imágenes con zoom (usado en el modal) */
 .zoom-container {
   position: relative;
-  overflow: hidden;
-  touch-action: none; /* Desactiva la acción por defecto del navegador */
-  width: 100%; /* Hace que ocupe todo el ancho disponible */
-  height: 100%; /* Hace que ocupe todo el alto disponible */
+  overflow: hidden;                      /* Oculta el contenido que se sale del área visible */
+  touch-action: none;                    /* Desactiva la acción por defecto para gestos táctiles (pinch/zoom nativo) */
+  width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: center; /* Centra la imagen inicialmente */
-  align-items: center; /* Centra la imagen */
+  justify-content: center;               /* Centra la imagen inicialmente en horizontal */
+  align-items: center;                   /* Centra la imagen en vertical */
 }
 
-/* Imagen dentro del modal */
+/* Imagen dentro del contenedor de zoom */
 .zoom-container img {
-  transition: transform 0.25s ease;
-  width: 100%; /* Ajusta la imagen al ancho disponible */
+  transition: transform 0.25s ease;      /* Suaviza las transiciones de zoom */
+  width: 100%;                           /* Ajusta la imagen al ancho disponible */
   height: auto;
-  cursor: grab; /* Cambia el cursor para indicar que la imagen es desplazable */
-  position: absolute; /* Hace que la imagen sea desplazable */
-  transform-origin: center center; /* Asegura que el zoom se aplica desde el centro */
+  cursor: grab;                          /* Indica que se puede “arrastrar” */
+  position: absolute;                    /* Permite mover la imagen dentro del contenedor */
+  transform-origin: center center;       /* El zoom se aplica desde el centro */
 }
 
-/* Cuando se hace zoom, la imagen crece */
+/* Cuando se aplica zoom (clase .zoomed), la imagen crece */
 .zoom-container img.zoomed {
-  transform: scale(1.5); /* Ajusta el nivel de zoom */
-    cursor: grabbing; /* Cambia el cursor para indicar que la imagen está en movimiento */
-    overflow-x: auto;
+  transform: scale(1.5);                 /* Nivel de zoom (1.5x) */
+  cursor: grabbing;                      /* Cursor para indicar que se está arrastrando */
+  overflow-x: auto;                      /* (no tiene efecto en img, pero se deja tal cual) */
 }
 
 /* Permite desplazamiento horizontal solo cuando la imagen tiene zoom */
 .zoom-container {
-  overflow-x: auto; /* Añade desplazamiento horizontal */
-  overflow-y: hidden; /* Evita el desplazamiento vertical */
+  overflow-x: auto;                      /* Scroll horizontal permitido */
+  overflow-y: hidden;                    /* Se evita scroll vertical en este modo */
 }
 
-/* Imagen con zoom en modal o escritorio */
+/* Imagen de zoom tanto en el modal (#zoomContainer img) como en imágenes de rutas [id^="rutac"]-imagen */
+/* OJO: [id^="rutac"]-imagen no es un selector CSS válido (faltaría algo tipo [id^="rutac"][data-...] o .rutac-imagen),
+   pero lo dejamos exactamente como está para no alterar la lógica del proyecto. */
 #zoomContainer img,
 [id^="rutac"]-imagen {
-  touch-action: none;
+  touch-action: none;                    /* Desactiva gestos por defecto */
   cursor: grab;
 }
 
+/* Estilos para imágenes de rutas cuyo id comienza con "rutac" (por ejemplo #rutac01-imagen) */
 [id^="rutac"]-imagen {
   max-width: none;
   width: auto;
   height: auto;
 }
 
+/* ============================================================
+   ESTILOS RESPONSIVOS (MÓVIL <= 768px)
+   ============================================================ */
 
-
-
-
-/* Estilos responsivos */
 @media (max-width: 768px) {
 
-    /* Asegura que todo el contenido esté centrado vertical y horizontalmente */
+    /* Ajusta el content para móviles: centrado y con padding */
     .content {
-        min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+        min-height: 100vh;               /* Ocupa toda la altura visible */
         padding: 20px;
         margin-bottom: 0px;
-        margin-left: 0 !important; /* Asegura que el contenido no se desplace */
+        margin-left: 0 !important;       /* Asegura que no se empuje por la sidebar */
     }
 
     .main {
-        margin-left: 0 !important;
+        margin-left: 0 !important;       /* Garantiza que no haya offset horizontal */
     }
 
-
+    /* Tarjetas de camiones ocupan el 100% del ancho (una debajo de otra) */
     .camion_1, .camion_2 {
         width: 100%;
         margin-right: 0;
         margin-bottom: 20px;
     }
 
+    /* Columnas de rutas pasan a ocupar 100% (una sola columna) */
     .column {
         width: 100%;  
     }
 
+    /* Texto de las listas más pequeño en móviles */
     .column ul li {
         font-size: 10px; 
         margin-bottom: 4px;
     }
 
+    /* Botón "Cómo llegar" (si se usa esta clase) ocupa todo el ancho */
     .btn-como-llegar {
         width: 100%; 
         font-size: 16px;
     }
 
-    /* Alinea las tarjetas al centro */
+    /* Centra las tarjetas en la grid Bootstrap para móviles */
     .col-12.col-md-6 {
         display: flex;
         justify-content: center;
@@ -195,80 +236,87 @@ h5 {
     }
 
     .card {
-        width: 90%; /* Ajusta el tamaño de la tarjeta */
-        max-width: 400px; /* Limita el ancho de las tarjetas */
+        width: 90%;                      /* Tarjetas un poco más angostas */
+        max-width: 400px;                /* Límite máximo de ancho */
     }
 
-    /* Reduce el tamaño del título en pantallas pequeñas */
+    /* Título de las cards más pequeño en móviles */
     h5.card-title {
         font-size: 1rem;
     }
 
-    /* Reduce el tamaño de los botones del acordeón */
+    /* Botones del acordeón: letra un poco más pequeña y sin salto de línea */
     .accordion-button {
         font-size: 0.97rem !important;
-        white-space: nowrap; /* Evita el salto de línea */
+        white-space: nowrap;             /* Evita salto de línea en texto largo */
         overflow: hidden;
-        text-overflow: ellipsis; /* Muestra '...' si el texto es demasiado largo */
+        text-overflow: ellipsis;         /* Muestra "..." si el texto es demasiado largo */
     }
 
-    /* Reducir el tamaño del texto de las listas */
+    /* Tamaño de texto de la lista de paradas y cuerpo del acordeón */
     .accordion-body,
     .list-group {
         font-size: 0.90rem !important;
     }
 
-    /* Ajusta el tamaño de los botones */
+    /* Botón de ver gráfico a ancho completo en móviles (si se usa esta clase) */
     .btn-ver-graficos {
         width: 100%;
         font-size: 16px;
     }
+
+    /* Ajustes del modal en móviles: ocupa toda la pantalla */
     .modal-dialog {
-        max-width: 100%;  /* Ajusta el ancho */
-        margin: 0;        /* Elimina los márgenes */
-        height: 100%;     /* Ocupa toda la altura */
-        overflow-x: auto; /* Añade desplazamiento horizontal */
+        max-width: 100%;                 /* Ancho completo */
+        margin: 0;
+        height: 100%;
+        overflow-x: auto;                /* Scroll horizontal si es necesario */
     }
 
     .modal-content {
-        height: 100%;      /* Asegura que el contenido del modal ocupe toda la altura */
-        border: none;     /* Elimina el borde del modal */
-        overflow-x: auto; /* Añade desplazamiento horizontal */
+        height: 100%;                    /* Contenido del modal ocupa toda la altura */
+        border: none;
+        overflow-x: auto;                /* Scroll horizontal */
     }
 
+    /* En móviles, el contenedor de zoom permite scroll completo */
     .zoom-container {
-        height: 100%;   /* La imagen de zoom ocupará toda la altura del modal */
-        overflow: scroll; /* Permite el desplazamiento tanto horizontal como vertical */
-        justify-content: center; /* Centra la imagen inicialmente */
-        align-items: center; /* Centra la imagen */
+        height: 100%;
+        overflow: scroll;                /* Scroll en ambas direcciones */
+        justify-content: center;
+        align-items: center;
         position: relative;
-
     }
 
     .zoom-container img {
-        max-height: 100vh; /* Limita la altura de la imagen al 100% de la vista */
-        width: auto;  /* Ajusta la imagen al ancho disponible */
-        cursor: grab; /* Cambia el cursor para indicar que la imagen es desplazable */
-        transition: transform 0.25s ease; /* Suaviza el efecto de zoom */
-        overflow-x: auto; /* Añade desplazamiento horizontal */
+        max-height: 100vh;               /* Limita la altura al viewport */
+        width: auto;
+        cursor: grab;
+        transition: transform 0.25s ease;
+        overflow-x: auto;                /* (Sin efecto en img, se deja como está) */
     }
 
     .zoom-container img.zoomed {
-        transform: scale(1.5); /* Zoom al hacer pellizco */
-        overflow-x: auto; /* Añade desplazamiento horizontal */
-        scroll-behavior: smooth; /* Suaviza el desplazamiento */
+        transform: scale(1.5);           /* Zoom 1.5x */
+        overflow-x: auto;
+        scroll-behavior: smooth;         /* Scroll suave */
     }
 
-    /* Añadir desplazamiento horizontal cuando haya zoom */
+    /* Añade desplazamiento horizontal cuando hay zoom (mismas reglas que arriba) */
     .zoom-container {
-        overflow-x: auto; /* Añade desplazamiento horizontal */
-        overflow-y: hidden; /* Evita el desplazamiento vertical */
+        overflow-x: auto;
+        overflow-y: hidden;
     }
 }
 
-/* Evitar mostrar el modal en pantallas grandes */
+/* ============================================================
+   COMPORTAMIENTO DEL MODAL EN PANTALLAS GRANDES
+   ============================================================ */
+
+/* En pantallas grandes (>= 768px), se oculta el modal bootstrap de imagen
+   porque seguramente se usa otra vista (imagen a la derecha, etc.) */
 @media (min-width: 768px) {
     #imagenModal {
-        display: none;  /* Oculta el modal en pantallas grandes */
+        display: none;   /* No mostrar modal en escritorio */
     }
 }

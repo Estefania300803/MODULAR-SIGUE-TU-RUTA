@@ -2,99 +2,139 @@
    Login page
    =================== */
 
-/* Fondo con imagen */
+/* Fondo general con imagen a pantalla completa
+   - Centrada, fija al hacer scroll y con cover para llenar el viewport */
 .background {
     background: url('../../imagenes/Login.jpg') no-repeat center center fixed;
-    background-size: cover;
+    background-size: cover;          /* La imagen se escala para cubrir todo el fondo */
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex;                   /* Permite centrar el contenido hijo */
+    align-items: center;             /* Centrado vertical */
+    justify-content: center;         /* Centrado horizontal */
 }
 
-/* Imagen de fondo */
+/* Imagen de fondo (lado izquierdo del layout, por ejemplo)
+   - Usa otra imagen (camión)
+   - Se asegura que cubra toda la altura de la ventana */
 .bg-image {
     background-image: url('../../assets/imagenes/camion.png'); /* Cambia aquí la URL de la imagen */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat; /* Evita que se repita */
-    height: 100vh; /* Asegura que cubra toda la altura de la ventana */
+    background-size: cover;          /* Cubre todo el contenedor */
+    background-position: center;     /* Centrada */
+    background-repeat: no-repeat;    /* No se repite */
+    height: 100vh;                   /* Ocupa toda la altura de la ventana */
     width: 100%; 
 }
 
-/* Logo */
-.logo {
-    height: auto; /* Mantiene las proporciones automáticamente */
-    margin-bottom:  0rem;
-    width: 159px; 
-  }
+/* ===================
+   LOGO
+   =================== */
 
+/* Contenedor del logo:
+   - Ajusta el ancho máximo y deja margen inferior cero (se controla con otras clases) */
+.logo {
+    height: auto;                    /* Mantiene proporciones automáticas */
+    margin-bottom:  0rem;
+    width: 159px;                    /* Ancho base del logo */
+}
+
+/* Imagen del logo centrada dentro de su contenedor */
 .logo img {
     display: block;
     margin: 0 auto;
 }
 
-/* Ajustes para la imagen de fondo en móviles */
+/* Ajustes para la imagen de fondo en móviles
+   (se asegura que realmente llene la pantalla) */
 .bg-image {
-    height: 100vh; /* Asegura que la imagen ocupe toda la pantalla */
+    height: 100vh;                   /* Asegura que la imagen ocupe toda la pantalla */
 }
 
-/* Ajustes para el botón en móviles */
+/* ===================
+   AJUSTES RESPONSIVE BÁSICOS
+   =================== */
+
+/* Botón principal en móviles:
+   - Reduce ligeramente el tamaño de la fuente para verse mejor en pantallas pequeñas */
 .btn-success {
-    font-size: 1rem; /* Reduce el tamaño de la fuente en móviles */
+    font-size: 1rem;                 /* Reduce el tamaño de la fuente en móviles */
 }
 
-/* Ajustes para los inputs en móviles */
+/* Inputs en móviles:
+   - También se ajusta el tamaño de la fuente para el formulario */
 .form {
-    font-size: 1rem; /* Reduce el tamaño de la fuente en móviles */
+    font-size: 1rem;                 /* Reduce el tamaño de la fuente en móviles */
 }
 
-/* Enlaces */
+/* ===================
+   ENLACES (olvide contraseña / registro)
+   =================== */
+
+/* Estilo base de enlaces de recuperación y registro */
 .forgot-password, .register-link {
-    color: #28a745;
-    text-decoration: none;
+    color: #28a745;                  /* Verde principal */
+    text-decoration: none;           /* Sin subrayado por defecto */
 }
   
+/* Subrayado al pasar el mouse para indicar interactividad */
 .forgot-password:hover, .register-link:hover {
     text-decoration: underline;
 }
 
-/* Título */
+/* ===================
+   TÍTULO DEL LOGIN
+   =================== */
+
+/* Título principal de la pantalla de login */
 .title {
-    font-size: 29px;
-    color: #28a745;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+    font-size: 29px;                 /* Tamaño de texto grande */
+    color: #28a745;                  /* Verde principal */
+    font-weight: bold;               /* Negrita */
+    margin-bottom: 0.5rem;           /* Separación inferior pequeña */
 }
 
-/* centrar el widget y separar del input */
+/* ===================
+   reCAPTCHA
+   =================== */
+
+/* Contenedor del widget reCAPTCHA:
+   - Centrado
+   - Separado del input de password y del botón */
 .recaptcha-wrapper {
   display: flex;
-  justify-content: center;   /* centra horizontalmente */
+  justify-content: center;           /* Centra horizontalmente el widget */
   align-items: center;
-  margin-top: 1.25rem;       /* separación arriba (desde el password) */
-  margin-bottom: 1.25rem;    /* separación abajo */
-  padding: 0 0.5rem;         /* opcional: un pequeño acolchado lateral */
+  margin-top: 1.25rem;               /* Separación arriba (desde el password) */
+  margin-bottom: 1.25rem;            /* Separación abajo (antes del botón) */
+  padding: 0 0.5rem;                 /* Un poco de acolchado lateral */
 }
 
-/* ajuste responsive: escala un poco el widget en pantallas muy pequeñas */
+/* Ajuste responsive: escala un poco el reCAPTCHA en pantallas muy pequeñas */
 @media (max-width: 420px) {
   .recaptcha-wrapper .g-recaptcha {
-    transform: scale(0.92);
-    transform-origin: center center;
+    transform: scale(0.92);          /* Reduce ligeramente el tamaño del widget */
+    transform-origin: center center; /* Escala desde el centro */
   }
+
+  /* Logo más pequeño en pantallas muy chicas */
   .logo{
-        width: 120px;   /* ancho deseado */
-    }
-    .title {
+        width: 120px;                /* Ancho deseado para el logo en móviles muy pequeños */
+  }
+
+  /* Ajusta el margen inferior del título para que no deje tanto espacio */
+  .title {
         margin-bottom: 0.5rem;
-    }
+  }
 }
 
+/* ===================
+   TABLETS (769px – 1024px)
+   =================== */
+
+/* Ajustes para tablets: se ensancha un poco el formulario */
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
     /* Ajustes para tablets */
     .form-container {
-        max-width: 500px; /* Aumenta el ancho del formulario en tablets */
+        max-width: 500px;            /* Aumenta el ancho del formulario en tablets */
     }
-  }
+}

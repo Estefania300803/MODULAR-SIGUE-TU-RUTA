@@ -1,141 +1,153 @@
-/* ===================
-   BOTONES
-   =================== */
+/* ============================
+   BOTONES PRINCIPALES
+   ============================ */
 
-/* Botón "Iniciar sesión" */
+/* Botón "Iniciar sesión" / botón verde genérico (sobrescribe .btn-success de Bootstrap) */
 .btn-success {
-    color: #fff; /* Color del texto */
-    background-color: #28a745; /* Color verde */
-    border-color: #28a745; /* Borde verde */
-    width: 100%; /* Ancho completo del contenedor */
-    max-width: 400px; /* Máximo ancho, ajustable */
-    margin: 0 auto; /* Centrado horizontal */
-    height: 38px; /* Define un largo fijo */
-    display: flex; /* Usa flexbox para alinear contenido */
-    align-items: center; /* Centra el texto verticalmente */
-    justify-content: center; /* Centra el texto horizontalmente */
-    padding: 10px;
-    font-size: 1.1rem;
-    font-weight: bold;
-  }
-  
-  /* Botón "Continuar con Google" */
-  .btn-outline-secondary {
-    width: 100%; /* Ancho completo del contenedor */
-    max-width: 200px; /* Máximo ancho, ajustable */
-    padding: 0.6rem; /* Tamaño interno */
-    font-size: 1.1rem;
-    margin: 0 auto; /* Centrado horizontal */
-    height: 50px; /* Define un largo fijo */
-    line-height: 60px; /* Centra el texto verticalmente si no usas flexbox */
-  }
+    color: #fff;                 /* Texto en blanco */
+    background-color: #28a745;   /* Fondo verde principal */
+    border-color: #28a745;       /* Borde del mismo verde */
+    width: 100%;                 /* Ocupa todo el ancho del contenedor */
+    max-width: 400px;            /* Pero no excede 400px de ancho */
+    margin: 0 auto;              /* Centrado horizontal dentro del contenedor */
+    height: 38px;                /* Altura fija del botón */
+    display: flex;               /* Flex para centrar el texto */
+    align-items: center;         /* Centrado vertical del texto */
+    justify-content: center;     /* Centrado horizontal del texto */
+    padding: 10px;               /* Relleno interno */
+    font-size: 1.1rem;           /* Tamaño de texto */
+    font-weight: bold;           /* Negrita */
+}
 
+/* Botón "Continuar con Google" o similar con borde */
+.btn-outline-secondary {
+    width: 100%;                 /* Ocupa todo el ancho disponible */
+    max-width: 200px;            /* Máximo 200px de ancho */
+    padding: 0.6rem;             /* Relleno interno */
+    font-size: 1.1rem;           /* Tamaño de texto */
+    margin: 0 auto;              /* Centrado horizontal */
+    height: 50px;                /* Altura fija */
+    line-height: 60px;           /* Ajusta la línea para centrar texto si no se usa flex */
+}
+
+/* Hover del botón verde (un tono más oscuro) */
 .btn-success:hover {
     background-color: #218838;
 }
 
-/* Ajustes para el botón en móviles */
+/* Ajuste de tamaño de fuente del botón en móviles (se redefine, pero aplica siempre) */
 .btn-success {
-    font-size: 1rem; /* Reduce el tamaño de la fuente en móviles */
+    font-size: 1rem;             /* Ligera reducción del tamaño de texto */
 }
 
-#btnllegar{
-    text-align: center !important;
-    font-size: 15px;
-    font-weight: 600;
+/* Botón específico con id="btnllegar" (por ejemplo, "Cómo llegar") */
+#btnllegar {
+    text-align: center !important; /* Asegura que el texto quede centrado */
+    font-size: 15px;               /* Tamaño de texto */
+    font-weight: 600;              /* Semi-negrita */
 }
 
-.d-flex button{
-    background-color: #8DCE76;
-    border-color: #8DCE76;
-    color: rgb(7, 7, 7);
-    height: normal;
-    text-align: center !important;
-    font-size: 20px;
-    font-weight: 600;
-    height: normal;
+/* Botones dentro de un contenedor .d-flex (por ejemplo botones de CTA en header) */
+.d-flex button {
+    background-color: #8DCE76;  /* Fondo verde claro */
+    border-color: #8DCE76;      /* Borde del mismo verde claro */
+    color: rgb(7, 7, 7);        /* Texto casi negro */
+    height: normal;             /* Altura automática (valor no estándar, pero se respeta) */
+    text-align: center !important; /* Texto centrado */
+    font-size: 20px;            /* Texto grande */
+    font-weight: 600;           /* Semi-negrita */
+    height: normal;             /* Repetido, mantiene altura automática */
 }
 
-/* ===================
+/* ============================
    FORMULARIOS E INPUTS
-   =================== */
+   ============================ */
 
+/* Contenedor genérico de formularios (tarjeta blanca con sombra) */
 .form-container {
-    max-width: 400px;
-    width: 100%;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;                     /* Ancho máximo de la tarjeta */
+    width: 100%;                          /* Ocupa todo el ancho disponible */
+    padding: 20px;                        /* Relleno interno */
+    background-color: #fff;               /* Fondo blanco */
+    border-radius: 10px;                  /* Esquinas redondeadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para efecto de elevación */
 }
 
+/* Contenedor para inputs con ícono a la derecha */
 .input-container {
-    position: relative;
+    position: relative; /* Permite posicionar el ícono de forma absoluta dentro */
 }
 
+/* Ícono que se muestra dentro del input (a la derecha) */
 .input-container i {
     position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #6c757d;
+    right: 10px;                 /* Separado 10px del borde derecho */
+    top: 50%;                    /* Centrado vertical en el input */
+    transform: translateY(-50%); /* Ajuste para centrar exactamente */
+    color: #6c757d;              /* Color gris del ícono */
 }
 
+/* Clase genérica para tamaño de fuente en formularios */
 .form {
-    font-size: 1.1rem;
-    padding: 0.8rem;
+    font-size: 1.1rem;           /* Tamaño del texto en inputs */
+    padding: 0.8rem;             /* Relleno interno */
 }
 
-input::placeholder{
-    font-family: Inter, sans-serif;
-    font-size: 20px;
+/* Placeholder de inputs (estilo tipográfico) */
+input::placeholder {
+    font-family: Inter, sans-serif; /* Tipografía usada en el proyecto */
+    font-size: 20px;                /* Tamaño del placeholder */
     font-style: normal;
     font-weight: 400;
 }
 
-.form-control{
-    text-align: left;
+/* Estilo base de .form-control (se sobreescribe más abajo también) */
+.form-control {
+    text-align: left;              /* Texto alineado a la izquierda */
     font-family: Inter, sans-serif;
-    font-size: 40px;
+    font-size: 40px;               /* Tamaño grande de texto (sobrescrito después) */
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 }
 
-/* Entrada de texto e íconos */
+/* Texto e íconos cuando se usan input-group de Bootstrap */
 .input-group .input-group-text {
-    font-size: 1.2rem; /* Aumenta el tamaño del ícono */
-  }
-  
-  .form-control {
-    font-size: 1.1rem; /* Escala el texto de entrada */
-    padding: 0.8rem;
-  }
-
-/* ===================
-   LOGOS E IMÁGENES
-   =================== */
-
-/* Imagen de fondo */
-.bg-image {
-    background-image: url('../../assets/imagenes/camion.png'); /* Cambia aquí la URL de la imagen */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat; /* Evita que se repita */
-    height: 100vh; /* Asegura que cubra toda la altura de la ventana */
-    width: 100%; 
+    font-size: 1.2rem;            /* Aumenta tamaño del ícono en el input-group */
 }
 
+/* Redefinición de .form-control (puede sobrescribir el font-size anterior) */
+.form-control {
+    font-size: 1.1rem;            /* Tamaño de texto más estándar para inputs */
+    padding: 0.8rem;              /* Relleno interno */
+}
 
+/* ============================
+   LOGOS, IMÁGENES Y FONDOS
+   ============================ */
 
+/* Imagen de fondo a pantalla completa para lado izquierdo (ej. en login/registro) */
+.bg-image {
+    background-image: url('../../assets/imagenes/camion.png'); /* Imagen de fondo */
+    background-size: cover;          /* La imagen cubre todo el contenedor */
+    background-position: center;     /* Centrada */
+    background-repeat: no-repeat;    /* No se repite */
+    height: 100vh;                   /* Ocupa toda la altura de la ventana */
+    width: 100%;                     /* Ocupa todo el ancho */
+}
+
+/* Centrado del logo dentro de su contenedor */
 .logo img {
     display: block;
-    margin: 0 auto;
+    margin: 0 auto;                  /* Centra horizontalmente */
 }
 
-/*Iconos*/
+/* ============================
+   ICONOS
+   ============================ */
 
-.bi-arrow-left-right{
+/* Icono de flecha doble (ej. en botón "Cómo llegar") */
+.bi-arrow-left-right {
     text-align: right;
     font-family: Inter;
     font-size: 19px;
@@ -144,26 +156,29 @@ input::placeholder{
     line-height: normal;
 }
 
-/* Estilos de los iconos */
+/* Estilo de iconos dentro del menú de usuario lateral (#user-menu) */
 #user-menu ul li i {
-    font-size: 20px; /* Tamaño de los iconos */
+    font-size: 20px;   /* Tamaño del icono */
     margin-right: 12px;
-    color: #555;
+    color: #555;       /* Gris medio */
 }
 
-  /*Iconos y spans de la side bar*/
+/* ============================
+   ICONOS Y TEXTOS EN SIDEBAR
+   ============================ */
 
+/* Iconos dentro de los <li> del sidebar principal */
 .sidebar ul li i {
-    font-size: 24px;
+    font-size: 24px;   /* Iconos más grandes */
     margin-right: 10px;
 }
 
-/*Span*/
-
+/* Span con texto de cada opción de sidebar: oculto por defecto (solo iconos) */
 .sidebar ul li span {
     display: none;
 }
 
+/* Cuando la sidebar tiene clase .expanded, muestra el texto */
 .sidebar.expanded ul li span {
     display: inline;
 }

@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+  <!-- Codificación de caracteres -->
   <meta charset="UTF-8">
+  <!-- Vista responsive para móviles -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Título que se muestra en la pestaña del navegador -->
   <title>Redirigiendo...</title>
+
+  <!-- Meta refresh:
+       - content="0;url=home_page.html"
+       - Espera 0 segundos y redirige automáticamente a home_page.html
+  -->
   <meta http-equiv="refresh" content="0;url=home_page.html">
 </head>
+
 <body>
-  <p>Si la redirección no ocurre automáticamente, <a href="home_page.html">haz clic aquí</a>.</p>
+  <!-- Mensaje de fallback:
+       Si por alguna razón el meta-refresh no funciona
+       (o está deshabilitado en el navegador),
+       el usuario puede dar clic manualmente en el enlace.
+  -->
+  <p>
+    Si la redirección no ocurre automáticamente,
+    <a href="home_page.html">haz clic aquí</a>.
+  </p>
 </body>
+
 </html>

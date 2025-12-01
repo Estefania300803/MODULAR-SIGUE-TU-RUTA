@@ -1,14 +1,34 @@
-// Declarar la variable global
+// ************************************************************
+//  MÓDULO DE MAPA PRINCIPAL - SIGUE TU RUTA
+// ************************************************************
+//  Este script se encarga de:
+//    - Definir las coordenadas de las rutas C01 y C02.
+//    - Inicializar el mapa de Leaflet con límites, zoom y capa base.
+//    - Crear las polylines (rutas) C01 y C02 con estilos e interacciones.
+//    - Ajustar el mapa para que se vean ambas rutas.
+//    - Definir un catálogo de paradas (coordenadas + nombre).
+//    - Implementar un buscador de paradas con sugerencias.
+//    - Dibujar marcadores pequeños para cada parada.
+//    - Obtener y mostrar la ubicación actual del usuario con un marcador rojo.
+// ************************************************************
+
+// Declarar variables globales para las rutas y el mapa
 let polyC01, polyC02;
 let map;
+
+// Esperar a que el DOM esté cargado antes de inicializar el mapa y las rutas
 document.addEventListener("DOMContentLoaded", function () {
+
+  // ==========================================================
+  // 1. DEFINICIÓN DE COORDENADAS DE RUTA C02
+  // ==========================================================
   const rutaC02 = [
     [20.84197667, -102.79272667],
     [20.82569790, -102.79237667],
     [20.82549333, -102.79176333],
     [20.82156000, -102.77916167],
     [20.82144833, -102.77847167],
-    [20.821330, -102.778083], //EMPIEZA LA GLORIETA
+    [20.821330, -102.778083], // EMPIEZA LA GLORIETA
     [20.821225, -102.77805667],
     [20.82117167, -102.77803667],
     [20.82111833, -102.77801167],
@@ -28,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     [20.82109000, -102.77726167],
     [20.82112167, -102.77723333],
     [20.82114500, -102.77720333],
-    [20.821145, -102.777117], //FIN DE LA GLORIETA
+    [20.821145, -102.777117], // FIN DE LA GLORIETA
     [20.820844, -102.775581],
     [20.81977000, -102.76943000],
     [20.81963167, -102.76909000],
@@ -86,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
     [20.826933, -102.790255],
     [20.825309, -102.790834],
     [20.825722, -102.792321],
-    [20.841980, -102.792598], //Entrada Uni
+    [20.841980, -102.792598], // Entrada Uni
     [20.841938, -102.792043],
     [20.841803, -102.791459],
     [20.841619, -102.790804],
@@ -146,10 +166,13 @@ document.addEventListener("DOMContentLoaded", function () {
     [20.841938, -102.792043],
     [20.842006, -102.792600],
     [20.842006, -102.79272667],
-    [20.84197667, -102.79272667] //Entrada Uni
+    [20.84197667, -102.79272667] // Entrada Uni
   ];
 
-  //RUTA CERRITO-CENTRO DESDE CUALTOS
+  // ==========================================================
+  // 2. DEFINICIÓN DE COORDENADAS DE RUTA C01
+  // ==========================================================
+  // RUTA CERRITO-CENTRO DESDE CUALTOS
   const rutaC01 = [
     [20.84197667, -102.79272667],
     [20.82569790, -102.79237667],
@@ -163,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
     [20.824271, -102.787859],
     [20.82156000, -102.77916167],
     [20.82144833, -102.77847167],
-    [20.821330, -102.778083], //EMPIEZA LA GLORIETA
+    [20.821330, -102.778083], // EMPIEZA LA GLORIETA
     [20.821225, -102.77805667],
     [20.82117167, -102.77803667],
     [20.82111833, -102.77801167],
@@ -183,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
     [20.82109000, -102.77726167],
     [20.82112167, -102.77723333],
     [20.82114500, -102.77720333],
-    [20.821145, -102.777117], //FIN DE LA GLORIETA
+    [20.821145, -102.777117], // FIN DE LA GLORIETA
     [20.820844, -102.775581],
     [20.81977000, -102.76943000],
     [20.81963167, -102.76909000],
@@ -248,7 +271,7 @@ document.addEventListener("DOMContentLoaded", function () {
     [20.823075, -102.783582],
     [20.824372, -102.787835],
     [20.825722, -102.792321],
-    [20.841980, -102.792598], //Entrada Uni
+    [20.841980, -102.792598], // Entrada Uni
     [20.841938, -102.792043],
     [20.841803, -102.791459],
     [20.841619, -102.790804],
@@ -308,16 +331,19 @@ document.addEventListener("DOMContentLoaded", function () {
     [20.841938, -102.792043],
     [20.842006, -102.792600],
     [20.842006, -102.79272667],
-    [20.84197667, -102.79272667] //Entrada Uni
-  ]
+    [20.84197667, -102.79272667] // Entrada Uni
+  ];
 
-  // Inicializar el mapa centrado en la primera coordenada de la ruta, con límites flexibles
+  // ==========================================================
+  // 3. INICIALIZACIÓN DEL MAPA LEAFLET
+  // ==========================================================
+  // Se centra en la primera coordenada de rutaC02 y se limita el área visible
   map = L.map("mi_mapa", {
     maxBounds: [
       [20.77, -102.83], // suroeste
       [20.88, -102.74], // noreste
     ],
-    maxBoundsViscosity: 0.4, // permite algo de movimiento sin bloquear por completo
+    maxBoundsViscosity: 0.4, // resistencia al salir de los límites
     minZoom: 13,
     maxZoom: 20
   }).setView(rutaC02[0], 18);
@@ -327,13 +353,16 @@ document.addEventListener("DOMContentLoaded", function () {
     attribution: '&copy; OpenStreetMap contributors',
   }).addTo(map);
 
-  // Crear la ruta C02 con interacciones
+  // ==========================================================
+  // 4. CREACIÓN DE RUTA C02 COMO POLYLINE
+  // ==========================================================
   polyC02 = L.polyline(rutaC02, {
     color: "red",
     weight: 5,
     opacity: 0.8
   });
 
+  // Interacciones de hover para C02
   polyC02.on("mouseover", function (e) {
     this.setStyle({ color: "orange", weight: 6 });
     this.bringToFront();
@@ -342,13 +371,16 @@ document.addEventListener("DOMContentLoaded", function () {
     this.setStyle({ color: "red", weight: 6 });
   });
 
-  // Crear la ruta C01 con interacciones
+  // ==========================================================
+  // 5. CREACIÓN DE RUTA C01 COMO POLYLINE
+  // ==========================================================
   polyC01 = L.polyline(rutaC01, {
     color: "blue",
     weight: 5,
     opacity: 0.8
   });
 
+  // Interacciones de hover para C01
   polyC01.on("mouseover", function (e) {
     this.setStyle({ color: "deepskyblue", weight: 7 });
     this.bringToFront();
@@ -357,30 +389,15 @@ document.addEventListener("DOMContentLoaded", function () {
     this.setStyle({ color: "blue", weight: 5 });
   });
 
-
-  // Ajustar el zoom para mostrar ambas rutas
+  // ==========================================================
+  // 6. AJUSTAR ZOOM PARA MOSTRAR AMBAS RUTAS
+  // ==========================================================
   const allCoords = rutaC01.concat(rutaC02);
   map.fitBounds(L.latLngBounds(allCoords));
 
-
-  /* Marcadores de inicio y fin
-  L.marker(rutaC02[0]).addTo(map).bindPopup("Inicio");
-  L.marker(rutaC02[rutaC02.length - 1]).addTo(map).bindPopup("Fin");  */
-
-  /* Marcadores de inicio y fin
-  L.marker(rutaC02[0]).addTo(map).bindPopup("Inicio");
-  L.marker(rutaC02[rutaC02.length - 1]).addTo(map).bindPopup("Fin");  */
-
-  /* MARCADOR AXILIAR PARA IDENTIFICAR UNA COORDENADA
-  const coordenada = [20.830667, -102.792525];
-  // Crear marcador
-  L.marker(coordenada)
-    .addTo(map)
-    .bindPopup("Cruce San Luis y Carretera Yahualica-Tepa")
-    .openPopup();
-  */
-
-  // Lista de coordenadas con sus nombres
+  // ==========================================================
+  // 7. LISTA DE PARADAS (COORDENADAS CON NOMBRE)
+  // ==========================================================
   const coordenadasConNombres = [
     { lat: 20.830667, lon: -102.792525, nombre: "Cruce Carretera Yahualica-Tepa y San Luis" },
     { lat: 20.825306, lon: -102.791397, nombre: "López Mateos y Cruce Carretera Yahualica-Tepa" },
@@ -423,7 +440,7 @@ document.addEventListener("DOMContentLoaded", function () {
     { lat: 20.84169500, lon: -102.79261000, nombre: "Cruce km 71 y Rafael Casillas Aceves" },
     { lat: 20.847123, lon: -102.781430, nombre: "CUALTOS" },
     { lat: 20.84104333, lon: -102.79275167 },
-    //PARADAS SOLO DE C01
+    // PARADAS SOLO DE C01
     { lat: 20.81246667, lon: -102.76562167, nombre: "Cruce Manuel Altamirano y Gpe. Victoria" },
     { lat: 20.813207, lon: -102.763765, nombre: "Cruce Manuel doblado y matamoros" },
     { lat: 20.81482500, lon: -102.76377500, nombre: "Cruce Matamoros y Morelos" },
@@ -453,109 +470,11 @@ document.addEventListener("DOMContentLoaded", function () {
     { lat: 20.80546333, lon: -102.76363500, nombre: "Unidad deportiva Morelos" },
     { lat: 20.80985667, lon: -102.76449500, nombre: "Cruce Revolución y Niños Heroes" },
     { lat: 20.81079167, lon: -102.76567833, nombre: "Cruce Calle y Privada Manuel Altamirano" }
-  //   ('Cruce Carretera Yahualica-Tepa y San Luis', 23 ),
-  //   ('López Mateos y Cruce Carretera Yahualica-Tepa', 24),
-  //   ('López Mateos', 25),
-  //   ('Cruce López Mateos y Las palmas', 26),
-  //   ('Glorieta colonias', 27),
-  //   ('Cruce López Mateos y Mayas', 28),
-  //   ('Calle López Mateos', 29),
-  //   ('Cruce López Mateos y Aquiles Sérdan', 30),
-  //   ('Cruce López Mateos y Gómez Morin', 31),
-  //   ('Cruce Félix Ramos y González Gallo', 32),
-  //   ('Sagrada Familia', 33),
-  //   ('Cruce Gonzalez Gallo y J. Cruz Ramirez', 34),
-  //   ('Cruce Vallarta y San Martín', 35),
-  //   ('Colegio Morelos', 36),
-  //   ('Parque del beso', 37),
-  //   ('Cruce Niños Heroes y Revolución', 38),
-  //   ('Cruce J.Caro Galindo y Matamoros', 39),
-  //   ('Calle Matamoros', 40),
-
-// ( 'CUALTOS', 1 ),
-// ('', 2),
-// ('', 3),
-// ('Cruce Carretera Yahualica-Tepa y San Luis', 4 ),
-// ('López Mateos y Cruce Carretera Yahualica-Tepa', 5),
-// ( 'Cruce Hacienda Trasquilla y López Mateos', 6 ),
-// ('Cruce Hda. la Trasquila y Mirandilla', 7),
-// ('Cruce Hda. Sta. Ana Apacueco y la Mina', 8),
-// ('Cruce Hda. La Mina y de Guadalupe', 9),
-// ('Cruce López Mateos y Las palmas', 10),
-// ('Glorieta colonias', 11),
-// ('Cruce López Mateos y Mayas', 12),
-// ('Calle López Mateos', 13),
-// ('Cruce López Mateos y Aquiles Sérdan', 14),
-// ('Cruce López Mateos y Gómez Morin', 15),
-
-
-
-
-
-
-
-
-
-
-
-
-
-  //   ( 'Central', 1 ),
-  //   ( 'Oxxo, Calle Hidalgo',2 ),
-  //   ( 'IMSS', 3 ),
-  //   ( 'Cruce 5 de febrero e Independencia', 4 ),
-  //   ( 'Cruce Independencia y Colón', 5 ),
-  //   ( 'Casa de la cultura', 6 ),
-  //   ( 'Cruce 16 de septiembre y Moctezuma', 7 ),
-  //   ( 'Cruce 16 de septiembre y Mariano J.', 8 ),
-  //   ( 'Cruce 16 de septiembre y Gral. Anaya', 9 ),
-  //   ( 'Cruce 16 de sep. y Antonio Rojas', 10 ),
-  //   ( 'Cruce Antonio Rojas y Alvaro Obregon', 11 ),
-  //   ( 'Cruce Gral. Anaya y González Gallo', 12 ),
-  //   ( 'Cruce Gral. Anaya y Aquiles Serdán', 13 ),
-  //   ( 'Cruce José Gpe y López Mateos', 14 ),
-  //   ( 'Cruce López Mateos y Mayas', 15 ),
-  //   ( 'Glorieta Colonias', 16 ),
-  //   ( 'Cruce Av. López Mateos y Alemania', 17 ),
-  //   ( 'Cruce Hacienda Mirandilla y Trasquila', 18 ),
-  //   ( 'Cruce Hacienda Trasquilla y López Mateos', 19 ),
-  //   ( 'Cruce km 71 y Avila Camacho', 20 ),
-  //   ( 'Cruce km 71 y Rafael Casillas Aceves', 21 ),
-  //   ( 'CUALTOS', 22 ),
-  //   { lat: 20.84104333, lon: -102.79275167 },
-
-  //   //PARADAS SOLO DE C01
-    
-  //   ('Cruce Manuel Altamirano y Gpe. Victoria',1),
-  //   ('Cruce Manuel doblado y matamoros', 2),
-  //   ('Cruce Matamoros y Morelos', 3),
-  //   ('Cruce H. Garza y Moctezuma', 4),
-  //   ('Cruce Gonzalez Gallo', 5),
-  //   ('Oxxo Gonzalez Gallo', 6),
-  //   ('Escuela 5 de mayo', 7),
-  //   ('Cruce Gral Anaya y González hermosillo', 8),
-  //   ('Gral Anaya y Aquiles serdan', 9),
-  //   ('Cruce Hda. la Trasquila y Mirandilla', 10),
-  //   ('Cruce Hda. Sta. Ana Apacueco y la Mina', 11),
-  //   ('Cruce Hda. La Mina y de Guadalupe', 12),
-  //   ('Cruce Alvaro Obregon y J. Luis Velazco', 13),
-  //   ('Cruce J. Luis Velazco y Allende', 14),
-  //   ('Cruce Madero y Avila Camacho', 15),
-  //   ('Cruce Mapelo y Felix Ramos', 16),
-  //   ('Cruce Josefa Ortiz y Galeana', 17),
-  //   ('Cruce Galeana y Zaragoza', 18),
-  //   ('Cruce Pedro Medina y Colón', 19),
-  //   ('Cruce Pedro Medina y 5 de Febrero', 20),
-  //   ('IMSS familiar', 21),
-  //   ('Policlinica', 22),
-  //   ('Central', 23),
-  //   ('Rio', 24),
-  //   ('Unidad deportiva Morelos', 25),
-  //   ('Cruce Revolución y Niños Heroes', 26),
-  // ('Cruce Calle y Privada Manuel Altamirano', 27)
   ];
 
-    // === Buscador de paradas ===
+  // ==========================================================
+  // 8. BUSCADOR DE PARADAS (AUTOCOMPLETE)
+  // ==========================================================
   const input = document.getElementById("buscador-paradas");
   const sugerencias = document.getElementById("sugerencias-paradas");
 
@@ -563,20 +482,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const texto = input.value.toLowerCase();
     sugerencias.innerHTML = "";
 
+    // Si no hay texto, se ocultan las sugerencias
     if (texto.length === 0) {
       sugerencias.style.display = "none";
       return;
     }
 
+    // Filtrar paradas cuyo nombre incluya el texto escrito
     const resultados = coordenadasConNombres.filter(p =>
       p.nombre && p.nombre.toLowerCase().includes(texto)
     );
 
+    // Si no hay resultados, ocultar sugerencias
     if (resultados.length === 0) {
       sugerencias.style.display = "none";
       return;
     }
 
+    // Crear un div por cada resultado y agregarlo a la lista de sugerencias
     resultados.forEach(p => {
       const div = document.createElement("div");
       div.classList.add("sugerencia-item");
@@ -584,6 +507,9 @@ document.addEventListener("DOMContentLoaded", function () {
       div.style.cursor = "pointer";
       div.style.padding = "5px";
       div.addEventListener("click", () => {
+        // Al hacer clic en la sugerencia:
+        //  - Centrar el mapa en esa parada
+        //  - Abrir un popup con el nombre
         map.setView([p.lat, p.lon], 18);
         L.popup()
           .setLatLng([p.lat, p.lon])
@@ -595,25 +521,29 @@ document.addEventListener("DOMContentLoaded", function () {
       sugerencias.appendChild(div);
     });
 
+    // Mostrar el contenedor de sugerencias
     sugerencias.style.display = "block";
   });
 
+  // Ocultar sugerencias si el usuario hace clic fuera del input o de la lista
   document.addEventListener("click", (e) => {
     if (!sugerencias.contains(e.target) && e.target !== input) {
       sugerencias.style.display = "none";
     }
   });
 
-
-  // Crear un ícono más pequeño
+  // ==========================================================
+  // 9. MARCADORES PEQUEÑOS PARA CADA PARADA
+  // ==========================================================
+  // Definir un ícono más pequeño para no saturar el mapa
   const iconoMini = L.icon({
     iconUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png',
-    iconSize: [10, 16],     // ancho, alto (por defecto es [25, 41], punto medio [15,25])
-    iconAnchor: [5, 16],    // punto del ícono que se alinea con la coordenada
+    iconSize: [10, 16],     // tamaño más chico que el default
+    iconAnchor: [5, 16],    // punto que se alinea con la coordenada
     popupAnchor: [0, -12]
   });
 
-  // Aplicar el ícono a cada marcador
+  // Agregar un marcador para cada parada definida en coordenadasConNombres
   coordenadasConNombres.forEach(punto => {
     L.marker([punto.lat, punto.lon], { icon: iconoMini })
       .addTo(map)
@@ -622,30 +552,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-// ====== Agregar ubicación del usuario ======
+// ============================================================
+// 10. GEOLOCALIZACIÓN DEL USUARIO (FUERA DEL DOMContentLoaded)
+// ============================================================
+// Aquí se usa la API de geolocalización del navegador para:
+//   - Obtener la ubicación actual del usuario.
+//   - Dibujar un marcador rojo en su posición.
+//   - (Opcional) Centrar el mapa en esa ubicación.
 if ('geolocation' in navigator) {
   navigator.geolocation.getCurrentPosition(
     function (position) {
       var lat = position.coords.latitude;
       var lon = position.coords.longitude;
 
-      // Crear icono rojo
+      // Definir un ícono rojo para la ubicación actual
       var redIcon = L.icon({
         iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-        iconSize: [10, 16],     // ancho, alto (por defecto es [25, 41], punto medio [15,25])
-        iconAnchor: [5, 16],    // punto del ícono que se alinea con la coordenada
+        iconSize: [10, 16],
+        iconAnchor: [5, 16],
         popupAnchor: [0, -12],
         shadowSize: [41, 41]
       });
 
-      // Mostrar marcador en la ubicación del usuario
+      // Crear marcador en la ubicación actual del usuario
       L.marker([lat, lon], { icon: redIcon })
         .addTo(map)
         .bindPopup('Tu ubicación actual')
         .openPopup();
 
-      // Opcional: centrar el mapa (si quieres quitarlo, comenta la siguiente línea)
+      // Centrar el mapa en la ubicación del usuario (zoom 15)
+      // Si no quieres que se mueva el mapa, puedes comentar esta línea
       map.setView([lat, lon], 15);
     },
     function (error) {
@@ -653,11 +590,12 @@ if ('geolocation' in navigator) {
       alert('No se pudo obtener tu ubicación: ' + error.message);
     },
     {
-      enableHighAccuracy: true,
-      timeout: 10000,
-      maximumAge: 0
+      enableHighAccuracy: true, // solicita mayor precisión
+      timeout: 10000,           // tiempo máximo para respuesta (ms)
+      maximumAge: 0             // no usar caché, siempre posición reciente
     }
   );
 } else {
+  // Si el navegador no soporta geolocalización
   alert('Tu navegador no soporta geolocalización.');
 }

@@ -1,141 +1,273 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+  <!-- Codificación y configuración responsive -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Título de la pestaña -->
   <title>Registro</title>
+
+  <!-- Favicon -->
   <link rel="website icon" type="svg" href="assets/iconos/Logo_s-l.svg">
+
+  <!-- CSS base del proyecto -->
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/themes.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <!-- Estilos específicos de la página de registro -->
   <link rel="stylesheet" href="assets/css/pages/home_registro.css">
-  <!-- Agregar Bootstrap para facilitar estilos -->
+
+  <!-- Bootstrap CSS para maquetado y componentes -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+  <!-- Lógica del registro (validaciones, envío, etc.) -->
+  <!-- Es un módulo de ES6 que vive en src/views/registro.js -->
   <script type="module" src="./src/views/registro.js"></script>
 </head>
+
 <body>
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
-  <!-- Bootstrap Modal -->
+  <!-- Bootstrap Icons (para los íconos de persona, correo, etc.) -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+
+  <!-- JS de Bootstrap (para modales, etc.) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Bootstrap Propio -->
+
+  <!-- Script propio que controla modales (política, términos, etc.) -->
   <script src="./src/components/modales.js"></script>
 
+  <!-- ========================================================= -->
+  <!-- LAYOUT PRINCIPAL: MITAD IMAGEN / MITAD FORMULARIO        -->
+  <!-- ========================================================= -->
   <div class="row g-0 w-100 h-100">
-    <!-- Sección completa -->
     <div class="row w-100 h-100">
-      <!-- Imagen de fondo -->
+      <!-- Columna izquierda: imagen de fondo (decorativa) -->
       <div class="col-md-6 bg-image"></div>
 
-      <!-- Formulario -->
+      <!-- Columna derecha: formulario centrado -->
       <div class="col-md-6 d-flex align-items-center justify-content-center">
         <div class="form-container text-center">
-          <!-- Logo -->
+
+          <!-- Logo superior -->
           <div class="logo mb-4">
-            <!-- Agrega aquí la URL de tu logo -->
+            <!-- Logo de la aplicación -->
             <img src="assets/imagenes/logo.png" alt="Logo" class="img-fluid" style="max-width: 150px;">
           </div>
 
-          <!-- Título -->
+          <!-- Título de la sección -->
           <h2 class="text-success mb-4">Registro</h2>
 
-          <!-- Campos del formulario -->
+          <!-- ===================================================== -->
+          <!-- FORMULARIO DE REGISTRO                                -->
+          <!--  - action="/new-Contac": ruta del backend.            -->
+          <!--  - method="POST": envía datos por POST.               -->
+          <!--  - id="formulario-crear": usado por registro.js.      -->
+          <!-- ===================================================== -->
           <form action="/new-Contac" method="POST" id="formulario-crear">
+            <!-- Campo: Nombre -->
             <div class="mb-3 input-container">
-              <input type="text" name = "nombre" class="form-control" placeholder="Nombre" required 
-              maxlength="30" oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '').replace(/\s{4,}/g, '   ')">
+              <input type="text" name="nombre" class="form-control" placeholder="Nombre" required maxlength="30"
+                oninput="this.value = this.value
+                  .replace(/[^a-zA-ZÀ-ÿ\s]/g, '')   /* Solo letras y espacios */
+                  .replace(/\s{4,}/g, '   ')" /* Limita espacios consecutivos */>
               <i class="bi bi-person"></i>
             </div>
+
+            <!-- Campo: Apellidos -->
             <div class="mb-3 input-container">
-              <input type="text" name = "apellidos" class="form-control" placeholder="Apellidos" required
-                maxlength="60" oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '').replace(/\s{4,}/g, '   ')">
+              <input type="text" name="apellidos" class="form-control" placeholder="Apellidos" required maxlength="60"
+                oninput="this.value = this.value
+                  .replace(/[^a-zA-ZÀ-ÿ\s]/g, '')   /* Solo letras y espacios */
+                  .replace(/\s{4,}/g, '   ')" /* Limita espacios consecutivos */>
               <i class="bi bi-person"></i>
             </div>
+
+            <!-- Campo: Correo electrónico -->
             <div class="mb-3 input-container">
-              <input type="email" id="email" name="email" class="form-control" placeholder="Correo electrónico" required>
+              <input type="email" id="email" name="email" class="form-control" placeholder="Correo electrónico"
+                required>
               <i class="bi bi-envelope"></i>
             </div>
-            <div class="mb-3 input-container">
-              <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required>
-            </div>
-            <p id="password-warning" class="small text-start" style="color: red; display: none;">Elija una contraseña de 8 o más caracteres</p>
-            <div class="mb-3 input-container">
-              <input type="password" id="password2" name="password2"  class="form-control" placeholder="Confirma la Contraseña" required>
-            </div>
-            <p id="error-msg" style="color: red; display: none;">Las contraseñas no coinciden.</p>
 
-            <!-- Checkbox -->
+            <!-- Campo: Contraseña -->
+            <div class="mb-3 input-container">
+              <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña"
+                required>
+            </div>
+
+            <!-- Mensaje de advertencia para contraseña corta;
+                 se muestra/oculta por JS (registro.js) -->
+            <p id="password-warning" class="small text-start" style="color: red; display: none;">
+              Elija una contraseña de 8 o más caracteres
+            </p>
+
+            <!-- Campo: Confirmar contraseña -->
+            <div class="mb-3 input-container">
+              <input type="password" id="password2" name="password2" class="form-control"
+                placeholder="Confirma la Contraseña" required>
+            </div>
+
+            <!-- Mensaje de error cuando las contraseñas no coinciden;
+                 se controla también desde JS (registro.js) -->
+            <p id="error-msg" style="color: red; display: none;">
+              Las contraseñas no coinciden.
+            </p>
+
+            <!-- ===================================================== -->
+            <!-- CHECKBOX DE TÉRMINOS Y POLÍTICA DE PRIVACIDAD         -->
+            <!--  - id="Checkboxprincipal": usado en modales.js para   -->
+            <!--    habilitar/deshabilitar el botón de registro.       -->
+            <!--  - Enlaces abren modales de Bootstrap (ver abajo).    -->
+            <!-- ===================================================== -->
             <div class="form-check mb-3 text-start">
               <input class="form-check-input" type="checkbox" id="Checkboxprincipal" required>
               <label class="form-check-label" for="acceptTerms" class="enlaces" class="enlaces2">
-                He leído y acepto la <a href="#" class="register-link" id="openModal">Política de privacidad</a> y los <a href="#" class="register-link" id="abremodal">términos de servicio</a> de Sigue tu Ruta
+                He leído y acepto la
+                <!-- Enlace que abre el modal de Política de Privacidad -->
+                <a href="#" class="register-link" id="openModal">
+                  Política de privacidad
+                </a>
+                y los
+                <!-- Enlace que abre el modal de Términos de servicio -->
+                <a href="#" class="register-link" id="abremodal">
+                  términos de servicio
+                </a>
+                de Sigue tu Ruta
               </label>
             </div>
 
-            <!-- Botón -->
+            <!-- Botón de envío:
+                 - id="botoncontinuar": en modales.js se habilita o deshabilita
+                   según el estado del checkbox principal. -->
             <input type="submit" value="Registrarse" class="btn btn-success w-100" id="botoncontinuar">
-        
           </form>
         </div>
       </div>
     </div>
   </div>
 
- 
+  <!-- ========================================================= -->
+  <!-- MODALES DE POLÍTICAS Y TÉRMINOS (BOOTSTRAP)               -->
+  <!-- ========================================================= -->
 
-<!-- Todos los modales-->
-<!-- Modal de Politicas-->
-<div class="modal fade" id="Modalpolitica" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Política de Privacidad</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>En Sigue Tu Ruta, nos comprometemos a proteger la privacidad de nuestros usuarios. La información recopilada, como datos de ubicación y preferencias de uso, se utiliza exclusivamente para brindar un servicio eficiente, ofrecer información en tiempo real sobre el transporte público y mejorar la experiencia dentro de la aplicación.
-          No compartimos datos personales con terceros sin consentimiento previo, salvo que sea requerido por ley. Toda la información es tratada bajo medidas de seguridad para garantizar su confidencialidad.
-          Al utilizar nuestra plataforma, el usuario acepta estas políticas y autoriza el uso de sus datos conforme a los fines mencionados. Recomendamos revisar periódicamente esta sección, ya que las políticas pueden actualizarse para mejorar la protección y el servicio.
-          Si tienes dudas o deseas ejercer tus derechos de acceso, rectificación o eliminación de datos, puedes contactarnos a través de nuestros medios oficiales.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="continueButton">Continuar</button> 
+  <!-- Modal de Política de Privacidad -->
+  <div class="modal fade" id="Modalpolitica" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Encabezado del modal -->
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">
+            Política de Privacidad
+          </h1>
+          <!-- Botón de cerrar (X) del modal -->
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <!-- Cuerpo del modal con el texto de la política -->
+        <div class="modal-body">
+          <p>
+            En Sigue Tu Ruta, nos comprometemos a proteger la privacidad de nuestros usuarios.
+            La información recopilada, como datos de ubicación y preferencias de uso, se utiliza
+            exclusivamente para brindar un servicio eficiente, ofrecer información en tiempo
+            real sobre el transporte público y mejorar la experiencia dentro de la aplicación.
+            No compartimos datos personales con terceros sin consentimiento previo, salvo que
+            sea requerido por ley. Toda la información es tratada bajo medidas de seguridad
+            para garantizar su confidencialidad.
+            Al utilizar nuestra plataforma, el usuario acepta estas políticas y autoriza el uso
+            de sus datos conforme a los fines mencionados. Recomendamos revisar periódicamente
+            esta sección, ya que las políticas pueden actualizarse para mejorar la protección
+            y el servicio.
+            Si tienes dudas o deseas ejercer tus derechos de acceso, rectificación o eliminación
+            de datos, puedes contactarnos a través de nuestros medios oficiales.
+          </p>
+        </div>
+
+        <!-- Pie del modal con botón "Continuar" -->
+        <div class="modal-footer">
+          <!-- id="continueButton": si lo necesitas, puedes enganchar lógica
+               adicional desde JS (por ejemplo, marcar el checkbox). -->
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="continueButton">
+            Continuar
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Modal Terminos-->
-<div class="modal fade" id="Modalterminos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Política de Privacidad</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Bienvenido a Sigue Tu Ruta. Al utilizar nuestra aplicación, aceptas los siguientes términos:</p>
+  <!-- Modal de Términos de Servicio -->
+  <div class="modal fade" id="Modalterminos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Encabezado del modal -->
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">
+            Política de Privacidad
+          </h1>
+          <!-- Botón X para cerrar el modal -->
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
 
-          <p>Uso del Servicio:</p>
-          <p>La plataforma proporciona información en tiempo real sobre rutas y tiempos de llegada del transporte público. El usuario se compromete a utilizar esta información solo para fines personales y respetar el buen uso de la aplicación.</p>
-          <p>Disponibilidad:</p>
-          <p>Hacemos nuestro mejor esfuerzo para mantener el servicio activo y actualizado, pero no garantizamos que esté libre de errores o interrupciones. La información mostrada depende de datos en tiempo real, por lo que pueden existir variaciones.</p>
-          <p>Cuenta y Datos:</p>
-          <p>Al usar la aplicación, aceptas proporcionar información verídica si es requerida. Eres responsable del uso de tu cuenta y de mantener la confidencialidad de tus accesos, en caso de que existan.</p>
-          <p>Propiedad Intelectual:</p>
-          <p>Todo el contenido de Sigue Tu Ruta (diseño, logotipos, software) es propiedad del equipo desarrollador. No está permitido copiar, distribuir o modificar ningún elemento sin autorización previa.</p>
-          <p>Modificaciones:</p>
-          <p>Podemos actualizar estos términos en cualquier momento. Te notificaremos sobre cambios importantes, y el uso continuo de la aplicación implicará la aceptación de las nuevas condiciones.</p>
-          <p>Limitación de Responsabilidad:</p>
-          <p>Sigue Tu Ruta no se hace responsable por decisiones tomadas por el usuario basadas en la información proporcionada, ni por retrasos o desvíos imprevistos del transporte.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="continua2">Continuar</button> 
+        <!-- Cuerpo del modal con los términos -->
+        <div class="modal-body">
+          <p>Bienvenido a Sigue Tu Ruta. Al utilizar nuestra aplicación, aceptas los siguientes términos:</p>
+
+          <p><strong>Uso del Servicio:</strong></p>
+          <p>
+            La plataforma proporciona información en tiempo real sobre rutas y tiempos de llegada
+            del transporte público. El usuario se compromete a utilizar esta información solo para
+            fines personales y respetar el buen uso de la aplicación.
+          </p>
+
+          <p><strong>Disponibilidad:</strong></p>
+          <p>
+            Hacemos nuestro mejor esfuerzo para mantener el servicio activo y actualizado, pero no
+            garantizamos que esté libre de errores o interrupciones. La información mostrada depende
+            de datos en tiempo real, por lo que pueden existir variaciones.
+          </p>
+
+          <p><strong>Cuenta y Datos:</strong></p>
+          <p>
+            Al usar la aplicación, aceptas proporcionar información verídica si es requerida.
+            Eres responsable del uso de tu cuenta y de mantener la confidencialidad de tus accesos,
+            en caso de que existan.
+          </p>
+
+          <p><strong>Propiedad Intelectual:</strong></p>
+          <p>
+            Todo el contenido de Sigue Tu Ruta (diseño, logotipos, software) es propiedad del equipo
+            desarrollador. No está permitido copiar, distribuir o modificar ningún elemento sin
+            autorización previa.
+          </p>
+
+          <p><strong>Modificaciones:</strong></p>
+          <p>
+            Podemos actualizar estos términos en cualquier momento. Te notificaremos sobre cambios
+            importantes, y el uso continuo de la aplicación implicará la aceptación de las nuevas
+            condiciones.
+          </p>
+
+          <p><strong>Limitación de Responsabilidad:</strong></p>
+          <p>
+            Sigue Tu Ruta no se hace responsable por decisiones tomadas por el usuario basadas en la
+            información proporcionada, ni por retrasos o desvíos imprevistos del transporte.
+          </p>
+        </div>
+
+        <!-- Pie del modal con botón "Continuar" -->
+        <div class="modal-footer">
+          <!-- id="continua2": también puede usarse desde JS para lógica extra -->
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="continua2">
+            Continuar
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </body>
+
 </html>
